@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
-import Stores from './Stores';
+import Home from './Home';
 import styles from './styles';
 
-class StoresContainer extends Component {
+class HomeContainer extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    return <Stores />;
+    return <Home />;
   }
 }
 
-export default StoresContainer;
+export default HomeContainer;

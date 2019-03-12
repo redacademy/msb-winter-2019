@@ -64,8 +64,8 @@ export const fonts = {
   md: 18,
   lg: 26,
   xl: 28,
-  bold: '500',
-  primary: 'Times New Roman',
+  bold: '600',
+  primary: 'OpenSans-Regular',
   secondary: 'Franchise Free'
 };
 
@@ -123,9 +123,9 @@ export const body1 = {
 export const button = {
   color: colors.white,
   textAlign: 'center',
-  fontSize: fonts.sm,
-  fontWeight: fonts.bold,
-  paddingVertical: padding.sm
+  fontSize: fonts.md,
+  fontFamily: 'OpenSans-Bold',
+  paddingVertical: padding.xs
 };
 
 // components

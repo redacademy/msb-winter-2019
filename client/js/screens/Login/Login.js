@@ -10,7 +10,7 @@ const Login = () => {
   return (
     <View style={{ backgroundColor: 'red' }}>
       <CustomText>This is Login.</CustomText>
-      <Button style={styles.button}>Press me</Button>
+      <Button style={styles.button}>Sign Up</Button>
     </View>
   );
 };

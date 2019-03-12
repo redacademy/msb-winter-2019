@@ -1,4 +1,5 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+<<<<<<< HEAD
 
 export default createAppContainer(
   createStackNavigator(
@@ -11,3 +12,5 @@ export default createAppContainer(
     }
   )
 );
+=======
+>>>>>>> add fonts and images

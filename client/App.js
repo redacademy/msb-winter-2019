@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
-import Home from './js/screens/Home';
+import Card from './js/screens/Card';
 // import RootStackNavigator from './navigation/RootStackNavigator';
 
 const instructions = Platform.select({
@@ -15,7 +15,7 @@ export default class App extends Component {
   render() {
     return (
       <View>
-        <Home />
+        <Card />
       </View>
     );
   }

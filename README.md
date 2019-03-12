@@ -1,5 +1,13 @@
 # Main Street Brewing Rewards Program 🍺
 
+## Technology Used
+
+- React
+- React Native
+- Xcode
+- GraphQL
+  - GraphCool
+
 ## Authors
 
 - Alex Fetisova | [GitHub](https://github.com/alexfts) | [LinkedIn](https://www.linkedin.com/in/fetisova/)

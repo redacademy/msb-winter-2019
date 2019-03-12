@@ -8,7 +8,7 @@ type User @model {
   profilePicture: File @relation(name: "UserPicture")
   cardBarcode: String
   favouriteBeers: [Beer!]! @relation(name: "UserBeers")
-  pointsHistory: [Point!]! @relation(name: "UserPoint")
+  pointsHistory: [Point!]! @relation(name: "UserPoints")
   favouriteEvents: [Event!]! @relation(name: "UserEvents")
   redeemHistory: [Redeem!]! @relation(name: "UserRedeems")
 }
@@ -23,8 +23,8 @@ type File @model {
 
 type Point @model {
   id: ID! @isUnique
-  user: User! @relation(name: "UserPoint")
-  beer: Beer! @relation(name: "BeerPoint")
+  user: User! @relation(name: "UserPoints")
+  beer: Beer! @relation(name: "BeerPoints")
   date: DateTime!
   stamps: Int!
 }
@@ -47,7 +47,7 @@ type Beer @model {
   releaseDate: DateTime
   rating: Int
   users: [User!]! @relation(name: "UserBeers")
-  point: [Point!]! @relation(name: "BeerPoint")
+  point: [Point!]! @relation(name: "BeerPoints")
 }
 
 type Reward @model {

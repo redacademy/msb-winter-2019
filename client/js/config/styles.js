@@ -120,19 +120,14 @@ export const subtitle3 = {
 
 export const body1 = {
   // lineHeight: 20,
-  fontSize: fonts.sm
+  fontSize: fonts.sm,
+  color: colors.neutralDark
 };
 
-export const bodyLight = {
+export const body2 = {
   // lineHeight: 20,
   fontSize: fonts.sm,
   color: colors.white
-};
-
-export const bodyDark = {
-  // lineHeight: 20,
-  fontSize: fonts.sm,
-  color: colors.neutralDark
 };
 
 // components

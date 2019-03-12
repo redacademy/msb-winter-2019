@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const Login = props => {
-  return <Text>This is Login.</Text>;
+const Login = () => {
+  return (
+    <View style={styles.container}>
+      <Text>This is Login.</Text>
+    </View>
+  );
 };
 
 Login.propTypes = {};

@@ -120,6 +120,14 @@ export const body1 = {
   color: colors.neutralDark
 };
 
+export const button = {
+  color: colors.white,
+  textAlign: 'center',
+  fontSize: fonts.sm,
+  fontWeight: fonts.bold,
+  paddingVertical: padding.sm
+};
+
 // components
 export const loader = {
   flex: 1,
@@ -141,29 +149,29 @@ export const verticalLine = {
   backgroundColor: colors.neutralLight
 };
 
-export const brandButton = {
-  color: colors.white,
-  backgroundColor: colors.brand,
-  textAlign: 'center',
-  fontSize: fonts.sm,
-  fontWeight: fonts.bold,
-  paddingVertical: padding.sm
-};
+// export const brandButton = {
+//   color: colors.white,
+//   backgroundColor: colors.brand,
+//   textAlign: 'center',
+//   fontSize: fonts.sm,
+//   fontWeight: fonts.bold,
+//   paddingVertical: padding.sm
+// };
 
-export const lightButton = {
-  color: colors.black,
-  backgroundColor: colors.white,
-  textAlign: 'center',
-  fontSize: fonts.sm,
-  fontWeight: fonts.bold,
-  paddingVertical: padding.sm
-};
+// export const lightButton = {
+//   color: colors.black,
+//   backgroundColor: colors.white,
+//   textAlign: 'center',
+//   fontSize: fonts.sm,
+//   fontWeight: fonts.bold,
+//   paddingVertical: padding.sm
+// };
 
-export const darkButton = {
-  color: colors.white,
-  backgroundColor: colors.black,
-  textAlign: 'center',
-  fontSize: fonts.sm,
-  fontWeight: fonts.bold,
-  paddingVertical: padding.sm
-};
+// export const darkButton = {
+
+//   backgroundColor: colors.black
+//   // textAlign: 'center',
+//   // fontSize: fonts.sm,
+//   // fontWeight: fonts.bold,
+//   // paddingVertical: padding.sm
+// };

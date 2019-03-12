@@ -3,10 +3,8 @@
 ## Technology Used
 
 - React
-- React Native
-- Xcode
 - GraphQL
-  - GraphCool
+- GraphCool
 
 ## Authors
 

@@ -64,8 +64,10 @@ export const fonts = {
   md: 18,
   lg: 26,
   xl: 28,
-  bold: '500',
-  primary: 'Times New Roman',
+  bold: '600',
+  primary: 'OpenSans-Regular',
+  primaryBold: 'OpenSans-Bold',
+  primarySemi: 'OpenSans-SemiBold',
   secondary: 'Franchise Free'
 };
 
@@ -120,6 +122,15 @@ export const body1 = {
   color: colors.neutralDark
 };
 
+export const button = {
+  color: colors.white,
+  textAlign: 'center',
+  fontSize: fonts.md,
+  fontFamily: 'OpenSans-Bold',
+  paddingVertical: padding.xs,
+  paddingHorizontal: padding.lg
+};
+
 // components
 export const loader = {
   flex: 1,
@@ -139,31 +150,4 @@ export const hr = {
 
 export const verticalLine = {
   backgroundColor: colors.neutralLight
-};
-
-export const brandButton = {
-  color: colors.white,
-  backgroundColor: colors.brand,
-  textAlign: 'center',
-  fontSize: fonts.sm,
-  fontWeight: fonts.bold,
-  paddingVertical: padding.sm
-};
-
-export const lightButton = {
-  color: colors.black,
-  backgroundColor: colors.white,
-  textAlign: 'center',
-  fontSize: fonts.sm,
-  fontWeight: fonts.bold,
-  paddingVertical: padding.sm
-};
-
-export const darkButton = {
-  color: colors.white,
-  backgroundColor: colors.black,
-  textAlign: 'center',
-  fontSize: fonts.sm,
-  fontWeight: fonts.bold,
-  paddingVertical: padding.sm
 };

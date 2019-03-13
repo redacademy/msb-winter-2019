@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Text, View, StatusBar } from 'react-native';
-// import RootStackNavigator from './navigation/RootStackNavigator';
 import Login from './screens/Login';
 
 export default class App extends Component {
@@ -11,7 +10,6 @@ export default class App extends Component {
       <View>
         <Text>Welcome to React Native!</Text>
         <Login />
-        {/* <RootStackNavigator /> */}
       </View>
     );
   }

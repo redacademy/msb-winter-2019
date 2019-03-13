@@ -63,8 +63,8 @@ export default createDrawerNavigator(
         const { routeName } = navigation.state;
       }
     }),
-
-    tabBarOptions: {
+    drawerBackgroundColor: '#fff',
+    contentOptions: {
       activeTintColor: colors.brand,
       inactiveTintColor: colors.black,
       labelStyle: {

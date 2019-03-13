@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, ImageBackground } from 'react-native';
+import { View, Text, ImageBackground } from 'react-native';
 import PropTypes from 'prop-types';
 import Barcode from 'react-native-barcode-builder';
 import styles from './styles';

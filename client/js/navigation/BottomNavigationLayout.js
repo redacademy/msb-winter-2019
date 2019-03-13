@@ -1,8 +1,13 @@
+<<<<<<< HEAD
+=======
+// bottom navigation
+>>>>>>> develop
 import React from 'react';
 import {
   createStackNavigator,
   createBottomTabNavigator
 } from 'react-navigation';
+<<<<<<< HEAD
 import { Image, View } from 'react-native';
 import BeersScreen from '../screens/AllBeers';
 import CardScreen from '../screens/Card';
@@ -11,6 +16,13 @@ import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
 import { colors, fonts } from '../config/styles';
 import { sharedNavigationOptions } from './config';
+=======
+import BeerScreen from '../screens/Beer';
+import CardScreen from '../screens/Card';
+import EventsScreen from '../screens/Events';
+import HomeScreen from '../screens/Home';
+import StoresScreen from '../screens/Stores';
+>>>>>>> develop
 
 const HomeStack = createStackNavigator(
   {
@@ -23,6 +35,7 @@ const HomeStack = createStackNavigator(
     })
   }
 );
+<<<<<<< HEAD
 const BeersStack = createStackNavigator(
   {
     Beers: BeersScreen
@@ -56,6 +69,12 @@ const StoresStack = createStackNavigator(
 const CardStack = createStackNavigator(
   {
     Card: CardScreen
+=======
+
+const BeerStack = createStackNavigator(
+  {
+    Beer: BeerScreen
+>>>>>>> develop
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -63,6 +82,7 @@ const CardStack = createStackNavigator(
     })
   }
 );
+<<<<<<< HEAD
 
 export default createBottomTabNavigator(
   {
@@ -121,3 +141,5 @@ export default createBottomTabNavigator(
     }
   }
 );
+=======
+>>>>>>> develop

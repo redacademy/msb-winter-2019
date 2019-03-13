@@ -54,6 +54,16 @@ const StoresStack = createStackNavigator(
     })
   }
 );
+const CardStack = createStackNavigator(
+  {
+    Card: CardScreen
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation)
+    })
+  }
+);
 
 export default createBottomTabNavigator(
   {
@@ -65,42 +75,42 @@ export default createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: () => {
+      tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
 
         let icon;
-        if (routeName === 'Home') {
-          icon = focused
-            ? require('../assets/images/Navigation/home_icon_active.png')
-            : require('../assets/images/Navigation/home_icon_inactive.png');
-        } else if (routeName === 'Card') {
-          icon = focused
-            ? require('../assets/images/Navigation/card_icon_active.png')
-            : require('../assets/images/Navigation/card_icon_inactive.png');
-        } else if (routeName === 'Beers') {
-          icon = focused
-            ? require('../assets/images/Navigation/beers_icon_active.png')
-            : require('../assets/images/Navigation/beer_icon_inactive.png');
-        } else if (routeName === 'Events') {
-          icon = focused
-            ? require('../assets/images/Navigation/events_icon_active.png')
-            : require('../assets/images/Navigation/event_icon_inactive.png');
-        } else if (routeName === 'Stores') {
-          icon = focused
-            ? require('../assets/images/Navigation/stores_icon_active.png')
-            : require('../assets/images/Navigation/stores_icon_inactive.png');
-        }
+        // if (routeName === 'Home') {
+        //   icon = this.props.active
+        //     ? require('../assets/images/Navigation/home_icon_active.png')
+        //     : require('../assets/images/Navigation/home_icon_inactive.png');
+        // } else if (routeName === 'Card') {
+        //   icon = this.props.active
+        //     ? require('../assets/images/Navigation/card_icon_active.png')
+        //     : require('../assets/images/Navigation/card_icon_inactive.png');
+        // } else if (routeName === 'Beers') {
+        //   icon = this.props.active
+        //     ? require('../assets/images/Navigation/beers_icon_active.png')
+        //     : require('../assets/images/Navigation/beer_icon_inactive.png');
+        // } else if (routeName === 'Events') {
+        //   icon = this.props.active
+        //     ? require('../assets/images/Navigation/events_icon_active.png')
+        //     : require('../assets/images/Navigation/event_icon_inactive.png');
+        // } else if (routeName === 'Stores') {
+        //   icon = this.props.active
+        //     ? require('../assets/images/Navigation/stores_icon_active.png')
+        //     : require('../assets/images/Navigation/stores_icon_inactive.png');
+        // }
         return <Image source={icon} />;
         // return <Icon name={iconName} size={30} color={tintColor} />;
       }
     }),
 
     tabBarOptions: {
-      //   activeTintColor: colors.brand,
-      //   inactiveTintColor: '#000',
+      activeTintColor: 'gold',
+      inactiveTintColor: '#000',
       labelStyle: {
-        // fontSize: fonts.xxxs,
-        fontFamily: 'Montserrat',
+        fontSize: 12,
+        // fontFamily: 'Franchise-Free-Bold',
         lineHeight: 0
       },
       style: {

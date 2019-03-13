@@ -76,7 +76,6 @@ export default createBottomTabNavigator(
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
-        console.log('>>>>>>>>>', navigation);
 
         let icon;
         if (routeName === 'Home') {

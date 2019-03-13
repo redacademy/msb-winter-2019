@@ -5,7 +5,6 @@ import Barcode from 'react-native-barcode-builder';
 import styles from './styles';
 
 const Card = props => {
-  console.log('card');
   return (
     <View style={styles.container}>
       <ImageBackground

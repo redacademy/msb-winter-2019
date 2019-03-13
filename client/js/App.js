@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 import RootStackNavigator from './navigation/RootStackNavigator';
 
 export default class App extends Component {

@@ -1,4 +1,3 @@
-// bottom navigation
 import React from 'react';
 import {
   createStackNavigator,
@@ -9,7 +8,10 @@ import CardScreen from '../screens/Card';
 import EventsScreen from '../screens/Events';
 import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
-// import { colors } from '../config/styles';
+import { colors, fonts } from '../config/styles';
+import { sharedNavigationOptions } from './config';
+
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const HomeStack = createStackNavigator(
   {
@@ -83,10 +85,10 @@ export default createBottomTabNavigator(
     }),
 
     tabBarOptions: {
-      activeTintColor: 'gold',
+      activeTintColor: colors.brand,
       inactiveTintColor: '#000',
       labelStyle: {
-        fontSize: 11,
+        fontSize: fonts.xxxs,
         fontFamily: 'Montserrat',
         lineHeight: 0
       },

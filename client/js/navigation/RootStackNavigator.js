@@ -1,10 +1,14 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-<<<<<<< HEAD
+import BottomNavigationLayout from './BottomNavigationLayout';
+import BeerModal from '../screens/Beer';
+import EventsModal from '../screens/Events';
 
 export default createAppContainer(
   createStackNavigator(
     {
-      Layout: NavigationLayout
+      Layout: BottomNavigationLayout,
+      Beer: BeerModal,
+      Events: EventsModal
     },
     {
       headerMode: 'none',
@@ -12,5 +16,3 @@ export default createAppContainer(
     }
   )
 );
-=======
->>>>>>> add fonts and images

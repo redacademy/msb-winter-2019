@@ -127,7 +127,8 @@ export const button = {
   textAlign: 'center',
   fontSize: fonts.md,
   fontFamily: 'OpenSans-Bold',
-  paddingVertical: padding.xs
+  paddingVertical: padding.xs,
+  paddingHorizontal: padding.lg
 };
 
 // components

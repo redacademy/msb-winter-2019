@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     ...button,
     fontSize: fonts.xs,
     fontFamily: fonts.primarySemi,
+    paddingHorizontal: padding.xs,
     paddingVertical: padding.xxs
   }
 });

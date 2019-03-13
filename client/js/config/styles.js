@@ -13,6 +13,11 @@ export const colors = {
   black: '#000000'
 };
 
+export const underline = {
+  borderBottomColor: colors.brand,
+  borderBottomWidth: 4
+};
+
 export const center = { justifyContent: 'center', alignItems: 'center' };
 
 export const row = { flexDirection: 'row' };
@@ -57,67 +62,88 @@ export const pt0 = {
 };
 
 export const fonts = {
-  xxxs: 10,
+  xxxs: 9,
   xxs: 12,
   xs: 14,
   sm: 16,
   md: 18,
   lg: 26,
-  xl: 28,
-  bold: '500',
-  primary: 'Times New Roman',
+  xl: 34,
+  xxl: 46,
+  bold: '600',
+  primary: 'OpenSans-Regular',
+  primaryBold: 'OpenSans-Bold',
+  primarySemi: 'OpenSans-SemiBold',
   secondary: 'Franchise Free'
 };
 
 // Typography
 export const h1 = {
-  paddingVertical: padding.md,
+  paddingVertical: padding.sm,
   fontFamily: fonts.secondary,
-  fontSize: fonts.xl
+  fontSize: fonts.xxl,
+  textTransform: 'uppercase'
 };
 
 export const h2 = {
-  paddingVertical: padding.md,
+  paddingVertical: padding.xs,
   fontFamily: fonts.secondary,
-  fontSize: fonts.lg
+  fontSize: fonts.xl,
+  textTransform: 'uppercase'
 };
 
 export const h3 = {
-  paddingVertical: padding.md,
+  paddingVertical: padding.xxxs,
   fontFamily: fonts.secondary,
-  fontSize: fonts.md
+  fontSize: fonts.lg,
+  textTransform: 'uppercase'
 };
 
-export const title = {
-  color: colors.white,
-  paddingVertical: padding.sm,
+export const h4 = {
+  paddingVertical: padding.xxxs,
   fontFamily: fonts.secondary,
-  fontSize: fonts.sm
+  fontSize: fonts.md,
+  textTransform: 'uppercase'
 };
 
-export const subtitle = {
-  color: colors.neutralDark,
-  fontSize: fonts.sm,
+export const subtitle1 = {
+  fontSize: fonts.xs,
   paddingVertical: padding.xs,
-  fontWeight: fonts.bold
+  fontFamily: fonts.primarySemi
 };
 
 export const subtitle2 = {
-  color: colors.neutralDark,
   fontSize: fonts.xxs,
   paddingVertical: padding.xs,
   fontWeight: fonts.bold
 };
 
 export const subtitle3 = {
+  color: colors.neutralDark,
   fontSize: fonts.xxxs,
-  paddingVertical: padding.xs,
-  fontWeight: fonts.bold
+  paddingVertical: padding.xxxs,
+  fontFamily: fonts.primarySemi,
+  textTransform: 'capitalize'
 };
 
 export const body1 = {
-  fontSize: fonts.xs,
+  fontSize: fonts.xxs,
+  paddingVertical: padding.xs,
   color: colors.neutralDark
+};
+
+export const body2 = {
+  fontSize: fonts.sm,
+  fontFamily: fonts.primarySemi
+};
+
+export const button = {
+  color: colors.white,
+  textAlign: 'center',
+  fontSize: fonts.md,
+  fontFamily: 'OpenSans-Bold',
+  paddingVertical: padding.xs,
+  paddingHorizontal: padding.lg
 };
 
 // components
@@ -127,43 +153,21 @@ export const loader = {
 };
 
 export const container = {
+  backgroundColor: colors.white,
   flex: 1,
-  backgroundColor: colors.white
+  ...center
 };
 
 export const hr = {
-  height: 1,
+  height: 2,
   backgroundColor: colors.neutralLight,
-  marginVertical: margin.sm * 1.7
+  marginVertical: margin.sm * 1.7,
+  width: '100%'
 };
 
-export const verticalLine = {
-  backgroundColor: colors.neutralLight
-};
-
-export const brandButton = {
-  color: colors.white,
-  backgroundColor: colors.brand,
-  textAlign: 'center',
-  fontSize: fonts.sm,
-  fontWeight: fonts.bold,
-  paddingVertical: padding.sm
-};
-
-export const lightButton = {
-  color: colors.black,
-  backgroundColor: colors.white,
-  textAlign: 'center',
-  fontSize: fonts.sm,
-  fontWeight: fonts.bold,
-  paddingVertical: padding.sm
-};
-
-export const darkButton = {
-  color: colors.white,
-  backgroundColor: colors.black,
-  textAlign: 'center',
-  fontSize: fonts.sm,
-  fontWeight: fonts.bold,
-  paddingVertical: padding.sm
+export const vl = {
+  marginHorizontal: margin.sm * 1.7,
+  height: '100%',
+  borderLeftColor: colors.neutralLight,
+  borderLeftWidth: 4
 };

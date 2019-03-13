@@ -4,6 +4,7 @@ import { Text, View, StatusBar } from 'react-native';
 import Login from './screens/Login';
 import client from './config/api';
 import { ApolloProvider } from 'react-apollo';
+import RootStackNavigator from './navigation/RootStackNavigator';
 
 export default class App extends Component {
   render() {
@@ -11,11 +12,7 @@ export default class App extends Component {
 
     return (
       <ApolloProvider client={client}>
-        <View>
-          <Text>Welcome to React Native!</Text>
-          <Login />
-          {/* <RootStackNavigator /> */}
-        </View>
+        <RootStackNavigator />
       </ApolloProvider>
     );
   }

@@ -1,10 +1,10 @@
 type User @model {
   id: ID! @isUnique
   email: String! @isUnique
-  password: String! @isUnique
+  password: String!
   dateOfBirth: DateTime!
   name: String!
-  points: Int! @default(value: 0)
+  points: Int @default(value: 0)
   profilePicture: File @relation(name: "UserPicture")
   cardBarcode: String
   favouriteBeers: [Beer!]! @relation(name: "UserBeers")

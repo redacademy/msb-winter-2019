@@ -54,39 +54,13 @@ export default createDrawerNavigator(
   {
     Profile: ProfileStack,
     FavBeers: FavBeersStack,
-    Events: EventsStack,
-    Stores: StoresStack
+    FavEvents: FavEventsStack,
+    Contact: ContactStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
-        console.log('>>>>>>>>>', navigation);
-
-        let icon;
-        if (routeName === 'Home') {
-          icon = focused
-            ? require('../assets/images/Navigation/home_icon_active.png')
-            : require('../assets/images/Navigation/home_icon_inactive.png');
-        } else if (routeName === 'Card') {
-          icon = focused
-            ? require('../assets/images/Navigation/card_icon_active.png')
-            : require('../assets/images/Navigation/card_icon_inactive.png');
-        }
-        if (routeName === 'Beers') {
-          icon = focused
-            ? require('../assets/images/Navigation/beers_icon_active.png')
-            : require('../assets/images/Navigation/beer_icon_inactive.png');
-        } else if (routeName === 'Events') {
-          icon = focused
-            ? require('../assets/images/Navigation/events_icon_active.png')
-            : require('../assets/images/Navigation/event_icon_inactive.png');
-        } else if (routeName === 'Stores') {
-          icon = focused
-            ? require('../assets/images/Navigation/stores_icon_active.png')
-            : require('../assets/images/Navigation/stores_icon_inactive.png');
-        }
-        return <Image source={icon} style={{ height: 30, width: 30 }} />;
       }
     }),
 

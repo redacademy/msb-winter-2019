@@ -7,7 +7,7 @@ import styles from './styles';
 const Card = props => {
   return (
     <ImageBackground
-      source={'../../assets/images/logo_bg@3x.png'}
+      source={'../../assets/images/logo_bg.png'}
       style={{ width: '100%', height: '100%' }}
     >
       <Text>This is Card.</Text>

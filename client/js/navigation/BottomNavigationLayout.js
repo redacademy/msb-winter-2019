@@ -3,6 +3,8 @@ import {
   createStackNavigator,
   createBottomTabNavigator
 } from 'react-navigation';
+import { Image } from 'react-native';
+
 import BeersScreen from '../screens/AllBeers';
 import CardScreen from '../screens/Card';
 import EventsScreen from '../screens/AllEvents';
@@ -10,8 +12,6 @@ import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
 import { colors, fonts } from '../config/styles';
 import { sharedNavigationOptions } from './config';
-
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const HomeStack = createStackNavigator(
   {
@@ -26,7 +26,7 @@ const HomeStack = createStackNavigator(
 );
 const BeersStack = createStackNavigator(
   {
-    AllBeers: BeersScreen
+    Beers: BeersScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -36,7 +36,7 @@ const BeersStack = createStackNavigator(
 );
 const EventsStack = createStackNavigator(
   {
-    AllEvents: EventsScreen
+    Events: EventsScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -59,8 +59,8 @@ export default createBottomTabNavigator(
   {
     Home: HomeStack,
     Card: CardStack,
-    AllBeers: BeersStack,
-    AllEvents: EventsStack,
+    Beers: BeersStack,
+    Events: EventsStack,
     Stores: StoresStack
   },
   {
@@ -68,19 +68,28 @@ export default createBottomTabNavigator(
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
 
-        let iconName;
+        let iconImg;
         if (routeName === 'Home') {
-          iconName = `ios-calendar`;
+          iconImg = focused
+            ? '../assets/images/Navigation/home_icon_active.png'
+            : '../assets/images/Navigation/home_icon_inactive.png';
         } else if (routeName === 'Card') {
-          iconName = `ios-map`;
-        } else if (routeName === 'AllBeers') {
-          iconName = `ios-heart`;
-        } else if (routeName === 'AllEvents') {
-          iconName = `ios-information-circle`;
+          iconImg = `ios-map`;
+        } else if (routeName === 'Beers') {
+          iconImg = `ios-heart`;
+        } else if (routeName === 'Events') {
+          iconImg = `ios-information-circle`;
         } else if (routeName === 'Stores') {
-          iconName = `ios-information-circle`;
+          iconImg = `ios-information-circle`;
         }
-        return <Ionicons name={iconName} size={30} color={tintColor} />;
+        return (
+          <Image
+            style={{ width: 30, height: 'auto' }}
+            source={require({ iconImg })}
+            color={tintColor}
+          />
+        );
+        // return <Icon name={iconName} size={30} color={tintColor} />;
       }
     }),
 

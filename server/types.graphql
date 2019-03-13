@@ -1,7 +1,7 @@
 type User @model {
   id: ID! @isUnique
   email: String! @isUnique
-  password: String! @isUnique
+  password: String!
   dateOfBirth: DateTime!
   name: String!
   points: Int! @default(value: 0)

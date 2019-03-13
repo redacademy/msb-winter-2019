@@ -3,7 +3,6 @@
 ## Technology Used
 
 - React
-- GraphQL
 - GraphCool
 
 ## Authors

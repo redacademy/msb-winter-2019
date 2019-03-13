@@ -65,39 +65,41 @@ export default createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ tintColor }) => {
+      tabBarIcon: () => {
         const { routeName } = navigation.state;
 
-        let iconImg;
+        let icon;
         if (routeName === 'Home') {
-          iconImg = focused
-            ? '../assets/images/Navigation/home_icon_active.png'
-            : '../assets/images/Navigation/home_icon_inactive.png';
+          icon = focused
+            ? require('../assets/images/Navigation/home_icon_active.png')
+            : require('../assets/images/Navigation/home_icon_inactive.png');
         } else if (routeName === 'Card') {
-          iconImg = `ios-map`;
+          icon = focused
+            ? require('../assets/images/Navigation/card_icon_active.png')
+            : require('../assets/images/Navigation/card_icon_inactive.png');
         } else if (routeName === 'Beers') {
-          iconImg = `ios-heart`;
+          icon = focused
+            ? require('../assets/images/Navigation/beers_icon_active.png')
+            : require('../assets/images/Navigation/beers_icon_inactive.png');
         } else if (routeName === 'Events') {
-          iconImg = `ios-information-circle`;
+          icon = focused
+            ? require('../assets/images/Navigation/events_icon_active.png')
+            : require('../assets/images/Navigation/events_icon_inactive.png');
         } else if (routeName === 'Stores') {
-          iconImg = `ios-information-circle`;
+          icon = focused
+            ? require('../assets/images/Navigation/stores_icon_active.png')
+            : require('../assets/images/Navigation/stores_icon_inactive.png');
         }
-        return (
-          <Image
-            style={{ width: 30, height: 'auto' }}
-            source={require({ iconImg })}
-            color={tintColor}
-          />
-        );
+        return <Image source={icon} />;
         // return <Icon name={iconName} size={30} color={tintColor} />;
       }
     }),
 
     tabBarOptions: {
-      activeTintColor: colors.brand,
-      inactiveTintColor: '#000',
+      //   activeTintColor: colors.brand,
+      //   inactiveTintColor: '#000',
       labelStyle: {
-        fontSize: fonts.xxxs,
+        // fontSize: fonts.xxxs,
         fontFamily: 'Montserrat',
         lineHeight: 0
       },

@@ -1,0 +1,3 @@
+targets:
+  msb: shared-us-west-2/cjt686ztv6doa0189oscaf0ry
+  default: msb

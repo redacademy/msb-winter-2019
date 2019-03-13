@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, ImageBackground } from 'react-native';
 import PropTypes from 'prop-types';
+import Barcode from 'react-native-barcode-builder';
 import styles from './styles';
 
 const Card = props => {
@@ -12,6 +13,7 @@ const Card = props => {
         style={styles.imgBg}
       >
         <Text>This is Card.</Text>
+        <Barcode value="Test Card" format="CODE128" />
       </ImageBackground>
     </View>
   );

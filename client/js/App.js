@@ -12,7 +12,7 @@ export default class App extends Component {
       <View>
         {/* <Login /> */}
         <Card />
-        <RootStackNavigator />
+        {/* <RootStackNavigator /> */}
       </View>
     );
   }

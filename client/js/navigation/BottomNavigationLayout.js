@@ -4,7 +4,6 @@ import {
   createBottomTabNavigator
 } from 'react-navigation';
 import { Image } from 'react-native';
-
 import BeersScreen from '../screens/AllBeers';
 import CardScreen from '../screens/Card';
 import EventsScreen from '../screens/AllEvents';
@@ -19,9 +18,9 @@ const HomeStack = createStackNavigator(
     Card: CardScreen
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
+    // defaultNavigationOptions: ({ navigation }) => ({
+    //   ...sharedNavigationOptions(navigation)
+    // })
   }
 );
 const BeersStack = createStackNavigator(
@@ -29,9 +28,9 @@ const BeersStack = createStackNavigator(
     Beers: BeersScreen
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
+    // defaultNavigationOptions: ({ navigation }) => ({
+    //   ...sharedNavigationOptions(navigation)
+    // })
   }
 );
 const EventsStack = createStackNavigator(
@@ -39,9 +38,9 @@ const EventsStack = createStackNavigator(
     Events: EventsScreen
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
+    // defaultNavigationOptions: ({ navigation }) => ({
+    //   ...sharedNavigationOptions(navigation)
+    // })
   }
 );
 const StoresStack = createStackNavigator(
@@ -49,9 +48,9 @@ const StoresStack = createStackNavigator(
     Stores: StoresScreen
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
+    // defaultNavigationOptions: ({ navigation }) => ({
+    //   ...sharedNavigationOptions(navigation)
+    // })
   }
 );
 const CardStack = createStackNavigator(
@@ -59,9 +58,9 @@ const CardStack = createStackNavigator(
     Card: CardScreen
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
+    // defaultNavigationOptions: ({ navigation }) => ({
+    //   ...sharedNavigationOptions(navigation)
+    // })
   }
 );
 
@@ -75,33 +74,34 @@ export default createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ tintColor }) => {
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
+        console.log('>>>>>>>>>', focused);
 
         let icon;
-        // if (routeName === 'Home') {
-        //   icon = this.props.active
-        //     ? require('../assets/images/Navigation/home_icon_active.png')
-        //     : require('../assets/images/Navigation/home_icon_inactive.png');
-        // } else if (routeName === 'Card') {
-        //   icon = this.props.active
-        //     ? require('../assets/images/Navigation/card_icon_active.png')
-        //     : require('../assets/images/Navigation/card_icon_inactive.png');
-        // } else if (routeName === 'Beers') {
-        //   icon = this.props.active
-        //     ? require('../assets/images/Navigation/beers_icon_active.png')
-        //     : require('../assets/images/Navigation/beer_icon_inactive.png');
-        // } else if (routeName === 'Events') {
-        //   icon = this.props.active
-        //     ? require('../assets/images/Navigation/events_icon_active.png')
-        //     : require('../assets/images/Navigation/event_icon_inactive.png');
-        // } else if (routeName === 'Stores') {
-        //   icon = this.props.active
-        //     ? require('../assets/images/Navigation/stores_icon_active.png')
-        //     : require('../assets/images/Navigation/stores_icon_inactive.png');
-        // }
-        return <Image source={icon} />;
-        // return <Icon name={iconName} size={30} color={tintColor} />;
+        if (routeName === 'Home') {
+          icon = require(focused
+            ? '../assets/images/Navigation/home_icon_active.png'
+            : '../assets/images/Navigation/home_icon_inactive.png');
+        } else if (routeName === 'Card') {
+          icon = require(focused
+            ? '../assets/images/Navigation/card_icon_active.png'
+            : '../assets/images/Navigation/card_icon_inactive.png');
+        }
+        if (routeName === 'Beers') {
+          icon = require(focused
+            ? '../assets/images/Navigation/beers_icon_active.png'
+            : '../assets/images/Navigation/beer_icon_inactive.png');
+        } else if (routeName === 'Events') {
+          icon = require(focused
+            ? '../assets/images/Navigation/events_icon_active.png'
+            : '../assets/images/Navigation/event_icon_inactive.png');
+        } else if (routeName === 'Stores') {
+          icon = require(focused
+            ? '../assets/images/Navigation/stores_icon_active.png'
+            : '../assets/images/Navigation/stores_icon_inactive.png');
+        }
+        return <Image source={icon} style={{ width: 200, height: '100%' }} />;
       }
     }),
 
@@ -110,7 +110,7 @@ export default createBottomTabNavigator(
       inactiveTintColor: '#000',
       labelStyle: {
         fontSize: 12,
-        // fontFamily: 'Franchise-Free-Bold',
+        fontFamily: 'Verdana',
         lineHeight: 0
       },
       style: {

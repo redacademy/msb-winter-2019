@@ -6,13 +6,22 @@ import styles from './styles';
 const Card = props => {
   console.log('card');
   return (
-    <View style={{ height: '100%', width: '100%' }}>
-      <ImageBackground
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%',
+        width: '100%',
+        background: 'white'
+      }}
+    >
+      {/* <ImageBackground
         source={require('../../assets/images/logo_bg.png')}
-        backgroundColor="white"
-      >
-        <Text>This is Card.</Text>
-      </ImageBackground>
+        backgroundColor={'white'}
+      > */}
+      <Text style={{ color: 'gold' }}>This is Card.</Text>
+      {/* </ImageBackground> */}
     </View>
   );
 };

@@ -1,23 +1,86 @@
-# The following types define the data model of the example service
-# based on which the GraphQL API is generated
-
 type User @model {
   id: ID! @isUnique
-  name: String
-  dateOfBirth: DateTime
-
-  # Uncomment below - you can declare relations between models like this
-
-  # posts: [Post!]! @relation(name: "UserPosts")
+  email: String! @isUnique
+  password: String! @isUnique
+  dateOfBirth: DateTime!
+  name: String!
+  points: Int! @default(value: 0)
+  profilePicture: File @relation(name: "UserPicture")
+  cardBarcode: String
+  favouriteBeers: [Beer!]! @relation(name: "UserBeers")
+  pointsHistory: [Point!]! @relation(name: "UserPoints")
+  favouriteEvents: [Event!]! @relation(name: "UserEvents")
+  redeemHistory: [Redeem!]! @relation(name: "UserRedeems")
 }
 
+type File @model {
+  id: ID! @isUnique
+  name: String!
+  url: String!
+  contentType: String!
+  user: User! @relation(name: "UserPicture")
+}
 
-# Uncomment the model below as well
+type Point @model {
+  id: ID! @isUnique
+  user: User! @relation(name: "UserPoints")
+  beer: Beer! @relation(name: "BeerPoints")
+  date: DateTime!
+  stamps: Int!
+}
 
-# type Post @model {
-#   id: ID! @isUnique
-#   title: String!
-#
-#   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
-#   author: User! @relation(name: "UserPosts")
-# }
+type Redeem @model {
+  id: ID! @isUnique
+  user: User! @relation(name: "UserRedeems")
+  date: DateTime!
+  reward: Reward! @relation(name: "RedeemReward")
+}
+
+type Beer @model {
+  id: ID! @isUnique
+  title: String!
+  subtitle: String
+  description: String
+  abv: Float
+  ibu: Int
+  style: String
+  releaseDate: DateTime
+  rating: Int
+  users: [User!]! @relation(name: "UserBeers")
+  point: [Point!]! @relation(name: "BeerPoints")
+}
+
+type Reward @model {
+  id: ID! @isUnique
+  title: String!
+  points: Int!
+  iconFile: String!
+  redeems: [Redeem!]! @relation(name: "RedeemReward")
+}
+
+type Event @model {
+  id: ID! @isUnique
+  title: String!
+  subtitle: String
+  description: String
+  date: DateTime!
+  time: String!
+  location: String!
+  image: String
+  users: [User!]! @relation(name: "UserEvents")
+}
+
+type Store @model {
+  id: ID! @isUnique
+  name: String!
+  address: String!
+  hours: String
+  lat: String
+  long: String
+  phone: String
+  email: String
+  instagram: String
+  fb: String
+  twitter: String
+}
+

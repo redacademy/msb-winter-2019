@@ -1,16 +1,35 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Linking } from 'react-native';
 import PropTypes from 'prop-types';
 
 import CustomText from '../../components/CustomText';
-import Button from '../../components/Button';
+import OrangeButton from '../../components/OrangeButton';
+import WhiteButton from '../../components/WhiteButton';
+import BlackButton from '../../components/BlackButton';
 import styles from './styles';
 
 const Login = () => {
   return (
     <View style={{ backgroundColor: 'red' }}>
       <CustomText>This is Login.</CustomText>
-      <Button style={styles.button}>Sign Up</Button>
+      <OrangeButton
+        style={styles.button}
+        onPress={() => Linking.openURL('http://www.catipsum.com/')}
+      >
+        Sign Up
+      </OrangeButton>
+      <WhiteButton
+        style={styles.button}
+        onPress={() => Linking.openURL('http://www.catipsum.com/')}
+      >
+        Sign Up
+      </WhiteButton>
+      <BlackButton
+        style={styles.button}
+        onPress={() => Linking.openURL('http://www.catipsum.com/')}
+      >
+        Availability
+      </BlackButton>
     </View>
   );
 };

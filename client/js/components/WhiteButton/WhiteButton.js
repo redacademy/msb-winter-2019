@@ -6,8 +6,12 @@ import styles from './styles';
 
 const Button = props => {
   return (
-    <TouchableOpacity {...props} style={[styles.buttonWrapper, props.style]}>
-      <CustomText style={styles.button}>{props.children}</CustomText>
+    <TouchableOpacity {...props}>
+      <View {...props} style={[styles.buttonWrapper, props.style]}>
+        <CustomText {...props} style={[styles.button, props.style]}>
+          {props.children}
+        </CustomText>
+      </View>
     </TouchableOpacity>
   );
 };

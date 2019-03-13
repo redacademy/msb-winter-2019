@@ -66,6 +66,8 @@ export const fonts = {
   xl: 28,
   bold: '600',
   primary: 'OpenSans-Regular',
+  primaryBold: 'OpenSans-Bold',
+  primarySemi: 'OpenSans-SemiBold',
   secondary: 'Franchise Free'
 };
 
@@ -148,30 +150,3 @@ export const hr = {
 export const verticalLine = {
   backgroundColor: colors.neutralLight
 };
-
-// export const brandButton = {
-//   color: colors.white,
-//   backgroundColor: colors.brand,
-//   textAlign: 'center',
-//   fontSize: fonts.sm,
-//   fontWeight: fonts.bold,
-//   paddingVertical: padding.sm
-// };
-
-// export const lightButton = {
-//   color: colors.black,
-//   backgroundColor: colors.white,
-//   textAlign: 'center',
-//   fontSize: fonts.sm,
-//   fontWeight: fonts.bold,
-//   paddingVertical: padding.sm
-// };
-
-// export const darkButton = {
-
-//   backgroundColor: colors.black
-//   // textAlign: 'center',
-//   // fontSize: fonts.sm,
-//   // fontWeight: fonts.bold,
-//   // paddingVertical: padding.sm
-// };

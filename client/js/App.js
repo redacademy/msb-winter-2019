@@ -10,9 +10,9 @@ export default class App extends Component {
 
     return (
       <View>
-        <Text>Welcome to React Native!</Text>
+        {/* <Text>Welcome to React Native!</Text> */}
         {/* <Login /> */}
-        {/* <Home /> */}
+        <Home />
         <RootStackNavigator />
       </View>
     );

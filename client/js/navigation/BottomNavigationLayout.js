@@ -80,11 +80,11 @@ export default createBottomTabNavigator(
         } else if (routeName === 'Beers') {
           icon = focused
             ? require('../assets/images/Navigation/beers_icon_active.png')
-            : require('../assets/images/Navigation/beers_icon_inactive.png');
+            : require('../assets/images/Navigation/beer_icon_inactive.png');
         } else if (routeName === 'Events') {
           icon = focused
             ? require('../assets/images/Navigation/events_icon_active.png')
-            : require('../assets/images/Navigation/events_icon_inactive.png');
+            : require('../assets/images/Navigation/event_icon_inactive.png');
         } else if (routeName === 'Stores') {
           icon = focused
             ? require('../assets/images/Navigation/stores_icon_active.png')

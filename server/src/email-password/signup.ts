@@ -56,7 +56,7 @@ export default async (event: FunctionEvent<EventData>) => {
     return { data: { id: userId, token } };
   } catch (e) {
     console.log(e);
-    return { error: e };
+    return { error: 'An unexpected error occured during authentication.' };
   }
 };
 
@@ -89,7 +89,8 @@ async function createGraphcoolUser(
         email: $email,
         password: $password,
         dateOfBirth: $dateOfBirth,
-        name: $name
+        name: $name,
+        points: 0
       ) {
         id
       }

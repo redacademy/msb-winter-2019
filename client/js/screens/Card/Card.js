@@ -8,20 +8,20 @@ const Card = props => {
   return (
     <View
       style={{
-        flex: 1,
+        // flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
         width: '100%',
-        background: 'white'
+        backgroundColor: 'transparent'
       }}
     >
-      {/* <ImageBackground
+      <ImageBackground
         source={require('../../assets/images/logo_bg.png')}
-        backgroundColor={'white'}
-      > */}
-      <Text style={{ color: 'gold' }}>This is Card.</Text>
-      {/* </ImageBackground> */}
+        style={{ width: '100%', height: '100%' }}
+      >
+        <Text style={{ color: 'red' }}>This is Card.</Text>
+      </ImageBackground>
     </View>
   );
 };

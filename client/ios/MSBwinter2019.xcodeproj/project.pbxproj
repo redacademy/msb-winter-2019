@@ -51,6 +51,7 @@
 		C61BB4306AD547BABB8B0750 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A8B7889963F4727A87C835F /* OpenSans-LightItalic.ttf */; };
 		FF598D3F526D4FF389F8E71C /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1479F8FCE46481D94688B0D /* OpenSans-SemiBold.ttf */; };
 		F496468422D446DF8BF6811B /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E5EC4E4A48349DDB76A5B50 /* OpenSans-SemiBoldItalic.ttf */; };
+		04BA285A8D6B4691B905ECC4 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 135E08124234416D8EAD0752 /* OpenSans-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -384,6 +385,7 @@
 		3A8B7889963F4727A87C835F /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-LightItalic.ttf"; path = "../js/assets/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F1479F8FCE46481D94688B0D /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "OpenSans-SemiBold.ttf"; path = "../js/assets/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		0E5EC4E4A48349DDB76A5B50 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-SemiBoldItalic.ttf"; path = "../js/assets/fonts/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		135E08124234416D8EAD0752 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; name = "OpenSans-Regular.ttf"; path = "../js/assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -674,6 +676,7 @@
 				3A8B7889963F4727A87C835F /* OpenSans-LightItalic.ttf */,
 				F1479F8FCE46481D94688B0D /* OpenSans-SemiBold.ttf */,
 				0E5EC4E4A48349DDB76A5B50 /* OpenSans-SemiBoldItalic.ttf */,
+				135E08124234416D8EAD0752 /* OpenSans-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1154,6 +1157,7 @@
 				C61BB4306AD547BABB8B0750 /* OpenSans-LightItalic.ttf in Resources */,
 				FF598D3F526D4FF389F8E71C /* OpenSans-SemiBold.ttf in Resources */,
 				F496468422D446DF8BF6811B /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				04BA285A8D6B4691B905ECC4 /* OpenSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

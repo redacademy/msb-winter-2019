@@ -55,7 +55,6 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-<<<<<<< HEAD
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>
@@ -72,10 +71,7 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
 		<string>Franchise-Free-Bold.ttf</string>
-=======
-		<string>Franchise-Free-Bold.ttf</string>
 		<string>Open-Sans-Regular.ttf</string>
->>>>>>> develop
 		<string>OpenSans-Bold.ttf</string>
 		<string>OpenSans-BoldItalic.ttf</string>
 		<string>OpenSans-ExtraBold.ttf</string>
@@ -83,10 +79,7 @@
 		<string>OpenSans-Italic.ttf</string>
 		<string>OpenSans-Light.ttf</string>
 		<string>OpenSans-LightItalic.ttf</string>
-<<<<<<< HEAD
 		<string>OpenSans-Regular.ttf</string>
-=======
->>>>>>> develop
 		<string>OpenSans-SemiBold.ttf</string>
 		<string>OpenSans-SemiBoldItalic.ttf</string>
 	</array>

@@ -3,9 +3,9 @@ import {
   createStackNavigator,
   createBottomTabNavigator
 } from 'react-navigation';
-import BeersScreen from '../screens/Beer';
+import BeersScreen from '../screens/AllBeers';
 import CardScreen from '../screens/Card';
-import EventsScreen from '../screens/Events';
+import EventsScreen from '../screens/AllEvents';
 import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
 import { colors, fonts } from '../config/styles';
@@ -26,7 +26,7 @@ const HomeStack = createStackNavigator(
 );
 const BeersStack = createStackNavigator(
   {
-    Beers: BeersScreen
+    AllBeers: BeersScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -36,7 +36,7 @@ const BeersStack = createStackNavigator(
 );
 const EventsStack = createStackNavigator(
   {
-    Events: EventsScreen
+    AllEvents: EventsScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -59,8 +59,8 @@ export default createBottomTabNavigator(
   {
     Home: HomeStack,
     Card: CardStack,
-    Beers: BeersStack,
-    Events: EventsStack,
+    AllBeers: BeersStack,
+    AllEvents: EventsStack,
     Stores: StoresStack
   },
   {
@@ -73,9 +73,9 @@ export default createBottomTabNavigator(
           iconName = `ios-calendar`;
         } else if (routeName === 'Card') {
           iconName = `ios-map`;
-        } else if (routeName === 'Beers') {
+        } else if (routeName === 'AllBeers') {
           iconName = `ios-heart`;
-        } else if (routeName === 'Events') {
+        } else if (routeName === 'AllEvents') {
           iconName = `ios-information-circle`;
         } else if (routeName === 'Stores') {
           iconName = `ios-information-circle`;
@@ -93,7 +93,7 @@ export default createBottomTabNavigator(
         lineHeight: 0
       },
       style: {
-        backgroundColor: 'transparent',
+        backgroundColor: '#fff',
         height: 55,
         paddingTop: 8
       }

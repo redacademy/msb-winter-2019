@@ -20,20 +20,25 @@ const MainHeader = props => (
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        paddingBottom: 8,
         width: '100%'
       }}
     >
       <Ionicons
         name={Platform.select({ android: 'md-menu', ios: 'ios-menu' })}
-        size={40}
+        size={35}
         color={'white'}
         onPress={() => {
           navigation.toggleDrawer();
         }}
       />
-      <Image source={require('../assets/images/Logos/msb_logo_white.png')} />
+      <Image
+        source={require('../assets/images/Logos/msb_logo_white.png')}
+        style={{ height: 40, width: 130 }}
+      />
       <Image
         source={require('../assets/images/Icons/notifications_icon_inactive.png')}
+        style={{ height: 50, width: 50 }}
       />
     </View>
   </View>

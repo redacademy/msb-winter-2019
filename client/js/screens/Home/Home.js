@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const Home = props => {
-  return <Text style={{ color: 'gold', fontSize: 30 }}>This is Home.</Text>;
+  return <Text>This is Home.</Text>;
 };
 
 Home.propTypes = {};

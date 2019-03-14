@@ -8,7 +8,7 @@ export default createAppContainer(
   createStackNavigator(
     {
       Layout: NavigationLayout,
-      // Layout: DrawerNavigationLayout,
+      Layout: DrawerNavigationLayout,
       Beer: BeerModal,
       Events: EventsModal
     },

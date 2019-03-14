@@ -8,12 +8,24 @@ const MainHeader = (props, { navigation }) => (
   <View
     style={{
       overflow: 'hidden',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
       alignItems: 'center',
-      backgroundColor: '#000'
+      backgroundColor: '#000',
+      flexDirection: 'row',
+      paddingLeft: 20,
+      paddingTop: 20
     }}
   >
     <Header {...props} />
+    <Image
+      source={require('../assets/images/Logos/msb_logo_white.png')}
+      style={{ height: 40, width: 140, marginLeft: 30 }}
+    />
+    <Image
+      source={require('../assets/images/Icons/notifications_icon_inactive.png')}
+      style={{ resizeMode: 'contain' }}
+    />
+
     {/* <View
       style={{
         flexDirection: 'row',
@@ -31,10 +43,7 @@ const MainHeader = (props, { navigation }) => (
           style={{ marginLeft: 20, marginTop: 10, marginBottom: 6 }}
         />
       </TouchableOpacity> */}
-    <Image
-      source={require('../assets/images/Logos/msb_logo_white.png')}
-      style={{ height: 40, width: 130, marginBottom: 10, marginLeft: 10 }}
-    />
+
     {/* <Image
         source={require('../assets/images/Icons/notifications_icon_inactive.png')}
         style={{ height: 50, width: 50, marginRight: 5 }}
@@ -44,17 +53,16 @@ const MainHeader = (props, { navigation }) => (
 );
 
 export const sharedNavigationOptions = navigation => ({
-  headerBackTitle: null,
+  // headerBackTitle: null,
   header: props => <MainHeader {...props} />,
   headerLeft: () => (
-    <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-      <Ionicons
-        name={Platform.select({ android: 'md-menu', ios: 'ios-menu' })}
-        size={35}
-        color={'white'}
-        style={{ marginLeft: 20, marginTop: 10, marginBottom: 6 }}
-      />
-    </TouchableOpacity>
+    <Ionicons
+      onPress={() => navigation.toggleDrawer()}
+      name={Platform.select({ android: 'md-menu', ios: 'ios-menu' })}
+      size={35}
+      color={'white'}
+      style={{ marginBottom: 6 }}
+    />
   ),
   // headerRight: () => (
   //   <Image
@@ -63,5 +71,8 @@ export const sharedNavigationOptions = navigation => ({
   //   />
   // ),
 
-  headerStyle: { backgroundColor: '#000' }
+  headerStyle: {
+    backgroundColor: '#000',
+    backgroundImage: '../assets/images/Logos/msb_logo_white.png'
+  }
 });

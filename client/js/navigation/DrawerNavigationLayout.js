@@ -5,8 +5,9 @@ import {
   DrawerItems
 } from 'react-navigation';
 import {
-  Platform,
   Dimensions,
+  Platform,
+  StyleSheet,
   Button,
   Image,
   Linking,
@@ -93,7 +94,7 @@ export default createDrawerNavigator(
               ios: 'ios-arrow-forward',
               android: 'md-arrow-forward'
             })}
-            size={30}
+            size={25}
             color={tintColor}
           />
         );
@@ -103,13 +104,32 @@ export default createDrawerNavigator(
       <View style={{ flex: 1 }}>
         <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
           <DrawerItems {...props} />
-          <Button
-            style={{ ...h3 }}
-            title="Sign Out"
+          <TouchableHighlight
+            underlayColor={'transparent'}
             onPress={() => {
               _signOutAsync();
             }}
-          />
+          >
+            <View
+              style={{
+                ...row,
+                ...center,
+                justifyContent: 'space-between',
+                padding: 20,
+                borderTopWidth: StyleSheet.hairlineWidth,
+                borderTopColor: colors.neutralDark
+              }}
+            >
+              <Text style={{ ...h3 }}>Sign Out</Text>
+              <Ionicons
+                name={Platform.select({
+                  ios: 'ios-arrow-forward',
+                  android: 'md-arrow-forward'
+                })}
+                size={25}
+              />
+            </View>
+          </TouchableHighlight>
         </SafeAreaView>
 
         <Image
@@ -117,6 +137,7 @@ export default createDrawerNavigator(
           style={{ width: Dimensions.get('window').width }}
         />
         <TouchableHighlight
+          underlayColor={'transparent'}
           onPress={() => {
             Linking.openURL('https://www.instagram.com/mainstreetbeer/'); //@TODO link to instagram app instead of site
           }}
@@ -137,9 +158,12 @@ export default createDrawerNavigator(
     contentOptions: {
       activeTintColor: colors.brand,
       inactiveTintColor: colors.black,
-      itemsContainerStyle: {
-        // borderBottomColor: colors.neutralDark,
-        // borderBottomWidth: 300
+      itemStyle: {
+        flexDirection: 'row-reverse',
+        justifyContent: 'space-between'
+      },
+      iconContainerStyle: {
+        // fontWeight: 'bold'
       },
       labelStyle: {
         ...h3
@@ -147,7 +171,9 @@ export default createDrawerNavigator(
       style: {
         backgroundColor: '#fff',
         height: 55,
-        paddingTop: 8
+        paddingTop: 8,
+        borderBottomColor: colors.neutralDark,
+        borderBottomWidth: StyleSheet.hairlineWidth
       }
     }
   }

@@ -1,28 +1,25 @@
 import { StyleSheet } from 'react-native';
-
 import {
-  container,
-  center,
-  shadow1,
-  contain,
-  padding,
   h3,
-  colors
+  colors,
+  underline,
+  shadow2,
+  dimensions
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: { ...container, backgroundColor: 'transparent' },
-  imgBg: {
-    width: '100%',
-    height: '100%'
-  },
-  scene: {
-    flex: 1
-  },
+  tabbar: { backgroundColor: colors.white, ...shadow2 },
   labelStyle: { ...h3, color: colors.neutralLight },
   labelSelectedStyle: { ...h3, color: colors.black },
-  cardWrapper: { ...center, ...shadow1, width: '85%', height: '50%' },
-  card: { ...contain, height: '50%' }
+  indicator: {
+    ...underline,
+    borderBottomWidth: 3,
+    backgroundColor: colors.brand,
+    marginBottom: 7,
+    marginLeft: 15,
+    maxWidth: dimensions.fullWidth / 3 - 30,
+    width: '100%'
+  }
 });
 
 export default styles;

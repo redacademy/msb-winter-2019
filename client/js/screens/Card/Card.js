@@ -23,7 +23,7 @@ class Card extends Component {
     };
   }
 
-  _renderLabel(props) {
+  renderLabel(props) {
     return ({ route }) => {
       const indexOfRoute = this.state.routes.findIndex(
         obj => obj.key === route.key
@@ -60,7 +60,7 @@ class Card extends Component {
             {...props}
             indicatorStyle={styles.indicator}
             style={styles.tabbar}
-            renderLabel={this._renderLabel(props)}
+            renderLabel={this.renderLabel(props)}
           />
         )}
       />

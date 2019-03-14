@@ -100,10 +100,11 @@ export default createDrawerNavigator(
       }
     }),
     contentComponent: props => (
-      <View style={{ flex: 1 }} style={{ ...h3 }}>
+      <View style={{ flex: 1 }}>
         <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
           <DrawerItems {...props} />
           <Button
+            style={{ ...h3 }}
             title="Sign Out"
             onPress={() => {
               _signOutAsync();

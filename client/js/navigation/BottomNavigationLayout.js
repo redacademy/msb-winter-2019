@@ -14,8 +14,7 @@ import { sharedNavigationOptions } from './config';
 
 const HomeStack = createStackNavigator(
   {
-    Home: HomeScreen,
-    Card: CardScreen
+    Home: HomeScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -100,7 +99,12 @@ export default createBottomTabNavigator(
             ? require('../assets/images/Navigation/stores_icon_active.png')
             : require('../assets/images/Navigation/stores_icon_inactive.png');
         }
-        return <Image source={icon} style={{ height: 30, width: 30 }} />;
+        return (
+          <Image
+            source={icon}
+            style={{ maxWidth: 32, resizeMode: 'contain' }}
+          />
+        );
       }
     }),
 
@@ -108,14 +112,14 @@ export default createBottomTabNavigator(
       activeTintColor: colors.brand,
       inactiveTintColor: colors.black,
       labelStyle: {
-        fontSize: 12,
-        fontFamily: 'Verdana',
+        fontSize: fonts.xxxs,
+        fontFamily: fonts.primarySemi,
         lineHeight: 0
       },
       style: {
         backgroundColor: '#fff',
-        height: 55,
-        paddingTop: 8
+        height: 60,
+        paddingTop: 5
       }
     }
   }

@@ -8,7 +8,6 @@ import {
   Dimensions,
   Platform,
   StyleSheet,
-  Button,
   Image,
   Linking,
   Text,
@@ -22,7 +21,7 @@ import ProfileScreen from '../screens/Profile';
 import FavBeersScreen from '../screens/FavBeers';
 import FavEventsScreen from '../screens/FavEvents';
 import ContactScreen from '../screens/Contact';
-import { colors, h3, h2, hr, row, center, subtitle1 } from '../config/styles';
+import { colors, h3, row, center, subtitle1 } from '../config/styles';
 import { sharedNavigationOptions } from './config';
 
 /**
@@ -162,9 +161,7 @@ export default createDrawerNavigator(
         flexDirection: 'row-reverse',
         justifyContent: 'space-between'
       },
-      iconContainerStyle: {
-        // fontWeight: 'bold'
-      },
+      iconContainerStyle: {},
       labelStyle: {
         ...h3
       },

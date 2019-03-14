@@ -11,7 +11,6 @@ import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
 import { colors, fonts } from '../config/styles';
 import { sharedNavigationOptions } from './config';
-import DrawerNavigationLayout from './DrawerNavigationLayout';
 
 const HomeStack = createStackNavigator(
   {

@@ -8,7 +8,7 @@ const Home = props => {
     <View
       style={{ height: '100%', alignItems: 'center', justifyContent: 'center' }}
     >
-      <Text style={{ color: '#fff' }}>This is Home.</Text>
+      <Text style={{ color: 'yellow' }}>This is Home.</Text>
     </View>
   );
 };

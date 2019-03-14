@@ -2,9 +2,14 @@ import React from 'react';
 import { View, Button, AsyncStorage } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import CustomText from '../../components/CustomText';
+import {
+  getLoggedInUser,
+  clearUserToken,
+  setUserToken
+} from '../../config/models';
 import styles from './styles';
 
 const signupMutation = gql`
@@ -50,8 +55,16 @@ class Login extends React.Component {
   }
 
   _signInAsync = async () => {
-    await AsyncStorage.setItem('userToken', 'abc');
-    this.props.navigation.navigate('App');
+    try {
+      const result = await this.props.loginMutation({
+        variables: { email: 'alex@alex.alex', password: 'alex' }
+      });
+      const userInfo = result.data.authenticateUser;
+      await setUserToken(userInfo.id, userInfo.token);
+      this.props.navigation.navigate('App');
+    } catch (e) {
+      console.log(e);
+    }
   };
 }
 

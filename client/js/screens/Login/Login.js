@@ -2,9 +2,38 @@ import React from 'react';
 import { View, Button, AsyncStorage } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
-
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import CustomText from '../../components/CustomText';
 import styles from './styles';
+
+const signupMutation = gql`
+  mutation(
+    $email: String!
+    $password: String!
+    $dateOfBirth: DateTime!
+    $name: String!
+  ) {
+    signupUser(
+      email: $email
+      password: $password
+      dateOfBirth: $dateOfBirth
+      name: $name
+    ) {
+      id
+      token
+    }
+  }
+`;
+
+const loginMutation = gql`
+  mutation($email: String!, $password: String!) {
+    authenticateUser(email: $email, password: $password) {
+      id
+      token
+    }
+  }
+`;
 
 class Login extends React.Component {
   static navigationOptions = {
@@ -28,4 +57,8 @@ class Login extends React.Component {
 
 Login.propTypes = {};
 
-export default withNavigation(Login);
+export default compose(
+  graphql(signupMutation, { name: 'signupMutation' }),
+  graphql(loginMutation, { name: 'loginMutation' }),
+  withNavigation
+)(Login);

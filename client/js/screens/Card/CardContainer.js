@@ -8,7 +8,7 @@ class CardContainer extends Component {
   }
 
   render() {
-    return <Card />;
+    return <Card navigation={this.props.navigation} />;
   }
 }
 

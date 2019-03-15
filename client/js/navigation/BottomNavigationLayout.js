@@ -1,21 +1,58 @@
 import React from 'react';
 import {
   createStackNavigator,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  createMaterialTopTabNavigator
 } from 'react-navigation';
-import { Image, View } from 'react-native';
+import { Image } from 'react-native';
+
+import { sharedNavigationOptions } from './config';
 import BeersScreen from '../screens/AllBeers';
 import CardScreen from '../screens/Card';
 import EventsScreen from '../screens/AllEvents';
 import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
-import { colors, fonts } from '../config/styles';
-import { sharedNavigationOptions } from './config';
+import CardTab from '../components/CardTab';
+import HistoryTab from '../components/HistoryTab';
+import RewardsTab from '../components/RewardsTab';
+import { colors, dimensions, h3, underline, shadow2 } from '../config/styles';
+
+const TabScreens = createMaterialTopTabNavigator(
+  {
+    Card: CardTab,
+    History: HistoryTab,
+    Rewards: RewardsTab
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: colors.black,
+      inactiveTintColor: colors.neutralLight,
+      indicatorStyle: {
+        ...underline,
+        borderBottomWidth: 3,
+        backgroundColor: colors.brand,
+        marginBottom: 10,
+        marginLeft: 15,
+        maxWidth: dimensions.fullWidth / 3 - 30,
+        width: '100%'
+      },
+      labelStyle: {
+        ...h3,
+        marginTop: 0
+      },
+      style: {
+        backgroundColor: 'white',
+        ...shadow2,
+        height: 50
+      }
+    }
+  }
+);
 
 const HomeStack = createStackNavigator(
   {
-    Home: HomeScreen,
-    Card: CardScreen
+    HomeScreen,
+    CardScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -25,7 +62,7 @@ const HomeStack = createStackNavigator(
 );
 const BeersStack = createStackNavigator(
   {
-    Beers: BeersScreen
+    BeersScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -35,7 +72,7 @@ const BeersStack = createStackNavigator(
 );
 const EventsStack = createStackNavigator(
   {
-    Events: EventsScreen
+    EventsScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -45,7 +82,7 @@ const EventsStack = createStackNavigator(
 );
 const StoresStack = createStackNavigator(
   {
-    Stores: StoresScreen
+    StoresScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -55,7 +92,8 @@ const StoresStack = createStackNavigator(
 );
 const CardStack = createStackNavigator(
   {
-    Card: CardScreen
+    CardScreen,
+    TabScreens
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

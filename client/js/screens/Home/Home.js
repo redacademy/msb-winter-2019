@@ -5,10 +5,8 @@ import styles from './styles';
 
 const Home = props => {
   return (
-    <View
-      style={{ height: '100%', alignItems: 'center', justifyContent: 'center' }}
-    >
-      <Text style={{ color: '#fff' }}>This is Home.</Text>
+    <View style={styles.container}>
+      <Text>This is Home.</Text>
     </View>
   );
 };

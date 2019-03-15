@@ -13,20 +13,12 @@ const MainHeader = props => (
       backgroundColor: '#000',
       flexDirection: 'row',
       // paddingLeft: 20,
-      paddingTop: 20
+      paddingTop: 20,
+      height: 100
     }}
   >
     <Header {...props} />
 
-    {/* <View
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingBottom: 8,
-        width: '100%'
-      }}
-    > */}
     {/* <Ionicons
         name={Platform.select({ android: 'md-menu', ios: 'ios-menu' })}
         size={35}
@@ -44,30 +36,31 @@ const MainHeader = props => (
       source={require('../assets/images/Icons/notifications_icon_inactive.png')}
       style={{ resizeMode: 'contain' }}
     />
-    {/* </View> */}
   </View>
 );
 
 export const sharedNavigationOptions = navigation => ({
-  // headerBackTitle: null,
+  headerBackTitle: null,
   header: props => <MainHeader {...props} />,
-  // headerLeft: () => (
-  //   <Ionicons
-  //     onPress={() => navigation.toggleDrawer()}
-  //     name={Platform.select({ android: 'md-menu', ios: 'ios-menu' })}
-  //     size={35}
-  //     color={'white'}
-  //     style={{ marginBottom: 6 }}
-  //   />
-  // ),
-  // headerRight: () => (
-  //   <Image
-  //     source={require('../assets/images/Icons/notifications_icon_inactive.png')}
-  //     style={{ height: 50, width: 50 }}
-  //   />
-  // ),
+  headerLeft: () => (
+    <Ionicons
+      onPress={() => {
+        navigation.navigate('DrawerScreen');
+        navigation.toggleDrawer();
+      }}
+      name={Platform.select({ android: 'md-menu', ios: 'ios-menu' })}
+      size={35}
+      color={'white'}
+      style={{ marginBottom: 6 }}
+    />
+  ),
 
   headerStyle: {
-    backgroundColor: '#000'
-  }
+    // backgroundColor: '#000'
+  },
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontWeight: 'bold'
+  },
+  title: 'Main Street Brewing'
 });

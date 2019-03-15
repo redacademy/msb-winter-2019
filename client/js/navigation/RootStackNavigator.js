@@ -1,4 +1,9 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import {
+  createStackNavigator,
+  createDrawerNavigator,
+  createAppContainer,
+  createMaterialBottomTabNavigator
+} from 'react-navigation';
 import NavigationLayout from './BottomNavigationLayout';
 import DrawerNavigationLayout from './DrawerNavigationLayout';
 import BeerModal from '../screens/Beer';
@@ -13,7 +18,7 @@ export default createAppContainer(
       Events: EventsModal
     },
     {
-      headerMode: 'none',
+      // headerMode: 'none',
       mode: 'modal'
     }
   )

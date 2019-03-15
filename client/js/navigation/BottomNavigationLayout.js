@@ -11,6 +11,7 @@ import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
 import { colors, fonts } from '../config/styles';
 import { sharedNavigationOptions } from './config';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const HomeStack = createStackNavigator(
   {

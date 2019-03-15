@@ -3,7 +3,7 @@ import {
   createStackNavigator,
   createDrawerNavigator,
   DrawerItems,
-  createMaterialBottomTabNavigator
+  createBottomTabNavigator
 } from 'react-navigation';
 import {
   Dimensions,
@@ -22,33 +22,95 @@ import ProfileScreen from '../screens/Profile';
 import FavBeersScreen from '../screens/FavBeers';
 import FavEventsScreen from '../screens/FavEvents';
 import ContactScreen from '../screens/Contact';
-import { colors, h3, row, center, subtitle1 } from '../config/styles';
+import {
+  colors,
+  fonts,
+  h3,
+  row,
+  center,
+  subtitle1,
+  shadow1
+} from '../config/styles';
 import { sharedNavigationOptions } from './config';
 import BottomTabNav from './BottomNavigationLayout';
 import DrawerScreen from './DrawerScreen';
 
-import BeersScreen from '../screens/AllBeers';
+import AllBeersScreen from '../screens/AllBeers';
+import BeerScreen from '../screens/Beer';
 import CardScreen from '../screens/Card';
-import EventsScreen from '../screens/AllEvents';
+import AllEventsScreen from '../screens/AllEvents';
+import EventsScreen from '../screens/Events';
 import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
 
 /**
- * Stacks
+ * Tab Navigator
  **/
 
-const Tabs = createMaterialBottomTabNavigator(BottomTabNav);
-
-const DrawerNavigator = createDrawerNavigator(
+const Tabs = createBottomTabNavigator(
   {
-    Drawer: { screen: Tabs }
+    Home: HomeScreen,
+    Card: CardScreen,
+    Beers: AllBeersScreen,
+    Events: AllEventsScreen,
+    Stores: StoresScreen
   },
   {
-    initialRouteName: 'Home',
-    contentComponent: DrawerScreen,
-    drawerWidth: Dimensions.get('window').width
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+
+        let icon;
+        if (routeName === 'Home') {
+          icon = focused
+            ? require('../assets/images/Navigation/home_icon_active.png')
+            : require('../assets/images/Navigation/home_icon_inactive.png');
+        } else if (routeName === 'Card') {
+          icon = focused
+            ? require('../assets/images/Navigation/card_icon_active.png')
+            : require('../assets/images/Navigation/card_icon_inactive.png');
+        }
+        if (routeName === 'Beers') {
+          icon = focused
+            ? require('../assets/images/Navigation/beers_icon_active.png')
+            : require('../assets/images/Navigation/beer_icon_inactive.png');
+        } else if (routeName === 'Events') {
+          icon = focused
+            ? require('../assets/images/Navigation/events_icon_active.png')
+            : require('../assets/images/Navigation/event_icon_inactive.png');
+        } else if (routeName === 'Stores') {
+          icon = focused
+            ? require('../assets/images/Navigation/stores_icon_active.png')
+            : require('../assets/images/Navigation/stores_icon_inactive.png');
+        }
+        return (
+          <Image
+            source={icon}
+            style={{ maxWidth: 32, resizeMode: 'contain' }}
+          />
+        );
+      }
+    }),
+    tabBarOptions: {
+      activeTintColor: colors.brand,
+      inactiveTintColor: colors.black,
+      labelStyle: {
+        fontSize: fonts.xxxs,
+        fontFamily: fonts.primarySemi,
+        lineHeight: 0
+      },
+      style: {
+        backgroundColor: '#fff',
+        height: 60,
+        paddingTop: 5
+      }
+    }
   }
 );
+
+/**
+ * Drawer Navigator
+ **/
 
 const ProfileStack = createStackNavigator(
   {
@@ -62,7 +124,8 @@ const ProfileStack = createStackNavigator(
 );
 const FavBeersStack = createStackNavigator(
   {
-    FavBeers: FavBeersScreen
+    FavBeers: FavBeersScreen,
+    Beer: BeerScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -72,7 +135,8 @@ const FavBeersStack = createStackNavigator(
 );
 const FavEventsStack = createStackNavigator(
   {
-    FavEvents: FavEventsScreen
+    FavEvents: FavEventsScreen,
+    Events: EventsScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -91,6 +155,21 @@ const ContactStack = createStackNavigator(
   }
 );
 
+// const DrawerNavigator = createDrawerNavigator(
+//   {
+//     Drawer: { screen: Tabs },
+//     'About You': ProfileStack,
+//     'Your Favourites': FavBeersStack,
+//     'Your Events': FavEventsStack,
+//     'Contact Us': ContactStack
+//   },
+//   {
+//     initialRouteName: 'Drawer',
+//     contentComponent: DrawerScreen,
+//     drawerWidth: Dimensions.get('window').width
+//   }
+// );
+
 /** Functions */
 _signOutAsync = async () => {
   await AsyncStorage.clear();
@@ -98,15 +177,15 @@ _signOutAsync = async () => {
 };
 
 /**
- * DrawerNavigator
+ * Export Navigator
  **/
 export default createDrawerNavigator(
   {
-    screen: DrawerNavigator
-    // 'About You': ProfileStack,
-    // 'Your Favourites': FavBeersStack,
-    // 'Your Events': FavEventsStack,
-    // 'Contact Us': ContactStack
+    Tabs,
+    'About You': ProfileStack,
+    'Your Favourites': FavBeersStack,
+    'Your Events': FavEventsStack,
+    'Contact Us': ContactStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -119,6 +198,7 @@ export default createDrawerNavigator(
             })}
             size={25}
             color={tintColor}
+            navigation={navigation}
           />
         );
       }

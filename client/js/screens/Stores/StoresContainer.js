@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Image, Platform, TouchableOpacity, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -6,7 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Stores from './Stores';
 import styles from './styles';
 import { center, row, colors } from '../../config/styles';
-import DrawerScreen from '../../navigation/DrawerNavigationLayout';
+import DrawerScreen from '../../navigation/DrawerScreen';
 
 class StoresContainer extends Component {
   navOptions;
@@ -29,7 +30,7 @@ class StoresContainer extends Component {
               ios: 'ios-menu',
               android: 'md-menu'
             })}
-            size={35}
+            size={50}
             color={'green'}
           />
         </TouchableOpacity>
@@ -56,8 +57,13 @@ class StoresContainer extends Component {
   }
 
   render() {
+    console.log(this.props);
     return <Stores />;
   }
 }
+
+StoresContainer.propTypes = {
+  navigation: PropTypes.object
+};
 
 export default StoresContainer;

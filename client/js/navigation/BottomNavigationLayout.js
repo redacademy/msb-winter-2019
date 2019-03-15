@@ -5,17 +5,17 @@ import {
   createMaterialTopTabNavigator
 } from 'react-navigation';
 import { Image } from 'react-native';
+
+import { sharedNavigationOptions } from './config';
 import BeersScreen from '../screens/AllBeers';
 import CardScreen from '../screens/Card';
 import EventsScreen from '../screens/AllEvents';
 import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
-import { colors, dimensions, h3, underline, shadow2 } from '../config/styles';
-import { sharedNavigationOptions } from './config';
-
 import CardTab from '../components/CardTab';
 import HistoryTab from '../components/HistoryTab';
 import RewardsTab from '../components/RewardsTab';
+import { colors, dimensions, h3, underline, shadow2 } from '../config/styles';
 
 const TabScreens = createMaterialTopTabNavigator(
   {

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import PropTypes from 'prop-types';
 
 import Card from './Card';
-import styles from './styles';
 
 class CardContainer extends Component {
   constructor(props) {
@@ -10,8 +9,10 @@ class CardContainer extends Component {
   }
 
   render() {
-    return <Card />;
+    return <Card navigation={this.props.navigation} />;
   }
 }
+
+CardContainer.propTypes = { navigation: PropTypes.object.isRequired };
 
 export default CardContainer;

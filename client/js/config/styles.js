@@ -18,6 +18,28 @@ export const underline = {
   borderBottomWidth: 4
 };
 
+export const shadow1 = {
+  backgroundColor: colors.white,
+  borderWidth: 0.5,
+  borderColor: colors.neutralLight,
+  shadowOffset: { width: 0, height: 1 },
+  shadowColor: colors.neutralDark,
+  shadowOpacity: 1,
+  shadowRadius: 2
+};
+
+export const shadow2 = {
+  backgroundColor: colors.white,
+  borderWidth: 0.5,
+  borderColor: colors.neutralLight,
+  shadowOffset: { width: 0, height: 3.5 },
+  shadowColor: colors.neutralDark,
+  shadowOpacity: 0.5,
+  shadowRadius: 4
+};
+
+export const contain = { resizeMode: 'contain' };
+
 export const center = { justifyContent: 'center', alignItems: 'center' };
 
 export const row = { flexDirection: 'row' };
@@ -61,6 +83,7 @@ export const pt0 = {
   paddingTop: 0
 };
 
+// Typography
 export const fonts = {
   xxxs: 9,
   xxs: 12,
@@ -77,7 +100,6 @@ export const fonts = {
   secondary: 'Franchise Free'
 };
 
-// Typography
 export const h1 = {
   paddingVertical: padding.sm,
   fontFamily: fonts.secondary,

@@ -3,7 +3,6 @@ import { container } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: { ...container },
-  body1: { ...body1 },
   textInput: {
     width: '50%',
     paddingVertical: 7,

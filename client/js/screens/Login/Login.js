@@ -1,35 +1,14 @@
-import React from 'react';
-import { View, Button, AsyncStorage } from 'react-native';
+import React, { Fragment } from 'react';
+import { View, Button, TextInput, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import CustomText from '../../components/CustomText';
-import {
-  getLoggedInUser,
-  clearUserToken,
-  setUserToken
-} from '../../config/models';
-import styles from './styles';
+import { setUserToken } from '../../config/models';
+import { Form, Field } from 'react-final-form';
 
-const signupMutation = gql`
-  mutation(
-    $email: String!
-    $password: String!
-    $dateOfBirth: DateTime!
-    $name: String!
-  ) {
-    signupUser(
-      email: $email
-      password: $password
-      dateOfBirth: $dateOfBirth
-      name: $name
-    ) {
-      id
-      token
-    }
-  }
-`;
+import styles from './styles';
 
 const loginMutation = gql`
   mutation($email: String!, $password: String!) {
@@ -49,15 +28,46 @@ class Login extends React.Component {
     return (
       <View style={styles.container}>
         <CustomText>This is Login.</CustomText>
-        <Button title="Sign in!" onPress={this._signInAsync} />
+        <Form
+          onSubmit={this.onSubmit}
+          render={({
+            handleSubmit
+          }) => (
+            <Fragment>
+              <Field name="email" >
+                {({ input, meta }) => (
+                  <TextInput
+                    editable={true}
+                    autoCapitalize="none"
+                    {...input}
+                    style={styles.textInput}
+                  />
+                )}
+              </Field>
+              <Field name="password" >
+              {({ input, meta }) => (
+                <TextInput
+                  editable={true}
+                  autoCapitalize="none"
+                  secureTextEntry={true}
+                  {...input}
+                  style={styles.textInput}
+                />
+              )}
+              </Field>
+              <Button title="Sign in!" onPress={handleSubmit} />
+            </Fragment>
+          )}
+        />
       </View>
     );
   }
 
-  _signInAsync = async () => {
+  onSubmit = async values => {
     try {
+      const { email, password } = values;
       const result = await this.props.loginMutation({
-        variables: { email: 'alex@alex.alex', password: 'alex' }
+        variables: { email, password }
       });
       const userInfo = result.data.authenticateUser;
       await setUserToken(userInfo.id, userInfo.token);
@@ -71,7 +81,6 @@ class Login extends React.Component {
 Login.propTypes = {};
 
 export default compose(
-  graphql(signupMutation, { name: 'signupMutation' }),
   graphql(loginMutation, { name: 'loginMutation' }),
   withNavigation
 )(Login);

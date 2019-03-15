@@ -5,6 +5,9 @@ import { ActivityIndicator, View } from 'react-native';
 class AuthLoading extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
     this.navigateToAppOrAuth();
   }
 
@@ -14,11 +17,7 @@ class AuthLoading extends React.Component {
   };
 
   render() {
-    return (
-      <View>
-        <ActivityIndicator />
-      </View>
-    );
+    return <ActivityIndicator />;
   }
 }
 

@@ -12,7 +12,7 @@ class Loader extends Component {
           style={styles.imgBg}
         >
           <View style={styles.textContainer}>
-            <Text style={styles.loadingText}>Pouring</Text>
+            <Text style={styles.loadingText}>Pouring...</Text>
           </View>
         </ImageBackground>
       </View>

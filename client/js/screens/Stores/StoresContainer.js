@@ -5,10 +5,13 @@ import Stores from './Stores';
 import styles from './styles';
 
 class StoresContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  static navigationOptions = {
+    title: (
+      <Image source={require('../../assets/images/Logos/msb_logo_white.png')} />
+    ),
+    headerTintColor: '#fff',
+    headerTitleStyle: { ...Header }
+  };
   render() {
     return <Stores />;
   }

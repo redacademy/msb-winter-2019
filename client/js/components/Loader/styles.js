@@ -5,11 +5,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    height: "100%"
   },
   imgBg: {
-    height: 400,
-    width: 400
+    height: 150
   },
   loadingText: {
     color: colors.white
@@ -17,8 +17,7 @@ const styles = StyleSheet.create({
   textContainer: {
     justifyContent: "center",
     flex: 1,
-    alignItems: "center",
-    marginTop: 150
+    alignItems: "center"
   }
 });
 

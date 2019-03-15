@@ -5,10 +5,6 @@ import Card from "./Card";
 import styles from "./styles";
 
 class CardContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return <Card />;
   }

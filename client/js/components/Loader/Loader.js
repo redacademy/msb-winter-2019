@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, ImageBackground, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 import PropTypes from "prop-types";
 
 import styles from "./styles";
@@ -9,12 +9,11 @@ class Loader extends Component {
     return (
       <View style={styles.container}>
         <Image
-          source={require("../../assets/images/beerPouring.gif")}
+          source={require("../../assets/images/loading_growler_v4.1.gif")}
           style={styles.imgBg}
         />
-        {/* <View style={styles.textContainer}> */}
+
         <Text style={styles.loadingText}>Pouring...</Text>
-        {/* </View>x */}
       </View>
     );
   }

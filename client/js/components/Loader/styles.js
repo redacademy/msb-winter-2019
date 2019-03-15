@@ -13,11 +13,6 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     color: colors.white
-  },
-  textContainer: {
-    justifyContent: "center",
-    flex: 1,
-    alignItems: "center"
   }
 });
 

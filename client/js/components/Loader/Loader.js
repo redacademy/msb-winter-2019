@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, ImageBackground } from "react-native";
+import PropTypes from "prop-types";
 
 import styles from "./styles";
 
@@ -19,5 +20,9 @@ class Loader extends Component {
     );
   }
 }
+
+Loader.propTypes = {
+  styles: PropTypes.object.isRequired
+};
 
 export default Loader;

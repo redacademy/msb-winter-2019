@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   imgBg: {
-    height: "100%",
-    width: "100%"
+    height: 400,
+    width: 400
   },
   loadingText: {
     color: colors.white
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     alignItems: "center",
-    marginTop: 300
+    marginTop: 150
   }
 });
 

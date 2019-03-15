@@ -8,14 +8,17 @@ class Loader extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ImageBackground
-          source={require("../../assets/images/beerPouring.gif")}
-          style={styles.imgBg}
-        >
-          <View style={styles.textContainer}>
-            <Text style={styles.loadingText}>Pouring...</Text>
-          </View>
-        </ImageBackground>
+        <View>
+          <ImageBackground
+            source={require("../../assets/images/beerPouring.gif")}
+            // style={styles.imgBg}
+            style={styles.imgBg}
+          >
+            <View style={styles.textContainer}>
+              <Text style={styles.loadingText}>Pouring...</Text>
+            </View>
+          </ImageBackground>
+        </View>
       </View>
     );
   }

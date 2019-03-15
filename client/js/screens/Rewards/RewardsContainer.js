@@ -6,23 +6,7 @@ import { Query } from "React-apollo";
 import Rewards from "./Rewards";
 
 export default class RewardsContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
-    <Query
-      query={gql`
-        {
-          allRewards {
-            id
-            title
-            points
-          }
-        }
-      `}
-    />;
     return (
       <View>
         <Rewards />

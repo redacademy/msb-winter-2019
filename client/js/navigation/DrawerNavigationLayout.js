@@ -2,7 +2,8 @@ import React from 'react';
 import {
   createStackNavigator,
   createDrawerNavigator,
-  DrawerItems
+  DrawerItems,
+  createMaterialBottomTabNavigator
 } from 'react-navigation';
 import {
   Dimensions,
@@ -23,10 +24,32 @@ import FavEventsScreen from '../screens/FavEvents';
 import ContactScreen from '../screens/Contact';
 import { colors, h3, row, center, subtitle1 } from '../config/styles';
 import { sharedNavigationOptions } from './config';
+import BottomTabNav from './BottomNavigationLayout';
+import DrawerScreen from './DrawerScreen';
+
+import BeersScreen from '../screens/AllBeers';
+import CardScreen from '../screens/Card';
+import EventsScreen from '../screens/AllEvents';
+import HomeScreen from '../screens/Home';
+import StoresScreen from '../screens/Stores';
 
 /**
  * Stacks
  **/
+
+const Tabs = createMaterialBottomTabNavigator(BottomTabNav);
+
+const DrawerNavigator = createDrawerNavigator(
+  {
+    Drawer: { screen: Tabs }
+  },
+  {
+    initialRouteName: 'Home',
+    contentComponent: DrawerScreen,
+    drawerWidth: Dimensions.get('window').width
+  }
+);
+
 const ProfileStack = createStackNavigator(
   {
     Profile: ProfileScreen
@@ -79,10 +102,11 @@ _signOutAsync = async () => {
  **/
 export default createDrawerNavigator(
   {
-    'About You': ProfileStack,
-    'Your Favourites': FavBeersStack,
-    'Your Events': FavEventsStack,
-    'Contact Us': ContactStack
+    screen: DrawerNavigator
+    // 'About You': ProfileStack,
+    // 'Your Favourites': FavBeersStack,
+    // 'Your Events': FavEventsStack,
+    // 'Contact Us': ContactStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

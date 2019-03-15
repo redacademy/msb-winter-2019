@@ -8,7 +8,7 @@ const MainHeader = props => (
   <View
     style={{
       overflow: 'hidden',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
       alignItems: 'center',
       backgroundColor: '#000',
       flexDirection: 'row',
@@ -40,10 +40,10 @@ const MainHeader = props => (
       style={{ height: 40, width: 140, marginLeft: 30 }}
     />
 
-    {/* <Image
-        source={require('../assets/images/Icons/notifications_icon_inactive.png')}
-        style={{ resizeMode: 'contain' }}
-      /> */}
+    <Image
+      source={require('../assets/images/Icons/notifications_icon_inactive.png')}
+      style={{ resizeMode: 'contain' }}
+    />
     {/* </View> */}
   </View>
 );
@@ -68,7 +68,6 @@ export const sharedNavigationOptions = navigation => ({
   // ),
 
   headerStyle: {
-    backgroundColor: '#000',
-    backgroundImage: '../assets/images/Logos/msb_logo_white.png'
+    backgroundColor: '#000'
   }
 });

@@ -7,8 +7,8 @@ import EventsModal from '../screens/Events';
 export default createAppContainer(
   createStackNavigator(
     {
-      Layout: NavigationLayout,
-      // Layout: DrawerNavigationLayout,
+      // Layout: NavigationLayout,
+      Layout: DrawerNavigationLayout,
       Beer: BeerModal,
       Events: EventsModal
     },

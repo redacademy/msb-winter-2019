@@ -1,96 +1,30 @@
 import React, { Component } from 'react';
-import {
-  NavigationActions,
-  createStackNavigator,
-  DrawerItems,
-  DrawerActions
-} from 'react-navigation';
+import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import {
-  ScrollView,
   Text,
   View,
-  Dimensions,
   Platform,
-  StyleSheet,
   Image,
   Linking,
   TouchableHighlight,
-  SafeAreaView
+  SafeAreaView,
+  AsyncStorage
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import ProfileScreen from '../screens/Profile';
-import FavBeersScreen from '../screens/FavBeers';
-import FavEventsScreen from '../screens/FavEvents';
-import ContactScreen from '../screens/Contact';
-import BeerScreen from '../screens/Beer';
-import EventsScreen from '../screens/Events';
 import OrangeButton from '../components/OrangeButton';
-import {
-  center,
-  row,
-  padding,
-  h3,
-  subtitle1,
-  hr,
-  dimensions,
-  jusBetweenRow
-} from '../config/styles';
+import { colors } from '../config/styles';
 import styles from './styles';
 
-const ProfileStack = createStackNavigator(
-  {
-    Profile: ProfileScreen
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
-  }
-);
-const FavBeersStack = createStackNavigator(
-  {
-    FavBeers: FavBeersScreen,
-    Beer: BeerScreen
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
-  }
-);
-const FavEventsStack = createStackNavigator(
-  {
-    FavEvents: FavEventsScreen,
-    Events: EventsScreen
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
-  }
-);
-const ContactStack = createStackNavigator(
-  {
-    Contact: ContactScreen
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
-    })
-  }
-);
-
-/** Functions */
-
 class DrawerScreen extends Component {
-  navigateToScreen = route => () => {
-    const navigateAction = NavigationActions.navigate({
-      routeName: route
-    });
-    this.props.navigation.dispatch(navigateAction);
-    this.props.navigation.dispatch(DrawerActions.closeDrawer());
+  static navigationOptions = {
+    title: 'DrawerScreen'
+  };
+
+  navigateToScreen = route => {
+    this.props.navigation.navigate(route);
+    this.props.navigation.closeDrawer();
   };
 
   signOutAsync = async () => {
@@ -100,20 +34,14 @@ class DrawerScreen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.drawerContainer}>
         <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
           <TouchableHighlight
-            underlayColor={'transparent'}
-            onPress={this.navigateToScreen('Profile')}
+            underlayColor={colors.neutralLight}
+            onPress={() => this.navigateToScreen('Profile')}
           >
-            <View
-              style={{
-                ...jusBetweenRow,
-                paddingVertical: 20,
-                paddingHorizontal: 40
-              }}
-            >
-              <Text style={{ ...h3 }}>About You</Text>
+            <View style={styles.drawerItemWrapper}>
+              <Text style={styles.drawerItem}>About You</Text>
               <Ionicons
                 name={Platform.select({
                   ios: 'ios-arrow-forward',
@@ -123,26 +51,13 @@ class DrawerScreen extends Component {
               />
             </View>
           </TouchableHighlight>
-          <View
-            style={{
-              ...hr,
-              marginVertical: 0,
-              marginLeft: 20,
-              maxWidth: dimensions.fullWidth - 40
-            }}
-          />
+          <View style={styles.hr} />
           <TouchableHighlight
-            underlayColor={'transparent'}
-            onPress={this.navigateToScreen('FavBeers')}
+            underlayColor={colors.neutralLight}
+            onPress={() => this.navigateToScreen('FavBeers')}
           >
-            <View
-              style={{
-                ...jusBetweenRow,
-                paddingVertical: 20,
-                paddingHorizontal: 40
-              }}
-            >
-              <Text style={{ ...h3 }}>Your Favourites</Text>
+            <View style={styles.drawerItemWrapper}>
+              <Text style={styles.drawerItem}>Your Favourites</Text>
               <Ionicons
                 name={Platform.select({
                   ios: 'ios-arrow-forward',
@@ -152,26 +67,13 @@ class DrawerScreen extends Component {
               />
             </View>
           </TouchableHighlight>
-          <View
-            style={{
-              ...hr,
-              marginVertical: 0,
-              marginLeft: 20,
-              maxWidth: dimensions.fullWidth - 40
-            }}
-          />
+          <View style={styles.hr} />
           <TouchableHighlight
-            underlayColor={'transparent'}
-            onPress={this.navigateToScreen('FavEvents')}
+            underlayColor={colors.neutralLight}
+            onPress={() => this.navigateToScreen('FavEvents')}
           >
-            <View
-              style={{
-                ...jusBetweenRow,
-                paddingVertical: 20,
-                paddingHorizontal: 40
-              }}
-            >
-              <Text style={{ ...h3 }}>Your Events</Text>
+            <View style={styles.drawerItemWrapper}>
+              <Text style={styles.drawerItem}>Your Events</Text>
               <Ionicons
                 name={Platform.select({
                   ios: 'ios-arrow-forward',
@@ -181,26 +83,13 @@ class DrawerScreen extends Component {
               />
             </View>
           </TouchableHighlight>
-          <View
-            style={{
-              ...hr,
-              marginVertical: 0,
-              marginLeft: 20,
-              maxWidth: dimensions.fullWidth - 40
-            }}
-          />
+          <View style={styles.hr} />
           <TouchableHighlight
-            underlayColor={'transparent'}
-            onPress={this.navigateToScreen('Contact')}
+            underlayColor={colors.neutralLight}
+            onPress={() => this.navigateToScreen('Contact')}
           >
-            <View
-              style={{
-                ...jusBetweenRow,
-                paddingVertical: 20,
-                paddingHorizontal: 40
-              }}
-            >
-              <Text style={{ ...h3 }}>Contact Us</Text>
+            <View style={styles.drawerItemWrapper}>
+              <Text style={styles.drawerItem}>Contact Us</Text>
               <Ionicons
                 name={Platform.select({
                   ios: 'ios-arrow-forward',
@@ -210,20 +99,8 @@ class DrawerScreen extends Component {
               />
             </View>
           </TouchableHighlight>
-          <View
-            style={{
-              ...hr,
-              marginVertical: 0,
-              marginLeft: 20,
-              maxWidth: dimensions.fullWidth - 40
-            }}
-          />
-          <View
-            style={{
-              paddingHorizontal: padding.xl,
-              paddingVertical: padding.lg
-            }}
-          >
+          <View style={styles.hr} />
+          <View style={styles.signOutWrapper}>
             <OrangeButton
               onPress={() => {
                 this.signOutAsync();
@@ -232,47 +109,24 @@ class DrawerScreen extends Component {
               Sign Out
             </OrangeButton>
           </View>
-          {/* <TouchableHighlight
-            underlayColor={'transparent'}
-            onPress={() => {
-              this.signOutAsync();
-            }}
-          >
-            <View
-              style={{
-                ...jusBetweenRow,
-                paddingVertical: 20,
-                paddingHorizontal: 40
-              }}
-            >
-              <Text style={{ ...h3 }}>Sign Out</Text>
-              {/* <Ionicons
-                name={Platform.select({
-                  ios: 'ios-arrow-forward',
-                  android: 'md-arrow-forward'
-                })}
-                size={25}
-              /> */}
-          {/* </View>
-          </TouchableHighlight> */}
         </SafeAreaView>
 
         <Image
           source={require('../assets/images/Events/ig_image_1.png')}
-          style={{ width: Dimensions.get('window').width }}
+          style={styles.igFeedImg}
         />
         <TouchableHighlight
-          underlayColor={'transparent'}
+          underlayColor={colors.neutralLight}
           onPress={() => {
             Linking.openURL('https://www.instagram.com/mainstreetbeer/'); //@TODO link to instagram app instead of site
           }}
         >
-          <View style={{ ...row, ...center }}>
+          <View style={styles.igWrapper}>
             <Image
               source={require('../assets/images/Icons/socialmedia_ig_icon.png')}
-              style={{ width: 30, resizeMode: 'contain', marginRight: 5 }}
+              style={styles.igLogo}
             />
-            <Text style={{ ...subtitle1 }}>#themainbeer</Text>
+            <Text style={styles.igHashtag}>#themainbeer</Text>
           </View>
         </TouchableHighlight>
       </View>
@@ -284,4 +138,4 @@ DrawerScreen.propTypes = {
   navigation: PropTypes.object
 };
 
-export default DrawerScreen;
+export default withNavigation(DrawerScreen);

@@ -1,37 +1,8 @@
 import React from 'react';
-import { Header } from 'react-navigation';
-import {
-  Image,
-  TouchableOpacity,
-  View,
-  Platform,
-  StyleSheet
-} from 'react-native';
+import { Image, Platform } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import DrawerNavigationLayout from './JYDrawerNavigationLayout';
-import {
-  colors,
-  container,
-  row,
-  iteCenterRow,
-  jusBetweenRow,
-  h2,
-  jusCenterRow,
-  padding
-} from '../config/styles';
 
-const MainHeader = props => (
-  // <View
-  //   style={{
-  //     backgroundColor: 'transparent',
-  //     overflow: 'hidden'
-  //   }}
-  // >
-  <View>
-    <Header {...props} />
-  </View>
-  // </View>
-);
+import { colors } from '../config/styles';
 
 export const sharedNavigationOptions = navigation => ({
   headerTitle: (
@@ -41,7 +12,6 @@ export const sharedNavigationOptions = navigation => ({
     />
   ),
   headerBackTitle: null,
-  header: props => <MainHeader {...props} />,
   headerRight: (
     <Image
       source={require('../assets/images/Icons/notifications_icon_inactive.png')}
@@ -62,6 +32,6 @@ export const sharedNavigationOptions = navigation => ({
   ),
   headerStyle: {
     backgroundColor: colors.black,
-    paddingBottom: padding.sm
+    height: 75
   }
 });

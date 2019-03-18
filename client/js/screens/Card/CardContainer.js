@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import Card from './Card';
-import styles from './styles';
+import Card from "./Card";
 
 class CardContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    return <Card />;
+    return <Card navigation={this.props.navigation} />;
   }
 }
+
+CardContainer.propTypes = { navigation: PropTypes.object.isRequired };
 
 export default CardContainer;

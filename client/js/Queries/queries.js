@@ -102,7 +102,138 @@ export const REWARDS_QUERY = gql`
   }
 `;
 
+export const USER_QUERY = gql`
+  query($id: ID!) {
+    User {
+      id
+      email
+      dateOfBirth
+      points
+      favouriteBeers {
+        id
+        title
+        subtitle
+      }
+      favouriteEvents {
+        id
+        title
+      }
+    }
+  }
+`;
+
 //----------------- MUTATIONS------------------>
+
+export const ADD_TO_USER_BEER = gql`
+  mutation($favouriteBeersBeerId: ID!, $usersUserId: ID!) {
+    addToUserBeer(
+      favouriteBeersBeerId: $favouriteBeersBeerId
+      usersUserId: $usersUserId
+    ) {
+      favouriteBeersBeer {
+        id
+        title
+      }
+      usersUser {
+        id
+        name
+      }
+    }
+  }
+`;
+
+export const ADD_TO_USER_EVENTS = gql`
+  mutation($favouriteEventsEventId: ID!, $usersUserId: ID!) {
+    addToUserEvents(
+      favouriteEventsEventId: $favouriteEventsEventId
+      usersUserId: $usersUserId
+    ) {
+      favouriteEventsEvent {
+        id
+        title
+        time
+        date
+        description
+      }
+      userUser {
+        id
+        name
+      }
+    }
+  }
+`;
+
+export const ADD_TO_USER_POINTS = gql`
+  mutation($pointsHistoryPointId: ID!, $userUserId: ID!) {
+    addToUserPoint(
+      pointsHistoryPointId: $pointsHistoryPointsId
+      userUserId: $userUserId
+    )
+    pointsHistoryPoint {
+      id
+      beer {
+        id
+        point {
+          id
+          stamps
+        }
+        title
+        subtitle
+      }
+    }
+    userUser {
+      id
+      name
+      points
+    }
+  }
+`;
+
+export const ADD_TO_USER_REDEEMS = gql`
+  mutation($redeemHistory: ID, $usersUserId: ID) {
+    addToUserRedeems(redeemHistory: $redeemHistory, usersUserId: $usersUserId) {
+      redeemHistoryRedeem {
+        id
+        reward {
+          title
+          id
+          points
+        }
+      }
+      userUser {
+        id
+        name
+        points
+      }
+    }
+  }
+`;
+
+export const REMOVE_FROM_USER_BEERS = gql`
+  mutation($favouriteBeersBeerId: ID!, $usersUserId: ID!) {
+    removeFromUserBeers(
+      favouriteBeersBeerId: $favouriteBeersBeerId
+      usersUserId: $usersUserId
+    ) {
+      favouriteBeersBeerId {
+        id
+      }
+    }
+  }
+`;
+
+export const REMOVE_FROM_USER_EVENTS = gql`
+  mutation($favouriteEventsEventId: ID!, $usersUserId: ID!) {
+    removeFromUserEvents(
+      favouriteEventsEventId: $favouriteEventsEventId
+      usersUserId: $usersUserId
+    ) {
+      favouriteEventsEventId {
+        id
+      }
+    }
+  }
+`;
 
 export const SIGNUP_MUTATION = gql`
   mutation(

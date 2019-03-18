@@ -49,6 +49,11 @@ export const jusCenterRow = {
   justifyContent: 'center'
 };
 
+export const jusBetweenRow = {
+  ...row,
+  justifyContent: 'space-between'
+};
+
 export const iteCenterRow = {
   ...row,
   alignItems: 'center'

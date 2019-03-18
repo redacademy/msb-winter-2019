@@ -48,7 +48,7 @@ const TabScreens = createMaterialTopTabNavigator(
         marginTop: 0
       },
       style: {
-        backgroundColor: 'white',
+        backgroundColor: colors.white,
         ...shadow2,
         height: 50
       }
@@ -58,7 +58,7 @@ const TabScreens = createMaterialTopTabNavigator(
 
 const HomeStack = createStackNavigator(
   {
-    Home: HomeScreen
+    HomeScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -96,6 +96,7 @@ const StoresStack = createStackNavigator(
     })
   }
 );
+
 const CardStack = createStackNavigator(
   {
     CardScreen,

@@ -8,6 +8,10 @@ class LoginContainer extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    title: 'Login'
+  };
+
   render() {
     return <Login />;
   }

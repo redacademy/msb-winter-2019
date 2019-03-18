@@ -9,6 +9,10 @@ class ContactContainer extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    title: 'Contact'
+  };
+
   render() {
     return <Contact />;
   }

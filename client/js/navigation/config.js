@@ -2,19 +2,25 @@ import React from 'react';
 import { Header } from 'react-navigation';
 import { Image, TouchableOpacity, View, Platform } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import DrawerNavigationLayout from './DrawerNavigationLayout';
+import DrawerNavigationLayout from './JYDrawerNavigationLayout';
+import {
+  colors,
+  container,
+  row,
+  iteCenterRow,
+  jusBetweenRow
+} from '../config/styles';
 
 const MainHeader = props => (
   <View
     style={{
-      overflow: 'hidden',
-      justifyContent: 'space-between',
+      // ...container,
+      // justifyContent: 'space-between',
+      // ...iteCenterRow,
+      ...jusBetweenRow,
       alignItems: 'center',
-      backgroundColor: '#000',
-      flexDirection: 'row',
-      // paddingLeft: 20,
-      paddingTop: 20,
-      height: 100
+      backgroundColor: colors.black,
+      overflow: 'hidden'
     }}
   >
     <Header {...props} />
@@ -51,16 +57,16 @@ export const sharedNavigationOptions = navigation => ({
       name={Platform.select({ android: 'md-menu', ios: 'ios-menu' })}
       size={35}
       color={'white'}
-      style={{ marginBottom: 6 }}
+      style={{
+        marginBottom: 10
+      }}
     />
   ),
-
   headerStyle: {
-    // backgroundColor: '#000'
-  },
-  headerTintColor: '#fff',
-  headerTitleStyle: {
-    fontWeight: 'bold'
-  },
-  title: 'Main Street Brewing'
+    backgroundColor: 'transparent'
+  }
+  // headerTintColor: '#fff',
+  // headerTitleStyle: {
+  //   fontWeight: 'bold'
+  // }
 });

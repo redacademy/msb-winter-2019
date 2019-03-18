@@ -9,6 +9,10 @@ class ProfileContainer extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    title: 'Profile'
+  };
+
   render() {
     return <Profile />;
   }

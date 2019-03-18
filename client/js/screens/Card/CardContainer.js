@@ -8,6 +8,10 @@ class CardContainer extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    title: 'Card'
+  };
+
   render() {
     return <Card navigation={this.props.navigation} />;
   }

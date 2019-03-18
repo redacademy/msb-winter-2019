@@ -11,8 +11,18 @@ import { Form, Field } from 'react-final-form';
 import styles from './styles';
 
 const signupMutation = gql`
-  mutation($email: String!, $password: String!) {
-    authenticateUser(email: $email, password: $password) {
+  mutation(
+    $email: String!
+    $password: String!
+    $dateOfBirth: DateTime!
+    $name: String!
+  ) {
+    signupUser(
+      email: $email
+      password: $password
+      dateOfBirth: $dateOfBirth
+      name: $name
+    ) {
       id
       token
     }

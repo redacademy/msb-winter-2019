@@ -1,13 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import CustomText from '../CustomText';
+import CustomText from '../../CustomText';
 import styles from './styles';
 
-const RewardsTab = () => (
+const HistoryTab = () => (
   <View style={styles.container}>
-    <CustomText>This is Rewards.</CustomText>
+    <CustomText>This is History.</CustomText>
   </View>
 );
 
-export default RewardsTab;
+export default HistoryTab;

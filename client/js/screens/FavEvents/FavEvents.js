@@ -5,7 +5,11 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const FavEvents = props => {
-  return <Text>This is FavEvents.</Text>;
+  return (
+    <View style={styles.container}>
+      <Text>This is FavEvents.</Text>
+    </View>
+  );
 };
 
 FavEvents.propTypes = {};

@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import OrangeButton from '../components/OrangeButton';
+import OrangeButton from '../components/Buttons/OrangeButton';
 import { colors } from '../config/styles';
 import styles from './styles';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 
-import CustomText from '../CustomText';
+import CustomText from '../../CustomText';
 import styles from './styles';
 
 const BlackButton = props => {

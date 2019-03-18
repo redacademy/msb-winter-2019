@@ -26,10 +26,11 @@ import FavEventsScreen from '../screens/FavEvents';
 import ContactScreen from '../screens/Contact';
 import BeerScreen from '../screens/Beer';
 import EventsScreen from '../screens/Events';
+import OrangeButton from '../components/OrangeButton';
 import {
   center,
   row,
-  colors,
+  padding,
   h3,
   subtitle1,
   hr,
@@ -217,7 +218,21 @@ class DrawerScreen extends Component {
               maxWidth: dimensions.fullWidth - 40
             }}
           />
-          <TouchableHighlight
+          <View
+            style={{
+              paddingHorizontal: padding.xl,
+              paddingVertical: padding.lg
+            }}
+          >
+            <OrangeButton
+              onPress={() => {
+                this.signOutAsync();
+              }}
+            >
+              Sign Out
+            </OrangeButton>
+          </View>
+          {/* <TouchableHighlight
             underlayColor={'transparent'}
             onPress={() => {
               this.signOutAsync();
@@ -238,8 +253,8 @@ class DrawerScreen extends Component {
                 })}
                 size={25}
               /> */}
-            </View>
-          </TouchableHighlight>
+          {/* </View>
+          </TouchableHighlight> */}
         </SafeAreaView>
 
         <Image

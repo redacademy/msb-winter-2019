@@ -1,83 +1,8 @@
-import {
-  createStackNavigator,
-  createDrawerNavigator,
-  createAppContainer
-} from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import BottomNavigationLayout from './BottomNavigationLayout';
 import DrawerNavigationLayout from './DrawerNavigationLayout';
-// import { sharedNavigationOptions } from './config';
-// import DrawerScreen from './DrawerScreen';
-// import BeerScreen from '../screens/Beer';
-// import EventsScreen from '../screens/Events';
-// import ProfileScreen from '../screens/Profile';
-// import FavBeersScreen from '../screens/FavBeers';
-// import FavEventsScreen from '../screens/FavEvents';
-// import ContactScreen from '../screens/Contact';
-import { dimensions } from '../config/styles';
-
-// const ProfileStack = createStackNavigator(
-//   {
-//     Profile: ProfileScreen
-//   },
-//   {
-//     defaultNavigationOptions: ({ navigation }) => ({
-//       ...sharedNavigationOptions(navigation)
-//     })
-//   }
-// );
-
-// const FavBeersStack = createStackNavigator(
-//   {
-//     FavBeers: FavBeersScreen,
-//     Beer: BeerScreen
-//   },
-//   {
-//     defaultNavigationOptions: ({ navigation }) => ({
-//       ...sharedNavigationOptions(navigation)
-//     })
-//   }
-// );
-
-// const FavEventsStack = createStackNavigator(
-//   {
-//     FavEvents: FavEventsScreen,
-//     Events: EventsScreen
-//   },
-//   {
-//     defaultNavigationOptions: ({ navigation }) => ({
-//       ...sharedNavigationOptions(navigation)
-//     })
-//   }
-// );
-
-// const ContactStack = createStackNavigator(
-//   {
-//     Contact: ContactScreen
-//   },
-//   {
-//     defaultNavigationOptions: ({ navigation }) => ({
-//       ...sharedNavigationOptions(navigation)
-//     })
-//   }
-// );
-
-// const DrawerNavigator = createDrawerNavigator(
-//   {
-//     Home: {
-//       screen: BottomNavigationLayout
-//     },
-//     Profile: ProfileStack,
-//     FavBeers: FavBeersStack,
-//     FavEvents: FavEventsStack,
-//     Contact: ContactStack
-//   },
-//   {
-//     initialRouteName: 'Home',
-//     contentComponent: DrawerScreen,
-//     drawerWidth: dimensions.fullWidth
-//   }
-// );
+import BeerModal from '../screens/Beer';
+import EventsModal from '../screens/Events';
 
 const MixedNavigators = createAppContainer(
   createStackNavigator(
@@ -86,27 +11,31 @@ const MixedNavigators = createAppContainer(
 
       DrawerNavigationLayout: {
         screen: DrawerNavigationLayout
-      }
+      },
+      Beer: BeerModal,
+      Events: EventsModal
     },
     {
-      navigationOptions: ({ navigation }) => ({
-        // headerLeft: (
-        //   <TouchableOpacity
-        //     onPress={() => {
-        //       navigation.dispatch(DrawerActions.toggleDrawer());
-        //     }}
-        //   >
-        //     <MenuImage style='styles.bar' navigation={navigation} />
-        //   </TouchableOpacity>
-        // ),
-        headerStyle: {
-          backgroundColor: 'red'
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold'
-        }
-      })
+      // navigationOptions: ({ navigation }) => ({
+      //   // headerLeft: (
+      //   //   <TouchableOpacity
+      //   //     onPress={() => {
+      //   //       navigation.dispatch(DrawerActions.toggleDrawer());
+      //   //     }}
+      //   //   >
+      //   //     <MenuImage style='styles.bar' navigation={navigation} />
+      //   //   </TouchableOpacity>
+      //   // ),
+      //   headerStyle: {
+      //     backgroundColor: 'red'
+      //   },
+      //   headerTintColor: '#fff',
+      //   headerTitleStyle: {
+      //     fontWeight: 'bold'
+      //   }
+      // })
+      headerMode: 'none',
+      mode: 'modal'
     }
   )
 );

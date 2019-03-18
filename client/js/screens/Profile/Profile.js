@@ -5,7 +5,11 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const Profile = props => {
-  return <Text>This is Profile.</Text>;
+  return (
+    <View style={styles.container}>
+      <Text>This is Profile.</Text>
+    </View>
+  );
 };
 
 Profile.propTypes = {};

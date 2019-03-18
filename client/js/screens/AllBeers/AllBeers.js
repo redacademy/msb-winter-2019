@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import PropTypes from 'prop-types';
 
+import Carousel from '../../components/Carousel';
 import styles from './styles';
 
 const AllBeers = props => {
-  return <Text>This is AllBeers.</Text>;
+  return <Carousel />;
 };
 
 AllBeers.propTypes = {};

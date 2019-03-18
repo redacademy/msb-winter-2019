@@ -9,6 +9,10 @@ class FavBeersContainer extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    title: 'FavBeers'
+  };
+
   render() {
     return <FavBeers />;
   }

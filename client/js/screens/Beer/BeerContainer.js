@@ -9,6 +9,10 @@ class BeerContainer extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    title: 'Beer'
+  };
+
   render() {
     return <Beer />;
   }

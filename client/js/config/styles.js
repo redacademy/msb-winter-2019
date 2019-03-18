@@ -38,6 +38,16 @@ export const shadow2 = {
   shadowRadius: 4
 };
 
+export const shadow3 = {
+  backgroundColor: colors.white,
+  borderWidth: 0.5,
+  borderColor: colors.neutralLight,
+  shadowOffset: { width: 0, height: -3 },
+  shadowColor: colors.neutralLight,
+  shadowOpacity: 1,
+  shadowRadius: 3
+};
+
 export const contain = { resizeMode: 'contain' };
 
 export const center = { justifyContent: 'center', alignItems: 'center' };
@@ -49,12 +59,18 @@ export const jusCenterRow = {
   justifyContent: 'center'
 };
 
+export const jusBetweenRow = {
+  ...row,
+  justifyContent: 'space-between'
+};
+
 export const iteCenterRow = {
   ...row,
   alignItems: 'center'
 };
 
 export const margin = {
+  xs: 5,
   sm: 10,
   md: 20,
   lg: 30,

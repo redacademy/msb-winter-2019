@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Image, ImageBackground } from 'react-native';
 import Barcode from 'react-native-barcode-builder';
 
-import CustomText from '../CustomText';
 import styles from './styles';
 
 const CardTab = () => (
@@ -17,7 +16,6 @@ const CardTab = () => (
           style={styles.card}
         />
         <Barcode value='Test Card' format='CODE128' height={40} />
-        <CustomText>This is Card.</CustomText>
       </View>
     </View>
   </ImageBackground>

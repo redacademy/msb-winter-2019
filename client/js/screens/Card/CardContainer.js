@@ -1,10 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import Card from "./Card";
+import Card from './Card';
 
 class CardContainer extends Component {
-<<<<<<< HEAD
   constructor(props) {
     super(props);
   }
@@ -13,8 +12,6 @@ class CardContainer extends Component {
     title: 'Card'
   };
 
-=======
->>>>>>> develop
   render() {
     return <Card navigation={this.props.navigation} />;
   }

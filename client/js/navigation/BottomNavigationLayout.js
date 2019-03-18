@@ -21,6 +21,7 @@ import {
   h3,
   underline,
   shadow2,
+  shadow3,
   fonts
 } from '../config/styles';
 
@@ -163,9 +164,10 @@ export default createBottomTabNavigator(
         lineHeight: 0
       },
       style: {
-        backgroundColor: '#fff',
+        backgroundColor: colors.white,
         height: 60,
-        paddingTop: 5
+        paddingTop: 5,
+        ...shadow3
       }
     }
   }

@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { button, colors, fonts, padding } from '../../config/styles';
+import { Dimensions, StyleSheet } from 'react-native';
+import { button, center, colors, fonts, padding } from '../../config/styles';
 
 const styles = StyleSheet.create({
   buttonWrapper: {
@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primarySemi,
     paddingHorizontal: padding.xs,
     paddingVertical: padding.xxs
+  },
+  blah: {
+    ...center,
+    margin: 'auto',
+    width: Dimensions.get('window').width * 0.7
   }
 });
 

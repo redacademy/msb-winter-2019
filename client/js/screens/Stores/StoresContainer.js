@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { Image, View } from 'react-native';
 
 import Stores from './Stores';
 import styles from './styles';
@@ -9,8 +9,8 @@ class StoresContainer extends Component {
     title: (
       <Image source={require('../../assets/images/Logos/msb_logo_white.png')} />
     ),
-    headerTintColor: '#fff',
-    headerTitleStyle: { ...Header }
+    headerTintColor: '#fff'
+    // headerTitleStyle: { ...Header }
   };
   render() {
     return <Stores />;

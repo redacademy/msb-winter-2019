@@ -15,7 +15,14 @@ import StoresScreen from '../screens/Stores';
 import CardTab from '../components/CardTab';
 import HistoryTab from '../components/HistoryTab';
 import RewardsTab from '../components/RewardsTab';
-import { colors, dimensions, h3, underline, shadow2 } from '../config/styles';
+import {
+  colors,
+  fonts,
+  dimensions,
+  h3,
+  underline,
+  shadow2
+} from '../config/styles';
 
 const TabScreens = createMaterialTopTabNavigator(
   {
@@ -51,12 +58,7 @@ const TabScreens = createMaterialTopTabNavigator(
 
 const HomeStack = createStackNavigator(
   {
-<<<<<<< HEAD
-    Home: HomeScreen
-=======
-    HomeScreen,
-    CardScreen
->>>>>>> develop
+    HomeScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

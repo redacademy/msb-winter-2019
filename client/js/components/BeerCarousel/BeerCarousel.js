@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Dimensions, Image, Text, View, TouchableOpacity } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
 
 import styles from './styles';
 import { hr, center, h2, h3, Subtitle1 } from '../../config/styles';
-import Carousel from 'react-native-snap-carousel';
 
-export class MyCarousel extends Component {
+export class BeerCarousel extends Component {
   _renderItem({ item, index }) {
-    console.log('ITEM:', item);
-    console.log('INDEX:', index);
     return (
       <View style={styles.slide}>
         <Text style={styles.title}>{item.title}</Text>
@@ -17,16 +15,20 @@ export class MyCarousel extends Component {
   }
 
   render() {
+    console.log('hihhihihi');
     return (
-      <Carousel
-        ref={c => {
-          this._carousel = c;
-        }}
-        data={this.state.entries}
-        renderItem={this._renderItem}
-        sliderWidth={sliderWidth}
-        itemWidth={itemWidth}
-      />
+      <View>
+        <Text>WHATSUPPPPPP</Text>
+        {/* <Carousel
+          ref={c => {
+            this._carousel = c;
+          }}
+          data={this.state.entries}
+          renderItem={this._renderItem}
+          sliderWidth={sliderWidth}
+          itemWidth={itemWidth}
+        /> */}
+      </View>
     );
   }
 }

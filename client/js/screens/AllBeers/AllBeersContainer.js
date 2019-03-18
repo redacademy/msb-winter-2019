@@ -1,29 +1,11 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import AllBeers from './AllBeers';
+import AuthLoading from '../../components/AuthLoading';
 import styles from './styles';
-
-const items = [
-  {
-    title: 'Fruit Bomb',
-    subtitle: 'kettlesour',
-    description: 'beer1 description',
-    image: '../../assets/images/Beers/squre_fruit_bomb.png'
-  },
-  {
-    title: 'Pilsner',
-    subtitle: 'Pilsner',
-    description: 'Pilsner description',
-    image: '../../assets/images/Beers/squre_fruit_bomb.png'
-  },
-  {
-    title: 'IPA',
-    subtitle: 'IPA',
-    description: 'IPA description',
-    image: '../../assets/images/Beers/squre_fruit_bomb.png'
-  }
-];
 
 class AllBeersContainer extends Component {
   constructor(props) {
@@ -32,11 +14,30 @@ class AllBeersContainer extends Component {
 
   render() {
     return (
-      <View>
-        {items.map(item => {
-          <AllBeers item={item} />;
-        })}
-      </View>
+      <Query
+        query={gql`
+          query allBeers($id: ID) {
+            allBeers(filter: { id: $id }) {
+              id
+              title
+              subtitle
+              description
+              style
+              ibu
+              abv
+              releaseDate
+            }
+          }
+        `}
+      >
+        {({ loading, error, data }) => {
+          if (loading) return <AuthLoading />;
+          if (error) return <Text>{`Error! ${error.message}`}</Text>;
+          console.log('ERROR:', error);
+
+          return <AllBeers data={data} />;
+        }}
+      </Query>
     );
   }
 }

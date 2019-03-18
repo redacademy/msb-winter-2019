@@ -18,9 +18,9 @@ import ProfileScreen from '../screens/Profile';
 import FavBeersScreen from '../screens/FavBeers';
 import FavEventsScreen from '../screens/FavEvents';
 import ContactScreen from '../screens/Contact';
-import CardTab from '../components/CardTab';
-import HistoryTab from '../components/HistoryTab';
-import RewardsTab from '../components/RewardsTab';
+import CardTab from '../components/Tabs/CardTab';
+import HistoryTab from '../components/Tabs/HistoryTab';
+import RewardsTab from '../components/Tabs/RewardsTab';
 import {
   colors,
   dimensions,

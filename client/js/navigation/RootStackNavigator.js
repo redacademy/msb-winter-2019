@@ -7,6 +7,7 @@ import NavigationLayout from './BottomNavigationLayout';
 import BeerModal from '../screens/Beer';
 import EventsModal from '../screens/Events';
 import Login from '../screens/Login';
+import Signup from '../screens/Signup';
 import AuthLoading from '../components/AuthLoading';
 
 const AppStack = createStackNavigator(
@@ -20,7 +21,7 @@ const AppStack = createStackNavigator(
     mode: 'modal'
   }
 );
-const AuthStack = createStackNavigator({ Login: Login });
+const AuthStack = createSwitchNavigator({ Login, Signup });
 
 export default createAppContainer(
   createSwitchNavigator(

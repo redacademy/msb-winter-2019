@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
-import Events from './Events';
+import Event from './Event';
 import styles from './styles';
 
-class EventsContainer extends Component {
+class EventContainer extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    return <Events />;
+    return <Event />;
   }
 }
 
-export default EventsContainer;
+export default EventContainer;

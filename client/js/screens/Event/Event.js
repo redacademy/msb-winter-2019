@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const Events = props => {
-  return <Text>This is Events.</Text>;
+const Event = props => {
+  return <Text>This is Event.</Text>;
 };
 
-Events.propTypes = {};
+Event.propTypes = {};
 
-export default Events;
+export default Event;

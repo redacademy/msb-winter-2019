@@ -135,6 +135,7 @@ class Signup extends React.Component {
 
   onSubmit = async values => {
     try {
+      console.log('VALUES', values);
       const { email, password, name } = values;
       const dateOfBirth = this.state.date;
       this.setState({ loading: true, error: false });

@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const BEER_QUERY = gql`
   query($id: ID) {
@@ -21,21 +21,25 @@ export const BEER_QUERY = gql`
 `;
 
 export const ALL_BEERS_QUERY = gql`
-  query allBeers {
-    id
-    title
-    subtitle
+  query {
+    allBeers {
+      id
+      title
+      subtitle
+    }
   }
 `;
 
 export const ALL_EVENTS_QUERY = gql`
-  query allEvents {
-    id
-    date
-    title
-    subtitle
-    location
-    time
+  query {
+    allEvents {
+      id
+      date
+      title
+      subtitle
+      location
+      time
+    }
   }
 `;
 
@@ -59,14 +63,16 @@ export const EVENTS_QUERY = gql`
 `;
 
 export const ALL_STORES_QUERY = gql`
-  query allStores {
-    id
-    name
-    long
-    lat
-    phone
-    hours
-    address
+  query {
+    allStores {
+      id
+      name
+      long
+      lat
+      phone
+      hours
+      address
+    }
   }
 `;
 
@@ -85,10 +91,12 @@ export const STORES_QUERY = gql`
 `;
 
 export const ALL_REWARDS_QUERY = gql`
-  query allRewards {
-    id
-    title
-    points
+  query {
+    allRewards {
+      id
+      title
+      points
+    }
   }
 `;
 

@@ -84,6 +84,7 @@ class Login extends React.Component {
 
   onSubmit = async values => {
     try {
+      console.log('LOGIN VALUES', values);
       const { email, password } = values;
       this.setState({ loading: true, error: false });
       const result = await this.props.loginMutation({

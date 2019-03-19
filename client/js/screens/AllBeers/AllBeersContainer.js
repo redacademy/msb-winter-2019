@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import AllBeers from './AllBeers';
-import Loader from '../../components/AuthLoading';
+import Loader from '../../components/Loader';
 
 class AllBeersContainer extends Component {
   constructor(props) {

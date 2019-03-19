@@ -12,10 +12,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 import Carousel from 'react-native-snap-carousel';
 import { hr, center, row, h2, Subtitle2 } from '../../config/styles';
-
-beerImage = () => {
-  let squerBeer;
-};
+import Availability from '../../components/Availability/';
 
 const AllBeers = props => {
   return (
@@ -37,42 +34,43 @@ const AllBeers = props => {
                 }}
               >
                 <View style={{ ...center }}>
-                  {item.title === 'FRUIT BOMB' ? (
-                    <Image
-                      source={require('../../assets/images/Beers/squre_fruit_bomb.png')}
-                    />
-                  ) : null}
-                  {item.title === 'NAKED FOX' ? (
-                    <Image
-                      source={require('../../assets/images/Beers/squre_naked_fox.png')}
-                    />
-                  ) : null}
-                  {item.title === 'GIMME SOME MO’' ? (
-                    <Image
-                      source={require('../../assets/images/Beers/squre_gimme_some_mo.png')}
-                    />
-                  ) : null}
-                  {item.title === 'MAIN STREET' ? (
-                    <Image
-                      source={require('../../assets/images/Beers/squre_main_street.png')}
-                    />
-                  ) : null}
-                  {item.title === 'WESTMINSTER' ? (
-                    <Image
-                      source={require('../../assets/images/Beers/squre_westminster.png')}
-                    />
-                  ) : null}
-                  {item.title === 'AUSTRALIAN SAISON' ? (
-                    <Image
-                      source={require('../../assets/images/Beers/squre_australian_saison.png')}
-                    />
-                  ) : null}
-                  {item.title === 'SLAUGHTERHOUSE' ? (
-                    <Image
-                      source={require('../../assets/images/Beers/squre_slaughterhouse.png')}
-                    />
-                  ) : null}
-
+                  <View style={styles.beerImg}>
+                    {item.title === 'FRUIT BOMB' ? (
+                      <Image
+                        source={require('../../assets/images/Beers/squre_fruit_bomb.png')}
+                      />
+                    ) : null}
+                    {item.title === 'NAKED FOX' ? (
+                      <Image
+                        source={require('../../assets/images/Beers/squre_naked_fox.png')}
+                      />
+                    ) : null}
+                    {item.title === 'GIMME SOME MO’' ? (
+                      <Image
+                        source={require('../../assets/images/Beers/squre_gimme_some_mo.png')}
+                      />
+                    ) : null}
+                    {item.title === 'MAIN STREET' ? (
+                      <Image
+                        source={require('../../assets/images/Beers/squre_main_street.png')}
+                      />
+                    ) : null}
+                    {item.title === 'WESTMINSTER' ? (
+                      <Image
+                        source={require('../../assets/images/Beers/squre_westminster.png')}
+                      />
+                    ) : null}
+                    {item.title === 'AUSTRALIAN SAISON' ? (
+                      <Image
+                        source={require('../../assets/images/Beers/squre_australian_saison.png')}
+                      />
+                    ) : null}
+                    {item.title === 'NUMBER SEVEN' ? (
+                      <Image
+                        source={require('../../assets/images/Beers/squre_slaughterhouse.png')}
+                      />
+                    ) : null}
+                  </View>
                   <Text style={styles.title}>{item.title}</Text>
                   <Text style={styles.subtitle}>{item.subtitle}</Text>
                 </View>
@@ -81,7 +79,7 @@ const AllBeers = props => {
               <View style={{ ...hr }} />
 
               <View style={styles.beerContainer}>
-                <View>
+                <View style={styles.infoSpacing}>
                   <Text style={{ ...Subtitle2, textTransform: 'capitalize' }}>
                     Style: {item.style}
                   </Text>
@@ -90,13 +88,14 @@ const AllBeers = props => {
                   </Text>
                 </View>
 
-                <View>
+                <View style={styles.infoSpacing}>
                   <Text style={{ ...Subtitle2 }}>ABV: {item.abv}%</Text>
                   <Text style={{ ...Subtitle2 }}>IBU: {item.ibu}</Text>
                 </View>
               </View>
 
               <View style={{ ...hr }} />
+              <Availability />
             </View>
           );
         }}

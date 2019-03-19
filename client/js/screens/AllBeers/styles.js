@@ -1,12 +1,15 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import {
   center,
+  colors,
   container,
-  row,
+  fonts,
   h1,
   h2,
+  row,
   Subtitle1,
-  Subtitle2
+  Subtitle2,
+  shadow1
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
@@ -20,17 +23,36 @@ const styles = StyleSheet.create({
     ...center
   },
 
-  title: { ...h1, ...center },
+  beerImg: {
+    ...shadow1
+  },
+  title: { ...h1, ...center, paddingBottom: 0 },
   subtitle: {
-    ...Subtitle1,
-    textTransform: 'capitalize'
+    color: colors.neutralDark,
+    fontSize: fonts.sm
   },
   beerContainer: {
     ...row,
     justifyContent: 'space-between',
-    padding: 20,
+
+    paddingLeft: 20,
+    paddingRight: 20,
     width: Dimensions.get('window').width * 0.7
   }
+
+  //   availability: {
+  //     color: colors.neutralDark,
+  //     fontFamily: fonts.primarySemi,
+  //     fontSize: fonts.sm,
+  //     paddingBottom: 10
+  //   },
+  //   availImg: {
+  //     resizeMode: 'contain',
+  //     marginRight: 5
+  //   },
+  //   availSize: {
+  //     fontSize: 12
+  //   }
 });
 
 export default styles;

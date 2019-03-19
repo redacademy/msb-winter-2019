@@ -6,7 +6,7 @@ import {
 import NavigationLayout from './BottomNavigationLayout';
 import DrawerNavigationLayout from './DrawerNavigationLayout';
 import BeerModal from '../screens/Beer';
-import EventsModal from '../screens/Events';
+import EventModal from '../screens/Event';
 import Login from '../screens/Login';
 import AuthLoading from '../components/AuthLoading';
 
@@ -14,7 +14,7 @@ const AppStack = createStackNavigator(
   {
     Layout: NavigationLayout,
     Beer: BeerModal,
-    Events: EventsModal
+    Event: EventModal
   },
   {
     headerMode: 'none',

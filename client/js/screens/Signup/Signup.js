@@ -37,7 +37,7 @@ class Signup extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { date: '2000-01-01' };
+    this.state = { date: '1990-01-01' };
   }
   render() {
     return (

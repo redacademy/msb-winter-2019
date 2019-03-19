@@ -26,10 +26,7 @@ class HomeContainer extends Component {
     return (
       <Query query={USER_QUERY} variables={{ id: this.state.viewerId }}>
         {({ loading, error, data }) => (
-          <Query
-            query={ALL_BEERS_QUERY}
-            variables={{ id: this.state.viewerId }}
-          >
+          <Query query={ALL_BEERS_QUERY}>
             {beersQuery => {
               const beersLoading = beersQuery.loading;
               const beersError = beersQuery.error;

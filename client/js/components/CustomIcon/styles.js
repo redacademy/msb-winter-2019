@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
-import { contain } from '../../config/styles';
+import { contain, margin } from '../../config/styles';
 
 const styles = StyleSheet.create({
   img: {
     ...contain,
-    width: 45
+    width: 40,
+    margin: margin.xs
   }
 });
 

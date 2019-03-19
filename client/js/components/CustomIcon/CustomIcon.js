@@ -1,6 +1,10 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 
-export default props => <Image {...props} style={[styles.img, props.style]} />;
+export default props => (
+  <TouchableOpacity {...props}>
+    <Image {...props} style={[styles.img, props.style]} />
+  </TouchableOpacity>
+);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
@@ -9,7 +9,7 @@ propTypes = {
 };
 
 export default props => (
-  <Text {...props} style={[styles.text, props.style]}>
-    {props.children}
-  </Text>
+  <TouchableOpacity {...props}>
+    <Image {...props} style={[styles.img, props.style]} />
+  </TouchableOpacity>
 );

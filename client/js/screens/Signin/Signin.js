@@ -1,35 +1,34 @@
 import React, { Fragment, Component } from 'react';
-import {
-  View,
-  Button,
-  TextInput,
-  TouchableOpacity,
-  ImageBackground,
-  Image
-} from 'react-native';
+import { View, TextInput, Image, TouchableHighlight } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { Form, Field } from 'react-final-form';
 import { graphql, compose } from 'react-apollo';
-import gql from 'graphql-tag';
+import { SIGNIN_MUTATION } from '../../apollo/queries';
 import PropTypes from 'prop-types';
 
+import Loader from '../../components/Loader';
 import CustomText from '../../components/CustomText';
 import WhiteButton from '../../components/Buttons/WhiteButton';
 import { setUserToken } from '../../config/models';
 import { colors } from '../../config/styles';
 import styles from './styles';
 
-const loginMutation = gql`
-  mutation($email: String!, $password: String!) {
-    authenticateUser(email: $email, password: $password) {
-      id
-      token
-    }
+class Signin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+      error: false
+    };
   }
-`;
 
-class Login extends Component {
   render() {
+    if (this.state.loading) {
+      return <Loader />;
+    }
+    if (this.state.error) {
+      return <CustomText>Error</CustomText>;
+    }
     return (
       <View style={styles.container}>
         <View style={styles.imgBgWrapper}>
@@ -90,10 +89,21 @@ class Login extends Component {
             <CustomText style={styles.signup}>
               New to Main Street Brewing?
             </CustomText>
-            <CustomText style={styles.signup}>
-              Click here to{' '}
-              <CustomText style={styles.signupLink}>sign up</CustomText> now!
-            </CustomText>
+            <View style={styles.signupLinkWrapper}>
+              <CustomText style={styles.signup}>Click here to</CustomText>
+              <TouchableHighlight
+                underlayColor={colors.neutralLight}
+                onPress={() => {
+                  this.props.navigation.navigate('Signup');
+                }}
+              >
+                <CustomText style={[styles.signup, styles.signupLink]}>
+                  {' '}
+                  sign up{' '}
+                </CustomText>
+              </TouchableHighlight>
+              <CustomText style={styles.signup}>now!</CustomText>
+            </View>
           </View>
         </View>
       </View>
@@ -103,21 +113,23 @@ class Login extends Component {
   onSubmit = async values => {
     try {
       const { email, password } = values;
-      const result = await this.props.loginMutation({
+      this.setState({ loading: true, error: false });
+      const result = await this.props.signinMutation({
         variables: { email, password }
       });
       const userInfo = result.data.authenticateUser;
       await setUserToken(userInfo.id, userInfo.token);
+      this.setState({ loading: false, error: false });
       this.props.navigation.navigate('App');
     } catch (e) {
-      console.log(e);
+      this.setState({ error: true, loading: false });
     }
   };
 }
 
-Login.propTypes = {};
+Signin.propTypes = {};
 
 export default compose(
-  graphql(loginMutation, { name: 'loginMutation' }),
+  graphql(SIGNIN_MUTATION, { name: 'signinMutation' }),
   withNavigation
-)(Login);
+)(Signin);

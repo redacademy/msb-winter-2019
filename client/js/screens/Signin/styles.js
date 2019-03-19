@@ -2,16 +2,14 @@ import { StyleSheet } from 'react-native';
 import {
   container,
   colors,
-  body1,
-  contain,
   center,
   pv0,
   padding,
   dimensions,
-  button,
-  margin
+  margin,
+  subtitle2,
+  iteCenterRow
 } from '../../config/styles';
-import { createMaterialTopTabNavigator } from 'react-navigation';
 
 const styles = StyleSheet.create({
   container: {
@@ -48,10 +46,9 @@ const styles = StyleSheet.create({
     width: dimensions.fullWidth * 0.35
   },
   signupWrapper: { ...center },
-  signup: { ...body1, color: colors.brand, ...pv0 },
+  signup: { ...subtitle2, color: colors.brand, ...pv0 },
+  signupLinkWrapper: { ...iteCenterRow },
   signupLink: {
-    ...body1,
-    color: colors.brand,
     fontStyle: 'italic',
     textDecorationLine: 'underline'
   }

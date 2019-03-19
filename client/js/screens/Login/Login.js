@@ -38,17 +38,12 @@ class Login extends Component {
             style={styles.imgBg}
           />
         </View>
-        {/* <ImageBackground
-          source={require('../../assets/images/Logos/msb_logo.png')}
-          style={styles.imgBg}
-        > */}
         <View style={styles.loginWrapper}>
           <Image
             source={require('../../assets/images/Logos/msb_logo_full.png')}
             style={styles.imgLogo}
           />
-
-          <View style={styles.loginFormWrapper}>
+          <View>
             <Form
               onSubmit={this.onSubmit}
               style={styles.loginForm}
@@ -79,11 +74,14 @@ class Login extends Component {
                       />
                     )}
                   </Field>
-                  <WhiteButton
-                    title='Sign in'
-                    onPress={handleSubmit}
-                    style={styles.signinBtn}
-                  />
+                  <View style={styles.signinWrapper}>
+                    <WhiteButton
+                      onPress={handleSubmit}
+                      style={styles.signinBtn}
+                    >
+                      Sign In
+                    </WhiteButton>
+                  </View>
                 </Fragment>
               )}
             />
@@ -98,7 +96,6 @@ class Login extends Component {
             </CustomText>
           </View>
         </View>
-        {/* </ImageBackground> */}
       </View>
     );
   }

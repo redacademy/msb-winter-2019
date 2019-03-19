@@ -11,6 +11,7 @@ import {
   button,
   margin
 } from '../../config/styles';
+import { createMaterialTopTabNavigator } from 'react-navigation';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,16 +26,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginVertical: margin.xl * 2
   },
-  loginFormWrapper: {
-    // justifyContent: 'space-around',
-    // marginVertical: margin.sm
-  },
   loginForm: {
     ...pv0
   },
   field: { color: colors.white },
   textInput: {
-    width: dimensions.fullWidth * 0.8,
+    width: dimensions.fullWidth * 0.75,
     marginVertical: margin.sm,
     paddingVertical: padding.sm,
     paddingHorizontal: padding.sm,
@@ -42,7 +39,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     color: colors.neutralDark
   },
-  signinBtn: { ...button },
+  signinWrapper: {
+    ...center,
+    marginTop: margin.sm
+  },
+  signinBtn: {
+    color: colors.black,
+    width: dimensions.fullWidth * 0.35
+  },
   signupWrapper: { ...center },
   signup: { ...body1, color: colors.brand, ...pv0 },
   signupLink: {

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { View, Button, TextInput, TouchableOpacity } from 'react-native';
+import { View, Button, TextInput, TouchableOpacity, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import { graphql, compose } from 'react-apollo';
@@ -42,6 +42,19 @@ class Signup extends React.Component {
           onSubmit={this.onSubmit}
           render={({ handleSubmit }) => (
             <Fragment>
+              <Text>Name</Text>
+              <Field name="name">
+                {({ input, meta }) => (
+                  <TextInput
+                    editable={true}
+                    autoCapitalize="none"
+                    {...input}
+                    style={styles.textInput}
+                    autoFocus={true}
+                  />
+                )}
+              </Field>
+              <Text>Email</Text>
               <Field name="email">
                 {({ input, meta }) => (
                   <TextInput
@@ -52,6 +65,7 @@ class Signup extends React.Component {
                   />
                 )}
               </Field>
+              <Text>Password</Text>
               <Field name="password">
                 {({ input, meta }) => (
                   <TextInput
@@ -63,7 +77,30 @@ class Signup extends React.Component {
                   />
                 )}
               </Field>
-              <Button title="Sign in!" onPress={handleSubmit} />
+              <Text>Confirm Password</Text>
+              <Field name="confirm-password">
+                {({ input, meta }) => (
+                  <TextInput
+                    editable={true}
+                    autoCapitalize="none"
+                    secureTextEntry={true}
+                    {...input}
+                    style={styles.textInput}
+                  />
+                )}
+              </Field>
+              <Text>Date of Birth (YYYY / MM / DD)</Text>
+              <Field name="dateOfBirth">
+                {({ input, meta }) => (
+                  <TextInput
+                    editable={true}
+                    autoCapitalize="none"
+                    {...input}
+                    style={styles.textInput}
+                  />
+                )}
+              </Field>
+              <Button title="Sign up!" onPress={handleSubmit} />
               <TouchableOpacity
                 style={{
                   backgroundColor: 'black',
@@ -87,7 +124,7 @@ class Signup extends React.Component {
     try {
       const { email, password } = values;
       const result = await this.props.signupMutation({
-        variables: { email, password }
+        variables: { email, password, dateOfBirth, name }
       });
       const userInfo = result.data.authenticateUser;
       await setUserToken(userInfo.id, userInfo.token);

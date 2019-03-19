@@ -43,7 +43,7 @@ export const ALL_EVENTS_QUERY = gql`
   }
 `;
 
-export const EVENTS_QUERY = gql`
+export const EVENT_QUERY = gql`
   query($id: ID!) {
     allEvents(filter: { id: $id }) {
       id
@@ -76,7 +76,7 @@ export const ALL_STORES_QUERY = gql`
   }
 `;
 
-export const STORES_QUERY = gql`
+export const STORE_QUERY = gql`
   query($id: ID!) {
     allStores(filter: { id: $id }) {
       id
@@ -100,7 +100,7 @@ export const ALL_REWARDS_QUERY = gql`
   }
 `;
 
-export const REWARDS_QUERY = gql`
+export const REWARD_QUERY = gql`
   query($id: ID!) {
     allRewards {
       id
@@ -132,7 +132,7 @@ export const USER_QUERY = gql`
 
 //----------------- MUTATIONS------------------>
 
-export const ADD_TO_USER_BEER = gql`
+export const ADD_TO_USER_BEERS = gql`
   mutation($favouriteBeersBeerId: ID!, $usersUserId: ID!) {
     addToUserBeer(
       favouriteBeersBeerId: $favouriteBeersBeerId

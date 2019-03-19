@@ -24,8 +24,8 @@ class BeerContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading</Text>;
           if (error) return <Text>{error.message}</Text>;
-          console.log('BEER', data.allBeers);
-          return <Beer beers={data.allBeers} />;
+          console.log('BEER', data.allBeers[0]);
+          return <Beer beers={data.allBeers[0]} />;
         }}
       </Query>
     );

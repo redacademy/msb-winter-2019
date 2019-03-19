@@ -1,13 +1,12 @@
 import React from 'react';
 import { View, Image, Linking } from 'react-native';
-import PropTypes from 'prop-types';
 
 import CustomText from '../../components/CustomText';
 import CustomIcon from '../../components/CustomIcon';
 import Subheader from '../../components/Subheader';
 import styles from './styles';
 
-const Contact = props => {
+const Contact = () => {
   return (
     <View style={styles.container}>
       <Subheader styles={styles.subheader}>Contact Us</Subheader>
@@ -72,7 +71,5 @@ const Contact = props => {
     </View>
   );
 };
-
-Contact.propTypes = {};
 
 export default Contact;

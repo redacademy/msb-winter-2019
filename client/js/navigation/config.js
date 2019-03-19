@@ -1,52 +1,37 @@
 import React from 'react';
-import { Header } from 'react-navigation';
-import { Image, View, Platform } from 'react-native';
+import { Image, Platform } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const MainHeader = props => (
-  <View
-    style={{
-      overflow: 'hidden',
-      backgroundColor: '#000',
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingLeft: 20,
-      paddingRight: 20
-    }}
-  >
-    <Header {...props} />
-    <View
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingBottom: 8,
-        width: '100%'
-      }}
-    >
-      <Ionicons
-        name={Platform.select({ android: 'md-menu', ios: 'ios-menu' })}
-        size={35}
-        color={'white'}
-        onPress={() => {
-          navigation.toggleDrawer();
-        }}
-      />
-      <Image
-        source={require('../assets/images/Logos/msb_logo_white.png')}
-        style={{ height: 40, width: 130 }}
-      />
-      <Image
-        source={require('../assets/images/Icons/notifications_icon_inactive.png')}
-        style={{ height: 50, width: 50 }}
-      />
-    </View>
-  </View>
-);
+import { colors } from '../config/styles';
 
 export const sharedNavigationOptions = navigation => ({
+  headerTitle: (
+    <Image
+      source={require('../assets/images/Logos/msb_logo_white.png')}
+      style={{ resizeMode: 'contain' }}
+    />
+  ),
   headerBackTitle: null,
-  header: props => <MainHeader {...props} />,
-
-  headerStyle: { backgroundColor: 'transparent' }
+  headerRight: (
+    <Image
+      source={require('../assets/images/Icons/notifications_icon_inactive.png')}
+      style={{ resizeMode: 'contain', marginRight: 10 }}
+    />
+  ),
+  headerLeft: () => (
+    <Ionicons
+      onPress={() => {
+        navigation.navigate('DrawerScreen');
+        navigation.toggleDrawer();
+      }}
+      name={Platform.select({ android: 'md-menu', ios: 'ios-menu' })}
+      size={35}
+      color={'white'}
+      style={{ marginLeft: 20 }}
+    />
+  ),
+  headerStyle: {
+    backgroundColor: colors.black,
+    height: 75
+  }
 });

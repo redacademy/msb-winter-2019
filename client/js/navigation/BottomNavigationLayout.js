@@ -12,12 +12,29 @@ import CardScreen from '../screens/Card';
 import EventsScreen from '../screens/AllEvents';
 import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
-import CardTab from '../components/CardTab';
-import HistoryTab from '../components/HistoryTab';
-import RewardsTab from '../components/RewardsTab';
-import { colors, dimensions, h3, underline, shadow2 } from '../config/styles';
+import BeerScreen from '../screens/Beer';
+import EventScreen from '../screens/Events';
+import ProfileScreen from '../screens/Profile';
+import FavBeersScreen from '../screens/FavBeers';
+import FavEventsScreen from '../screens/FavEvents';
+import ContactScreen from '../screens/Contact';
+import CardTab from '../components/Tabs/CardTab';
+import HistoryTab from '../components/Tabs/HistoryTab';
+import RewardsTab from '../components/Tabs/RewardsTab';
+import {
+  colors,
+  dimensions,
+  h3,
+  underline,
+  shadow2,
+  shadow3,
+  fonts,
+  padding,
+  contain,
+  margin
+} from '../config/styles';
 
-const TabScreens = createMaterialTopTabNavigator(
+const CardTabScreens = createMaterialTopTabNavigator(
   {
     Card: CardTab,
     History: HistoryTab,
@@ -31,8 +48,8 @@ const TabScreens = createMaterialTopTabNavigator(
         ...underline,
         borderBottomWidth: 3,
         backgroundColor: colors.brand,
-        marginBottom: 10,
-        marginLeft: 15,
+        marginBottom: margin.sm,
+        marginLeft: margin.sm * 1.5,
         maxWidth: dimensions.fullWidth / 3 - 30,
         width: '100%'
       },
@@ -41,7 +58,7 @@ const TabScreens = createMaterialTopTabNavigator(
         marginTop: 0
       },
       style: {
-        backgroundColor: 'white',
+        backgroundColor: colors.white,
         ...shadow2,
         height: 50
       }
@@ -52,7 +69,10 @@ const TabScreens = createMaterialTopTabNavigator(
 const HomeStack = createStackNavigator(
   {
     HomeScreen,
-    CardScreen
+    Profile: ProfileScreen,
+    FavBeers: FavBeersScreen,
+    Beer: BeerScreen,
+    Contact: ContactScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -72,7 +92,8 @@ const BeersStack = createStackNavigator(
 );
 const EventsStack = createStackNavigator(
   {
-    EventsScreen
+    EventsScreen,
+    FavEvents: FavEventsScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -90,10 +111,11 @@ const StoresStack = createStackNavigator(
     })
   }
 );
+
 const CardStack = createStackNavigator(
   {
     CardScreen,
-    TabScreens
+    CardTabScreens
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -112,7 +134,7 @@ export default createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      tabBarIcon: ({ focused }) => {
         const { routeName } = navigation.state;
 
         let icon;
@@ -138,7 +160,7 @@ export default createBottomTabNavigator(
             ? require('../assets/images/Navigation/stores_icon_active.png')
             : require('../assets/images/Navigation/stores_icon_inactive.png');
         }
-        return <Image source={icon} style={{ height: 30, width: 30 }} />;
+        return <Image source={icon} style={{ maxWidth: 32, ...contain }} />;
       }
     }),
 
@@ -146,14 +168,15 @@ export default createBottomTabNavigator(
       activeTintColor: colors.brand,
       inactiveTintColor: colors.black,
       labelStyle: {
-        fontSize: 12,
-        fontFamily: 'Verdana',
+        fontSize: fonts.xxxs,
+        fontFamily: fonts.primarySemi,
         lineHeight: 0
       },
       style: {
-        backgroundColor: '#fff',
-        height: 55,
-        paddingTop: 8
+        backgroundColor: colors.white,
+        height: 60,
+        paddingTop: padding.xxs,
+        ...shadow3
       }
     }
   }

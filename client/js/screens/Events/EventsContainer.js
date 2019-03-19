@@ -9,6 +9,10 @@ class EventsContainer extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    title: 'Events'
+  };
+
   render() {
     return <Events />;
   }

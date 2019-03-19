@@ -9,6 +9,10 @@ class FavEventsContainer extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    title: 'FavEvents'
+  };
+
   render() {
     return <FavEvents />;
   }

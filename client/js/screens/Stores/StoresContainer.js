@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import PropTypes from 'prop-types';
 
 import Stores from './Stores';
-import styles from './styles';
 
 class StoresContainer extends Component {
   constructor(props) {
     super(props);
   }
 
+  static navigationOptions = {
+    title: 'Stores'
+  };
+
   render() {
     return <Stores />;
   }
 }
+
+StoresContainer.propTypes = {
+  navigation: PropTypes.object
+};
 
 export default StoresContainer;

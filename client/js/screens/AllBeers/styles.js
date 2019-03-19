@@ -1,16 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import {
-  center,
-  colors,
-  container,
-  fonts,
-  h1,
-  h2,
-  row,
-  Subtitle1,
-  Subtitle2,
-  shadow1
-} from '../../config/styles';
+import { center, colors, fonts, h1, row, shadow1 } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -39,20 +28,6 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     width: Dimensions.get('window').width * 0.7
   }
-
-  //   availability: {
-  //     color: colors.neutralDark,
-  //     fontFamily: fonts.primarySemi,
-  //     fontSize: fonts.sm,
-  //     paddingBottom: 10
-  //   },
-  //   availImg: {
-  //     resizeMode: 'contain',
-  //     marginRight: 5
-  //   },
-  //   availSize: {
-  //     fontSize: 12
-  //   }
 });
 
 export default styles;

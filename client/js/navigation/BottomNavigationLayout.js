@@ -12,9 +12,9 @@ import CardScreen from '../screens/Card';
 import EventsScreen from '../screens/AllEvents';
 import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
-import CardTab from '../components/CardTab';
-import HistoryTab from '../components/HistoryTab';
-import RewardsTab from '../components/RewardsTab';
+import CardTab from '../components/Tabs/CardTab';
+import HistoryTab from '../components/Tabs/HistoryTab';
+import RewardsTab from '../components/Tabs/RewardsTab';
 import {
   colors,
   fonts,

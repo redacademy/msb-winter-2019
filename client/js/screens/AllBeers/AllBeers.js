@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 import Carousel from 'react-native-snap-carousel';
-import { hr, center, row, h2, Subtitle2 } from '../../config/styles';
+import { hr, center, Subtitle2 } from '../../config/styles';
 import Availability from '../../components/Availability/';
 
 const AllBeers = props => {

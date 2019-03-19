@@ -3,7 +3,7 @@ import { View, Text, Image } from 'react-native';
 import styles from './styles';
 import { center, row } from '../../config/styles';
 
-const Availability = props => {
+const Availability = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.availTitle}>Available In Store</Text>

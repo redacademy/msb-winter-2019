@@ -9,29 +9,13 @@ import {
 import moment from 'moment';
 import PropTypes from 'prop-types';
 
-import BeerCarousel from '../../components/BeerCarousel';
-import CustomText from '../../components/CustomText';
 import styles from './styles';
 import Carousel from 'react-native-snap-carousel';
-import {
-  hr,
-  center,
-  row,
-  h2,
-  h3,
-  Subtitle1,
-  Subtitle2,
-  Body1
-} from '../../config/styles';
+import { hr, center, row, h2, Subtitle1, Subtitle2 } from '../../config/styles';
 
 const AllBeers = props => {
   return (
-    <View
-      style={styles.container}
-      // onPress={() => {
-      //   this._carousel.snapToNext();
-      // }}
-    >
+    <View style={styles.container}>
       <Carousel
         ref={c => {
           this._carousel = c;
@@ -45,7 +29,8 @@ const AllBeers = props => {
               <TouchableHighlight
                 underlayColor={'transparent'}
                 onPress={() => {
-                  console.log('pressed!'); // @TODO navigate to Beer screen
+                  console.log('pressed!');
+                  // @TODO navigate to Beer screen
                 }}
               >
                 <>
@@ -58,6 +43,7 @@ const AllBeers = props => {
               </TouchableHighlight>
 
               <View style={{ ...hr }} />
+
               <View
                 style={{
                   width: Dimensions.get('window').width * 0.7,
@@ -67,12 +53,10 @@ const AllBeers = props => {
                 }}
               >
                 <View>
-                  <CustomText style={{ ...Subtitle2 }}>
-                    Style: {item.style}
-                  </CustomText>
-                  <CustomText style={{ ...Subtitle2 }}>
+                  <Text style={{ ...Subtitle2 }}>Style: {item.style}</Text>
+                  <Text style={{ ...Subtitle2 }}>
                     Released: {moment(item.releaseDate).format('MMM YY')}
-                  </CustomText>
+                  </Text>
                 </View>
 
                 <View>
@@ -80,6 +64,7 @@ const AllBeers = props => {
                   <Text style={{ ...Subtitle2 }}>IBU: {item.ibu}</Text>
                 </View>
               </View>
+
               <View style={{ ...hr }} />
             </View>
           );

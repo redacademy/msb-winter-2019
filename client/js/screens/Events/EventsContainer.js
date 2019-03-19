@@ -14,7 +14,15 @@ class EventsContainer extends Component {
   };
 
   render() {
-    return <Events />;
+    return (
+      <Query query={ALL_EVENTS_QUERY}>
+        {({ loading, error, data }) => {
+          if (loading) return <Text>Loading</Text>;
+          if (error) return <Text>{error.message}</Text>;
+          return <Events event={data.allEvents} />;
+        }}
+      </Query>
+    );
   }
 }
 

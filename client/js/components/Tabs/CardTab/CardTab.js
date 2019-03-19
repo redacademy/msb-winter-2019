@@ -15,7 +15,7 @@ const CardTab = () => (
           source={require('../../../assets/images/Card/your_card.png')}
           style={styles.card}
         />
-        <Barcode value='Test Card' format='CODE128' height={40} />
+        <Barcode value="Test Card" format="CODE128" height={40} />
       </View>
     </View>
   </ImageBackground>

@@ -10,6 +10,7 @@ import { sharedNavigationOptions } from './config';
 import BeersScreen from '../screens/AllBeers';
 import CardScreen from '../screens/Card';
 import EventsScreen from '../screens/AllEvents';
+import FavEventsScreen from '../screens/FavEvents';
 import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
 import CardTab from '../components/Tabs/CardTab';
@@ -20,8 +21,11 @@ import {
   fonts,
   dimensions,
   h3,
+  margin,
+  padding,
   underline,
-  shadow2
+  shadow2,
+  shadow3
 } from '../config/styles';
 
 const CardTabScreens = createMaterialTopTabNavigator(

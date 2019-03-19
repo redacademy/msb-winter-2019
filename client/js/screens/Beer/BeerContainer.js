@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import PropTypes from 'prop-types';
 
 import Beer from './Beer';
-import styles from './styles';
 
 class BeerContainer extends Component {
   constructor(props) {
@@ -10,12 +9,20 @@ class BeerContainer extends Component {
   }
 
   static navigationOptions = {
-    title: 'Beer'
+    title: 'Beer',
+    header: null
   };
 
   render() {
-    return <Beer />;
+    const { navigation } = this.props;
+    const beer = navigation.getParam('item');
+
+    return <Beer navigation={navigation} beer={beer} />;
   }
 }
+
+BeerContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default BeerContainer;

@@ -8,6 +8,7 @@ import { Image } from 'react-native';
 
 import { sharedNavigationOptions } from './config';
 import BeersScreen from '../screens/AllBeers';
+import BeerModal from '../screens/Beer';
 import CardScreen from '../screens/Card';
 import EventsScreen from '../screens/AllEvents';
 import FavEventsScreen from '../screens/FavEvents';
@@ -18,6 +19,7 @@ import HistoryTab from '../components/Tabs/HistoryTab';
 import RewardsTab from '../components/Tabs/RewardsTab';
 import {
   colors,
+  contain,
   fonts,
   dimensions,
   h3,
@@ -72,7 +74,8 @@ const HomeStack = createStackNavigator(
 );
 const BeersStack = createStackNavigator(
   {
-    BeersScreen
+    BeersScreen,
+    Beer: BeerModal
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

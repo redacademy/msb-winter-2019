@@ -3,9 +3,10 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
+import CarouselEvents from '../../components/CarouselEvents';
 
 const AllEvents = props => {
-  return <Text>This is AllEvents.</Text>;
+  return <Text> All the Events!! </Text>;
 };
 
 AllEvents.propTypes = {};

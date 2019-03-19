@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -16,8 +17,12 @@ class AllBeersContainer extends Component {
   };
 
   render() {
+    const { navigation } = this.props;
+    const id = navigation.getParam('id');
+
     return (
       <Query
+        variables={{ id: id }}
         query={gql`
           query allBeers($id: ID) {
             allBeers(filter: { id: $id }) {
@@ -38,11 +43,21 @@ class AllBeersContainer extends Component {
           if (error) return <Text>{`Error! ${error.message}`}</Text>;
           console.log('ERROR:', error);
 
-          return <AllBeers data={data} />;
+          return (
+            <AllBeers
+              data={data}
+              navigation={navigation}
+              item={navigation.getParam('item')}
+            />
+          );
         }}
       </Query>
     );
   }
 }
+
+AllBeersContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default AllBeersContainer;

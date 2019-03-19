@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { colors } from '../../config/styles';
+import { colors, fonts } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
     height: 150
   },
   loadingText: {
-    color: colors.white
+    color: colors.white,
+    fontFamily: fonts.primarySemi
   }
 });
 

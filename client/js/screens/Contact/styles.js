@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { container, h3 } from '../../config/styles';
+import { container, dimensions } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: { ...container, justifyContent: 'flex-start' }
-  // subheader: { ...h3 }
+  container: { ...container, justifyContent: 'flex-start' },
+  img: { width: dimensions.fullWidth }
 });
 
 export default styles;

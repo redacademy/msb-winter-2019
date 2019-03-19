@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import {
-  container,
   jusBetweenRow,
   padding,
   h3,
@@ -13,20 +12,6 @@ import {
 } from '../config/styles';
 
 const styles = StyleSheet.create({
-  container: {
-    ...container
-  },
-
-  heading: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  menuItem: {
-    padding: 10,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da'
-  },
   // DrawerScreen
   drawerContainer: { flex: 1 },
   drawerItemWrapper: {

@@ -42,6 +42,8 @@ class Signup extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        {this.state.loading && <Text>Loading</Text>}
+        {this.state.error && <Text>Error</Text>}
         <CustomText>This is Signup.</CustomText>
         <Form
           onSubmit={this.onSubmit}
@@ -99,7 +101,7 @@ class Signup extends React.Component {
                 {({ input, meta }) => (
                   <DatePicker
                     {...input}
-                    style={{ width: 200, marginLeft: 0 }}
+                    style={styles.datePicker}
                     date={this.state.date}
                     mode="date"
                     showIcon={false}
@@ -117,11 +119,7 @@ class Signup extends React.Component {
               </Field>
               <Button title="Sign up!" onPress={handleSubmit} />
               <TouchableOpacity
-                style={{
-                  color: 'black',
-                  height: 50,
-                  width: 50
-                }}
+                style={styles.authButton}
                 onPress={() => {
                   this.props.navigation.navigate('Login');
                 }}
@@ -139,15 +137,17 @@ class Signup extends React.Component {
     try {
       const { email, password, name } = values;
       const dateOfBirth = this.state.date;
-      console.log('EMAIL', email);
+      this.setState({ loading: true, error: false });
       const result = await this.props.signupMutation({
         variables: { email, password, dateOfBirth, name }
       });
+      this.setState({ loading: false });
       const userInfo = result.data.signupUser;
       await setUserToken(userInfo.id, userInfo.token);
       this.props.navigation.navigate('App');
     } catch (e) {
       console.log(e);
+      this.setState({ error: true, loading: false });
     }
   };
 }

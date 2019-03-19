@@ -11,6 +11,11 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     marginBottom: 5
+  },
+  datePicker: { width: '50%', marginLeft: 0 },
+  authButton: {
+    height: 50,
+    width: 50
   }
 });
 

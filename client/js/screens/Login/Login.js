@@ -23,6 +23,7 @@ class Login extends React.Component {
   static navigationOptions = {
     title: 'Please sign in'
   };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -67,10 +68,7 @@ class Login extends React.Component {
               </Field>
               <Button title="Sign in!" onPress={handleSubmit} />
               <TouchableOpacity
-                style={{
-                  height: 50,
-                  width: 50
-                }}
+                style={styles.authButton}
                 onPress={() => {
                   this.props.navigation.navigate('Signup');
                 }}
@@ -87,7 +85,7 @@ class Login extends React.Component {
   onSubmit = async values => {
     try {
       const { email, password } = values;
-      this.setState({ loading: true });
+      this.setState({ loading: true, error: false });
       const result = await this.props.loginMutation({
         variables: { email, password }
       });

@@ -32,67 +32,73 @@ class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ImageBackground
+        <View style={styles.imgBgWrapper}>
+          <Image
+            source={require('../../assets/images/Logos/msb_logo.png')}
+            style={styles.imgBg}
+          />
+        </View>
+        {/* <ImageBackground
           source={require('../../assets/images/Logos/msb_logo.png')}
           style={styles.imgBg}
-        >
-          <View style={styles.loginWrapper}>
-            <Image
-              source={require('../../assets/images/Logos/msb_logo_full.png')}
-              style={styles.imgLogo}
-            />
+        > */}
+        <View style={styles.loginWrapper}>
+          <Image
+            source={require('../../assets/images/Logos/msb_logo_full.png')}
+            style={styles.imgLogo}
+          />
 
-            <View style={styles.loginFormWrapper}>
-              <Form
-                onSubmit={this.onSubmit}
-                style={styles.loginForm}
-                render={({ handleSubmit }) => (
-                  <Fragment>
-                    <Field name='email'>
-                      {({ input, meta }) => (
-                        <TextInput
-                          editable={true}
-                          autoCapitalize='none'
-                          {...input}
-                          style={styles.textInput}
-                          placeholder='Email'
-                          placeholderTextColor={colors.neutralDark}
-                        />
-                      )}
-                    </Field>
-                    <Field name='password'>
-                      {({ input, meta }) => (
-                        <TextInput
-                          editable={true}
-                          autoCapitalize='none'
-                          secureTextEntry={true}
-                          {...input}
-                          style={styles.textInput}
-                          placeholder='Password'
-                          placeholderTextColor={colors.neutralDark}
-                        />
-                      )}
-                    </Field>
-                    <WhiteButton
-                      title='Sign in'
-                      onPress={handleSubmit}
-                      style={styles.signinBtn}
-                    />
-                  </Fragment>
-                )}
-              />
-            </View>
-            <View style={styles.signupWrapper}>
-              <CustomText style={styles.signup}>
-                New to Main Street Brewing?
-              </CustomText>
-              <CustomText style={styles.signup}>
-                Click here to{' '}
-                <CustomText style={styles.signupLink}>sign up</CustomText> now!
-              </CustomText>
-            </View>
+          <View style={styles.loginFormWrapper}>
+            <Form
+              onSubmit={this.onSubmit}
+              style={styles.loginForm}
+              render={({ handleSubmit }) => (
+                <Fragment>
+                  <Field name='email'>
+                    {({ input, meta }) => (
+                      <TextInput
+                        editable={true}
+                        autoCapitalize='none'
+                        {...input}
+                        style={styles.textInput}
+                        placeholder='Email'
+                        placeholderTextColor={colors.neutralDark}
+                      />
+                    )}
+                  </Field>
+                  <Field name='password'>
+                    {({ input, meta }) => (
+                      <TextInput
+                        editable={true}
+                        autoCapitalize='none'
+                        secureTextEntry={true}
+                        {...input}
+                        style={styles.textInput}
+                        placeholder='Password'
+                        placeholderTextColor={colors.neutralDark}
+                      />
+                    )}
+                  </Field>
+                  <WhiteButton
+                    title='Sign in'
+                    onPress={handleSubmit}
+                    style={styles.signinBtn}
+                  />
+                </Fragment>
+              )}
+            />
           </View>
-        </ImageBackground>
+          <View style={styles.signupWrapper}>
+            <CustomText style={styles.signup}>
+              New to Main Street Brewing?
+            </CustomText>
+            <CustomText style={styles.signup}>
+              Click here to{' '}
+              <CustomText style={styles.signupLink}>sign up</CustomText> now!
+            </CustomText>
+          </View>
+        </View>
+        {/* </ImageBackground> */}
       </View>
     );
   }

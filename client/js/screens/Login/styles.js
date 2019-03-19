@@ -13,8 +13,12 @@ import {
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: { ...container, backgroundColor: colors.black },
-  imgBg: { ...center, resizeMode: 'cover', height: '90%' },
+  container: {
+    ...container,
+    backgroundColor: colors.black
+  },
+  imgBgWrapper: { position: 'absolute' },
+  imgBg: { ...center },
   loginWrapper: {
     ...container,
     backgroundColor: 'transparent',
@@ -38,7 +42,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     color: colors.neutralDark
   },
-  signinBtn: { ...button, color: colors.black },
+  signinBtn: { ...button },
   signupWrapper: { ...center },
   signup: { ...body1, color: colors.brand, ...pv0 },
   signupLink: {

@@ -9,8 +9,20 @@ class EventsContainer extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    title: 'Events'
+  };
+
   render() {
-    return <Events />;
+    return (
+      <Query query={ALL_EVENTS_QUERY}>
+        {({ loading, error, data }) => {
+          if (loading) return <Text>Loading</Text>;
+          if (error) return <Text>{error.message}</Text>;
+          return <Events event={data.allEvents} />;
+        }}
+      </Query>
+    );
   }
 }
 

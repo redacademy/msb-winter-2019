@@ -3,15 +3,17 @@ import {
   createAppContainer,
   createSwitchNavigator
 } from 'react-navigation';
-import NavigationLayout from './BottomNavigationLayout';
+
+import DrawerNavigationLayout from './DrawerNavigationLayout';
 import BeerModal from '../screens/Beer';
 import EventsModal from '../screens/Events';
-import Login from '../screens/Login';
+import Signin from '../screens/Signin';
+import Signup from '../screens/Signup';
 import AuthLoading from '../components/AuthLoading';
 
 const AppStack = createStackNavigator(
   {
-    Layout: NavigationLayout,
+    DrawerNavigationLayout,
     Beer: BeerModal,
     Events: EventsModal
   },
@@ -20,9 +22,10 @@ const AppStack = createStackNavigator(
     mode: 'modal'
   }
 );
-const AuthStack = createStackNavigator({ Login: Login });
 
-export default createAppContainer(
+const AuthStack = createSwitchNavigator({ Signin, Signup });
+
+const RootStackNavigator = createAppContainer(
   createSwitchNavigator(
     {
       AuthLoading: AuthLoading,
@@ -34,3 +37,5 @@ export default createAppContainer(
     }
   )
 );
+
+export default RootStackNavigator;

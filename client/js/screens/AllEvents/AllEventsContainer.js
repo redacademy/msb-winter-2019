@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-
+import { View, Text } from 'react-native';
+import { ALL_EVENTS_QUERY } from '../../apollo/queries';
+import { Query } from 'react-apollo';
 import AllEvents from './AllEvents';
 import styles from './styles';
 
@@ -9,8 +10,20 @@ class AllEventsContainer extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    title: 'AllEvents'
+  };
+
   render() {
-    return <AllEvents />;
+    return (
+      <Query query={ALL_EVENTS_QUERY}>
+        {({ loading, error, data }) => {
+          if (loading) return <Text>Loading</Text>;
+          if (error) return <Text>{error.message}</Text>;
+          return <AllEvents events={data.allEvents} />;
+        }}
+      </Query>
+    );
   }
 }
 

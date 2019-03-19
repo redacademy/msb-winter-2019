@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import { Query } from "react-apollo";
 
 import Stores from "./Stores";
-import { ALL_STORES_QUERY } from "../../Queries/queries";
+import { ALL_STORES_QUERY } from "../../apollo/queries";
 import Loader from "../../components/Loader";
 import styles from "./styles";
 
@@ -14,11 +14,20 @@ class StoresContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
           if (error) return <Text>Error</Text>;
-          return <Stores stores={data.allStores} />;
+          return (
+            <Stores
+              stores={data.allStores}
+              navigation={this.props.navigation}
+            />
+          );
         }}
       </Query>
     );
   }
 }
+
+StoresContainer.propTypes = {
+  navigation: PropTypes.object
+};
 
 export default StoresContainer;

@@ -20,14 +20,7 @@ const Stores = ({ stores }) => {
             latitudeDelta: 0.004,
             longitudeDelta: 0.004
           }}
-          onRegionChange={}
-        >
-        {stores.map((store) =>(
-          <Marker 
-          coordinate={}
-          />
-        ))}
-        </MapView>
+        />
       </View>
       <View style={styles.listContainer}>
         <Text>This is Stores.</Text>

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { button, colors, fonts, padding } from '../../config/styles';
+import { button, colors, fonts, padding } from '../../../config/styles';
 
 const styles = StyleSheet.create({
   buttonWrapper: {

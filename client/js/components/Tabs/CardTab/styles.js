@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { container, center, shadow1, contain } from '../../config/styles';
+import { container, center, shadow1, contain } from '../../../config/styles';
 
 const styles = StyleSheet.create({
   container: { ...container, backgroundColor: 'transparent' },

@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 
-import CustomText from '../CustomText';
+import CustomText from '../../CustomText';
 import styles from './styles';
 
-const Button = props => {
+const BlackButton = props => {
   return (
     <TouchableOpacity {...props}>
       <View {...props} style={[styles.buttonWrapper, props.style]}>
@@ -16,4 +16,4 @@ const Button = props => {
   );
 };
 
-export default Button;
+export default BlackButton;

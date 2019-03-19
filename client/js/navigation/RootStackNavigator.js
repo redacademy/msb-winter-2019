@@ -3,7 +3,7 @@ import {
   createAppContainer,
   createSwitchNavigator
 } from 'react-navigation';
-import NavigationLayout from './BottomNavigationLayout';
+
 import DrawerNavigationLayout from './DrawerNavigationLayout';
 import BeerModal from '../screens/Beer';
 import EventModal from '../screens/Event';
@@ -12,7 +12,7 @@ import AuthLoading from '../components/AuthLoading';
 
 const AppStack = createStackNavigator(
   {
-    Layout: NavigationLayout,
+    DrawerNavigationLayout,
     Beer: BeerModal,
     Event: EventModal
   },
@@ -21,9 +21,10 @@ const AppStack = createStackNavigator(
     mode: 'modal'
   }
 );
+
 const AuthStack = createStackNavigator({ Login: Login });
 
-export default createAppContainer(
+const RootStackNavigator = createAppContainer(
   createSwitchNavigator(
     {
       AuthLoading: AuthLoading,
@@ -35,3 +36,5 @@ export default createAppContainer(
     }
   )
 );
+
+export default RootStackNavigator;

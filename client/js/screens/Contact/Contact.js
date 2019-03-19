@@ -5,7 +5,11 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const Contact = props => {
-  return <Text>This is Contact.</Text>;
+  return (
+    <View style={styles.container}>
+      <Text>This is Contact.</Text>
+    </View>
+  );
 };
 
 Contact.propTypes = {};

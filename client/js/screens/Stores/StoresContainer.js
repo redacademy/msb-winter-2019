@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-import { Image, View } from 'react-native';
+import PropTypes from 'prop-types';
 
 import Stores from './Stores';
-import styles from './styles';
 
 class StoresContainer extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   static navigationOptions = {
-    title: (
-      <Image source={require('../../assets/images/Logos/msb_logo_white.png')} />
-    ),
-    headerTintColor: '#fff'
-    // headerTitleStyle: { ...Header }
+    title: 'Stores'
   };
+
   render() {
     return <Stores />;
   }
 }
+
+StoresContainer.propTypes = {
+  navigation: PropTypes.object
+};
 
 export default StoresContainer;

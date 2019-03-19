@@ -6,6 +6,9 @@ import Home from './Home';
 import styles from './styles';
 
 class HomeContainer extends Component {
+  static navigationOptions = {
+    title: 'Home'
+  };
   render() {
     return <Home />;
   }

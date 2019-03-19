@@ -24,7 +24,7 @@ import {
   shadow2
 } from '../config/styles';
 
-const TabScreens = createMaterialTopTabNavigator(
+const CardTabScreens = createMaterialTopTabNavigator(
   {
     Card: CardTab,
     History: HistoryTab,
@@ -38,8 +38,8 @@ const TabScreens = createMaterialTopTabNavigator(
         ...underline,
         borderBottomWidth: 3,
         backgroundColor: colors.brand,
-        marginBottom: 10,
-        marginLeft: 15,
+        marginBottom: margin.sm,
+        marginLeft: margin.sm * 1.5,
         maxWidth: dimensions.fullWidth / 3 - 30,
         width: '100%'
       },
@@ -48,7 +48,7 @@ const TabScreens = createMaterialTopTabNavigator(
         marginTop: 0
       },
       style: {
-        backgroundColor: 'white',
+        backgroundColor: colors.white,
         ...shadow2,
         height: 50
       }
@@ -78,7 +78,8 @@ const BeersStack = createStackNavigator(
 );
 const EventsStack = createStackNavigator(
   {
-    EventsScreen
+    EventsScreen,
+    FavEvents: FavEventsScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -96,10 +97,11 @@ const StoresStack = createStackNavigator(
     })
   }
 );
+
 const CardStack = createStackNavigator(
   {
     CardScreen,
-    TabScreens
+    CardTabScreens
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -118,7 +120,7 @@ export default createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      tabBarIcon: ({ focused }) => {
         const { routeName } = navigation.state;
 
         let icon;
@@ -144,12 +146,7 @@ export default createBottomTabNavigator(
             ? require('../assets/images/Navigation/stores_icon_active.png')
             : require('../assets/images/Navigation/stores_icon_inactive.png');
         }
-        return (
-          <Image
-            source={icon}
-            style={{ maxWidth: 32, resizeMode: 'contain' }}
-          />
-        );
+        return <Image source={icon} style={{ maxWidth: 32, ...contain }} />;
       }
     }),
 
@@ -162,9 +159,10 @@ export default createBottomTabNavigator(
         lineHeight: 0
       },
       style: {
-        backgroundColor: '#fff',
+        backgroundColor: colors.white,
         height: 60,
-        paddingTop: 5
+        paddingTop: padding.xxs,
+        ...shadow3
       }
     }
   }

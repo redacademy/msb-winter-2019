@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Login from './Login';
+import { colors } from '../../config/styles';
 
 class LoginContainer extends Component {
   constructor(props) {
@@ -8,7 +9,11 @@ class LoginContainer extends Component {
   }
 
   static navigationOptions = {
-    title: 'Login'
+    title: 'Login',
+    headerStyle: {
+      backgroundColor: colors.black,
+      borderBottomWidth: 0
+    }
   };
 
   render() {

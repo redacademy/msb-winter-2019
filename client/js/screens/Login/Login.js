@@ -1,13 +1,22 @@
-import React, { Fragment } from 'react';
-import { View, Button, TextInput, TouchableOpacity } from 'react-native';
+import React, { Fragment, Component } from 'react';
+import {
+  View,
+  Button,
+  TextInput,
+  TouchableOpacity,
+  ImageBackground,
+  Image
+} from 'react-native';
 import { withNavigation } from 'react-navigation';
-import PropTypes from 'prop-types';
+import { Form, Field } from 'react-final-form';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
-import CustomText from '../../components/CustomText';
-import { setUserToken } from '../../config/models';
-import { Form, Field } from 'react-final-form';
+import PropTypes from 'prop-types';
 
+import CustomText from '../../components/CustomText';
+import WhiteButton from '../../components/Buttons/WhiteButton';
+import { setUserToken } from '../../config/models';
+import { colors } from '../../config/styles';
 import styles from './styles';
 
 const loginMutation = gql`
@@ -19,46 +28,71 @@ const loginMutation = gql`
   }
 `;
 
-class Login extends React.Component {
-  static navigationOptions = {
-    title: 'Please sign in'
-  };
-
+class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <CustomText>This is Login.</CustomText>
-        <Form
-          onSubmit={this.onSubmit}
-          render={({
-            handleSubmit
-          }) => (
-            <Fragment>
-              <Field name="email" >
-                {({ input, meta }) => (
-                  <TextInput
-                    editable={true}
-                    autoCapitalize="none"
-                    {...input}
-                    style={styles.textInput}
-                  />
+        <ImageBackground
+          source={require('../../assets/images/Logos/msb_logo.png')}
+          style={styles.imgBg}
+        >
+          <View style={styles.loginWrapper}>
+            <Image
+              source={require('../../assets/images/Logos/msb_logo_full.png')}
+              style={styles.imgLogo}
+            />
+
+            <View style={styles.loginFormWrapper}>
+              <Form
+                onSubmit={this.onSubmit}
+                style={styles.loginForm}
+                render={({ handleSubmit }) => (
+                  <Fragment>
+                    <Field name='email'>
+                      {({ input, meta }) => (
+                        <TextInput
+                          editable={true}
+                          autoCapitalize='none'
+                          {...input}
+                          style={styles.textInput}
+                          placeholder='Email'
+                          placeholderTextColor={colors.neutralDark}
+                        />
+                      )}
+                    </Field>
+                    <Field name='password'>
+                      {({ input, meta }) => (
+                        <TextInput
+                          editable={true}
+                          autoCapitalize='none'
+                          secureTextEntry={true}
+                          {...input}
+                          style={styles.textInput}
+                          placeholder='Password'
+                          placeholderTextColor={colors.neutralDark}
+                        />
+                      )}
+                    </Field>
+                    <WhiteButton
+                      title='Sign in'
+                      onPress={handleSubmit}
+                      style={styles.signinBtn}
+                    />
+                  </Fragment>
                 )}
-              </Field>
-              <Field name="password" >
-              {({ input, meta }) => (
-                <TextInput
-                  editable={true}
-                  autoCapitalize="none"
-                  secureTextEntry={true}
-                  {...input}
-                  style={styles.textInput}
-                />
-              )}
-              </Field>
-              <Button title="Sign in!" onPress={handleSubmit} />
-            </Fragment>
-          )}
-        />
+              />
+            </View>
+            <View style={styles.signupWrapper}>
+              <CustomText style={styles.signup}>
+                New to Main Street Brewing?
+              </CustomText>
+              <CustomText style={styles.signup}>
+                Click here to{' '}
+                <CustomText style={styles.signupLink}>sign up</CustomText> now!
+              </CustomText>
+            </View>
+          </View>
+        </ImageBackground>
       </View>
     );
   }

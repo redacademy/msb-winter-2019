@@ -1,16 +1,51 @@
-import { StyleSheet } from "react-native";
-import { container, body1 } from "../../config/styles";
+import { StyleSheet } from 'react-native';
+import {
+  container,
+  colors,
+  body1,
+  contain,
+  center,
+  pv0,
+  padding,
+  dimensions,
+  button,
+  margin
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: { ...container },
+  container: { ...container, backgroundColor: colors.black },
+  imgBg: { ...center, resizeMode: 'cover', height: '90%' },
+  loginWrapper: {
+    ...container,
+    backgroundColor: 'transparent',
+    justifyContent: 'space-around',
+    marginVertical: margin.xl * 2
+  },
+  loginFormWrapper: {
+    // justifyContent: 'space-around',
+    // marginVertical: margin.sm
+  },
+  loginForm: {
+    ...pv0
+  },
+  field: { color: colors.white },
   textInput: {
-    width: "50%",
-    paddingVertical: 7,
-    paddingHorizontal: 7,
-    borderRadius: 4,
-    borderColor: "black",
+    width: dimensions.fullWidth * 0.8,
+    marginVertical: margin.sm,
+    paddingVertical: padding.sm,
+    paddingHorizontal: padding.sm,
+    borderColor: colors.white,
     borderWidth: 1,
-    marginBottom: 5
+    color: colors.neutralDark
+  },
+  signinBtn: { ...button, color: colors.black },
+  signupWrapper: { ...center },
+  signup: { ...body1, color: colors.brand, ...pv0 },
+  signupLink: {
+    ...body1,
+    color: colors.brand,
+    fontStyle: 'italic',
+    textDecorationLine: 'underline'
   }
 });
 

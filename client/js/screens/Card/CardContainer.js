@@ -35,7 +35,6 @@ class CardContainer extends Component {
               const rewardsData = rewardsQuery.data;
               if (loading || rewardsLoading) return <Text>Loading</Text>;
               if (error || rewardsError) return <Text>Error</Text>;
-              console.log('CARD', data.allUsers[0], rewardsData.allRewards);
               return (
                 <Card
                   navigation={this.props.navigation}

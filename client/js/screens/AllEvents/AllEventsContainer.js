@@ -20,7 +20,6 @@ class AllEventsContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading</Text>;
           if (error) return <Text>{error.message}</Text>;
-          console.log('EVENTS', data.allEvents);
           return <AllEvents events={data.allEvents} />;
         }}
       </Query>

@@ -27,7 +27,6 @@ class FavBeersContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading</Text>;
           if (error) return <Text>{error.message}</Text>;
-          console.log('FAV BEERS', data.allUsers[0].favouriteBeers);
           return <FavBeers user={data.allUsers[0].favouriteBeers} />;
         }}
       </Query>

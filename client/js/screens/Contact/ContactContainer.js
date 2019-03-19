@@ -21,7 +21,6 @@ class ContactContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading</Text>;
           if (error) return <Text>{error.message}</Text>;
-          console.log('CONTACT', data.allStores[0]);
           return <Contact store={data.allStores[0]} />;
         }}
       </Query>

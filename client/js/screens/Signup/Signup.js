@@ -135,7 +135,6 @@ class Signup extends React.Component {
 
   onSubmit = async values => {
     try {
-      console.log('VALUES', values);
       const { email, password, name } = values;
       const dateOfBirth = this.state.date;
       this.setState({ loading: true, error: false });
@@ -147,7 +146,6 @@ class Signup extends React.Component {
       await setUserToken(userInfo.id, userInfo.token);
       this.props.navigation.navigate('App');
     } catch (e) {
-      console.log(e);
       this.setState({ error: true, loading: false });
     }
   };

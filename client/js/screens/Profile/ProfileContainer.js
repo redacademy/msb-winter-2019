@@ -27,7 +27,6 @@ class ProfileContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading</Text>;
           if (error) return <Text>{error.message}</Text>;
-          console.log('PROFILE', data.allUsers[0]);
           return <Profile user={data.allUsers[0]} />;
         }}
       </Query>

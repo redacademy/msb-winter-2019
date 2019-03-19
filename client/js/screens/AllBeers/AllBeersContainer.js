@@ -20,7 +20,6 @@ class AllBeersContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading</Text>;
           if (error) return <Text>{error.message}</Text>;
-          console.log('BEERS', data.allBeers);
           return <AllBeers beers={data.allBeers} />;
         }}
       </Query>

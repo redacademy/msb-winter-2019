@@ -84,7 +84,6 @@ class Login extends React.Component {
 
   onSubmit = async values => {
     try {
-      console.log('LOGIN VALUES', values);
       const { email, password } = values;
       this.setState({ loading: true, error: false });
       const result = await this.props.loginMutation({
@@ -95,7 +94,6 @@ class Login extends React.Component {
       await setUserToken(userInfo.id, userInfo.token);
       this.props.navigation.navigate('App');
     } catch (e) {
-      console.log(e);
       this.setState({ error: true, loading: false });
     }
   };

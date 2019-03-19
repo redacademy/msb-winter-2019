@@ -19,7 +19,6 @@ class EventsContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading</Text>;
           if (error) return <Text>{error.message}</Text>;
-          console.log('EVENT', data.allEvents);
           return <Events event={data.allEvents} />;
         }}
       </Query>

@@ -36,7 +36,6 @@ class HomeContainer extends Component {
               const beersData = beersQuery.data;
               if (loading || beersLoading) return <Text>Loading</Text>;
               if (error || beersError) return <Text>Error</Text>;
-              console.log('HOME', data.allUsers[0], beersData.allBeers);
               return (
                 <Home user={data.allUsers[0]} beers={beersData.allBeers} />
               );

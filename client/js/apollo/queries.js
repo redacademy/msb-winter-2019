@@ -111,8 +111,8 @@ export const REWARD_QUERY = gql`
 `;
 
 export const USER_QUERY = gql`
-  query($id: ID!) {
-    User {
+  query($id: ID) {
+    allUsers(filter: { id: $id }) {
       id
       email
       dateOfBirth

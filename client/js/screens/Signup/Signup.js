@@ -7,6 +7,7 @@ import gql from 'graphql-tag';
 import CustomText from '../../components/CustomText';
 import { setUserToken } from '../../config/models';
 import { Form, Field } from 'react-final-form';
+import DatePicker from 'react-native-datepicker';
 
 import styles from './styles';
 
@@ -34,6 +35,10 @@ class Signup extends React.Component {
     title: 'Please sign up'
   };
 
+  constructor(props) {
+    super(props);
+    this.state = { date: '2000-01-01' };
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -92,27 +97,37 @@ class Signup extends React.Component {
               <Text>Date of Birth (YYYY / MM / DD)</Text>
               <Field name="dateOfBirth">
                 {({ input, meta }) => (
-                  <TextInput
-                    editable={true}
-                    autoCapitalize="none"
+                  <DatePicker
                     {...input}
-                    style={styles.textInput}
+                    style={{ width: 200, marginLeft: 0 }}
+                    date={this.state.date}
+                    mode="date"
+                    showIcon={false}
+                    placeholder="select date"
+                    format="YYYY-MM-DD"
+                    minDate="1920-01-01"
+                    maxDate="2040-01-01"
+                    confirmBtnText="Confirm"
+                    cancelBtnText="Cancel"
+                    onDateChange={date => {
+                      this.setState({ date: date });
+                    }}
                   />
                 )}
               </Field>
               <Button title="Sign up!" onPress={handleSubmit} />
               <TouchableOpacity
                 style={{
-                  backgroundColor: 'black',
-                  color: 'yellow',
+                  color: 'black',
                   height: 50,
                   width: 50
                 }}
-                title="back to login"
                 onPress={() => {
                   this.props.navigation.navigate('Login');
                 }}
-              />
+              >
+                <Text>back to login</Text>
+              </TouchableOpacity>
             </Fragment>
           )}
         />
@@ -122,11 +137,13 @@ class Signup extends React.Component {
 
   onSubmit = async values => {
     try {
-      const { email, password } = values;
+      const { email, password, name } = values;
+      const dateOfBirth = this.state.date;
+      console.log('EMAIL', email);
       const result = await this.props.signupMutation({
         variables: { email, password, dateOfBirth, name }
       });
-      const userInfo = result.data.authenticateUser;
+      const userInfo = result.data.signupUser;
       await setUserToken(userInfo.id, userInfo.token);
       this.props.navigation.navigate('App');
     } catch (e) {

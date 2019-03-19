@@ -68,16 +68,15 @@ class Login extends React.Component {
               <Button title="Sign in!" onPress={handleSubmit} />
               <TouchableOpacity
                 style={{
-                  backgroundColor: 'black',
-                  color: 'yellow',
                   height: 50,
                   width: 50
                 }}
-                title="sign up"
                 onPress={() => {
                   this.props.navigation.navigate('Signup');
                 }}
-              />
+              >
+                <Text>sign up</Text>
+              </TouchableOpacity>
             </Fragment>
           )}
         />

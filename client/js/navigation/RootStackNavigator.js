@@ -7,7 +7,8 @@ import {
 import DrawerNavigationLayout from './DrawerNavigationLayout';
 import BeerModal from '../screens/Beer';
 import EventModal from '../screens/Event';
-import Login from '../screens/Login';
+import Signin from '../screens/Signin';
+import Signup from '../screens/Signup';
 import AuthLoading from '../components/AuthLoading';
 
 const AppStack = createStackNavigator(
@@ -22,7 +23,7 @@ const AppStack = createStackNavigator(
   }
 );
 
-const AuthStack = createStackNavigator({ Login: Login });
+const AuthStack = createSwitchNavigator({ Signin, Signup });
 
 const RootStackNavigator = createAppContainer(
   createSwitchNavigator(

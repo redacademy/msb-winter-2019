@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 
+import { ALL_BEERS_QUERY } from '../../apollo/queries';
 import AllBeers from './AllBeers';
-import Loader from '../../components/Loader';
 
 class AllBeersContainer extends Component {
   constructor(props) {
@@ -17,45 +16,21 @@ class AllBeersContainer extends Component {
   };
 
   render() {
-    const { navigation } = this.props;
-    const id = navigation.getParam('id');
-
     return (
-      <Query
-        variables={{ id: id }}
-        query={gql`
-          query allBeers($id: ID) {
-            allBeers(filter: { id: $id }) {
-              id
-              title
-              subtitle
-              description
-              style
-              ibu
-              abv
-              releaseDate
-            }
-          }
-        `}
-      >
+      <Query query={ALL_BEERS_QUERY}>
         {({ loading, error, data }) => {
-          if (loading) return <Loader />;
-          if (error) return <Text>{`Error! ${error.message}`}</Text>;
-          console.log('ERROR:', error);
-
-          return (
-            <AllBeers
-              data={data}
-              navigation={navigation}
-              item={navigation.getParam('item')}
-            />
-          );
+          if (loading) return <Text>Loading</Text>;
+          if (error) return <Text>{error.message}</Text>;
+          return <AllBeers beers={data.allBeers} />;
         }}
       </Query>
     );
   }
 }
-
+{
+  /* <AllBeers data={data} navigation={navigation} item={navigation.getParam('item')}
+/> */
+}
 AllBeersContainer.propTypes = {
   navigation: PropTypes.object.isRequired
 };

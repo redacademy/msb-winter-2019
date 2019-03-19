@@ -9,6 +9,7 @@ import Availability from '../../components/Availability';
 import CarouselBeer from '../../components/CarouselBeer';
 
 const AllBeers = props => {
+  console.log('$$$$$$$', props);
   return (
     <View style={styles.container}>
       <CarouselBeer beers={props.data} />

@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const BEER_QUERY = gql`
   query($id: ID) {
@@ -21,25 +21,29 @@ export const BEER_QUERY = gql`
 `;
 
 export const ALL_BEERS_QUERY = gql`
-  query allBeers {
-    id
-    title
-    subtitle
+  query {
+    allBeers {
+      id
+      title
+      subtitle
+    }
   }
 `;
 
 export const ALL_EVENTS_QUERY = gql`
-  query allEvents {
-    id
-    date
-    title
-    subtitle
-    location
-    time
+  query {
+    allEvents {
+      id
+      date
+      title
+      subtitle
+      location
+      time
+    }
   }
 `;
 
-export const EVENTS_QUERY = gql`
+export const EVENT_QUERY = gql`
   query($id: ID!) {
     allEvents(filter: { id: $id }) {
       id
@@ -59,18 +63,20 @@ export const EVENTS_QUERY = gql`
 `;
 
 export const ALL_STORES_QUERY = gql`
-  query allStores {
-    id
-    name
-    long
-    lat
-    phone
-    hours
-    address
+  query {
+    allStores {
+      id
+      name
+      long
+      lat
+      phone
+      hours
+      address
+    }
   }
 `;
 
-export const STORES_QUERY = gql`
+export const STORE_QUERY = gql`
   query($id: ID!) {
     allStores(filter: { id: $id }) {
       id
@@ -85,14 +91,16 @@ export const STORES_QUERY = gql`
 `;
 
 export const ALL_REWARDS_QUERY = gql`
-  query allRewards {
-    id
-    title
-    points
+  query {
+    allRewards {
+      id
+      title
+      points
+    }
   }
 `;
 
-export const REWARDS_QUERY = gql`
+export const REWARD_QUERY = gql`
   query($id: ID!) {
     allRewards {
       id
@@ -103,8 +111,8 @@ export const REWARDS_QUERY = gql`
 `;
 
 export const USER_QUERY = gql`
-  query($id: ID!) {
-    User {
+  query($id: ID) {
+    allUsers(filter: { id: $id }) {
       id
       email
       dateOfBirth
@@ -124,7 +132,7 @@ export const USER_QUERY = gql`
 
 //----------------- MUTATIONS------------------>
 
-export const ADD_TO_USER_BEER = gql`
+export const ADD_TO_USER_BEERS = gql`
   mutation($favouriteBeersBeerId: ID!, $usersUserId: ID!) {
     addToUserBeer(
       favouriteBeersBeerId: $favouriteBeersBeerId
@@ -248,6 +256,15 @@ export const SIGNUP_MUTATION = gql`
       dateOfBirth: $dateOfBirth
       name: $name
     ) {
+      id
+      token
+    }
+  }
+`;
+
+export const SIGNIN_MUTATION = gql`
+  mutation($email: String!, $password: String!) {
+    authenticateUser(email: $email, password: $password) {
       id
       token
     }

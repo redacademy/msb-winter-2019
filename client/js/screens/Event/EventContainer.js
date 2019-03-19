@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 
 import Event from './Event';
-import styles from './styles';
 
 class EventContainer extends Component {
   constructor(props) {
@@ -10,11 +9,19 @@ class EventContainer extends Component {
   }
 
   static navigationOptions = {
-    title: 'Events'
+    title: 'Event'
   };
 
   render() {
-    return <Event />;
+    return (
+      <Query query={ALL_EVENTS_QUERY}>
+        {({ loading, error, data }) => {
+          if (loading) return <Text>Loading</Text>;
+          if (error) return <Text>{error.message}</Text>;
+          return <Event event={data.allEvents} />;
+        }}
+      </Query>
+    );
   }
 }
 

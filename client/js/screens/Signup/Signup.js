@@ -1,34 +1,15 @@
 import React, { Fragment } from 'react';
 import { View, Button, TextInput, TouchableOpacity, Text } from 'react-native';
-import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import { graphql, compose } from 'react-apollo';
-import gql from 'graphql-tag';
 import CustomText from '../../components/CustomText';
 import { setUserToken } from '../../config/models';
 import { Form, Field } from 'react-final-form';
 import DatePicker from 'react-native-datepicker';
-
+import { withNavigation } from 'react-navigation';
 import styles from './styles';
-
-const signupMutation = gql`
-  mutation(
-    $email: String!
-    $password: String!
-    $dateOfBirth: DateTime!
-    $name: String!
-  ) {
-    signupUser(
-      email: $email
-      password: $password
-      dateOfBirth: $dateOfBirth
-      name: $name
-    ) {
-      id
-      token
-    }
-  }
-`;
+import { SIGNUP_MUTATION } from '../../apollo/queries';
+import Loader from '../../components/Loader';
 
 class Signup extends React.Component {
   static navigationOptions = {
@@ -37,13 +18,21 @@ class Signup extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { date: '1990-01-01' };
+    this.state = {
+      date: '1990-01-01',
+      loading: false,
+      error: false
+    };
   }
   render() {
+    if (this.state.loading) {
+      return <Loader />;
+    }
+    if (this.state.error) {
+      return <Text>Error</Text>;
+    }
     return (
       <View style={styles.container}>
-        {this.state.loading && <Text>Loading</Text>}
-        {this.state.error && <Text>Error</Text>}
         <CustomText>This is Signup.</CustomText>
         <Form
           onSubmit={this.onSubmit}
@@ -117,11 +106,11 @@ class Signup extends React.Component {
                   />
                 )}
               </Field>
-              <Button title="Sign up!" onPress={handleSubmit} />
+              <Button title="Sign up!" onPress={() => handleSubmit()} />
               <TouchableOpacity
                 style={styles.authButton}
                 onPress={() => {
-                  this.props.navigation.navigate('Login');
+                  this.props.navigation.navigate('Signin');
                 }}
               >
                 <Text>back to login</Text>
@@ -141,12 +130,12 @@ class Signup extends React.Component {
       const result = await this.props.signupMutation({
         variables: { email, password, dateOfBirth, name }
       });
-      this.setState({ loading: false });
       const userInfo = result.data.signupUser;
       await setUserToken(userInfo.id, userInfo.token);
+      this.setState({ loading: false, error: false });
       this.props.navigation.navigate('App');
     } catch (e) {
-      this.setState({ error: true, loading: false });
+      cthis.setState({ error: true, loading: false });
     }
   };
 }
@@ -154,6 +143,6 @@ class Signup extends React.Component {
 Signup.propTypes = {};
 
 export default compose(
-  graphql(signupMutation, { name: 'signupMutation' }),
+  graphql(SIGNUP_MUTATION, { name: 'signupMutation' }),
   withNavigation
 )(Signup);

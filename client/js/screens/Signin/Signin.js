@@ -3,23 +3,14 @@ import { View, Button, TextInput, TouchableOpacity, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import { graphql, compose } from 'react-apollo';
-import gql from 'graphql-tag';
 import CustomText from '../../components/CustomText';
 import { setUserToken } from '../../config/models';
 import { Form, Field } from 'react-final-form';
-
+import Loader from '../../components/Loader';
 import styles from './styles';
+import { SIGNIN_MUTATION } from '../../apollo/queries';
 
-const loginMutation = gql`
-  mutation($email: String!, $password: String!) {
-    authenticateUser(email: $email, password: $password) {
-      id
-      token
-    }
-  }
-`;
-
-class Login extends React.Component {
+class Signin extends React.Component {
   static navigationOptions = {
     title: 'Please sign in'
   };
@@ -33,11 +24,15 @@ class Login extends React.Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return <Loader />;
+    }
+    if (this.state.error) {
+      return <Text>Error</Text>;
+    }
     return (
       <View style={styles.container}>
-        {this.state.loading && <Text>Loading</Text>}
-        {this.state.error && <Text>Error</Text>}
-        <CustomText>This is Login.</CustomText>
+        <CustomText>This is Signin.</CustomText>
         <Form
           onSubmit={this.onSubmit}
           render={({ handleSubmit }) => (
@@ -86,12 +81,12 @@ class Login extends React.Component {
     try {
       const { email, password } = values;
       this.setState({ loading: true, error: false });
-      const result = await this.props.loginMutation({
+      const result = await this.props.signinMutation({
         variables: { email, password }
       });
-      this.setState({ loading: false });
       const userInfo = result.data.authenticateUser;
       await setUserToken(userInfo.id, userInfo.token);
+      this.setState({ loading: false, error: false });
       this.props.navigation.navigate('App');
     } catch (e) {
       this.setState({ error: true, loading: false });
@@ -99,9 +94,9 @@ class Login extends React.Component {
   };
 }
 
-Login.propTypes = {};
+Signin.propTypes = {};
 
 export default compose(
-  graphql(loginMutation, { name: 'loginMutation' }),
+  graphql(SIGNIN_MUTATION, { name: 'signinMutation' }),
   withNavigation
-)(Login);
+)(Signin);

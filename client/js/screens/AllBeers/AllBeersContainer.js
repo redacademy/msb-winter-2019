@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import AllBeers from './AllBeers';
-import AuthLoading from '../../components/AuthLoading';
+import Loader from '../../components/Loader';
 import styles from './styles';
 
 class AllBeersContainer extends Component {
@@ -31,7 +31,7 @@ class AllBeersContainer extends Component {
         `}
       >
         {({ loading, error, data }) => {
-          if (loading) return <AuthLoading />;
+          if (loading) return <Loader />;
           if (error) return <Text>{`Error! ${error.message}`}</Text>;
           console.log('ERROR:', error);
 

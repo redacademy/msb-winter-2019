@@ -15,7 +15,7 @@ export class BeerCarousel extends Component {
   }
 
   render() {
-    console.log('hihhihihi');
+    console.log('&&&&&&&&&&&&&&&&&');
     return (
       <View>
         <Text>WHATSUPPPPPP</Text>

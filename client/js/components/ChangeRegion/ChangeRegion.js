@@ -73,11 +73,9 @@ class ChangeRegion extends Component {
                     this.setState({ region: newRegion });
                   }}
                 >
-                  <View>
-                    <Text>{store.name}</Text>
-                    <Text>{store.address}</Text>
-                    <Text>{store.hours}</Text>
-                  </View>
+                  <Text style={styles.bold}>{store.name}</Text>
+                  <Text style={styles.description}>{store.address}</Text>
+                  <Text style={styles.bold}>{store.hours}</Text>
                 </TouchableOpacity>
               </View>
             );

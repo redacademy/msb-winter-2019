@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { fonts, colors, margin } from "../../config/styles";
 
 const styles = StyleSheet.create({
   container: {
@@ -20,7 +21,21 @@ const styles = StyleSheet.create({
   storeItem: {
     height: 100,
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
+    marginLeft: margin.md,
+    marginRight: margin.md,
+    borderBottomWidth: 2,
+    borderBottomColor: colors.neutralLight
+  },
+  bold: {
+    fontFamily: fonts.primaryBold,
+    lineHeight: 30,
+    fontSize: fonts.xs
+  },
+  description: {
+    fontFamily: fonts.primary,
+    fontSize: fonts.sm,
+    color: colors.neutralDark
   }
 });
 

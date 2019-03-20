@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -48,6 +49,7 @@
 		456793DD1745436B95F38DEF /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9666912F04884C2D9DC2BC79 /* OpenSans-Italic.ttf */; };
 		483146E96E9845508CDF2292 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D5D9A6D38A64317825D1963 /* OpenSans-SemiBoldItalic.ttf */; };
 		5167900320BE4F959BE8E0D4 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB706452946C40F6931267A3 /* Feather.ttf */; };
+		5A96AB3BCD72292B9DA97824 /* libPods-MSBwinter2019.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA04CCFC9F60F7016FBF110 /* libPods-MSBwinter2019.a */; };
 		5F7BDC0A10CD439C91EF54FF /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09A55302A15C420784664D40 /* OpenSans-LightItalic.ttf */; };
 		65E86F041BB1468DB131A50F /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4175BA48DC2D4B63B34B7E0D /* OpenSans-ExtraBoldItalic.ttf */; };
 		670E1B41B29C4DA1AF88A147 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4BCDF96FAE4744628A90C2A1 /* MaterialCommunityIcons.ttf */; };
@@ -399,6 +401,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		002334D02A63EB82918A6877 /* Pods-MSBwinter2019.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSBwinter2019.debug.xcconfig"; path = "Target Support Files/Pods-MSBwinter2019/Pods-MSBwinter2019.debug.xcconfig"; sourceTree = "<group>"; };
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
 		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
@@ -494,6 +497,7 @@
 				8685B9A9A71D4213A16211AF /* libRNGestureHandler.a in Frameworks */,
 				6C3C0BEC26EA43AF94DDCECE /* libRNVectorIcons.a in Frameworks */,
 				EE7C94598F0A403589163C89 /* libRNReanimated.a in Frameworks */,
+				5A96AB3BCD72292B9DA97824 /* libPods-MSBwinter2019.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,8 +723,19 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				BBA04CCFC9F60F7016FBF110 /* libPods-MSBwinter2019.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4349A99FC5059ED41061AB33 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				002334D02A63EB82918A6877 /* Pods-MSBwinter2019.debug.xcconfig */,
+				48DE80BC6243C14D4C9BC45C /* Pods-MSBwinter2019.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -782,6 +797,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				152A3378237047EAA2CDAE10 /* Resources */,
+				4349A99FC5059ED41061AB33 /* Pods */,
 				031F64FB22419DF600AAEA6B /* Recovered References */,
 			);
 			indentWidth = 2;
@@ -843,10 +859,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MSBwinter2019" */;
 			buildPhases = (
+				BB60EA7E03ED03E5C1CC4307 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				FCD9BC3F5D002861476D757B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1404,6 +1422,50 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		BB60EA7E03ED03E5C1CC4307 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MSBwinter2019-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCD9BC3F5D002861476D757B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MSBwinter2019/Pods-MSBwinter2019-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MSBwinter2019/Pods-MSBwinter2019-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1538,6 +1600,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 002334D02A63EB82918A6877 /* Pods-MSBwinter2019.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1563,6 +1626,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48DE80BC6243C14D4C9BC45C /* Pods-MSBwinter2019.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;

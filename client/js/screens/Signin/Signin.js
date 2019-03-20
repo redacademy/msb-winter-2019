@@ -59,11 +59,14 @@ class Signin extends Component {
                       <TextInput
                         editable={true}
                         autoCapitalize='none'
+                        autoCorrect={false}
                         {...input}
                         style={styles.textInput}
                         placeholder='Email'
                         placeholderTextColor={colors.neutralDark}
                         returnKeyType='next'
+                        onSubmitEditing={() => this.passwordInput.focus()}
+                        keyboardType='email-address'
                       />
                     )}
                   </Field>
@@ -78,6 +81,7 @@ class Signin extends Component {
                         placeholder='Password'
                         placeholderTextColor={colors.neutralDark}
                         returnKeyType='go'
+                        ref={input => (this.passwordInput = input)}
                       />
                     )}
                   </Field>

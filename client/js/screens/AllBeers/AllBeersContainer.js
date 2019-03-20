@@ -6,10 +6,6 @@ import { ALL_BEERS_QUERY } from '../../apollo/queries';
 import AllBeers from './AllBeers';
 
 class AllBeersContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   static navigationOptions = {
     title: 'AllBeers'
   };

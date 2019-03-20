@@ -1,19 +1,22 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { center, colors, fonts, h1, row, subtitle1 } from '../../config/styles';
+import { center, colors, fonts, h1, hr, subtitle1 } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  carouselContainer: {
-    padding: 15,
-    ...center
-  },
-  slide: {
-    ...center
-  },
-
-  eventImg: {
+  container: {
     flex: 1,
-    maxHeight: 215,
-    maxWidth: 215,
+    padding: 15,
+    paddingBottom: 0,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: '100%'
+  },
+  carouselContainer: {
+    flex: 1,
+    alignItems: 'center',
+    resizeMode: 'contain'
+  },
+  img: {
+    resizeMode: 'contain',
     shadowOffset: { width: 1, height: 1 },
     shadowColor: colors.neutralDark,
     shadowOpacity: 1,
@@ -22,23 +25,15 @@ const styles = StyleSheet.create({
   title: { ...h1, ...center, paddingBottom: 0 },
   subtitle: {
     color: colors.neutralDark,
-    fontSize: fonts.sm
+    fontSize: fonts.sm,
+    paddingBottom: 0
   },
 
-  eventContainer: {
-    ...row,
-    ...center,
-    justifyContent: 'space-between',
-    paddingLeft: 20,
-    paddingRight: 20,
-    width: Dimensions.get('window').width * 0.6
-  },
   dataWrapper: {
-    width: Dimensions.get('window').width * 0.7,
-
+    width: Dimensions.get('window').width * 0.8,
     alignItems: 'flex-start',
-    justifyContent: 'center',
-    paddingLeft: 15,
+    justifyContent: 'space-evenly',
+    paddingLeft: 24,
     paddingRight: 15
   },
   eventData: {
@@ -50,7 +45,8 @@ const styles = StyleSheet.create({
   },
   boldData: {
     ...subtitle1
-  }
+  },
+  border: { ...hr, width: 270 }
 });
 
 export default styles;

@@ -5,6 +5,7 @@ import {
   View,
   Text,
   TouchableHighlight,
+  TouchableOpacity,
   Image
 } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
@@ -12,17 +13,27 @@ import { withNavigation } from 'react-navigation';
 import moment from 'moment';
 
 import styles from './styles';
-import { hr, center } from '../../config/styles';
+import { center } from '../../config/styles';
 
 class CarouselEvents extends Component {
   constructor(props) {
     super(props);
+    this.updateIndex = this.updateIndex.bind(this);
+    this.state = {
+      currentIndex: 0
+    };
   }
+
+  updateIndex = () => {
+    if (this._carousel) {
+      Store.updateIndex(this._carousel.currentIndex);
+    }
+  };
   render() {
     const { events, navigation } = this.props;
 
     return (
-      <View style={styles.carouselContainer}>
+      <View style={styles.container}>
         <Carousel
           ref={c => {
             this._carousel = c;
@@ -30,22 +41,27 @@ class CarouselEvents extends Component {
           data={events}
           loop={true}
           loopClonesPerSide={2}
+          firstItem={0}
+          onSnapToItem={index => {
+            this.setState({ currentIndex: index }, () => {
+              console.log(this.state.currentIndex);
+            });
+          }}
           renderItem={({ item }) => {
-            console.log(item);
             return (
-              <View style={styles.slide}>
+              <View style={styles.carouselContainer}>
                 <TouchableHighlight
                   underlayColor={'transparent'}
                   onPress={() => {
                     navigation.navigate('Event', { item });
                   }}
                 >
-                  <View style={{ ...center }}>
-                    <View style={styles.eventImg}>
-                      <Image
-                        source={require('../../assets/images/Events/turnstile_middle.png')}
-                      />
-                    </View>
+                  <View style={{ alignItems: 'center', height: 100 }}>
+                    <Image
+                      style={styles.img}
+                      source={require('../../assets/images/Events/turnstile_middle.png')}
+                    />
+
                     <Text style={styles.title}>{item.title}</Text>
                     <Text style={styles.subtitle}>{item.subtitle}</Text>
                   </View>
@@ -57,22 +73,35 @@ class CarouselEvents extends Component {
           itemWidth={250}
         />
 
-        <View style={{ ...hr, maxWidth: 270 }} />
-        <View style={styles.dataWrapper}>
-          <Text style={styles.eventData}>
-            <Text style={styles.boldData}>Date: </Text>
-            {moment(events[0].date).format('MMM Do YYYY')}
-          </Text>
-          <Text style={styles.eventData}>
-            <Text style={styles.boldData}>Time: </Text>
-            {events[0].time}
-          </Text>
-          <Text style={styles.eventData}>
-            <Text style={styles.boldData}>Location: </Text>
-            {events[0].location}
-          </Text>
+        <View style={{ ...center }}>
+          <View style={styles.border} />
+
+          <View style={styles.dataWrapper}>
+            <Text style={styles.eventData}>
+              <Text style={styles.boldData}>Date: </Text>
+              {moment(events[this.state.currentIndex].date).format(
+                'MMM Do YYYY'
+              )}
+            </Text>
+            <Text style={styles.eventData}>
+              <Text style={styles.boldData}>Time: </Text>
+              {events[this.state.currentIndex].time}
+            </Text>
+            <Text style={styles.eventData}>
+              <Text style={styles.boldData}>Location: </Text>
+              {events[this.state.currentIndex].location}
+            </Text>
+          </View>
+
+          <View style={styles.border} />
         </View>
-        <View style={{ ...hr, maxWidth: 270 }} />
+
+        <TouchableOpacity>
+          <Image
+            style={{ alignSelf: 'flex-end' }}
+            source={require('../../assets/images/Icons/social_media_button.png')}
+          />
+        </TouchableOpacity>
       </View>
     );
   }

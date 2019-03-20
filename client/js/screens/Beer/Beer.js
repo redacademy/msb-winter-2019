@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import styles from './styles';
+import CustomIcon from '../../components/CustomIcon';
 
 const Beer = props => {
-  console.log('+++++', props);
   let beerBanner;
   if (props.beer.title === 'FRUIT BOMB') {
     beerBanner = require('../../assets/images/Beers/SpecificBeer/fruit_bomb.png');
@@ -31,31 +31,44 @@ const Beer = props => {
       <View style={styles.bannerWrapper}>
         <Image source={beerBanner} />
       </View>
+      <CustomIcon
+        onPress={() => props.navigation.goBack()}
+        source={require('../../assets/images/Icons/BackButton-Circle.png')}
+        style={styles.backIcon}
+      />
 
       <View style={styles.beerContainer}>
-        <View style={styles.beerInfoContainer}>
-          <View style={styles.beerType}>
-            <Text style={styles.title}>{props.beer.title}</Text>
-            <Text style={styles.subtitle}>{props.beer.subtitle}</Text>
+        <View>
+          <View style={styles.beerInfoContainer}>
+            <View style={styles.beerType}>
+              <Text style={styles.title}>{props.beer.title}</Text>
+              <Text style={styles.subtitle}>{props.beer.subtitle}</Text>
+            </View>
+
+            <View style={styles.beerDataContainer}>
+              <Text style={styles.beerData}>
+                <Text style={styles.infoBold}>Style: </Text> {props.beer.style}
+              </Text>
+              <Text style={styles.beerData}>
+                <Text style={styles.infoBold}>ABV: </Text> {props.beer.abv}%
+              </Text>
+              <Text style={styles.beerData}>
+                <Text style={styles.infoBold}>IBU: </Text> {props.beer.ibu}
+              </Text>
+              <Text style={styles.beerData}>
+                <Text style={styles.infoBold}>Released: </Text>
+                {moment(props.beer.releaseDate).format('MMM YY')}
+              </Text>
+            </View>
           </View>
 
-          <View style={styles.beerDataContainer}>
-            <Text style={styles.beerData}>
-              <Text style={styles.infoBold}>Style: </Text> {props.beer.style}
-            </Text>
-            <Text style={styles.beerData}>
-              <Text style={styles.infoBold}>ABV: </Text> {props.beer.abv}%
-            </Text>
-            <Text style={styles.beerData}>
-              <Text style={styles.infoBold}>IBU: </Text> {props.beer.ibu}
-            </Text>
-            <Text style={styles.beerData}>
-              <Text style={styles.infoBold}>Released: </Text>
-              {moment(props.beer.releaseDate).format('MMM YY')}
-            </Text>
-          </View>
+          <Text style={styles.description}>{props.beer.description}</Text>
         </View>
-        <Text style={styles.description}>{props.beer.description}</Text>
+        <CustomIcon
+          onPress={() => {}}
+          source={require('../../assets/images/Icons/social_media_button.png')}
+          style={styles.socialbtn}
+        />
       </View>
     </View>
   );

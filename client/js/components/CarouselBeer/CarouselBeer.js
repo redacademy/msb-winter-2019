@@ -12,7 +12,7 @@ import { withNavigation } from 'react-navigation';
 import moment from 'moment';
 
 import styles from './styles';
-import { hr, center } from '../../config/styles';
+import { center } from '../../config/styles';
 
 class CarouselBeer extends Component {
   constructor(props) {
@@ -22,11 +22,6 @@ class CarouselBeer extends Component {
       currentIndex: 0
     };
   }
-
-  changeIndex = currentIndex => {
-    this.setState({ currentIndex });
-    console.log(currentIndex);
-  };
 
   updateIndex = () => {
     if (this._carousel) {
@@ -46,10 +41,13 @@ class CarouselBeer extends Component {
           data={beers}
           loop={true}
           loopClonesPerSide={2}
-          // enableSnap={true}
           firstItem={0}
-          onSnapToItem={index => this.setState({ currentIndex: index })}
-          renderItem={({ item, index }) => {
+          onSnapToItem={index => {
+            this.setState({ currentIndex: index }, () => {
+              console.log(this.state.currentIndex);
+            });
+          }}
+          renderItem={({ item }) => {
             let beerLogo;
             if (item.title === 'FRUIT BOMB') {
               beerLogo = require('../../assets/images/Beers/squre_fruit_bomb.png');
@@ -74,7 +72,7 @@ class CarouselBeer extends Component {
                 <TouchableHighlight
                   underlayColor={'transparent'}
                   onPress={() => {
-                    navigation.navigate('Beer', { item });
+                    navigation.navigate('Beer', { beerId: item.id });
                   }}
                 >
                   <View style={{ ...center }}>
@@ -85,37 +83,6 @@ class CarouselBeer extends Component {
                     <Text style={styles.subtitle}>{item.subtitle}</Text>
                   </View>
                 </TouchableHighlight>
-                {this._carousel.currentIndex === index ? (
-                  <>
-                    <View style={{ ...hr, maxWidth: 250 }} />
-
-                    <View style={styles.dataWrapper}>
-                      <View style={styles.infoSpacing}>
-                        <Text style={styles.beerData}>
-                          <Text style={styles.boldData}>Style: </Text>
-                          {item.style}
-                        </Text>
-                        <Text style={styles.beerData}>
-                          <Text style={styles.boldData}>Released: </Text>
-                          {moment(item.releaseDate).format('MMM YY')}
-                        </Text>
-                      </View>
-
-                      <View style={styles.infoSpacing}>
-                        <Text style={styles.beerData}>
-                          <Text style={styles.boldData}>ABV: </Text>
-                          {item.abv}%
-                        </Text>
-                        <Text style={styles.beerData}>
-                          <Text style={styles.boldData}>IBU: </Text>
-                          {item.ibu}
-                        </Text>
-                      </View>
-                    </View>
-
-                    <View style={{ ...hr, maxWidth: 250 }} />
-                  </>
-                ) : null}
               </View>
             );
           }}
@@ -123,6 +90,38 @@ class CarouselBeer extends Component {
           sliderWidth={Dimensions.get('window').width}
           itemWidth={250}
         />
+
+        <View style={{ ...center }}>
+          <View style={styles.border} />
+
+          <View style={styles.dataWrapper}>
+            <View style={styles.infoSpacing}>
+              <Text style={styles.beerData}>
+                <Text style={styles.boldData}>Style: </Text>
+                {beers[this.state.currentIndex].style}
+              </Text>
+              <Text style={styles.beerData}>
+                <Text style={styles.boldData}>Released: </Text>
+                {moment(beers[this.state.currentIndex].releaseDate).format(
+                  'MMM YY'
+                )}
+              </Text>
+            </View>
+
+            <View style={styles.infoSpacing}>
+              <Text style={styles.beerData}>
+                <Text style={styles.boldData}>ABV: </Text>
+                {beers[this.state.currentIndex].abv}%
+              </Text>
+              <Text style={styles.beerData}>
+                <Text style={styles.boldData}>IBU: </Text>
+                {beers[this.state.currentIndex].ibu}
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.border} />
+        </View>
       </View>
     );
   }

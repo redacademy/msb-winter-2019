@@ -1,11 +1,7 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { center, row } from '../../config/styles';
+import { center } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'space-between'
-    // height: Dimensions.get('window').height
-  },
   carouselWrapper: {
     ...center,
     justifyContent: 'space-between',

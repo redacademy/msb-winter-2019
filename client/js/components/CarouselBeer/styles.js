@@ -1,5 +1,13 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { center, colors, fonts, h1, row, subtitle1 } from '../../config/styles';
+import {
+  center,
+  colors,
+  fonts,
+  h1,
+  hr,
+  row,
+  subtitle1
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   carouselContainer: {
@@ -12,17 +20,13 @@ const styles = StyleSheet.create({
 
   imgWrapper: {
     flex: 1,
-    maxHeight: 215,
-    maxWidth: 215,
-    shadowOffset: { width: 1, height: 1 },
+    shadowOffset: { width: 1, height: 3.5 },
     shadowColor: colors.neutralDark,
     shadowOpacity: 1,
     shadowRadius: 2,
-    backgroundColor: 'white'
+    backgroundColor: '#fff'
   },
-  img: {
-    resizeMode: 'contain'
-  },
+
   title: { ...h1, ...center, paddingBottom: 3 },
   subtitle: {
     color: colors.neutralDark,
@@ -49,7 +53,8 @@ const styles = StyleSheet.create({
   },
   boldData: {
     ...subtitle1
-  }
+  },
+  border: { ...hr, width: '100%', maxWidth: 250 }
 });
 
 export default styles;

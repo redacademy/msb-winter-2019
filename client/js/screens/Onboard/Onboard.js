@@ -82,7 +82,7 @@ class Onboard extends Component {
           </View>
         </View> */}
         {/* Third Screen */}
-        <View style={styles.container}>
+        {/* <View style={styles.container}>
           <View style={styles.imgBgWrapper}>
             <Image
               source={require('../../assets/images/Logos/msb_logo.png')}
@@ -94,7 +94,6 @@ class Onboard extends Component {
               source={require('../../assets/images/Icons/cheers_icon_white.png')}
               style={styles.imgLogo}
             />
-
             <View style={styles.welcomeWrapper}>
               <CustomText style={styles.welcome}>
                 Look out for our brewtiful events to
@@ -104,39 +103,28 @@ class Onboard extends Component {
               </CustomText>
             </View>
           </View>
-        </View>
+        </View> */}
         {/* Fourth Screen */}
-        {/* <View style={styles.container}>
+        <View style={styles.container}>
           <View style={styles.imgBgWrapper}>
             <Image
               source={require('../../assets/images/Logos/msb_logo.png')}
               style={styles.imgBg}
             />
           </View>
-          <View style={styles.onboardWrapper}>
-            <View style={styles.logoWrapper}>
-              <Image
-                source={require('../../assets/images/Logos/growler_logo.png')}
-                style={styles.imgLogo}
-              />
-              <Image
-                source={require('../../assets/images/Logos/msb_logo_white.png')}
-                style={styles.imgLogo}
-              />
-            </View>
+          <View style={[styles.onboardWrapper, styles.walkthru]}>
+            <Image
+              source={require('../../assets/images/Icons/where_to_buy_icon.png')}
+              style={styles.imgLogo}
+            />
             <View style={styles.welcomeWrapper}>
               <CustomText style={styles.welcome}>
-                Welcome to the Growler
+                Locate where to buy our
               </CustomText>
-              <CustomText style={styles.welcome}>
-                Rewards Program, you are now
-              </CustomText>
-              <CustomText style={styles.welcome}>
-                an official member!
-              </CustomText>
+              <CustomText style={styles.welcome}>amazing beer.</CustomText>
             </View>
           </View>
-        </View> */}
+        </View>
         {/* </Swiper> */}
       </Fragment>
     );

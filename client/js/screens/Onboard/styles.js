@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginVertical: margin.xl * 5
   },
-  walkthru: { marginVertical: margin.xl * 6 },
+  walkthru: { marginVertical: margin.xl * 6.25 },
   logoWrapper: { ...center },
   imgLogo: { ...contain },
   welcomeWrapper: { ...center },

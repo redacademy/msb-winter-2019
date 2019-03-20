@@ -27,22 +27,24 @@ const styles = StyleSheet.create({
     marginVertical: margin.xl * 2
   },
   title: { ...h1, color: colors.white },
-  // signupForm: { justifyContent: 'flex-start' },
   field: { alignItems: 'flex-start' },
   label: { ...h4, color: colors.white, alignItems: 'flex-start' },
   textInputWrapper: { ...iteCenterRow },
   textInput: {
     width: dimensions.fullWidth * 0.75,
-    // marginVertical: margin.sm,
     paddingVertical: padding.xs,
     paddingHorizontal: padding.sm,
     borderColor: colors.white,
     borderWidth: 1,
     color: colors.neutralDark
   },
-  datePicker: { borderWidth: 0, paddingHorizontal: 0, ...pv0 },
+  datePicker: {
+    width: dimensions.fullWidth * 0.75,
+    borderColor: colors.white,
+    borderWidth: 0.5,
+    paddingHorizontal: 0
+  },
   signupBtnWrapper: { ...center },
-  // signupBtn: { color: colors.black, width: dimensions.fullWidth * 0.35 },
   signup: {
     ...subtitle2,
     color: colors.brand,

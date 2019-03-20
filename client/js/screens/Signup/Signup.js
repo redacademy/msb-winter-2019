@@ -18,7 +18,7 @@ import Loader from '../../components/Loader';
 import CustomText from '../../components/CustomText';
 import WhiteButton from '../../components/Buttons/WhiteButton';
 import { setUserToken } from '../../config/models';
-import { colors } from '../../config/styles';
+import { colors, padding } from '../../config/styles';
 import styles from './styles';
 
 class Signup extends React.Component {
@@ -29,7 +29,7 @@ class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: '1990-01-01',
+      date: '',
       loading: false,
       error: false
     };
@@ -52,7 +52,6 @@ class Signup extends React.Component {
         <View style={styles.signupWrapper}>
           <CustomText style={styles.title}>Sign Up</CustomText>
           <Form
-            // style={styles.signForm}
             onSubmit={this.onSubmit}
             render={({ handleSubmit }) => (
               <Fragment>
@@ -169,7 +168,16 @@ class Signup extends React.Component {
                         <View style={styles.textInputWrapper}>
                           <DatePicker
                             {...input}
-                            style={[styles.textInput, styles.datePicker]}
+                            style={styles.datePicker}
+                            customStyles={{
+                              dateInput: {
+                                alignItems: 'flex-start',
+                                paddingLeft: padding.sm
+                              },
+                              dateText: {
+                                color: colors.neutralDark
+                              }
+                            }}
                             date={this.state.date}
                             mode='date'
                             showIcon={false}
@@ -203,10 +211,7 @@ class Signup extends React.Component {
                 </View>
 
                 <View style={styles.signupBtnWrapper}>
-                  <WhiteButton
-                    onPress={() => handleSubmit()}
-                    style={styles.signupBtn}
-                  >
+                  <WhiteButton onPress={() => handleSubmit()}>
                     Sign Up
                   </WhiteButton>
                   <TouchableHighlight

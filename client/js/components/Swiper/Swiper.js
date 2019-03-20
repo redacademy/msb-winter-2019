@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-
+import React, { Component, Fragment } from 'react';
 import {
   Dimensions, // Detects screen dimensions
   Platform, // Detects platform running the app
@@ -7,7 +6,12 @@ import {
   StyleSheet, // CSS-like styles
   View // Container component
 } from 'react-native';
+
+import OrangeButton from '../Buttons/OrangeButton';
 import styles from './styles';
+
+// Detect screen width and height
+const { width, height } = Dimensions.get('window');
 
 export default class Swiper extends Component {
   // Props for ScrollView component
@@ -226,7 +230,7 @@ export default class Swiper extends Component {
   };
 
   /**
-   * Render Continue or Done button
+   * Render Done button
    */
   renderButton = () => {
     const lastScreen = this.state.index === this.state.total - 1;
@@ -237,14 +241,17 @@ export default class Swiper extends Component {
       >
         {lastScreen ? (
           // Show this button on the last screen
-          // TODO: Add a handler that would send a user to your app after onboarding is complete
-          <Button
-            text='Start Now'
-            onPress={() => console.log('Send me to the app')}
-          />
+
+          <OrangeButton
+            onPress={() => {
+              this.props.navigation.navigate('Home');
+            }}
+          >
+            Start
+          </OrangeButton>
         ) : (
           // Or this one otherwise
-          <Button text='Continue' onPress={() => this.swipe()} />
+          <Fragment />
         )}
       </View>
     );

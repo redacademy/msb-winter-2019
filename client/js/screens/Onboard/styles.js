@@ -8,6 +8,7 @@ import {
   body2,
   padding
 } from '../../config/styles';
+import { createMaterialTopTabNavigator } from 'react-navigation';
 
 const styles = StyleSheet.create({
   container: { ...container, backgroundColor: colors.black },
@@ -19,6 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginVertical: margin.xl * 5
   },
+  walkthru: { marginVertical: margin.xl * 6.5 },
   logoWrapper: { ...center },
   imgLogo: { ...contain },
   welcomeWrapper: { ...center },

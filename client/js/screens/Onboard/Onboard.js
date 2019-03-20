@@ -1,13 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import { View, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 
 import Loader from '../../components/Loader';
 import CustomText from '../../components/CustomText';
+import Swiper from '../../components/Swiper';
 import styles from './styles';
 
-class Onboard extends React.Component {
+class Onboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,35 +24,131 @@ class Onboard extends React.Component {
       return <CustomText>Error</CustomText>;
     }
     return (
-      <View style={styles.container}>
-        <View style={styles.imgBgWrapper}>
-          <Image
-            source={require('../../assets/images/Logos/msb_logo.png')}
-            style={styles.imgBg}
-          />
-        </View>
-        <View style={styles.onboardWrapper}>
-          <View style={styles.logoWrapper}>
+      <Fragment>
+        {/* <Swiper> */}
+        {/* First Screen */}
+        {/*   <View style={styles.container}>
+          <View style={styles.imgBgWrapper}>
+            <Image
+              source={require('../../assets/images/Logos/msb_logo.png')}
+              style={styles.imgBg}
+            />
+          </View>
+          <View style={styles.onboardWrapper}>
+            <View style={styles.logoWrapper}>
+              <Image
+                source={require('../../assets/images/Logos/growler_logo.png')}
+                style={styles.imgLogo}
+              />
+              <Image
+                source={require('../../assets/images/Logos/msb_logo_white.png')}
+                style={styles.imgLogo}
+              />
+            </View>
+            <View style={styles.welcomeWrapper}>
+              <CustomText style={styles.welcome}>
+                Welcome to the Growler
+              </CustomText>
+              <CustomText style={styles.welcome}>
+                Rewards Program, you are now
+              </CustomText>
+              <CustomText style={styles.welcome}>
+                an official member!
+              </CustomText>
+            </View>
+          </View>
+        </View> */}
+        {/* Second Screen */}
+        <View style={styles.container}>
+          <View style={styles.imgBgWrapper}>
+            <Image
+              source={require('../../assets/images/Logos/msb_logo.png')}
+              style={styles.imgBg}
+            />
+          </View>
+          <View style={[styles.onboardWrapper, styles.walkthru]}>
+            {/* <View style={styles.logoWrapper}> */}
             <Image
               source={require('../../assets/images/Logos/growler_logo.png')}
               style={styles.imgLogo}
             />
-            <Image
-              source={require('../../assets/images/Logos/msb_logo_white.png')}
-              style={styles.imgLogo}
-            />
-          </View>
-          <View style={styles.welcomeWrapper}>
-            <CustomText style={styles.welcome}>
-              Welcome to the Growler
-            </CustomText>
-            <CustomText style={styles.welcome}>
-              Rewards Program, you are now
-            </CustomText>
-            <CustomText style={styles.welcome}>an official member!</CustomText>
+            {/* </View> */}
+            <View style={styles.welcomeWrapper}>
+              <CustomText style={styles.welcome}>
+                Collect stamps with Growlers and
+              </CustomText>
+              <CustomText style={styles.welcome}>
+                redeem them for awesome rewards.
+              </CustomText>
+            </View>
           </View>
         </View>
-      </View>
+        {/* Third Screen */}
+        {/*  <View style={styles.container}>
+          <View style={styles.imgBgWrapper}>
+            <Image
+              source={require('../../assets/images/Logos/msb_logo.png')}
+              style={styles.imgBg}
+            />
+          </View>
+          <View style={styles.onboardWrapper}>
+            <View style={styles.logoWrapper}>
+              <Image
+                source={require('../../assets/images/Logos/growler_logo.png')}
+                style={styles.imgLogo}
+              />
+              <Image
+                source={require('../../assets/images/Logos/msb_logo_white.png')}
+                style={styles.imgLogo}
+              />
+            </View>
+            <View style={styles.welcomeWrapper}>
+              <CustomText style={styles.welcome}>
+                Welcome to the Growler
+              </CustomText>
+              <CustomText style={styles.welcome}>
+                Rewards Program, you are now
+              </CustomText>
+              <CustomText style={styles.welcome}>
+                an official member!
+              </CustomText>
+            </View>
+          </View>
+        </View> */}
+        {/* Fourth Screen */}
+        {/* <View style={styles.container}>
+          <View style={styles.imgBgWrapper}>
+            <Image
+              source={require('../../assets/images/Logos/msb_logo.png')}
+              style={styles.imgBg}
+            />
+          </View>
+          <View style={styles.onboardWrapper}>
+            <View style={styles.logoWrapper}>
+              <Image
+                source={require('../../assets/images/Logos/growler_logo.png')}
+                style={styles.imgLogo}
+              />
+              <Image
+                source={require('../../assets/images/Logos/msb_logo_white.png')}
+                style={styles.imgLogo}
+              />
+            </View>
+            <View style={styles.welcomeWrapper}>
+              <CustomText style={styles.welcome}>
+                Welcome to the Growler
+              </CustomText>
+              <CustomText style={styles.welcome}>
+                Rewards Program, you are now
+              </CustomText>
+              <CustomText style={styles.welcome}>
+                an official member!
+              </CustomText>
+            </View>
+          </View>
+        </View> */}
+        {/* </Swiper> */}
+      </Fragment>
     );
   }
 }

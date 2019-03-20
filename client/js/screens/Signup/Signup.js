@@ -39,11 +39,11 @@ class Signup extends React.Component {
           render={({ handleSubmit }) => (
             <Fragment>
               <Text>Name</Text>
-              <Field name="name">
+              <Field name='name'>
                 {({ input, meta }) => (
                   <TextInput
                     editable={true}
-                    autoCapitalize="none"
+                    autoCapitalize='none'
                     {...input}
                     style={styles.textInput}
                     autoFocus={true}
@@ -51,22 +51,22 @@ class Signup extends React.Component {
                 )}
               </Field>
               <Text>Email</Text>
-              <Field name="email">
+              <Field name='email'>
                 {({ input, meta }) => (
                   <TextInput
                     editable={true}
-                    autoCapitalize="none"
+                    autoCapitalize='none'
                     {...input}
                     style={styles.textInput}
                   />
                 )}
               </Field>
               <Text>Password</Text>
-              <Field name="password">
+              <Field name='password'>
                 {({ input, meta }) => (
                   <TextInput
                     editable={true}
-                    autoCapitalize="none"
+                    autoCapitalize='none'
                     secureTextEntry={true}
                     {...input}
                     style={styles.textInput}
@@ -74,11 +74,11 @@ class Signup extends React.Component {
                 )}
               </Field>
               <Text>Confirm Password</Text>
-              <Field name="confirm-password">
+              <Field name='confirm-password'>
                 {({ input, meta }) => (
                   <TextInput
                     editable={true}
-                    autoCapitalize="none"
+                    autoCapitalize='none'
                     secureTextEntry={true}
                     {...input}
                     style={styles.textInput}
@@ -86,27 +86,27 @@ class Signup extends React.Component {
                 )}
               </Field>
               <Text>Date of Birth (YYYY / MM / DD)</Text>
-              <Field name="dateOfBirth">
+              <Field name='dateOfBirth'>
                 {({ input, meta }) => (
                   <DatePicker
                     {...input}
                     style={styles.datePicker}
                     date={this.state.date}
-                    mode="date"
+                    mode='date'
                     showIcon={false}
-                    placeholder="select date"
-                    format="YYYY-MM-DD"
-                    minDate="1920-01-01"
-                    maxDate="2040-01-01"
-                    confirmBtnText="Confirm"
-                    cancelBtnText="Cancel"
+                    placeholder='select date'
+                    format='YYYY-MM-DD'
+                    minDate='1920-01-01'
+                    maxDate='2040-01-01'
+                    confirmBtnText='Confirm'
+                    cancelBtnText='Cancel'
                     onDateChange={date => {
                       this.setState({ date: date });
                     }}
                   />
                 )}
               </Field>
-              <Button title="Sign up!" onPress={() => handleSubmit()} />
+              <Button title='Sign up!' onPress={() => handleSubmit()} />
               <TouchableOpacity
                 style={styles.authButton}
                 onPress={() => {

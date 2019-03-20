@@ -77,6 +77,10 @@ export const margin = {
   xl: 40
 };
 
+export const mv0 = {
+  marginVertical: 0
+};
+
 export const padding = {
   xxxs: 2,
   xxs: 6,
@@ -97,6 +101,10 @@ export const pb0 = {
 
 export const pt0 = {
   paddingTop: 0
+};
+
+export const pv0 = {
+  paddingVertical: 0
 };
 
 // Typography

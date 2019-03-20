@@ -1,20 +1,56 @@
-import { StyleSheet } from "react-native";
-import { container, body1 } from "../../config/styles";
+import { StyleSheet } from 'react-native';
+import {
+  container,
+  colors,
+  center,
+  pv0,
+  padding,
+  dimensions,
+  margin,
+  subtitle2,
+  iteCenterRow
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: { ...container },
-  textInput: {
-    width: "50%",
-    paddingVertical: 7,
-    paddingHorizontal: 7,
-    borderRadius: 4,
-    borderColor: "black",
-    borderWidth: 1,
-    marginBottom: 5
+  container: {
+    ...container,
+    backgroundColor: colors.black
   },
-  authButton: {
-    height: 50,
-    width: 50
+  imgBgWrapper: { position: 'absolute' },
+  imgBg: { ...center },
+  loginWrapper: {
+    ...container,
+    backgroundColor: 'transparent',
+    justifyContent: 'space-around',
+    marginVertical: margin.xl * 2
+  },
+  loginForm: {
+    ...pv0
+  },
+  field: { color: colors.white },
+  textInput: {
+    width: dimensions.fullWidth * 0.75,
+    marginVertical: margin.sm,
+    paddingVertical: padding.sm,
+    paddingHorizontal: padding.sm,
+    borderColor: colors.white,
+    borderWidth: 1,
+    color: colors.neutralDark
+  },
+  signinWrapper: {
+    ...center,
+    marginTop: margin.sm
+  },
+  signinBtn: {
+    color: colors.black,
+    width: dimensions.fullWidth * 0.35
+  },
+  signupWrapper: { ...center },
+  signup: { ...subtitle2, color: colors.brand, ...pv0 },
+  signupLinkWrapper: { ...iteCenterRow },
+  signupLink: {
+    fontStyle: 'italic',
+    textDecorationLine: 'underline'
   }
 });
 

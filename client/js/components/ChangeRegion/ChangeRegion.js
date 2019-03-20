@@ -67,8 +67,8 @@ class ChangeRegion extends Component {
                     const newRegion = {
                       longitude: parseFloat(store.long),
                       latitude: parseFloat(store.lat),
-                      latitudeDelta: 0.004,
-                      longitudeDelta: 0.004
+                      latitudeDelta: 0.002,
+                      longitudeDelta: 0.002
                     };
                     this.setState({ region: newRegion });
                   }}

@@ -4,7 +4,8 @@ import {
   Image,
   ImageBackground,
   TouchableOpacity,
-  Text
+  Text,
+  ActivityIndicator
 } from 'react-native';
 import Barcode from 'react-native-barcode-builder';
 import { graphql, compose } from 'react-apollo';
@@ -36,19 +37,13 @@ class CardTab extends Component {
   };
 
   addPoints = async user => {
-    console.log('add points');
     const {
       navigation,
       setUserPoints,
       addToUserPointHistory,
       userQuery
     } = this.props;
-    console.log('here', user);
     if (!user) return;
-    // user = await userQuery({
-    //   variables: { id: user.id }
-    // });
-    // console.log('user', user, userQuery);
     const pointsToAdd = 2;
     const beer = await this.getRandomBeer();
     await addToUserPointHistory({
@@ -62,12 +57,10 @@ class CardTab extends Component {
     await setUserPoints({
       variables: { id: user.id, points: user.points + pointsToAdd }
     });
-    console.log('complete');
-    navigation.navigate('StampsReceived');
+    navigation.navigate('StampsReceived', { stamps: pointsToAdd });
   };
 
   render() {
-    console.log('just rendered cardtab');
     return (
       <Query
         query={USER_QUERY}
@@ -75,10 +68,11 @@ class CardTab extends Component {
         fetchPolicy="network-only"
       >
         {({ loading, error, data }) => {
-          if (loading) return <Text>Loading</Text>;
+          if (loading) return <ActivityIndicator />;
           if (error) return <Text>Error</Text>;
-
-          return data.allUsers[0] ? (
+          const user = data.allUsers && data.allUsers[0];
+          if (!user) return <ActivityIndicator />;
+          return (
             <ImageBackground
               source={require('../../../assets/images/Card/logo_bg.png')}
               style={styles.imgBg}
@@ -87,7 +81,7 @@ class CardTab extends Component {
                 <TouchableOpacity
                   elevation={3}
                   style={styles.cardWrapper}
-                  onPress={() => this.addPoints(data.allUsers[0])}
+                  onPress={() => this.addPoints(user)}
                 >
                   <Image
                     source={require('../../../assets/images/Card/your_card.png')}
@@ -97,8 +91,6 @@ class CardTab extends Component {
                 </TouchableOpacity>
               </View>
             </ImageBackground>
-          ) : (
-            <Text>Loading</Text>
           );
         }}
       </Query>
@@ -118,7 +110,6 @@ export default compose(
     })
   }),
   graphql(ADD_TO_USER_POINT_HISTORY, { name: 'addToUserPointHistory' }),
-  // graphql(USER_QUERY, { name: 'userQuery' }),
   graphql(ALL_BEERS_QUERY, { name: 'allBeersQuery' }),
   withNavigation
 )(CardTab);

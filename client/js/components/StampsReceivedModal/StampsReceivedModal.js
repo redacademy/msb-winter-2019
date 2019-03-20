@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableHighlight } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import Icon from 'react-native-vector-icons/Ionicons';
-
+import { subtitle1 } from '../../config/styles';
 import styles from './styles';
+import CustomIcon from '../CustomIcon';
 
 class StampsReceivedModal extends Component {
   render() {
     const { navigation } = this.props;
+    const stamps = navigation.getParam('stamps');
     return (
       <View style={styles.container}>
-        <TouchableHighlight
+        <CustomIcon
+          style={styles.icon}
+          source={require('../../assets/images/Icons/exit.png')}
           onPress={() => {
             navigation.navigate('History');
           }}
-        >
-          <Icon name="ios-close" size={50} />
-        </TouchableHighlight>
-        <Text>Stamps received yay</Text>
+        />
+        <Text style={styles.cheersMessage}>Cheers!</Text>
+        <Image source={require('../../assets/images/Redeem/2_stars.png')} />
+        <Text style={{ ...subtitle1 }}>{`You received ${stamps} stamps!`}</Text>
       </View>
     );
   }

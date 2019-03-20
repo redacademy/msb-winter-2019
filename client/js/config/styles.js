@@ -2,7 +2,7 @@ import { Dimensions } from 'react-native';
 
 export const dimensions = {
   fullHeight: Dimensions.get('window').height,
-  fullWidth: Dimensions.get('window').width
+  fullWidth: Dimensions.get('window').width,
 };
 
 export const colors = {
@@ -10,12 +10,12 @@ export const colors = {
   neutralDark: '#636363', // med grey
   brand: '#eea922', // gold
   white: '#ffffff',
-  black: '#000000'
+  black: '#000000',
 };
 
 export const underline = {
   borderBottomColor: colors.brand,
-  borderBottomWidth: 4
+  borderBottomWidth: 4,
 };
 
 export const shadow1 = {
@@ -25,7 +25,7 @@ export const shadow1 = {
   shadowOffset: { width: 0, height: 1 },
   shadowColor: colors.neutralDark,
   shadowOpacity: 1,
-  shadowRadius: 2
+  shadowRadius: 2,
 };
 
 export const shadow2 = {
@@ -35,7 +35,7 @@ export const shadow2 = {
   shadowOffset: { width: 0, height: 3.5 },
   shadowColor: colors.neutralDark,
   shadowOpacity: 0.5,
-  shadowRadius: 4
+  shadowRadius: 4,
 };
 
 export const shadow3 = {
@@ -45,7 +45,7 @@ export const shadow3 = {
   shadowOffset: { width: 0, height: -3 },
   shadowColor: colors.neutralLight,
   shadowOpacity: 1,
-  shadowRadius: 3
+  shadowRadius: 3,
 };
 
 export const contain = { resizeMode: 'contain' };
@@ -56,17 +56,17 @@ export const row = { flexDirection: 'row' };
 
 export const jusCenterRow = {
   ...row,
-  justifyContent: 'center'
+  justifyContent: 'center',
 };
 
 export const jusBetweenRow = {
   ...row,
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
 };
 
 export const iteCenterRow = {
   ...row,
-  alignItems: 'center'
+  alignItems: 'center',
 };
 
 export const margin = {
@@ -74,11 +74,11 @@ export const margin = {
   sm: 10,
   md: 20,
   lg: 30,
-  xl: 40
+  xl: 40,
 };
 
 export const mv0 = {
-  marginVertical: 0
+  marginVertical: 0,
 };
 
 export const padding = {
@@ -88,19 +88,19 @@ export const padding = {
   sm: 15,
   md: 20,
   lg: 30,
-  xl: 40
+  xl: 40,
 };
 
 export const pb = {
-  paddingBottom: padding.xs
+  paddingBottom: padding.xs,
 };
 
 export const pb0 = {
-  paddingBottom: 0
+  paddingBottom: 0,
 };
 
 export const pt0 = {
-  paddingTop: 0
+  paddingTop: 0,
 };
 
 export const pv0 = { paddingVertical: 0 };
@@ -119,47 +119,47 @@ export const fonts = {
   primary: 'OpenSans-Regular',
   primaryBold: 'OpenSans-Bold',
   primarySemi: 'OpenSans-SemiBold',
-  secondary: 'Franchise Free'
+  secondary: 'Franchise Free',
 };
 
 export const h1 = {
   paddingVertical: padding.sm,
   fontFamily: fonts.secondary,
   fontSize: fonts.xxl,
-  textTransform: 'uppercase'
+  textTransform: 'uppercase',
 };
 
 export const h2 = {
   paddingVertical: padding.xs,
   fontFamily: fonts.secondary,
   fontSize: fonts.xl,
-  textTransform: 'uppercase'
+  textTransform: 'uppercase',
 };
 
 export const h3 = {
   paddingVertical: padding.xxxs,
   fontFamily: fonts.secondary,
   fontSize: fonts.lg,
-  textTransform: 'uppercase'
+  textTransform: 'uppercase',
 };
 
 export const h4 = {
   paddingVertical: padding.xxxs,
   fontFamily: fonts.secondary,
   fontSize: fonts.md,
-  textTransform: 'uppercase'
+  textTransform: 'uppercase',
 };
 
 export const subtitle1 = {
   fontSize: fonts.xs,
   paddingVertical: padding.xs,
-  fontFamily: fonts.primarySemi
+  fontFamily: fonts.primarySemi,
 };
 
 export const subtitle2 = {
   fontSize: fonts.xxs,
   paddingVertical: padding.xs,
-  fontWeight: fonts.bold
+  fontWeight: fonts.bold,
 };
 
 export const subtitle3 = {
@@ -167,18 +167,18 @@ export const subtitle3 = {
   fontSize: fonts.xxxs,
   paddingVertical: padding.xxxs,
   fontFamily: fonts.primarySemi,
-  textTransform: 'capitalize'
+  textTransform: 'capitalize',
 };
 
 export const body1 = {
   fontSize: fonts.xxs,
   paddingVertical: padding.xs,
-  color: colors.neutralDark
+  color: colors.neutralDark,
 };
 
 export const body2 = {
   fontSize: fonts.sm,
-  fontFamily: fonts.primarySemi
+  fontFamily: fonts.primarySemi,
 };
 
 export const button = {
@@ -187,31 +187,31 @@ export const button = {
   fontSize: fonts.md,
   fontFamily: 'OpenSans-Bold',
   paddingVertical: padding.xs,
-  paddingHorizontal: padding.lg
+  paddingHorizontal: padding.lg,
 };
 
 // components
 export const loader = {
   flex: 1,
-  justifyContent: 'center'
+  justifyContent: 'center',
 };
 
 export const container = {
   backgroundColor: colors.white,
   flex: 1,
-  ...center
+  ...center,
 };
 
 export const hr = {
   height: 2,
   backgroundColor: colors.neutralLight,
   marginVertical: margin.sm * 1.7,
-  width: '100%'
+  width: '100%',
 };
 
 export const vl = {
   marginHorizontal: margin.sm * 1.7,
   height: '100%',
   borderLeftColor: colors.neutralLight,
-  borderLeftWidth: 4
+  borderLeftWidth: 4,
 };

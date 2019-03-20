@@ -99,6 +99,8 @@ export const pt0 = {
   paddingTop: 0
 };
 
+export const pv0 = { paddingVertical: 0 };
+
 // Typography
 export const fonts = {
   xxxs: 9,

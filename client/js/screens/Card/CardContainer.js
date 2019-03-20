@@ -24,16 +24,24 @@ class CardContainer extends Component {
   render() {
     console.log('card container');
     return (
-      <Query query={USER_QUERY} variables={{ id: this.state.viewerId }}>
-        {({ loading, error, data }) => {
-          if (loading) return <Text>Loading</Text>;
-          if (error) return <Text>Error</Text>;
-          console.log('USER', data.allUsers[0]);
-          return (
-            <Card navigation={this.props.navigation} user={data.allUsers[0]} />
-          );
-        }}
-      </Query>
+      <Card navigation={this.props.navigation} />
+      // <Query
+      //   query={USER_QUERY}
+      //   variables={{ id: this.state.viewerId }}
+      //   fetchPolicy="network-only"
+      // >
+      //   {({ loading, error, data }) => {
+      //     if (loading) return <Text>Loading</Text>;
+      //     if (error) return <Text>Error</Text>;
+      //     console.log('USER', data.allUsers[0]);
+
+      //     return data.allUsers[0] ? (
+      //       <Card navigation={this.props.navigation} user={data.allUsers[0]} />
+      //     ) : (
+      //       <Text>Loading</Text>
+      //     );
+      //   }}
+      // </Query>
     );
   }
 }

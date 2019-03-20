@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { View, Image, ImageBackground, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Image,
+  ImageBackground,
+  TouchableOpacity,
+  Text
+} from 'react-native';
 import Barcode from 'react-native-barcode-builder';
 import { graphql, compose } from 'react-apollo';
 import { withNavigation } from 'react-navigation';
@@ -9,15 +15,27 @@ import {
   ALL_BEERS_QUERY,
   USER_QUERY
 } from '../../../apollo/queries';
+import { Query } from 'react-apollo';
+import { getLoggedInUser } from '../../../config/models';
 import styles from './styles';
 
 class CardTab extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { viewerId: null };
+  }
+
+  componentDidMount = async () => {
+    const viewerId = await getLoggedInUser();
+    this.setState({ viewerId });
+  };
+
   getRandomBeer = async () => {
     const { allBeers } = await this.props.allBeersQuery;
     return allBeers[Math.floor(Math.random() * allBeers.length)];
   };
 
-  addPoints = async () => {
+  addPoints = async user => {
     console.log('add points');
     const {
       navigation,
@@ -25,7 +43,6 @@ class CardTab extends Component {
       addToUserPointHistory,
       userQuery
     } = this.props;
-    let user = navigation.getParam('user');
     console.log('here', user);
     if (!user) return;
     // user = await userQuery({
@@ -46,27 +63,45 @@ class CardTab extends Component {
       variables: { id: user.id, points: user.points + pointsToAdd }
     });
     console.log('complete');
+    navigation.navigate('StampsReceived');
   };
 
   render() {
     console.log('just rendered cardtab');
     return (
-      <ImageBackground
-        source={require('../../../assets/images/Card/logo_bg.png')}
-        style={styles.imgBg}
+      <Query
+        query={USER_QUERY}
+        variables={{ id: this.state.viewerId }}
+        fetchPolicy="network-only"
       >
-        <View style={styles.container}>
-          <View elevation={3} style={styles.cardWrapper}>
-            <Image
-              source={require('../../../assets/images/Card/your_card.png')}
-              style={styles.card}
-            />
-            <TouchableOpacity onPress={() => this.addPoints()}>
-              <Barcode value="Test Card" format="CODE128" height={40} />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ImageBackground>
+        {({ loading, error, data }) => {
+          if (loading) return <Text>Loading</Text>;
+          if (error) return <Text>Error</Text>;
+
+          return data.allUsers[0] ? (
+            <ImageBackground
+              source={require('../../../assets/images/Card/logo_bg.png')}
+              style={styles.imgBg}
+            >
+              <View style={styles.container}>
+                <TouchableOpacity
+                  elevation={3}
+                  style={styles.cardWrapper}
+                  onPress={() => this.addPoints(data.allUsers[0])}
+                >
+                  <Image
+                    source={require('../../../assets/images/Card/your_card.png')}
+                    style={styles.card}
+                  />
+                  <Barcode value="Test Card" format="CODE128" height={40} />
+                </TouchableOpacity>
+              </View>
+            </ImageBackground>
+          ) : (
+            <Text>Loading</Text>
+          );
+        }}
+      </Query>
     );
   }
 }

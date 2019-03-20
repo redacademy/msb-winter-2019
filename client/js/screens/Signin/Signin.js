@@ -1,5 +1,11 @@
 import React, { Fragment, Component } from 'react';
-import { View, TextInput, Image, TouchableHighlight } from 'react-native';
+import {
+  View,
+  TextInput,
+  Image,
+  TouchableHighlight,
+  KeyboardAvoidingView
+} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { Form, Field } from 'react-final-form';
 import { graphql, compose } from 'react-apollo';
@@ -30,7 +36,7 @@ class Signin extends Component {
       return <CustomText>Error</CustomText>;
     }
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior='padding' enabled>
         <View style={styles.imgBgWrapper}>
           <Image
             source={require('../../assets/images/Logos/msb_logo.png')}
@@ -57,6 +63,7 @@ class Signin extends Component {
                         style={styles.textInput}
                         placeholder='Email'
                         placeholderTextColor={colors.neutralDark}
+                        returnKeyType='next'
                       />
                     )}
                   </Field>
@@ -70,6 +77,7 @@ class Signin extends Component {
                         style={styles.textInput}
                         placeholder='Password'
                         placeholderTextColor={colors.neutralDark}
+                        returnKeyType='go'
                       />
                     )}
                   </Field>
@@ -106,7 +114,7 @@ class Signin extends Component {
             </View>
           </View>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 

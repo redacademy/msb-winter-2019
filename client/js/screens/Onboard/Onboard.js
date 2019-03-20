@@ -31,14 +31,24 @@ class Onboard extends React.Component {
           />
         </View>
         <View style={styles.onboardWrapper}>
-          <Image
-            source={require('../../assets/images/Logos/growler_logo.png')}
-            style={styles.imgLogo}
-          />
+          <View style={styles.logoWrapper}>
+            <Image
+              source={require('../../assets/images/Logos/growler_logo.png')}
+              style={styles.imgLogo}
+            />
+            <Image
+              source={require('../../assets/images/Logos/msb_logo_white.png')}
+              style={styles.imgLogo}
+            />
+          </View>
           <View style={styles.welcomeWrapper}>
             <CustomText style={styles.welcome}>
-              New to Main Street Brewing?
+              Welcome to the Growler
             </CustomText>
+            <CustomText style={styles.welcome}>
+              Rewards Program, you are now
+            </CustomText>
+            <CustomText style={styles.welcome}>an official member!</CustomText>
           </View>
         </View>
 

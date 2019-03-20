@@ -4,7 +4,8 @@ import {
   center,
   margin,
   colors,
-  contain
+  contain,
+  body2
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
@@ -15,9 +16,12 @@ const styles = StyleSheet.create({
     ...container,
     backgroundColor: 'transparent',
     justifyContent: 'space-around',
-    marginVertical: margin.xl * 2
+    marginVertical: margin.xl * 5
   },
-  imgLogo: { ...contain }
+  logoWrapper: { ...center },
+  imgLogo: { ...contain },
+  welcomeWrapper: { ...center },
+  welcome: { ...body2, color: colors.white }
 });
 
 export default styles;

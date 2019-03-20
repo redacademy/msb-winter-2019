@@ -26,6 +26,10 @@ export const ALL_BEERS_QUERY = gql`
       id
       title
       subtitle
+      style
+      ibu
+      abv
+      releaseDate
     }
   }
 `;

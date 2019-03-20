@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 import { Query } from 'react-apollo';
 
@@ -27,12 +26,5 @@ class AllBeersContainer extends Component {
     );
   }
 }
-{
-  /* <AllBeers data={data} navigation={navigation} item={navigation.getParam('item')}
-/> */
-}
-AllBeersContainer.propTypes = {
-  navigation: PropTypes.object.isRequired
-};
 
 export default AllBeersContainer;

@@ -9,7 +9,8 @@ class EventContainer extends Component {
   }
 
   static navigationOptions = {
-    title: 'Event'
+    title: 'Event',
+    header: null
   };
 
   render() {
@@ -18,6 +19,7 @@ class EventContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading</Text>;
           if (error) return <Text>{error.message}</Text>;
+
           return <Event event={data.allEvents} />;
         }}
       </Query>

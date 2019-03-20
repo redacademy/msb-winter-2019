@@ -3,11 +3,17 @@ import { center, row } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
+    justifyContent: 'space-between'
+    // height: Dimensions.get('window').height
+  },
+  carouselWrapper: {
     ...center,
-    width: '100%',
-    margin: 10,
-    marginTop: 20
-  }
+    justifyContent: 'space-between',
+    paddingTop: 10,
+    height: '75%',
+    width: Dimensions.get('window').width
+  },
+  subheader: {}
 });
 
 export default styles;

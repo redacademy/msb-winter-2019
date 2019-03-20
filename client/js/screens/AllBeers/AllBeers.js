@@ -1,24 +1,28 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 
 import styles from './styles';
-import { hr, center, Subtitle2 } from '../../config/styles';
-import Availability from '../../components/Availability';
 import CarouselBeer from '../../components/CarouselBeer';
+import Subheader from '../../components/Subheader';
+import Availability from '../../components/Availability';
 
 const AllBeers = props => {
-  console.log('$$$$$$$', props);
+  console.log(props);
   return (
     <View style={styles.container}>
-      <CarouselBeer beers={props.data} />
+      <Subheader style={styles.subheader}>Growler</Subheader>
+
+      <View style={styles.carouselWrapper}>
+        <CarouselBeer beers={props.beers} />
+      </View>
+      <Availability />
     </View>
   );
 };
 
 AllBeers.propTypes = {
-  data: PropTypes.object.isRequired
+  beers: PropTypes.array.isRequired
 };
 
 export default AllBeers;

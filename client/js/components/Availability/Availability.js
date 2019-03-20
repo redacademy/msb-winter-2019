@@ -7,8 +7,8 @@ const Availability = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.availTitle}>Available In Store</Text>
-      <View style={styles.imgWrapper}>
-        <View style={{ ...row, ...center }}>
+      <View style={styles.infoContainer}>
+        <View style={styles.infoWrapper}>
           <Image
             style={styles.availImg}
             source={require('../../assets/images/Beers/grey_can_icon.png')}
@@ -16,7 +16,7 @@ const Availability = () => {
           <Text style={styles.availSize}>6 x 355 ml</Text>
         </View>
 
-        <View style={{ ...row, ...center }}>
+        <View style={styles.infoWrapper}>
           <Image
             style={styles.availImg}
             source={require('../../assets/images/Beers/grey_bomber_icon.png')}
@@ -24,7 +24,7 @@ const Availability = () => {
           <Text style={styles.availSize}>650 ml</Text>
         </View>
 
-        <View style={{ ...row, ...center }}>
+        <View style={styles.infoWrapper}>
           <Image
             style={styles.availImg}
             source={require('../../assets/images/Beers/grey_growler_icon.png')}

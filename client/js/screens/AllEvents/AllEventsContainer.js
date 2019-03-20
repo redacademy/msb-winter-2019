@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 import { ALL_EVENTS_QUERY } from '../../apollo/queries';
 import { Query } from 'react-apollo';
 import AllEvents from './AllEvents';
-import styles from './styles';
 
 class AllEventsContainer extends Component {
   constructor(props) {

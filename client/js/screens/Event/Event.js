@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const Event = props => {
+  console.log('EVENT', props);
   return <Text>This is Event.</Text>;
 };
 

@@ -5,6 +5,7 @@ import { Query } from 'react-apollo';
 import { getLoggedInUser } from '../../config/models';
 import FavBeers from './FavBeers';
 import styles from './styles';
+import Loader from '../../components/Loader';
 
 class FavBeersContainer extends Component {
   constructor(props) {
@@ -22,14 +23,16 @@ class FavBeersContainer extends Component {
   };
 
   render() {
-    return (
+    return this.state.viewerId ? (
       <Query query={USER_QUERY} variables={{ id: this.state.viewerId }}>
         {({ loading, error, data }) => {
-          if (loading) return <Text>Loading</Text>;
-          if (error) return <Text>{error.message}</Text>;
+          if (loading) return <Loader />;
+          if (error) return <Text>Error</Text>;
           return <FavBeers user={data.allUsers[0].favouriteBeers} />;
         }}
       </Query>
+    ) : (
+      <Loader />
     );
   }
 }

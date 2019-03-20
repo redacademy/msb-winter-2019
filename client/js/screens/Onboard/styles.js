@@ -26,7 +26,9 @@ const styles = StyleSheet.create({
   imgLogo: { ...contain },
   welcomeWrapper: { ...center },
   welcome: { ...body2, color: colors.white },
-  slide: { ...container }
+  slide: { ...container },
+  dot: { backgroundColor: colors.white },
+  activeDot: { backgroundColor: colors.brand }
 });
 
 export default styles;

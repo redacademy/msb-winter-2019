@@ -6,32 +6,9 @@ import { withNavigation } from 'react-navigation';
 
 import Loader from '../../components/Loader';
 import CustomText from '../../components/CustomText';
+import { colors, margin } from '../../config/styles';
 import styles from './styles';
-
-// const styles = StyleSheet.create({
-//   mainContent: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'space-around'
-//   },
-//   image: {
-//     width: 320,
-//     height: 320
-//   },
-//   text: {
-//     color: 'rgba(255, 255, 255, 0.8)',
-//     backgroundColor: 'transparent',
-//     textAlign: 'center',
-//     paddingHorizontal: 16
-//   },
-//   title: {
-//     fontSize: 22,
-//     color: 'white',
-//     backgroundColor: 'transparent',
-//     textAlign: 'center',
-//     marginBottom: 16
-//   }
-// });
+import OrangeButton from '../../components/Buttons/OrangeButton';
 
 const slides = [
   {
@@ -99,12 +76,24 @@ class Onboard extends Component {
     </View>
   );
 
+  renderNextButton = () => (
+    <View style={{ marginHorizontal: margin.xl }}>
+      <OrangeButton>Next</OrangeButton>
+    </View>
+  );
+
+  renderDoneButton = () => <OrangeButton>Done</OrangeButton>;
+
   render() {
     return (
       <AppIntroSlider
         slides={slides}
         renderItem={this.renderItem}
         bottomButton
+        dotStyle={styles.dot}
+        activeDotStyle={styles.activeDot}
+        renderNextButton={this.renderNextButton}
+        renderDoneButton={this.renderDoneButton}
       />
     );
   }

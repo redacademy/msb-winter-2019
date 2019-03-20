@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-const Card = ({ navigation }) => {
-  navigation.navigate('CardTabScreens');
+const Card = ({ navigation, user }) => {
+  navigation.navigate('CardTabScreens', { user });
   return null;
 };
 

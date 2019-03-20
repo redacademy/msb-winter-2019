@@ -171,28 +171,43 @@ export const ADD_TO_USER_EVENTS = gql`
   }
 `;
 
-export const ADD_TO_USER_POINTS = gql`
-  mutation($pointsHistoryPointId: ID!, $userUserId: ID!) {
-    addToUserPoint(
-      pointsHistoryPointId: $pointsHistoryPointsId
-      userUserId: $userUserId
-    )
-    pointsHistoryPoint {
+export const SET_USER_POINTS = gql`
+  mutation($id: ID!, $points: Int!) {
+    updateUser(id: $id, points: $points) {
       id
-      beer {
+      email
+      dateOfBirth
+      points
+      favouriteBeers {
         id
-        point {
-          id
-          stamps
-        }
         title
         subtitle
       }
+      favouriteEvents {
+        id
+        title
+      }
     }
-    userUser {
+  }
+`;
+
+export const ADD_TO_USER_POINT_HISTORY = gql`
+  mutation($date: DateTime!, $stamps: Int!, $beerId: ID!, $userId: ID!) {
+    createPoint(
+      date: $date
+      stamps: $stamps
+      beerId: $beerId
+      userId: $userId
+    ) {
       id
-      name
-      points
+      date
+      stamps
+      beer {
+        id
+        title
+        subtitle
+        description
+      }
     }
   }
 `;

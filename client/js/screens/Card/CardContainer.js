@@ -23,7 +23,11 @@ class CardContainer extends Component {
 
   render() {
     return (
-      <Query query={USER_QUERY} variables={{ id: this.state.viewerId }}>
+      <Query
+        query={USER_QUERY}
+        variables={{ id: this.state.viewerId }}
+        fetchPolicy="network-only"
+      >
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading</Text>;
           if (error) return <Text>Error</Text>;

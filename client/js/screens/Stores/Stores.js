@@ -1,39 +1,20 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { Component } from "react";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
+import ChangeRegion from "../../components/ChangeRegion";
 import styles from "./styles";
 
 const Stores = ({ stores }) => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.mapContainer}>
-        <MapView
-          provider={PROVIDER_GOOGLE}
-          style={styles.map}
-          region={{
-            longitude: -123.099305,
-            latitude: 49.26473,
-            latitudeDelta: 0.004,
-            longitudeDelta: 0.004
-          }}
-        />
-      </View>
+  const initialRegion = {
+    longitude: -123.099305,
+    latitude: 49.26473,
+    latitudeDelta: 0.0004,
+    longitudeDelta: 0.0004
+  };
 
-      <View style={styles.listContainer}>
-        {stores.map(store => {
-          return (
-            <View key={store.id}>
-              <Text>{store.name}</Text>
-              <Text>{store.address}</Text>
-              <Text>{store.hours}</Text>
-            </View>
-          );
-        })}
-      </View>
-    </View>
-  );
+  return <ChangeRegion styles={styles} stores={stores} />;
 };
 
 Stores.propTypes = {};

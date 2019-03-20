@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 
 import CustomText from '../../CustomText';
 import styles from './styles';
@@ -14,6 +15,10 @@ const BlackButton = props => {
       </View>
     </TouchableOpacity>
   );
+};
+
+BlackButton.propTypes = {
+  children: PropTypes.string.isRequired
 };
 
 export default BlackButton;

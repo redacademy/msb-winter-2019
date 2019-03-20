@@ -77,6 +77,10 @@ export const margin = {
   xl: 40
 };
 
+export const mv0 = {
+  marginVertical: 0
+};
+
 export const padding = {
   xxxs: 2,
   xxs: 6,

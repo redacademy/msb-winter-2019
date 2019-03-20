@@ -1,20 +1,25 @@
-import React, { Fragment } from 'react';
-import { View, Button, TextInput, TouchableOpacity, Text } from 'react-native';
+import React, { Fragment, Component } from 'react';
+import {
+  View,
+  TextInput,
+  Image,
+  TouchableHighlight,
+  KeyboardAvoidingView
+} from 'react-native';
 import { withNavigation } from 'react-navigation';
-import PropTypes from 'prop-types';
-import { graphql, compose } from 'react-apollo';
-import CustomText from '../../components/CustomText';
-import { setUserToken } from '../../config/models';
 import { Form, Field } from 'react-final-form';
-import Loader from '../../components/Loader';
-import styles from './styles';
+import { graphql, compose } from 'react-apollo';
 import { SIGNIN_MUTATION } from '../../apollo/queries';
+import PropTypes from 'prop-types';
 
-class Signin extends React.Component {
-  static navigationOptions = {
-    title: 'Please sign in'
-  };
+import Loader from '../../components/Loader';
+import CustomText from '../../components/CustomText';
+import WhiteButton from '../../components/Buttons/WhiteButton';
+import { setUserToken } from '../../config/models';
+import { colors } from '../../config/styles';
+import styles from './styles';
 
+class Signin extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,52 +33,92 @@ class Signin extends React.Component {
       return <Loader />;
     }
     if (this.state.error) {
-      return <Text>Error</Text>;
+      return <CustomText>Error</CustomText>;
     }
     return (
-      <View style={styles.container}>
-        <CustomText>This is Signin.</CustomText>
-        <Form
-          onSubmit={this.onSubmit}
-          render={({ handleSubmit }) => (
-            <Fragment>
-              <Text>Email</Text>
-              <Field name="email">
-                {({ input, meta }) => (
-                  <TextInput
-                    editable={true}
-                    autoCapitalize="none"
-                    {...input}
-                    style={styles.textInput}
-                    autoFocus={true}
-                  />
-                )}
-              </Field>
-              <Text>Password</Text>
-              <Field name="password">
-                {({ input, meta }) => (
-                  <TextInput
-                    editable={true}
-                    autoCapitalize="none"
-                    secureTextEntry={true}
-                    {...input}
-                    style={styles.textInput}
-                  />
-                )}
-              </Field>
-              <Button title="Sign in!" onPress={handleSubmit} />
-              <TouchableOpacity
-                style={styles.authButton}
+      <KeyboardAvoidingView style={styles.container} behavior='padding' enabled>
+        <View style={styles.imgBgWrapper}>
+          <Image
+            source={require('../../assets/images/Logos/msb_logo.png')}
+            style={styles.imgBg}
+          />
+        </View>
+        <View style={styles.loginWrapper}>
+          <Image
+            source={require('../../assets/images/Logos/msb_logo_full.png')}
+            style={styles.imgLogo}
+          />
+          <View>
+            <Form
+              onSubmit={this.onSubmit}
+              style={styles.loginForm}
+              render={({ handleSubmit }) => (
+                <Fragment>
+                  <Field name='email'>
+                    {({ input, meta }) => (
+                      <TextInput
+                        editable={true}
+                        autoCapitalize='none'
+                        autoCorrect={false}
+                        {...input}
+                        style={styles.textInput}
+                        placeholder='Email'
+                        placeholderTextColor={colors.neutralDark}
+                        returnKeyType='next'
+                        onSubmitEditing={() => this.passwordInput.focus()}
+                        keyboardType='email-address'
+                      />
+                    )}
+                  </Field>
+                  <Field name='password'>
+                    {({ input, meta }) => (
+                      <TextInput
+                        editable={true}
+                        autoCapitalize='none'
+                        secureTextEntry={true}
+                        {...input}
+                        style={styles.textInput}
+                        placeholder='Password'
+                        placeholderTextColor={colors.neutralDark}
+                        returnKeyType='go'
+                        ref={input => (this.passwordInput = input)}
+                      />
+                    )}
+                  </Field>
+                  <View style={styles.signinWrapper}>
+                    <WhiteButton
+                      onPress={handleSubmit}
+                      style={styles.signinBtn}
+                    >
+                      Sign In
+                    </WhiteButton>
+                  </View>
+                </Fragment>
+              )}
+            />
+          </View>
+          <View style={styles.signupWrapper}>
+            <CustomText style={styles.signup}>
+              New to Main Street Brewing?
+            </CustomText>
+            <View style={styles.signupLinkWrapper}>
+              <CustomText style={styles.signup}>Click here to</CustomText>
+              <TouchableHighlight
+                underlayColor={colors.neutralLight}
                 onPress={() => {
                   this.props.navigation.navigate('Signup');
                 }}
               >
-                <Text>sign up</Text>
-              </TouchableOpacity>
-            </Fragment>
-          )}
-        />
-      </View>
+                <CustomText style={[styles.signup, styles.signupLink]}>
+                  {' '}
+                  sign up{' '}
+                </CustomText>
+              </TouchableHighlight>
+              <CustomText style={styles.signup}>now!</CustomText>
+            </View>
+          </View>
+        </View>
+      </KeyboardAvoidingView>
     );
   }
 

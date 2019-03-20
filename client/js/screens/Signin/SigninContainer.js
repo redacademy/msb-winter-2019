@@ -4,7 +4,7 @@ import Signin from './Signin';
 
 class SigninContainer extends Component {
   static navigationOptions = {
-    title: 'Sign in'
+    title: 'Signin'
   };
 
   render() {

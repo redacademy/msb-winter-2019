@@ -8,7 +8,8 @@ import {
   dimensions,
   margin,
   subtitle2,
-  iteCenterRow
+  iteCenterRow,
+  jusBetween
 } from '../../config/styles';
 
 const styles = StyleSheet.create({

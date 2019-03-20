@@ -12,10 +12,6 @@ import { SIGNUP_MUTATION } from '../../apollo/queries';
 import Loader from '../../components/Loader';
 
 class Signup extends React.Component {
-  static navigationOptions = {
-    title: 'Please sign up'
-  };
-
   constructor(props) {
     super(props);
     this.state = {

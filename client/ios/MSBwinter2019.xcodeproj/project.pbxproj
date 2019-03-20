@@ -49,7 +49,7 @@
 		456793DD1745436B95F38DEF /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9666912F04884C2D9DC2BC79 /* OpenSans-Italic.ttf */; };
 		483146E96E9845508CDF2292 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D5D9A6D38A64317825D1963 /* OpenSans-SemiBoldItalic.ttf */; };
 		5167900320BE4F959BE8E0D4 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB706452946C40F6931267A3 /* Feather.ttf */; };
-		5A96AB3BCD72292B9DA97824 /* libPods-MSBwinter2019.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA04CCFC9F60F7016FBF110 /* libPods-MSBwinter2019.a */; };
+		5A96AB3BCD72292B9DA97824 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		5F7BDC0A10CD439C91EF54FF /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09A55302A15C420784664D40 /* OpenSans-LightItalic.ttf */; };
 		65E86F041BB1468DB131A50F /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4175BA48DC2D4B63B34B7E0D /* OpenSans-ExtraBoldItalic.ttf */; };
 		670E1B41B29C4DA1AF88A147 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4BCDF96FAE4744628A90C2A1 /* MaterialCommunityIcons.ttf */; };
@@ -64,6 +64,7 @@
 		AB205C2473F74058BEB12C3F /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 171752550831454A8D049917 /* OpenSans-Light.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B8B78EA1662E4C3685F6E0CB /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA3D66BCF391464FBD8AAEC9 /* Zocial.ttf */; };
+		BA0FD072D96BB6B6DF743DA8 /* libPods-MSBwinter2019.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD78AF67119D9F4CC05E9DF7 /* libPods-MSBwinter2019.a */; };
 		DEE3046BC5A24005BD378C4B /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80110B1BC9BB4092AFA38B76 /* MaterialIcons.ttf */; };
 		DF3E31AF99464EE793574FCE /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4FBB6A3591149FBA284DC03 /* OpenSans-Bold.ttf */; };
 		E347617B5FB044A19B8EC85E /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19726017C2634947B8A37F5D /* FontAwesome5_Solid.ttf */; };
@@ -431,9 +432,11 @@
 		2D02E47B1E0B4A5D006451C7 /* MSBwinter2019-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MSBwinter2019-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* MSBwinter2019-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MSBwinter2019-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		30F319F1EA0B6770CBF08C68 /* Pods-MSBwinter2019.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSBwinter2019.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSBwinter2019/Pods-MSBwinter2019.debug.xcconfig"; sourceTree = "<group>"; };
 		3263A7EB336B4C2AA0595303 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		3643017B45E8440FA8E65AAC /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		4175BA48DC2D4B63B34B7E0D /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../js/assets/fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		4A350FF6640FF0C643FF7AE0 /* Pods-MSBwinter2019.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSBwinter2019.release.xcconfig"; path = "Target Support Files/Pods-MSBwinter2019/Pods-MSBwinter2019.release.xcconfig"; sourceTree = "<group>"; };
 		4BCDF96FAE4744628A90C2A1 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		683CE1D33A76430184EE05F7 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
@@ -465,6 +468,7 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EF30DB9D72294D88810DB59D /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		FB706452946C40F6931267A3 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		FD78AF67119D9F4CC05E9DF7 /* libPods-MSBwinter2019.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MSBwinter2019.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -497,7 +501,8 @@
 				8685B9A9A71D4213A16211AF /* libRNGestureHandler.a in Frameworks */,
 				6C3C0BEC26EA43AF94DDCECE /* libRNVectorIcons.a in Frameworks */,
 				EE7C94598F0A403589163C89 /* libRNReanimated.a in Frameworks */,
-				5A96AB3BCD72292B9DA97824 /* libPods-MSBwinter2019.a in Frameworks */,
+				5A96AB3BCD72292B9DA97824 /* BuildFile in Frameworks */,
+				BA0FD072D96BB6B6DF743DA8 /* libPods-MSBwinter2019.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,7 +728,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				BBA04CCFC9F60F7016FBF110 /* libPods-MSBwinter2019.a */,
+				FD78AF67119D9F4CC05E9DF7 /* libPods-MSBwinter2019.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -732,7 +737,8 @@
 			isa = PBXGroup;
 			children = (
 				002334D02A63EB82918A6877 /* Pods-MSBwinter2019.debug.xcconfig */,
-				48DE80BC6243C14D4C9BC45C /* Pods-MSBwinter2019.release.xcconfig */,
+				30F319F1EA0B6770CBF08C68 /* Pods-MSBwinter2019.debug.xcconfig */,
+				4A350FF6640FF0C643FF7AE0 /* Pods-MSBwinter2019.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -1626,7 +1632,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 48DE80BC6243C14D4C9BC45C /* Pods-MSBwinter2019.release.xcconfig */;
+			baseConfigurationReference = 4A350FF6640FF0C643FF7AE0 /* Pods-MSBwinter2019.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;

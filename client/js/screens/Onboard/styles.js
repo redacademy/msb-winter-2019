@@ -5,7 +5,8 @@ import {
   margin,
   colors,
   contain,
-  body2
+  body2,
+  padding
 } from '../../config/styles';
 
 const styles = StyleSheet.create({

@@ -51,18 +51,6 @@ class Onboard extends React.Component {
             <CustomText style={styles.welcome}>an official member!</CustomText>
           </View>
         </View>
-
-        {/* <CustomText>This is Onboard.</CustomText>
-
-        <Button title='Sign up!' onPress={() => handleSubmit()} />
-        <TouchableOpacity
-          style={styles.authButton}
-          onPress={() => {
-            this.props.navigation.navigate('Signin');
-          }}
-        >
-          <Text>back to login</Text>
-        </TouchableOpacity> */}
       </View>
     );
   }

@@ -121,6 +121,7 @@ export const USER_QUERY = gql`
       email
       dateOfBirth
       points
+      name
       favouriteBeers {
         id
         title

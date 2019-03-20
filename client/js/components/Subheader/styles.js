@@ -1,11 +1,11 @@
-import { StyleSheet } from 'react-native';
-import { h3, underline, shadow2, padding, center } from '../../config/styles';
+import { StyleSheet } from "react-native";
+import { h3, underline, shadow2, padding, center } from "../../config/styles";
 
 const styles = StyleSheet.create({
   subheaderContainer: {
     ...shadow2,
-    width: '100%',
-    paddingVertical: padding.md,
+    width: "100%",
+    paddingVertical: padding.xs,
     ...center
   },
   subheaderWrapper: {

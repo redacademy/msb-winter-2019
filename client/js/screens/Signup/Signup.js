@@ -63,10 +63,12 @@ class Signup extends React.Component {
                         <TextInput
                           editable={true}
                           autoCapitalize='none'
+                          autoCorrect={false}
                           {...input}
                           style={styles.textInput}
                           autoFocus={true}
                           returnKeyType='next'
+                          onSubmitEditing={() => this.emailInput.focus()}
                         />
                         <Ionicons
                           name={Platform.select({
@@ -89,9 +91,13 @@ class Signup extends React.Component {
                         <TextInput
                           editable={true}
                           autoCapitalize='none'
+                          autoCorrect={false}
                           {...input}
                           style={styles.textInput}
                           returnKeyType='next'
+                          keyboardType='email-address'
+                          ref={input => (this.emailInput = input)}
+                          onSubmitEditing={() => this.passwordInput.focus()}
                         />
                         <Ionicons
                           name={Platform.select({
@@ -114,10 +120,15 @@ class Signup extends React.Component {
                         <TextInput
                           editable={true}
                           autoCapitalize='none'
+                          autoCorrect={false}
                           secureTextEntry={true}
                           {...input}
                           style={styles.textInput}
                           returnKeyType='next'
+                          ref={input => (this.passwordInput = input)}
+                          onSubmitEditing={() =>
+                            this.confirmPasswordInput.focus()
+                          }
                         />
                         <Ionicons
                           name={Platform.select({
@@ -140,10 +151,13 @@ class Signup extends React.Component {
                         <TextInput
                           editable={true}
                           autoCapitalize='none'
+                          autoCorrect={false}
                           secureTextEntry={true}
                           {...input}
                           style={styles.textInput}
                           returnKeyType='next'
+                          ref={input => (this.confirmPasswordInput = input)}
+                          onSubmitEditing={() => this.datePicker.onPressDate()}
                         />
                         <Ionicons
                           name={Platform.select({
@@ -191,6 +205,9 @@ class Signup extends React.Component {
                               this.setState({ date: date });
                             }}
                             returnKeyType='go'
+                            ref={picker => {
+                              this.datePicker = picker;
+                            }}
                           />
                           <Ionicons
                             name={Platform.select({

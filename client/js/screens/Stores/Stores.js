@@ -1,10 +1,15 @@
-import React, { Component } from "react";
+import React from 'react';
+import { View, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
-import ChangeRegion from "../../components/ChangeRegion";
-import styles from "./styles";
+import styles from './styles';
 
-const Stores = ({ stores }) => {
-  return <ChangeRegion styles={styles} stores={stores} />;
+const Stores = props => {
+  return (
+    <View style={styles.container}>
+      <Text>This is Stores.</Text>
+    </View>
+  );
 };
 
 Stores.propTypes = {};

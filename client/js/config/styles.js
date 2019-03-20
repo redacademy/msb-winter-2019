@@ -1,16 +1,16 @@
-import { Dimensions } from 'react-native';
+import { Dimensions } from "react-native";
 
 export const dimensions = {
-  fullHeight: Dimensions.get('window').height,
-  fullWidth: Dimensions.get('window').width
+  fullHeight: Dimensions.get("window").height,
+  fullWidth: Dimensions.get("window").width
 };
 
 export const colors = {
-  neutralLight: '#dddddd', // light grey
-  neutralDark: '#636363', // med grey
-  brand: '#eea922', // gold
-  white: '#ffffff',
-  black: '#000000'
+  neutralLight: "#dddddd", // light grey
+  neutralDark: "#636363", // med grey
+  brand: "#eea922", // gold
+  white: "#ffffff",
+  black: "#000000"
 };
 
 export const underline = {
@@ -48,25 +48,25 @@ export const shadow3 = {
   shadowRadius: 3
 };
 
-export const contain = { resizeMode: 'contain' };
+export const contain = { resizeMode: "contain" };
 
-export const center = { justifyContent: 'center', alignItems: 'center' };
+export const center = { justifyContent: "center", alignItems: "center" };
 
-export const row = { flexDirection: 'row' };
+export const row = { flexDirection: "row" };
 
 export const jusCenterRow = {
   ...row,
-  justifyContent: 'center'
+  justifyContent: "center"
 };
 
 export const jusBetweenRow = {
   ...row,
-  justifyContent: 'space-between'
+  justifyContent: "space-between"
 };
 
 export const iteCenterRow = {
   ...row,
-  alignItems: 'center'
+  alignItems: "center"
 };
 
 export const margin = {
@@ -109,39 +109,39 @@ export const fonts = {
   lg: 26,
   xl: 34,
   xxl: 46,
-  bold: '600',
-  primary: 'OpenSans-Regular',
-  primaryBold: 'OpenSans-Bold',
-  primarySemi: 'OpenSans-SemiBold',
-  secondary: 'Franchise Free'
+  bold: "600",
+  primary: "OpenSans-Regular",
+  primaryBold: "OpenSans-Bold",
+  primarySemi: "OpenSans-SemiBold",
+  secondary: "Franchise Free"
 };
 
 export const h1 = {
   paddingVertical: padding.sm,
   fontFamily: fonts.secondary,
   fontSize: fonts.xxl,
-  textTransform: 'uppercase'
+  textTransform: "uppercase"
 };
 
 export const h2 = {
   paddingVertical: padding.xs,
   fontFamily: fonts.secondary,
   fontSize: fonts.xl,
-  textTransform: 'uppercase'
+  textTransform: "uppercase"
 };
 
 export const h3 = {
   paddingVertical: padding.xxxs,
   fontFamily: fonts.secondary,
   fontSize: fonts.lg,
-  textTransform: 'uppercase'
+  textTransform: "uppercase"
 };
 
 export const h4 = {
   paddingVertical: padding.xxxs,
   fontFamily: fonts.secondary,
   fontSize: fonts.md,
-  textTransform: 'uppercase'
+  textTransform: "uppercase"
 };
 
 export const subtitle1 = {
@@ -161,7 +161,7 @@ export const subtitle3 = {
   fontSize: fonts.xxxs,
   paddingVertical: padding.xxxs,
   fontFamily: fonts.primarySemi,
-  textTransform: 'capitalize'
+  textTransform: "capitalize"
 };
 
 export const body1 = {
@@ -177,9 +177,9 @@ export const body2 = {
 
 export const button = {
   color: colors.white,
-  textAlign: 'center',
+  textAlign: "center",
   fontSize: fonts.md,
-  fontFamily: 'OpenSans-Bold',
+  fontFamily: "OpenSans-Bold",
   paddingVertical: padding.xs,
   paddingHorizontal: padding.lg
 };
@@ -187,7 +187,7 @@ export const button = {
 // components
 export const loader = {
   flex: 1,
-  justifyContent: 'center'
+  justifyContent: "center"
 };
 
 export const container = {
@@ -200,12 +200,12 @@ export const hr = {
   height: 2,
   backgroundColor: colors.neutralLight,
   marginVertical: margin.sm * 1.7,
-  width: '100%'
+  width: "100%"
 };
 
 export const vl = {
   marginHorizontal: margin.sm * 1.7,
-  height: '100%',
+  height: "100%",
   borderLeftColor: colors.neutralLight,
   borderLeftWidth: 4
 };

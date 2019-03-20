@@ -5046,6 +5046,11 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-native-app-intro-slider@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-app-intro-slider/-/react-native-app-intro-slider-2.0.0.tgz#60744a3ee4cb9696f4f7e2a4ab428038f953cf0e"
+  integrity sha512-9zGRAVQmYh+IrAee2jWJROmuVJTwFC3a9y+hWhPj8S7WKp9EigfG1A6CAhWGMLIeLmy+BjCxeQ1dDef4uCHpYQ==
+
 react-native-barcode-builder@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/react-native-barcode-builder/-/react-native-barcode-builder-1.0.5.tgz#dcc93b6afeec56148b8b3c4e5fb9136a532f7883"

@@ -1,12 +1,65 @@
-import React, { Fragment, Component } from 'react';
-import { View, Image } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, Image } from 'react-native';
+import AppIntroSlider from 'react-native-app-intro-slider';
 import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 
 import Loader from '../../components/Loader';
 import CustomText from '../../components/CustomText';
-import Swiper from '../../components/Swiper';
 import styles from './styles';
+
+// const styles = StyleSheet.create({
+//   mainContent: {
+//     flex: 1,
+//     alignItems: 'center',
+//     justifyContent: 'space-around'
+//   },
+//   image: {
+//     width: 320,
+//     height: 320
+//   },
+//   text: {
+//     color: 'rgba(255, 255, 255, 0.8)',
+//     backgroundColor: 'transparent',
+//     textAlign: 'center',
+//     paddingHorizontal: 16
+//   },
+//   title: {
+//     fontSize: 22,
+//     color: 'white',
+//     backgroundColor: 'transparent',
+//     textAlign: 'center',
+//     marginBottom: 16
+//   }
+// });
+
+const slides = [
+  {
+    key: '0',
+    image: require('../../assets/images/Logos/growler_logo_brand.png'),
+    text1: 'Welcome to the Growler',
+    text2: 'Rewards Program, you are now',
+    text3: 'an official member!'
+  },
+  {
+    key: '1',
+    image: require('../../assets/images/Logos/growler_logo.png'),
+    text1: 'Collect stamps with Growlers and',
+    text2: 'redeem them for awesome rewards.'
+  },
+  {
+    key: '2',
+    image: require('../../assets/images/Icons/cheers_icon_white.png'),
+    text1: 'Look out for our brewtiful events to',
+    text2: 'hang out with your new friends!'
+  },
+  {
+    key: '3',
+    image: require('../../assets/images/Icons/where_to_buy_icon.png'),
+    text1: 'Locate where to buy our',
+    text2: 'amazing beer.'
+  }
+];
 
 class Onboard extends Component {
   constructor(props) {
@@ -16,121 +69,45 @@ class Onboard extends Component {
       error: false
     };
   }
-  render() {
-    if (this.state.loading) {
-      return <Loader />;
-    }
-    if (this.state.error) {
-      return <CustomText>Error</CustomText>;
-    }
-    return (
-      <Fragment>
-        {/* <Swiper> */}
-        {/* First Screen */}
-        {/*   <View style={styles.container}>
-          <View style={styles.imgBgWrapper}>
-            <Image
-              source={require('../../assets/images/Logos/msb_logo.png')}
-              style={styles.imgBg}
-            />
-          </View>
-          <View style={styles.onboardWrapper}>
-            <View style={styles.logoWrapper}>
-              <Image
-                source={require('../../assets/images/Logos/growler_logo.png')}
-                style={styles.imgLogo}
-              />
-              <Image
-                source={require('../../assets/images/Logos/msb_logo_white.png')}
-                style={styles.imgLogo}
-              />
-            </View>
-            <View style={styles.welcomeWrapper}>
-              <CustomText style={styles.welcome}>
-                Welcome to the Growler
-              </CustomText>
-              <CustomText style={styles.welcome}>
-                Rewards Program, you are now
-              </CustomText>
-              <CustomText style={styles.welcome}>
-                an official member!
-              </CustomText>
-            </View>
-          </View>
-        </View> */}
-        {/* Second Screen */}
-        {/* <View style={styles.container}>
-          <View style={styles.imgBgWrapper}>
-            <Image
-              source={require('../../assets/images/Logos/msb_logo.png')}
-              style={styles.imgBg}
-            />
-          </View>
-          <View style={[styles.onboardWrapper, styles.walkthru]}>
-            <Image
-              source={require('../../assets/images/Logos/growler_logo.png')}
-              style={styles.imgLogo}
-            />
-            <View style={styles.welcomeWrapper}>
-              <CustomText style={styles.welcome}>
-                Collect stamps with Growlers and
-              </CustomText>
-              <CustomText style={styles.welcome}>
-                redeem them for awesome rewards.
-              </CustomText>
-            </View>
-          </View>
-        </View> */}
-        {/* Third Screen */}
-        {/* <View style={styles.container}>
-          <View style={styles.imgBgWrapper}>
-            <Image
-              source={require('../../assets/images/Logos/msb_logo.png')}
-              style={styles.imgBg}
-            />
-          </View>
-          <View style={[styles.onboardWrapper, styles.walkthru]}>
-            <Image
-              source={require('../../assets/images/Icons/cheers_icon_white.png')}
-              style={styles.imgLogo}
-            />
-            <View style={styles.welcomeWrapper}>
-              <CustomText style={styles.welcome}>
-                Look out for our brewtiful events to
-              </CustomText>
-              <CustomText style={styles.welcome}>
-                hang out with your new friends!
-              </CustomText>
-            </View>
-          </View>
-        </View> */}
-        {/* Fourth Screen */}
-        <View style={styles.container}>
-          <View style={styles.imgBgWrapper}>
-            <Image
-              source={require('../../assets/images/Logos/msb_logo.png')}
-              style={styles.imgBg}
-            />
-          </View>
-          <View style={[styles.onboardWrapper, styles.walkthru]}>
-            <Image
-              source={require('../../assets/images/Icons/where_to_buy_icon.png')}
-              style={styles.imgLogo}
-            />
-            <View style={styles.welcomeWrapper}>
-              <CustomText style={styles.welcome}>
-                Locate where to buy our
-              </CustomText>
-              <CustomText style={styles.welcome}>amazing beer.</CustomText>
-            </View>
-          </View>
+
+  renderItem = props => (
+    <View
+      style={[
+        styles.container,
+        {
+          paddingTop: props.topSpacer,
+          paddingBottom: props.bottomSpacer,
+          width: props.width,
+          height: props.height
+        }
+      ]}
+    >
+      <View style={styles.imgBgWrapper}>
+        <Image
+          source={require('../../assets/images/Logos/msb_logo.png')}
+          style={styles.imgBg}
+        />
+      </View>
+      <View style={styles.onboardWrapper}>
+        <Image source={props.image} style={styles.imgLogo} />
+        <View style={styles.welcomeWrapper}>
+          <CustomText style={styles.welcome}>{props.text1}</CustomText>
+          <CustomText style={styles.welcome}>{props.text2}</CustomText>
+          <CustomText style={styles.welcome}>{props.text3}</CustomText>
         </View>
-        {/* </Swiper> */}
-      </Fragment>
+      </View>
+    </View>
+  );
+
+  render() {
+    return (
+      <AppIntroSlider
+        slides={slides}
+        renderItem={this.renderItem}
+        bottomButton
+      />
     );
   }
 }
 
-Onboard.propTypes = {};
-
-export default withNavigation(Onboard);
+export default Onboard;

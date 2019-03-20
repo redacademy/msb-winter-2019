@@ -1,5 +1,11 @@
 import { StyleSheet } from 'react-native';
-import { dimensions, jusCenterRow, colors, margin } from '../../config/styles';
+import {
+  dimensions,
+  jusCenterRow,
+  colors,
+  margin,
+  container
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   // Set width and height to the screen size
@@ -14,7 +20,8 @@ const styles = StyleSheet.create({
   },
   // Slide
   slide: {
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    ...container
   },
   // Pagination indicators
   pagination: {
@@ -46,6 +53,7 @@ const styles = StyleSheet.create({
   activeDot: {
     backgroundColor: colors.brand
   }
+  // wrapper: { flex: 1 }
 });
 
 export default styles;

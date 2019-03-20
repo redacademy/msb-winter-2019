@@ -10,20 +10,23 @@ import {
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: { ...container, backgroundColor: colors.black },
+  container: {
+    ...container,
+    backgroundColor: colors.black
+  },
   imgBgWrapper: { position: 'absolute' },
   imgBg: { ...center },
   onboardWrapper: {
     ...container,
     backgroundColor: 'transparent',
     justifyContent: 'space-around',
-    marginVertical: margin.xl * 5
+    marginVertical: margin.xl * 6
   },
-  walkthru: { marginVertical: margin.xl * 6.25 },
   logoWrapper: { ...center },
   imgLogo: { ...contain },
   welcomeWrapper: { ...center },
-  welcome: { ...body2, color: colors.white }
+  welcome: { ...body2, color: colors.white },
+  slide: { ...container }
 });
 
 export default styles;

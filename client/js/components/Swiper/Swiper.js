@@ -1,9 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {
   Dimensions, // Detects screen dimensions
   Platform, // Detects platform running the app
   ScrollView, // Handles navigation between screens
-  StyleSheet, // CSS-like styles
   View // Container component
 } from 'react-native';
 
@@ -184,17 +183,19 @@ export default class Swiper extends Component {
           this.scrollView = component;
         }}
         {...this.props}
-        contentContainerStyle={[styles.wrapper, this.props.style]}
+        contentContainerStyle={[this.props.style]}
         onScrollBeginDrag={this.onScrollBegin}
         onMomentumScrollEnd={this.onScrollEnd}
         onScrollEndDrag={this.onScrollEndDrag}
       >
-        {pages.map((page, i) => (
+        {pages.map((page, i) => {
           // Render each slide inside a View
-          <View style={[styles.fullScreen, styles.slide]} key={i}>
-            {page}
-          </View>
-        ))}
+          return (
+            <View style={[styles.fullScreen, styles.slide]} key={i}>
+              {page}
+            </View>
+          );
+        })}
       </ScrollView>
     );
   };
@@ -251,7 +252,7 @@ export default class Swiper extends Component {
           </OrangeButton>
         ) : (
           // Or this one otherwise
-          <Fragment />
+          <View />
         )}
       </View>
     );

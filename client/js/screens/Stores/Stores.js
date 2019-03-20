@@ -6,8 +6,6 @@ import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import styles from "./styles";
 
 const Stores = ({ stores }) => {
-  console.log(stores);
-
   return (
     <View style={styles.container}>
       <View style={styles.mapContainer}>
@@ -22,8 +20,17 @@ const Stores = ({ stores }) => {
           }}
         />
       </View>
+
       <View style={styles.listContainer}>
-        <Text>This is Stores.</Text>
+        {stores.map(store => {
+          return (
+            <View key={store.id}>
+              <Text>{store.name}</Text>
+              <Text>{store.address}</Text>
+              <Text>{store.hours}</Text>
+            </View>
+          );
+        })}
       </View>
     </View>
   );

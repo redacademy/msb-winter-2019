@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { Query } from "react-apollo";
+import PropTypes from "prop-types";
 
 import Stores from "./Stores";
 import { ALL_STORES_QUERY } from "../../apollo/queries";

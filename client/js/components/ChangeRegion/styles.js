@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   bold: {
     fontFamily: fonts.primaryBold,
     lineHeight: 30,
-    fontSize: fonts.xs
+    fontSize: fonts.sm
   },
   description: {
     fontFamily: fonts.primary,

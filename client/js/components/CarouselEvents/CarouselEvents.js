@@ -11,9 +11,7 @@ import {
 import Carousel from 'react-native-snap-carousel';
 import { withNavigation } from 'react-navigation';
 import moment from 'moment';
-
 import styles from './styles';
-import { center } from '../../config/styles';
 
 class CarouselEvents extends Component {
   constructor(props) {
@@ -43,25 +41,34 @@ class CarouselEvents extends Component {
           loopClonesPerSide={2}
           firstItem={0}
           onSnapToItem={index => {
-            this.setState({ currentIndex: index }, () => {
-              console.log(this.state.currentIndex);
-            });
+            this.setState({ currentIndex: index });
           }}
           renderItem={({ item }) => {
+            let eventImg;
+            if (item.title === 'Live Music & Beers') {
+              eventImg = require('../../assets/images/Events/livemusic.jpg');
+            } else if (item.title === 'Brewery Tour') {
+              eventImg = require('../../assets/images/Events/Oskar_Blues_Festival_1200.jpg');
+            }
             return (
               <View style={styles.carouselContainer}>
                 <TouchableHighlight
                   underlayColor={'transparent'}
                   onPress={() => {
-                    navigation.navigate('Event', { item });
+                    navigation.navigate('Event', { eventId: item.id });
                   }}
                 >
-                  <View style={{ alignItems: 'center', height: 100 }}>
-                    <Image
-                      style={styles.img}
-                      source={require('../../assets/images/Events/turnstile_middle.png')}
-                    />
-
+                  <View style={{ alignItems: 'center' }}>
+                    <View style={styles.imgWrapper}>
+                      <Image
+                        style={styles.img}
+                        source={
+                          eventImg
+                            ? eventImg
+                            : require('../../assets/images/Events/turnstile_middle.png')
+                        }
+                      />
+                    </View>
                     <Text style={styles.title}>{item.title}</Text>
                     <Text style={styles.subtitle}>{item.subtitle}</Text>
                   </View>
@@ -73,7 +80,7 @@ class CarouselEvents extends Component {
           itemWidth={250}
         />
 
-        <View style={{ ...center }}>
+        <View style={styles.infoWrapper}>
           <View style={styles.border} />
 
           <View style={styles.dataWrapper}>

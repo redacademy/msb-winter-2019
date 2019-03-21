@@ -4,6 +4,7 @@ import { USER_QUERY } from '../../apollo/queries';
 import { Query } from 'react-apollo';
 import { getLoggedInUser } from '../../config/models';
 import FavEvents from './FavEvents';
+import Loader from '../../components/Loader';
 import styles from './styles';
 
 class FavEventsContainer extends Component {
@@ -22,14 +23,16 @@ class FavEventsContainer extends Component {
   };
 
   render() {
-    return (
+    return this.state.viewerId ? (
       <Query query={USER_QUERY} variables={{ id: this.state.viewerId }}>
         {({ loading, error, data }) => {
-          if (loading) return <Text>Loading</Text>;
+          if (loading) return <Loader />;
           if (error) return <Text>{error.message}</Text>;
           return <FavEvents user={data.allUsers[0].favouriteEvents} />;
         }}
       </Query>
+    ) : (
+      <Loader />
     );
   }
 }

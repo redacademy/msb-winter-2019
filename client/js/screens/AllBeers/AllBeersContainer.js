@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { ALL_BEERS_QUERY } from '../../apollo/queries';
+import { Text } from 'react-native';
 import { Query } from 'react-apollo';
+
+import { ALL_BEERS_QUERY } from '../../apollo/queries';
 import AllBeers from './AllBeers';
-import styles from './styles';
 
 class AllBeersContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   static navigationOptions = {
     title: 'AllBeers'
   };

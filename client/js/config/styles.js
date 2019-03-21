@@ -209,7 +209,7 @@ export const container = {
 export const hr = {
   height: 2,
   backgroundColor: colors.neutralLight,
-  marginVertical: margin.sm * 1.7,
+  marginVertical: margin.sm * 1.5,
   width: '100%'
 };
 
@@ -217,5 +217,5 @@ export const vl = {
   marginHorizontal: margin.sm * 1.7,
   height: '100%',
   borderLeftColor: colors.neutralLight,
-  borderLeftWidth: 4
+  borderLeftWidth: 2
 };

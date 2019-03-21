@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Text } from 'react-native';
 import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 
@@ -8,10 +9,6 @@ import CustomText from '../../components/CustomText';
 import AllEvents from './AllEvents';
 
 class AllEventsContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   static navigationOptions = {
     title: 'AllEvents'
   };

@@ -1,13 +1,14 @@
 import React from 'react';
 import { View } from 'react-native';
-
-import CustomText from '../../CustomText';
 import styles from './styles';
+import CarouselEvents from '../../CarouselEvents';
 
-const AllEventsTab = () => (
-  <View style={styles.container}>
-    <CustomText>This is AllEvents.</CustomText>
-  </View>
-);
+const AllEventsTab = props => {
+  return (
+    <View style={styles.carouselWrapper}>
+      <CarouselEvents events={props.navigation.getParam('events')} />
+    </View>
+  );
+};
 
 export default AllEventsTab;

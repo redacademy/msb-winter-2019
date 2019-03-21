@@ -20,12 +20,23 @@ export const sharedNavigationOptions = navigation => ({
   ),
   headerLeft: () => (
     <Ionicons
+      name={
+        navigation.state.routeName === 'Event'
+          ? Platform.select({
+              ios: 'ios-arrow-dropleft-circle',
+              android: 'md-arrow-dropleft-circle'
+            })
+          : Platform.select({
+              ios: 'ios-menu',
+              android: 'md-menu'
+            })
+      }
       onPress={() => {
-        navigation.navigate('DrawerScreen');
-        navigation.toggleDrawer();
+        navigation.state.routeName === 'Event'
+          ? navigation.goBack()
+          : navigation.toggleDrawer();
       }}
-      name={Platform.select({ android: 'md-menu', ios: 'ios-menu' })}
-      size={35}
+      size={40}
       color={'white'}
       style={{ marginLeft: 20 }}
     />

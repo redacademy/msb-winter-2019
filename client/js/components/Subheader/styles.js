@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   subheaderContainer: {
     ...shadow2,
     width: '100%',
-    paddingVertical: padding.md,
+    paddingVertical: padding.xs,
     ...center
   },
   subheaderWrapper: {

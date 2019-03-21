@@ -25,7 +25,8 @@ export const shadow1 = {
   shadowOffset: { width: 0, height: 1 },
   shadowColor: colors.neutralDark,
   shadowOpacity: 1,
-  shadowRadius: 2
+  shadowRadius: 2,
+  zIndex: 888
 };
 
 export const shadow2 = {
@@ -35,7 +36,8 @@ export const shadow2 = {
   shadowOffset: { width: 0, height: 3.5 },
   shadowColor: colors.neutralDark,
   shadowOpacity: 0.5,
-  shadowRadius: 4
+  shadowRadius: 4,
+  zIndex: 888
 };
 
 export const shadow3 = {
@@ -45,7 +47,8 @@ export const shadow3 = {
   shadowOffset: { width: 0, height: -3 },
   shadowColor: colors.neutralLight,
   shadowOpacity: 1,
-  shadowRadius: 3
+  shadowRadius: 3,
+  zIndex: 888
 };
 
 export const contain = { resizeMode: 'contain' };

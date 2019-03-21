@@ -99,7 +99,7 @@ class CarouselEvents extends Component {
         <TouchableOpacity>
           <Image
             style={{ alignSelf: 'flex-end' }}
-            source={require('../../assets/images/Icons/social_media_button.png')}
+            source={require('../../assets/images/Icons/socialmedia_fb_icon.png')}
           />
         </TouchableOpacity>
       </View>

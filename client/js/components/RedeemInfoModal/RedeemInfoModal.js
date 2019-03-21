@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Button } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import { subtitle1 } from '../../config/styles';
 import styles from './styles';
-import CustomIcon from '../CustomIcon';
 
 class RedeemInfoModal extends Component {
   render() {
     const { navigation } = this.props;
-    const stamps = navigation.getParam('stamps');
     return (
       <View style={styles.container}>
-        <CustomIcon
-          style={styles.icon}
-          source={require('../../assets/images/Icons/exit.png')}
+        <Text>Cheers!</Text>
+        <Text>{`You are about to redeem your points`}</Text>
+        <Button
           onPress={() => {
             navigation.navigate('History');
           }}
-        />
-        <Text style={styles.cheersMessage}>Cheers!</Text>
-        <Image source={require('../../assets/images/Redeem/2_stars.png')} />
-        <Text style={{ ...subtitle1 }}>{`You received ${stamps} stamps!`}</Text>
+        >
+          Redeem
+        </Button>
+        <Button
+          onPress={() => {
+            navigation.navigate('History');
+          }}
+        >
+          Not right now
+        </Button>
       </View>
     );
   }

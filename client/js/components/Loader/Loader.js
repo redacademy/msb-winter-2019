@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import { View, Text, Image } from "react-native";
+import React, { Component } from 'react';
+import { View, Image } from 'react-native';
 
-import styles from "./styles";
+import CustomText from '../CustomText/';
+import styles from './styles';
 
 class Loader extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.loader}>
         <Image
-          source={require("../../assets/images/loading_growler_v4.1.gif")}
-          style={styles.imgBg}
+          source={require('../../assets/images/loading_growler_v4.1.gif')}
+          style={styles.gif}
         />
-
-        <Text style={styles.loadingText}>Pouring...</Text>
+        <CustomText style={styles.text}>Pouring ...</CustomText>
       </View>
     );
   }

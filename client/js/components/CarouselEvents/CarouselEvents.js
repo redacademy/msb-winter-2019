@@ -11,9 +11,7 @@ import {
 import Carousel from 'react-native-snap-carousel';
 import { withNavigation } from 'react-navigation';
 import moment from 'moment';
-
 import styles from './styles';
-import { center } from '../../config/styles';
 
 class CarouselEvents extends Component {
   constructor(props) {

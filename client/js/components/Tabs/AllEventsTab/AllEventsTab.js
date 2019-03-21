@@ -1,13 +1,19 @@
 import React from 'react';
 import { View } from 'react-native';
-
-import CustomText from '../../CustomText';
+import PropTypes from 'prop-types';
 import styles from './styles';
+import CarouselEvents from '../../CarouselEvents';
 
-const AllEventsTab = () => (
+const AllEventsTab = props => (
   <View style={styles.container}>
-    <CustomText>This is AllEvents.</CustomText>
+    <View style={styles.carouselWrapper}>
+      <CarouselEvents events={props.events} />
+    </View>
   </View>
 );
+
+AllEventsTab.propTypes = {
+  events: PropTypes.object.isRequired
+};
 
 export default AllEventsTab;

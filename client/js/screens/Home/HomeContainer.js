@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { USER_QUERY, ALL_BEERS_QUERY } from '../../apollo/queries';
 import { Query } from 'react-apollo';
+import { USER_QUERY, ALL_BEERS_QUERY } from '../../apollo/queries';
 import { getLoggedInUser } from '../../config/models';
 import Home from './Home';
-
 import Loader from '../../components/Loader';
 import CustomText from '../../components/CustomText';
 

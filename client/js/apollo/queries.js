@@ -26,6 +26,10 @@ export const ALL_BEERS_QUERY = gql`
       id
       title
       subtitle
+      style
+      ibu
+      abv
+      releaseDate
     }
   }
 `;
@@ -117,6 +121,7 @@ export const USER_QUERY = gql`
       email
       dateOfBirth
       points
+      name
       favouriteBeers {
         id
         title

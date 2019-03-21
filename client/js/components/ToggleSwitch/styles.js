@@ -25,13 +25,11 @@ const styles = StyleSheet.create({
   },
   button: {
     width: 120
-    // display: "none"
   },
 
   buttonSave: {
     color: colors.white,
     backgroundColor: colors.brand
-    // display: "none"
   },
 
   toggle: {

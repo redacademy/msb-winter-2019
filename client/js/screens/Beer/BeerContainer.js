@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { BEER_QUERY } from '../../apollo/queries';
 import { Query } from 'react-apollo';
 import Beer from './Beer';
+import Loader from '../../components/Loader';
 
 class BeerContainer extends Component {
   static navigationOptions = {
@@ -19,7 +20,7 @@ class BeerContainer extends Component {
     return (
       <Query query={BEER_QUERY} variables={{ id }}>
         {({ loading, error, data }) => {
-          if (loading) return <Text>Loading</Text>;
+          if (loading) return <Loader />;
           if (error) return <Text>{error.message}</Text>;
 
           return (

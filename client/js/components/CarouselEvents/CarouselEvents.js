@@ -53,7 +53,7 @@ class CarouselEvents extends Component {
                 <TouchableHighlight
                   underlayColor={'transparent'}
                   onPress={() => {
-                    navigation.navigate('Event', { item });
+                    navigation.navigate('Event', { eventId: item.id });
                   }}
                 >
                   <View style={{ alignItems: 'center', height: 100 }}>

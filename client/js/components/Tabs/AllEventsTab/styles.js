@@ -1,13 +1,10 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { center, container } from '../../../config/styles';
+import { center } from '../../../config/styles';
 
 const styles = StyleSheet.create({
-  container: { ...container },
   carouselWrapper: {
     ...center,
-    justifyContent: 'space-between',
-    paddingTop: 10,
-    height: '65%',
+    height: 500,
     width: Dimensions.get('window').width
   }
 });

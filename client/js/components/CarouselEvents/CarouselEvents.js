@@ -41,9 +41,7 @@ class CarouselEvents extends Component {
           loopClonesPerSide={2}
           firstItem={0}
           onSnapToItem={index => {
-            this.setState({ currentIndex: index }, () => {
-              console.log(this.state.currentIndex);
-            });
+            this.setState({ currentIndex: index });
           }}
           renderItem={({ item }) => {
             let eventImg;

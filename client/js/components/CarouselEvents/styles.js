@@ -7,12 +7,10 @@ const styles = StyleSheet.create({
     padding: 15,
     paddingBottom: 0,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    height: Dimensions.get('window').height
+    justifyContent: 'space-between'
   },
   carouselContainer: {
     flex: 1,
-    alignItems: 'center',
     paddingTop: 15
   },
   imgWrapper: {

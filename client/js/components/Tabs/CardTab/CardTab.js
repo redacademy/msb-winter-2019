@@ -8,9 +8,13 @@ import {
   ActivityIndicator
 } from 'react-native';
 import Barcode from 'react-native-barcode-builder';
-import { graphql, compose } from 'react-apollo';
+import { graphql, compose, Query } from 'react-apollo';
 import { withNavigation } from 'react-navigation';
+<<<<<<< HEAD
 import { Query } from 'react-apollo';
+=======
+import PropTypes from 'prop-types';
+>>>>>>> develop
 
 import {
   SET_USER_POINTS,
@@ -100,6 +104,8 @@ class CardTab extends Component {
     );
   }
 }
+
+CardTab.propTypes = {};
 
 export default compose(
   graphql(SET_USER_POINTS, {

@@ -10,6 +10,7 @@ import EventsModal from '../screens/Events';
 import StampsReceivedModal from '../components/StampsReceivedModal';
 import Signin from '../screens/Signin';
 import Signup from '../screens/Signup';
+import Onboard from '../screens/Onboard';
 import AuthLoading from '../components/AuthLoading';
 
 const AppStack = createStackNavigator(
@@ -25,7 +26,7 @@ const AppStack = createStackNavigator(
   }
 );
 
-const AuthStack = createSwitchNavigator({ Signin, Signup });
+const AuthStack = createSwitchNavigator({ Signin, Signup, Onboard });
 
 const RootStackNavigator = createAppContainer(
   createSwitchNavigator(

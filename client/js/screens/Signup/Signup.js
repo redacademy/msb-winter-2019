@@ -223,7 +223,6 @@ class Signup extends React.Component {
                     )}
                   </Field>
                 </View>
-
                 <View style={styles.signupBtnWrapper}>
                   <WhiteButton onPress={() => handleSubmit()}>
                     Sign Up
@@ -259,7 +258,6 @@ class Signup extends React.Component {
       const userInfo = result.data.signupUser;
       await setUserToken(userInfo.id, userInfo.token);
       this.setState({ loading: false, error: false });
-      this.props.navigation.navigate('App');
       this.props.navigation.navigate('Onboard');
     } catch (e) {
       this.setState({ error: true, loading: false });

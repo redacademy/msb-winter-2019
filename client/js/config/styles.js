@@ -73,6 +73,7 @@ export const iteCenterRow = {
 };
 
 export const margin = {
+  xxs: 3,
   xs: 5,
   sm: 10,
   md: 20,

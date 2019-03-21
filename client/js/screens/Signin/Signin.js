@@ -46,7 +46,6 @@ class Signin extends Component {
         <View style={styles.loginWrapper}>
           <Image
             source={require('../../assets/images/Logos/msb_logo_full.png')}
-            style={styles.imgLogo}
           />
           <View>
             <Form

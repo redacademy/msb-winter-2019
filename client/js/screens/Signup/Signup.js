@@ -22,10 +22,6 @@ import { colors, padding } from '../../config/styles';
 import styles from './styles';
 
 class Signup extends React.Component {
-  static navigationOptions = {
-    title: 'Signup'
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -41,6 +37,7 @@ class Signup extends React.Component {
     if (this.state.error) {
       return <CustomText>Error</CustomText>;
     }
+
     return (
       <View style={styles.container}>
         <View style={styles.imgBgWrapper}>
@@ -226,7 +223,6 @@ class Signup extends React.Component {
                     )}
                   </Field>
                 </View>
-
                 <View style={styles.signupBtnWrapper}>
                   <WhiteButton onPress={() => handleSubmit()}>
                     Sign Up
@@ -262,7 +258,7 @@ class Signup extends React.Component {
       const userInfo = result.data.signupUser;
       await setUserToken(userInfo.id, userInfo.token);
       this.setState({ loading: false, error: false });
-      this.props.navigation.navigate('App');
+      this.props.navigation.navigate('Onboard');
     } catch (e) {
       this.setState({ error: true, loading: false });
     }

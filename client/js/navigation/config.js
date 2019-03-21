@@ -32,6 +32,7 @@ export const sharedNavigationOptions = navigation => ({
   ),
   headerStyle: {
     backgroundColor: colors.black,
-    height: 75
+    height: 75,
+    borderBottomWidth: 0
   }
 });

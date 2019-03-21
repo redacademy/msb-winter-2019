@@ -6,7 +6,8 @@ import {
   colors,
   contain,
   body2,
-  fonts
+  fonts,
+  padding
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
@@ -39,6 +40,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: fonts.md,
     fontFamily: 'OpenSans-Bold'
+  },
+  button: {
+    color: colors.white,
+    textAlign: 'center',
+    fontSize: fonts.md,
+    fontFamily: 'OpenSans-Bold',
+    backgroundColor: colors.brand,
+    marginHorizontal: margin.xl,
+    paddingVertical: padding.xs,
+    paddingHorizontal: padding.lg
   }
 });
 

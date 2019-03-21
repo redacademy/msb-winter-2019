@@ -83,6 +83,7 @@ class Onboard extends Component {
           console.log('ONBOARD -> DONE');
           this.props.navigation.navigate('Home');
         }}
+        style={styles.button}
       >
         Done
       </Text>
@@ -99,7 +100,7 @@ class Onboard extends Component {
         buttonTextStyle={styles.btnText}
         dotStyle={styles.dot}
         activeDotStyle={styles.activeDot}
-        // renderDoneButton={this.renderDoneButton}
+        renderDoneButton={this.renderDoneButton}
       />
     );
   }

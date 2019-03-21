@@ -14,7 +14,9 @@ import {
 
 class RedeemBarcode extends Component {
   render() {
-    const { navigation } = this.props;
+    const { navigation, setUserPoints, addToUserRedeems } = this.props;
+    const user = navigation.getParam('user');
+    const reward = navigation.getParam('reward');
     return (
       <View style={styles.container}>
         <CustomIcon
@@ -25,8 +27,22 @@ class RedeemBarcode extends Component {
         />
         <TouchableOpacity
           elevation={3}
-          onPress={() => {
-            navigation.navigate('RedeemSuccess');
+          onPress={async () => {
+            console.log('REDEEMBARCODE', user, reward);
+            if (user.points < reward.points) return;
+            console.log('addToRedeems');
+            await addToUserRedeems({
+              variables: {
+                date: new Date(),
+                rewardId: reward.id,
+                userId: user.id
+              }
+            });
+            await setUserPoints({
+              variables: { id: user.id, points: user.points - reward.points }
+            });
+            console.log('okay');
+            navigation.navigate('RedeemSuccess', { user, reward });
           }}
         >
           <Barcode value="Test Card" format="CODE128" height={40} />

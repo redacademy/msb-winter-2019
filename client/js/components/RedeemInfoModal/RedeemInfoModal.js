@@ -6,15 +6,18 @@ import styles from './styles';
 class RedeemInfoModal extends Component {
   render() {
     const { navigation } = this.props;
+    const user = navigation.getParam('user');
+    const reward = navigation.getParam('reward');
     return (
       <View style={styles.container}>
-        <Text>Cheers!</Text>
-        <Text>{`You are about to redeem your points`}</Text>
+        <Text>You are now redeeming</Text>
+        <Text>{`${reward.points} stamps`}</Text>
+        <Text>{reward.title}</Text>
         <Button
           onPress={() => {
-            navigation.navigate('RedeemBarcode');
+            navigation.navigate('RedeemBarcode', { user, reward });
           }}
-          title="Redeem"
+          title="Got it! Redeem"
         />
         <Button
           onPress={() => {

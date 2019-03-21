@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  ActivityIndicator,
-  TouchableHighlight
-} from 'react-native';
-import {
-  ALL_REWARDS_QUERY,
-  USER_QUERY,
-  ADD_TO_USER_REDEEMS,
-  SET_USER_POINTS
-} from '../../../apollo/queries';
-import { Query, compose, graphql } from 'react-apollo';
-import CustomText from '../../CustomText';
+import { View, Text, ActivityIndicator } from 'react-native';
+import { ALL_REWARDS_QUERY, USER_QUERY } from '../../../apollo/queries';
+import { Query } from 'react-apollo';
 import { getLoggedInUser } from '../../../config/models';
 import RedeemRewardButton from '../../RedeemRewardButton';
 import styles from './styles';
@@ -46,7 +35,6 @@ class RewardsTab extends Component {
                 if (loading) return <ActivityIndicator />;
                 if (error) return <Text>Error</Text>;
                 const user = data.allUsers && data.allUsers[0];
-                console.log('REWARDSTAB', user, allRewards);
                 if (!user) return <ActivityIndicator />;
                 return (
                   <View>

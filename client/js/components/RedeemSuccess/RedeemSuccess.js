@@ -8,6 +8,8 @@ import CustomIcon from '../CustomIcon';
 class RedeemSuccess extends Component {
   render() {
     const { navigation } = this.props;
+    const user = navigation.getParam('user');
+    const reward = navigation.getParam('reward');
     return (
       <View style={styles.container}>
         <CustomIcon
@@ -16,7 +18,8 @@ class RedeemSuccess extends Component {
             navigation.navigate('Rewards');
           }}
         />
-        <Text>Success!</Text>
+        <Text>Redeem Successful!</Text>
+        <Text>{`You have ${user.points - reward.points} stamps left`}</Text>
       </View>
     );
   }

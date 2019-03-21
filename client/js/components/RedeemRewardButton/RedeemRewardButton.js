@@ -20,18 +20,28 @@ class RedeemRewardButton extends Component {
     const { reward, user, navigation } = this.props;
     return (
       <TouchableHighlight
-        style={{ width: '50%' }}
+        style={{
+          width: '50%'
+        }}
         onPress={() => {
           if (user.points < reward.points) return;
-          navigation.navigate('RedeemInfo');
+          navigation.navigate('RedeemInfo', { user, reward });
           // if there's enough user.points
           //     subtract the number of points from the user
           //     call ADD_TO_USER_REDEEMS
         }}
       >
         <View>
-          <Text>{reward.points}</Text>
-          <Text>{reward.title}</Text>
+          <Text
+            style={{ color: user.points < reward.points ? 'grey' : 'black' }}
+          >
+            {reward.points}
+          </Text>
+          <Text
+            style={{ color: user.points < reward.points ? 'grey' : 'black' }}
+          >
+            {reward.title}
+          </Text>
         </View>
       </TouchableHighlight>
     );

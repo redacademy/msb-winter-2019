@@ -23,7 +23,6 @@ class HomeContainer extends Component {
   };
 
   render() {
-    console.log('Home container');
     return (
       <Query query={USER_QUERY} variables={{ id: this.state.viewerId }}>
         {({ loading, error, data }) => (

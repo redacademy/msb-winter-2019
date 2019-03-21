@@ -6,7 +6,7 @@ import {
 
 import DrawerNavigationLayout from './DrawerNavigationLayout';
 import BeerModal from '../screens/Beer';
-import EventsModal from '../screens/Events';
+import EventModal from '../screens/Event';
 import StampsReceivedModal from '../components/StampsReceivedModal';
 import Signin from '../screens/Signin';
 import Signup from '../screens/Signup';
@@ -17,7 +17,7 @@ const AppStack = createStackNavigator(
   {
     DrawerNavigationLayout,
     Beer: BeerModal,
-    Events: EventsModal,
+    Event: EventModal,
     StampsReceived: StampsReceivedModal
   },
   {

@@ -1,18 +1,20 @@
-import { StyleSheet } from "react-native";
-import { colors } from "../../config/styles";
+import { StyleSheet, Dimensions } from 'react-native';
+import { colors, fonts } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: {
+  loader: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%"
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: Dimensions.get('window').height,
+    backgroundColor: colors.black
   },
-  imgBg: {
+  gif: {
     height: 150
   },
-  loadingText: {
-    color: colors.white
+  text: {
+    color: colors.white,
+    fontFamily: fonts.primarySemi
   }
 });
 

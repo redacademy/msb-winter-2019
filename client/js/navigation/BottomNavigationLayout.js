@@ -8,30 +8,29 @@ import { Image } from 'react-native';
 
 import { sharedNavigationOptions } from './config';
 import BeersScreen from '../screens/AllBeers';
+import BeerModal from '../screens/Beer';
 import CardScreen from '../screens/Card';
 import EventsScreen from '../screens/AllEvents';
+import EventModal from '../screens/Event';
+import FavEventsScreen from '../screens/FavEvents';
 import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
-import BeerScreen from '../screens/Beer';
-import EventScreen from '../screens/Events';
-import ProfileScreen from '../screens/Profile';
-import FavBeersScreen from '../screens/FavBeers';
-import FavEventsScreen from '../screens/FavEvents';
-import ContactScreen from '../screens/Contact';
 import CardTab from '../components/Tabs/CardTab';
 import HistoryTab from '../components/Tabs/HistoryTab';
 import RewardsTab from '../components/Tabs/RewardsTab';
+import AllEventsTab from '../components/Tabs/AllEventsTab';
+import FavEventsTab from '../components/Tabs/FavEventsTab';
 import {
   colors,
+  contain,
+  fonts,
   dimensions,
   h3,
+  margin,
+  padding,
   underline,
   shadow2,
-  shadow3,
-  fonts,
-  padding,
-  contain,
-  margin
+  shadow3
 } from '../config/styles';
 
 const CardTabScreens = createMaterialTopTabNavigator(
@@ -66,13 +65,40 @@ const CardTabScreens = createMaterialTopTabNavigator(
   }
 );
 
+const AllEventsTabScreens = createMaterialTopTabNavigator(
+  {
+    'All Events': AllEventsTab,
+    'Your Events': FavEventsTab
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: colors.black,
+      inactiveTintColor: colors.neutralLight,
+      indicatorStyle: {
+        ...underline,
+        borderBottomWidth: 3,
+        backgroundColor: colors.brand,
+        marginBottom: margin.sm,
+        marginLeft: margin.lg,
+        maxWidth: dimensions.fullWidth / 2 - 60,
+        width: '100%'
+      },
+      labelStyle: {
+        ...h3,
+        marginTop: 0
+      },
+      style: {
+        backgroundColor: colors.white,
+        ...shadow2,
+        height: 50
+      }
+    }
+  }
+);
+
 const HomeStack = createStackNavigator(
   {
-    HomeScreen,
-    Profile: ProfileScreen,
-    FavBeers: FavBeersScreen,
-    Beer: BeerScreen,
-    Contact: ContactScreen
+    HomeScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -82,7 +108,8 @@ const HomeStack = createStackNavigator(
 );
 const BeersStack = createStackNavigator(
   {
-    BeersScreen
+    BeersScreen,
+    Beer: BeerModal
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -93,6 +120,8 @@ const BeersStack = createStackNavigator(
 const EventsStack = createStackNavigator(
   {
     EventsScreen,
+    Event: EventModal,
+    AllEventsTabScreens,
     FavEvents: FavEventsScreen
   },
   {

@@ -25,7 +25,8 @@ export const shadow1 = {
   shadowOffset: { width: 0, height: 1 },
   shadowColor: colors.neutralDark,
   shadowOpacity: 1,
-  shadowRadius: 2
+  shadowRadius: 2,
+  zIndex: 888
 };
 
 export const shadow2 = {
@@ -35,7 +36,8 @@ export const shadow2 = {
   shadowOffset: { width: 0, height: 3.5 },
   shadowColor: colors.neutralDark,
   shadowOpacity: 0.5,
-  shadowRadius: 4
+  shadowRadius: 4,
+  zIndex: 888
 };
 
 export const shadow3 = {
@@ -45,7 +47,8 @@ export const shadow3 = {
   shadowOffset: { width: 0, height: -3 },
   shadowColor: colors.neutralLight,
   shadowOpacity: 1,
-  shadowRadius: 3
+  shadowRadius: 3,
+  zIndex: 888
 };
 
 export const contain = { resizeMode: 'contain' };
@@ -70,6 +73,7 @@ export const iteCenterRow = {
 };
 
 export const margin = {
+  xxs: 3,
   xs: 5,
   sm: 10,
   md: 20,
@@ -205,7 +209,7 @@ export const container = {
 export const hr = {
   height: 2,
   backgroundColor: colors.neutralLight,
-  marginVertical: margin.sm * 1.7,
+  marginVertical: margin.sm * 1.5,
   width: '100%'
 };
 
@@ -213,5 +217,5 @@ export const vl = {
   marginHorizontal: margin.sm * 1.7,
   height: '100%',
   borderLeftColor: colors.neutralLight,
-  borderLeftWidth: 4
+  borderLeftWidth: 2
 };

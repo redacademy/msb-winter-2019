@@ -73,8 +73,6 @@ class ToggleSwitch extends Component {
           ) : (
             <BlackButton style={styles.button}>Edit</BlackButton>
           )}
-          {/* <BlackButton style={styles.button}>Edit</BlackButton>
-          <BlackButton style={styles.buttonSave}>Save Changes</BlackButton> */}
         </View>
       </View>
     );

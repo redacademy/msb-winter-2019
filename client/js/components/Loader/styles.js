@@ -1,19 +1,14 @@
-import { StyleSheet } from "react-native";
-import { colors } from "../../config/styles";
+import { StyleSheet } from 'react-native';
+import { colors, container, margin, body2 } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%"
+  loader: {
+    ...container,
+    backgroundColor: colors.black,
+    height: '100%'
   },
-  imgBg: {
-    height: 150
-  },
-  loadingText: {
-    color: colors.white
-  }
+  gif: { height: 150 },
+  text: { ...body2, color: colors.white }
 });
 
 export default styles;

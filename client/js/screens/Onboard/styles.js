@@ -6,7 +6,7 @@ import {
   colors,
   contain,
   body2,
-  padding
+  fonts
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
@@ -28,7 +28,18 @@ const styles = StyleSheet.create({
   welcome: { ...body2, color: colors.white },
   slide: { ...container },
   dot: { backgroundColor: colors.white },
-  activeDot: { backgroundColor: colors.brand }
+  activeDot: { backgroundColor: colors.brand },
+  btn: {
+    backgroundColor: colors.brand,
+    borderRadius: 5,
+    marginHorizontal: margin.xl
+  },
+  btnText: {
+    color: colors.white,
+    textAlign: 'center',
+    fontSize: fonts.md,
+    fontFamily: 'OpenSans-Bold'
+  }
 });
 
 export default styles;

@@ -6,9 +6,7 @@ import { withNavigation } from 'react-navigation';
 
 import Loader from '../../components/Loader';
 import CustomText from '../../components/CustomText';
-import { colors, margin } from '../../config/styles';
 import styles from './styles';
-import OrangeButton from '../../components/Buttons/OrangeButton';
 
 const slides = [
   {
@@ -47,56 +45,64 @@ class Onboard extends Component {
     };
   }
 
-  renderItem = props => (
-    <View
-      style={[
-        styles.container,
-        {
-          paddingTop: props.topSpacer,
-          paddingBottom: props.bottomSpacer,
-          width: props.width,
-          height: props.height
-        }
-      ]}
-    >
-      <View style={styles.imgBgWrapper}>
-        <Image
-          source={require('../../assets/images/Logos/msb_logo.png')}
-          style={styles.imgBg}
-        />
-      </View>
-      <View style={styles.onboardWrapper}>
-        <Image source={props.image} style={styles.imgLogo} />
-        <View style={styles.welcomeWrapper}>
-          <CustomText style={styles.welcome}>{props.text1}</CustomText>
-          <CustomText style={styles.welcome}>{props.text2}</CustomText>
-          <CustomText style={styles.welcome}>{props.text3}</CustomText>
+  renderItem = props => {
+    return (
+      <View
+        style={[
+          styles.container,
+          {
+            paddingTop: props.topSpacer,
+            paddingBottom: props.bottomSpacer,
+            width: props.width,
+            height: props.height
+          }
+        ]}
+      >
+        <View style={styles.imgBgWrapper}>
+          <Image
+            source={require('../../assets/images/Logos/msb_logo.png')}
+            style={styles.imgBg}
+          />
+        </View>
+        <View style={styles.onboardWrapper}>
+          <Image source={props.image} style={styles.imgLogo} />
+          <View style={styles.welcomeWrapper}>
+            <CustomText style={styles.welcome}>{props.text1}</CustomText>
+            <CustomText style={styles.welcome}>{props.text2}</CustomText>
+            <CustomText style={styles.welcome}>{props.text3}</CustomText>
+          </View>
         </View>
       </View>
-    </View>
-  );
+    );
+  };
 
-  renderNextButton = () => (
-    <View style={{ marginHorizontal: margin.xl }}>
-      <OrangeButton>Next</OrangeButton>
-    </View>
-  );
-
-  renderDoneButton = () => <OrangeButton>Done</OrangeButton>;
+  renderDoneButton = () => {
+    return (
+      <Text
+        onPress={() => {
+          console.log('ONBOARD -> DONE');
+          this.props.navigation.navigate('Home');
+        }}
+      >
+        Done
+      </Text>
+    );
+  };
 
   render() {
     return (
       <AppIntroSlider
         slides={slides}
         renderItem={this.renderItem}
-        bottomButton
+        bottomButton={true}
+        buttonStyle={styles.btn}
+        buttonTextStyle={styles.btnText}
         dotStyle={styles.dot}
         activeDotStyle={styles.activeDot}
-        renderNextButton={this.renderNextButton}
-        renderDoneButton={this.renderDoneButton}
+        // renderDoneButton={this.renderDoneButton}
       />
     );
   }
 }
 
-export default Onboard;
+export default withNavigation(Onboard);

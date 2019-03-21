@@ -48,6 +48,12 @@ class CarouselEvents extends Component {
             });
           }}
           renderItem={({ item }) => {
+            let eventImg;
+            if (item.title === 'Live Music & Beers') {
+              eventImg = require('../../assets/images/Events/livemusic.jpg');
+            } else if (item.title === 'Brewery Tour') {
+              eventImg = require('../../assets/images/Events/Oskar_Blues_Festival_1200.jpg');
+            }
             return (
               <View style={styles.carouselContainer}>
                 <TouchableHighlight
@@ -56,12 +62,17 @@ class CarouselEvents extends Component {
                     navigation.navigate('Event', { eventId: item.id });
                   }}
                 >
-                  <View style={{ alignItems: 'center', height: 100 }}>
-                    <Image
-                      style={styles.img}
-                      source={require('../../assets/images/Events/turnstile_middle.png')}
-                    />
-
+                  <View style={{ alignItems: 'center' }}>
+                    <View style={styles.imgWrapper}>
+                      <Image
+                        style={styles.img}
+                        source={
+                          eventImg
+                            ? eventImg
+                            : require('../../assets/images/Events/turnstile_middle.png')
+                        }
+                      />
+                    </View>
                     <Text style={styles.title}>{item.title}</Text>
                     <Text style={styles.subtitle}>{item.subtitle}</Text>
                   </View>
@@ -73,7 +84,7 @@ class CarouselEvents extends Component {
           itemWidth={250}
         />
 
-        <View style={{ ...center }}>
+        <View style={styles.infoWrapper}>
           <View style={styles.border} />
 
           <View style={styles.dataWrapper}>

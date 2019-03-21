@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { center, colors, fonts, h1, hr, subtitle1 } from '../../config/styles';
+import { center, colors, fonts, h2, hr, subtitle1 } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,27 +8,32 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: '100%'
+    height: Dimensions.get('window').height
   },
   carouselContainer: {
     flex: 1,
     alignItems: 'center',
-    resizeMode: 'contain'
+    paddingTop: 15
   },
-  img: {
-    resizeMode: 'contain',
+  imgWrapper: {
     shadowOffset: { width: 1, height: 1 },
     shadowColor: colors.neutralDark,
     shadowOpacity: 1,
-    shadowRadius: 2
+    shadowRadius: 2,
+    backgroundColor: '#fff'
   },
-  title: { ...h1, ...center, paddingBottom: 0 },
+  img: {
+    width: 215,
+    height: 215
+  },
+  title: { ...h2, ...center, paddingBottom: 0 },
   subtitle: {
     color: colors.neutralDark,
     fontSize: fonts.sm,
     paddingBottom: 0
   },
 
+  infoWrapper: { ...center, paddingBottom: 10 },
   dataWrapper: {
     width: Dimensions.get('window').width * 0.8,
     alignItems: 'flex-start',

@@ -6,6 +6,7 @@ import styles from './styles';
 import CustomIcon from '../../components/CustomIcon';
 
 const Event = props => {
+  console.log(props);
   return (
     <View>
       <CustomIcon

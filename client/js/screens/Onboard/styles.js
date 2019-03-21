@@ -42,13 +42,7 @@ const styles = StyleSheet.create({
     fontFamily: 'OpenSans-Bold'
   },
   button: {
-    color: colors.white,
-    textAlign: 'center',
-    fontSize: fonts.md,
-    fontFamily: 'OpenSans-Bold',
-    backgroundColor: colors.brand,
-    marginHorizontal: margin.xl,
-    paddingVertical: padding.xs,
+    paddingVertical: padding.xs * 1.25,
     paddingHorizontal: padding.lg
   }
 });

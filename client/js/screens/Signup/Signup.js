@@ -259,6 +259,7 @@ class Signup extends React.Component {
       await setUserToken(userInfo.id, userInfo.token);
       this.setState({ loading: false, error: false });
       this.props.navigation.navigate('App');
+      this.props.navigation.navigate('Onboard');
     } catch (e) {
       this.setState({ error: true, loading: false });
     }

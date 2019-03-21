@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Signin from './Signin';
-import Onboard from '../Onboard';
 
 class SigninContainer extends Component {
   static navigationOptions = {
@@ -9,8 +8,7 @@ class SigninContainer extends Component {
   };
 
   render() {
-    // return <Signin />;
-    return <Onboard />;
+    return <Signin />;
   }
 }
 

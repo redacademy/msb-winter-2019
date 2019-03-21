@@ -78,15 +78,17 @@ class Onboard extends Component {
 
   renderDoneButton = () => {
     return (
-      <Text
-        onPress={() => {
-          console.log('ONBOARD -> DONE');
-          this.props.navigation.navigate('Home');
-        }}
-        style={styles.button}
-      >
-        Done
-      </Text>
+      <View style={styles.btn}>
+        <Text
+          onPress={() => {
+            console.log('ONBOARD -> DONE');
+            this.props.navigation.navigate('Home');
+          }}
+          style={[styles.btnText, styles.button]}
+        >
+          Done
+        </Text>
+      </View>
     );
   };
 

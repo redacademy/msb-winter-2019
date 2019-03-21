@@ -12,18 +12,16 @@ class RedeemInfoModal extends Component {
         <Text>{`You are about to redeem your points`}</Text>
         <Button
           onPress={() => {
-            navigation.navigate('History');
+            navigation.navigate('RedeemBarcode');
           }}
-        >
-          Redeem
-        </Button>
+          title="Redeem"
+        />
         <Button
           onPress={() => {
-            navigation.navigate('History');
+            navigation.goBack();
           }}
-        >
-          Not right now
-        </Button>
+          title="Not right now"
+        />
       </View>
     );
   }

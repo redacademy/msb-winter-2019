@@ -20,10 +20,15 @@ class RedeemBarcode extends Component {
         <CustomIcon
           source={require('../../assets/images/Icons/exit.png')}
           onPress={() => {
-            navigation.navigate('History');
+            navigation.navigate('Rewards');
           }}
         />
-        <TouchableOpacity elevation={3} onPress={() => {}}>
+        <TouchableOpacity
+          elevation={3}
+          onPress={() => {
+            navigation.navigate('RedeemSuccess');
+          }}
+        >
           <Barcode value="Test Card" format="CODE128" height={40} />
         </TouchableOpacity>
       </View>

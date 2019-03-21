@@ -17,13 +17,13 @@ import styles from './styles';
 
 class RedeemRewardButton extends Component {
   render() {
-    const { reward, user } = this.props;
+    const { reward, user, navigation } = this.props;
     return (
       <TouchableHighlight
         style={{ width: '50%' }}
         onPress={() => {
           if (user.points < reward.points) return;
-
+          navigation.navigate('RedeemInfo');
           // if there's enough user.points
           //     subtract the number of points from the user
           //     call ADD_TO_USER_REDEEMS

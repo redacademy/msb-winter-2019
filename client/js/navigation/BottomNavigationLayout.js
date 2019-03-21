@@ -21,6 +21,8 @@ import ContactScreen from '../screens/Contact';
 import CardTab from '../components/Tabs/CardTab';
 import HistoryTab from '../components/Tabs/HistoryTab';
 import RewardsTab from '../components/Tabs/RewardsTab';
+import AllEventsTab from '../components/Tabs/AllEventsTab';
+import FavEventsTab from '../components/Tabs/FavEventsTab';
 import {
   colors,
   dimensions,
@@ -39,6 +41,37 @@ const CardTabScreens = createMaterialTopTabNavigator(
     Card: CardTab,
     History: HistoryTab,
     Rewards: RewardsTab
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: colors.black,
+      inactiveTintColor: colors.neutralLight,
+      indicatorStyle: {
+        ...underline,
+        borderBottomWidth: 3,
+        backgroundColor: colors.brand,
+        marginBottom: margin.sm,
+        marginLeft: margin.sm * 1.5,
+        maxWidth: dimensions.fullWidth / 3 - 30,
+        width: '100%'
+      },
+      labelStyle: {
+        ...h3,
+        marginTop: 0
+      },
+      style: {
+        backgroundColor: colors.white,
+        ...shadow2,
+        height: 50
+      }
+    }
+  }
+);
+
+const AllEventsTabScreens = createMaterialTopTabNavigator(
+  {
+    'All Events': AllEventsTab,
+    'Fav Events': FavEventsTab
   },
   {
     tabBarOptions: {
@@ -93,6 +126,7 @@ const BeersStack = createStackNavigator(
 const EventsStack = createStackNavigator(
   {
     EventsScreen,
+    AllEventsTabScreens,
     FavEvents: FavEventsScreen
   },
   {

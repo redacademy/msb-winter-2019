@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { ALL_EVENTS_QUERY } from '../../apollo/queries';
 import { Query } from 'react-apollo';
+import PropTypes from 'prop-types';
+
+import { ALL_EVENTS_QUERY } from '../../apollo/queries';
+import Loader from '../../components/Loader';
+import CustomText from '../../components/CustomText';
 import AllEvents from './AllEvents';
-import styles from './styles';
 
 class AllEventsContainer extends Component {
   constructor(props) {
@@ -18,13 +20,20 @@ class AllEventsContainer extends Component {
     return (
       <Query query={ALL_EVENTS_QUERY}>
         {({ loading, error, data }) => {
-          if (loading) return <Text>Loading</Text>;
-          if (error) return <Text>{error.message}</Text>;
-          return <AllEvents events={data.allEvents} />;
+          if (loading) return <Loader />;
+          if (error) return <CustomText>{error.message}</CustomText>;
+          return (
+            <AllEvents
+              events={data.allEvents}
+              navigation={this.props.navigation}
+            />
+          );
         }}
       </Query>
     );
   }
 }
+
+AllEventsContainer.propTypes = { navigation: PropTypes.object.isRequired };
 
 export default AllEventsContainer;

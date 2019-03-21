@@ -11,9 +11,9 @@ import { Form, Field } from 'react-final-form';
 import DatePicker from 'react-native-datepicker';
 import { graphql, compose } from 'react-apollo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { SIGNUP_MUTATION } from '../../apollo/queries';
 import PropTypes from 'prop-types';
 
+import { SIGNUP_MUTATION } from '../../apollo/queries';
 import Loader from '../../components/Loader';
 import CustomText from '../../components/CustomText';
 import WhiteButton from '../../components/Buttons/WhiteButton';

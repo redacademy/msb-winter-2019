@@ -9,9 +9,9 @@ import {
 import { withNavigation } from 'react-navigation';
 import { Form, Field } from 'react-final-form';
 import { graphql, compose } from 'react-apollo';
-import { SIGNIN_MUTATION } from '../../apollo/queries';
 import PropTypes from 'prop-types';
 
+import { SIGNIN_MUTATION } from '../../apollo/queries';
 import Loader from '../../components/Loader';
 import CustomText from '../../components/CustomText';
 import WhiteButton from '../../components/Buttons/WhiteButton';

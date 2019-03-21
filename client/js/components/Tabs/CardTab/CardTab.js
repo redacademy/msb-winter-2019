@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-  Text,
-  ActivityIndicator
-} from 'react-native';
+import { View, Image, ImageBackground, TouchableOpacity } from 'react-native';
 import Barcode from 'react-native-barcode-builder';
 import { graphql, compose, Query } from 'react-apollo';
 import { withNavigation } from 'react-navigation';
-<<<<<<< HEAD
-import { Query } from 'react-apollo';
-=======
-import PropTypes from 'prop-types';
->>>>>>> develop
 
 import {
   SET_USER_POINTS,
@@ -78,7 +66,7 @@ class CardTab extends Component {
           if (loading) return <Loader />;
           if (error) return <CustomText>Error</CustomText>;
           const user = data.allUsers && data.allUsers[0];
-          if (!user) return <ActivityIndicator />;
+          if (!user) return <Loader />;
           return (
             <ImageBackground
               source={require('../../../assets/images/Card/logo_bg.png')}

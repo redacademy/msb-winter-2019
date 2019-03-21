@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import { graphql, compose } from 'react-apollo';
 import { Query } from 'react-apollo';
 
-import {
-  SET_USER_POINTS,
-  ADD_TO_USER_POINT_HISTORY,
-  ALL_BEERS_QUERY,
-  USER_QUERY
-} from '../../../apollo/queries';
+import { USER_QUERY } from '../../../apollo/queries';
 import { getLoggedInUser } from '../../../config/models';
 import Loader from '../../Loader';
 import CustomText from '../../CustomText';
@@ -37,13 +31,45 @@ class HistoryTab extends Component {
           if (loading) return <Loader />;
           if (error) return <CustomText>Error</CustomText>;
           const user = data.allUsers && data.allUsers[0];
-          if (!user) return <ActivityIndicator />;
+          if (!user) return <Loader />;
           return (
             <View style={styles.container}>
-              <Image
-                source={require('../../../assets/images/Card/your_card.png')}
-                style={styles.card}
-              />
+              <View style={[styles.container, styles.rewardsWrapper]}>
+                <View style={styles.container}>
+                  <CustomText>rewards indicator</CustomText>
+                </View>
+                <View style={styles.rewards}>
+                  <View style={styles.container}>
+                    <CustomText style={styles.rewardsTitle}>
+                      Previous Reward
+                    </CustomText>
+                    <CustomText style={styles.stamps}>Stamps</CustomText>
+                    <Image
+                      source={require('../../../assets/images/Card/your_card.png')}
+                      style={styles.img}
+                    />
+                    <CustomText style={styles.reward}>
+                      16oz Beer in Tasting Room
+                    </CustomText>
+                  </View>
+                  <View style={[styles.container, styles.nextReward]}>
+                    <CustomText style={styles.rewardsTitle}>
+                      next reward
+                    </CustomText>
+                    <CustomText style={styles.stamps}>Stamps</CustomText>
+                    <Image
+                      source={require('../../../assets/images/Card/your_card.png')}
+                      style={styles.img}
+                    />
+                    <CustomText style={styles.reward}>
+                      Growler Refill
+                    </CustomText>
+                  </View>
+                </View>
+              </View>
+              <View style={[styles.container, styles.historyWrapper]}>
+                <CustomText>This is history.</CustomText>
+              </View>
             </View>
           );
         }}

@@ -218,20 +218,18 @@ export const ADD_TO_USER_POINT_HISTORY = gql`
 `;
 
 export const ADD_TO_USER_REDEEMS = gql`
-  mutation($redeemHistory: ID, $usersUserId: ID) {
-    addToUserRedeems(redeemHistory: $redeemHistory, usersUserId: $usersUserId) {
-      redeemHistoryRedeem {
+  mutation($date: DateTime!, $rewardId: ID!, $userId: ID!) {
+    createRedeem(date: $date, rewardId: $rewardId, userId: $userId) {
+      id
+      date
+      reward {
         id
-        reward {
-          title
-          id
-          points
-        }
+        title
       }
-      userUser {
+      user {
         id
         name
-        points
+        email
       }
     }
   }

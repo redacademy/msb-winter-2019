@@ -37,6 +37,7 @@ class Signup extends React.Component {
     if (this.state.error) {
       return <CustomText>Error</CustomText>;
     }
+
     return (
       <View style={styles.container}>
         <View style={styles.imgBgWrapper}>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
+import PropTypes from 'prop-types';
 
 import Loader from '../../components/Loader';
 import CustomText from '../../components/CustomText';
@@ -93,6 +93,13 @@ class Onboard extends Component {
   };
 
   render() {
+    if (this.state.loading) {
+      return <Loader />;
+    }
+    if (this.state.error) {
+      return <CustomText>Error</CustomText>;
+    }
+
     return (
       <AppIntroSlider
         slides={slides}
@@ -107,5 +114,7 @@ class Onboard extends Component {
     );
   }
 }
+
+Onboard.proptypes = {};
 
 export default withNavigation(Onboard);

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import { subtitle1 } from '../../config/styles';
 import styles from './styles';
 import CustomIcon from '../CustomIcon';
 

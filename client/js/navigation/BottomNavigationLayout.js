@@ -1,25 +1,26 @@
-import React from 'react';
+import React from "react";
 import {
   createStackNavigator,
   createBottomTabNavigator,
   createMaterialTopTabNavigator
-} from 'react-navigation';
-import { Image } from 'react-native';
+} from "react-navigation";
+import { Image } from "react-native";
 
-import { sharedNavigationOptions } from './config';
-import BeersScreen from '../screens/AllBeers';
-import BeerModal from '../screens/Beer';
-import CardScreen from '../screens/Card';
-import EventsScreen from '../screens/AllEvents';
-import EventModal from '../screens/Event';
-import FavEventsScreen from '../screens/FavEvents';
-import HomeScreen from '../screens/Home';
-import StoresScreen from '../screens/Stores';
-import CardTab from '../components/Tabs/CardTab';
-import HistoryTab from '../components/Tabs/HistoryTab';
-import RewardsTab from '../components/Tabs/RewardsTab';
-import AllEventsTab from '../components/Tabs/AllEventsTab';
-import FavEventsTab from '../components/Tabs/FavEventsTab';
+import { sharedNavigationOptions } from "./config";
+import BeersScreen from "../screens/AllBeers";
+import BeerModal from "../screens/Beer";
+import CardScreen from "../screens/Card";
+import EventsScreen from "../screens/AllEvents";
+import EventModal from "../screens/Event";
+import FavEventsScreen from "../screens/FavEvents";
+import HomeScreen from "../screens/Home";
+import StoresScreen from "../screens/Stores";
+import CardTab from "../components/Tabs/CardTab";
+import HistoryTab from "../components/Tabs/HistoryTab";
+import RewardsTab from "../components/Tabs/RewardsTab";
+import AllEventsTab from "../components/Tabs/AllEventsTab";
+import FavEventsTab from "../components/Tabs/FavEventsTab";
+import ProfileScreen from "../screens/Profile";
 import {
   colors,
   contain,
@@ -31,7 +32,7 @@ import {
   underline,
   shadow2,
   shadow3
-} from '../config/styles';
+} from "../config/styles";
 
 const CardTabScreens = createMaterialTopTabNavigator(
   {
@@ -50,7 +51,7 @@ const CardTabScreens = createMaterialTopTabNavigator(
         marginBottom: margin.sm,
         marginLeft: margin.sm * 1.5,
         maxWidth: dimensions.fullWidth / 3 - 30,
-        width: '100%'
+        width: "100%"
       },
       labelStyle: {
         ...h3,
@@ -67,8 +68,8 @@ const CardTabScreens = createMaterialTopTabNavigator(
 
 const AllEventsTabScreens = createMaterialTopTabNavigator(
   {
-    'All Events': AllEventsTab,
-    'Your Events': FavEventsTab
+    "All Events": AllEventsTab,
+    "Your Events": FavEventsTab
   },
   {
     tabBarOptions: {
@@ -81,7 +82,7 @@ const AllEventsTabScreens = createMaterialTopTabNavigator(
         marginBottom: margin.sm,
         marginLeft: margin.lg,
         maxWidth: dimensions.fullWidth / 2 - 60,
-        width: '100%'
+        width: "100%"
       },
       labelStyle: {
         ...h3,
@@ -98,7 +99,8 @@ const AllEventsTabScreens = createMaterialTopTabNavigator(
 
 const HomeStack = createStackNavigator(
   {
-    HomeScreen
+    HomeScreen,
+    Profile: ProfileScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -167,27 +169,27 @@ export default createBottomTabNavigator(
         const { routeName } = navigation.state;
 
         let icon;
-        if (routeName === 'Home') {
+        if (routeName === "Home") {
           icon = focused
-            ? require('../assets/images/Navigation/home_icon_active.png')
-            : require('../assets/images/Navigation/home_icon_inactive.png');
-        } else if (routeName === 'Card') {
+            ? require("../assets/images/Navigation/home_icon_active.png")
+            : require("../assets/images/Navigation/home_icon_inactive.png");
+        } else if (routeName === "Card") {
           icon = focused
-            ? require('../assets/images/Navigation/card_icon_active.png')
-            : require('../assets/images/Navigation/card_icon_inactive.png');
+            ? require("../assets/images/Navigation/card_icon_active.png")
+            : require("../assets/images/Navigation/card_icon_inactive.png");
         }
-        if (routeName === 'Beers') {
+        if (routeName === "Beers") {
           icon = focused
-            ? require('../assets/images/Navigation/beers_icon_active.png')
-            : require('../assets/images/Navigation/beer_icon_inactive.png');
-        } else if (routeName === 'Events') {
+            ? require("../assets/images/Navigation/beers_icon_active.png")
+            : require("../assets/images/Navigation/beer_icon_inactive.png");
+        } else if (routeName === "Events") {
           icon = focused
-            ? require('../assets/images/Navigation/events_icon_active.png')
-            : require('../assets/images/Navigation/event_icon_inactive.png');
-        } else if (routeName === 'Stores') {
+            ? require("../assets/images/Navigation/events_icon_active.png")
+            : require("../assets/images/Navigation/event_icon_inactive.png");
+        } else if (routeName === "Stores") {
           icon = focused
-            ? require('../assets/images/Navigation/stores_icon_active.png')
-            : require('../assets/images/Navigation/stores_icon_inactive.png');
+            ? require("../assets/images/Navigation/stores_icon_active.png")
+            : require("../assets/images/Navigation/stores_icon_inactive.png");
         }
         return <Image source={icon} style={{ maxWidth: 32, ...contain }} />;
       }

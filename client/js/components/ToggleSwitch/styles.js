@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
   },
 
   buttonSaveContainer: {
-    alignItems: "center"
+    alignItems: "center",
+    marginBottom: 20
   },
   button: {
     width: 120

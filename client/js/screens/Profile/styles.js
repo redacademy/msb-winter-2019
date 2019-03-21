@@ -8,13 +8,16 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%"
   },
+  imageWrapper: {
+    flexGrow: 1.5,
+    marginTop: 20,
+    justifyContent: "space-evenly"
+  },
   profilePic: {
-    height: 150,
-    width: 150,
-    borderRadius: 75,
+    resizeMode: "contain",
+    borderRadius: 110,
     borderWidth: 10,
-    borderColor: colors.brand,
-    marginTop: 30
+    borderColor: colors.brand
   },
   name: {
     alignSelf: "center",

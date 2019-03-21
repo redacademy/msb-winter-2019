@@ -70,7 +70,7 @@ class DrawerScreen extends Component {
           <View style={styles.hr} />
           <TouchableHighlight
             underlayColor={colors.neutralLight}
-            onPress={() => this.navigateToScreen('FavEvents')}
+            onPress={() => this.navigateToScreen('Your Events')}
           >
             <View style={styles.drawerItemWrapper}>
               <Text style={styles.drawerItem}>Your Events</Text>

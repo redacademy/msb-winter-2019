@@ -71,7 +71,7 @@ const CardTabScreens = createMaterialTopTabNavigator(
 const AllEventsTabScreens = createMaterialTopTabNavigator(
   {
     'All Events': AllEventsTab,
-    'Fav Events': FavEventsTab
+    'Your Events': FavEventsTab
   },
   {
     tabBarOptions: {
@@ -82,8 +82,8 @@ const AllEventsTabScreens = createMaterialTopTabNavigator(
         borderBottomWidth: 3,
         backgroundColor: colors.brand,
         marginBottom: margin.sm,
-        marginLeft: margin.sm * 1.5,
-        maxWidth: dimensions.fullWidth / 3 - 30,
+        marginLeft: margin.lg,
+        maxWidth: dimensions.fullWidth / 2 - 60,
         width: '100%'
       },
       labelStyle: {

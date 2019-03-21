@@ -3,7 +3,6 @@ import { View, Text } from "react-native";
 import SwitchToggle from "react-native-switch-toggle";
 
 import BlackButton from "../Buttons/BlackButton";
-import OrangeButton from "../Buttons/OrangeButton";
 import { colors } from "../../config/styles";
 import styles from "./styles";
 
@@ -67,8 +66,15 @@ class ToggleSwitch extends Component {
         </View>
         <View style={styles.buttonEditContainer} />
         <View style={styles.buttonSaveContainer}>
-          <BlackButton style={styles.button}>Edit</BlackButton>
-          <BlackButton style={styles.buttonSave}>Save Changes</BlackButton>
+          {this.state.switchValueFav !== this.state.switchValueFav ||
+          this.state.switchValueBeer !== this.state.switchValueBeer ||
+          this.state.switchValueEvent !== this.state.switchValueEvent ? (
+            <BlackButton style={styles.buttonSave}>Save Changes</BlackButton>
+          ) : (
+            <BlackButton style={styles.button}>Edit</BlackButton>
+          )}
+          {/* <BlackButton style={styles.button}>Edit</BlackButton>
+          <BlackButton style={styles.buttonSave}>Save Changes</BlackButton> */}
         </View>
       </View>
     );

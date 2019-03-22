@@ -6,7 +6,15 @@ import { graphql, compose, Query } from 'react-apollo';
 import { withNavigation } from 'react-navigation';
 import styles from './styles';
 import CustomIcon from '../../components/CustomIcon';
-import { ADD_TO_USER_BEERS, USER_QUERY } from '../../apollo/queries';
+import BlackButton from '../../components/Buttons/BlackButton';
+import OrangeButton from '../../components/Buttons/OrangeButton';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { colors } from '../../config/styles';
+import {
+  ADD_TO_USER_BEERS,
+  USER_QUERY,
+  REMOVE_FROM_USER_BEERS
+} from '../../apollo/queries';
 
 class Beer extends Component {
   isFavourited = (user, beer) => {
@@ -14,10 +22,16 @@ class Beer extends Component {
   };
 
   toggleFavourite = async (user, beer) => {
-    const { addBeerToFavourites } = this.props;
-    await addBeerToFavourites({
-      variables: { usersUserId: user.id, favouriteBeersBeerId: beer.id }
-    });
+    const { addBeerToFavourites, removeBeerFromFavourites } = this.props;
+    if (this.isFavourited(user, beer)) {
+      await removeBeerFromFavourites({
+        variables: { usersUserId: user.id, favouriteBeersBeerId: beer.id }
+      });
+    } else {
+      await addBeerToFavourites({
+        variables: { usersUserId: user.id, favouriteBeersBeerId: beer.id }
+      });
+    }
   };
 
   render() {
@@ -87,7 +101,19 @@ class Beer extends Component {
               source={require('../../assets/images/Icons/social_media_button.png')}
               style={styles.socialbtn}
             />
-            <CustomIcon
+            <BlackButton
+              style={{
+                backgroundColor: this.isFavourited(user, beer)
+                  ? colors.brand
+                  : colors.black
+              }}
+              onPress={() => {
+                this.toggleFavourite(user, beer);
+              }}
+            >
+              Favourite
+            </BlackButton>
+            {/* <CustomIcon
               onPress={() => {
                 this.toggleFavourite(user, beer);
               }}
@@ -96,7 +122,7 @@ class Beer extends Component {
                   ? require('../../assets/images/Buttons/favourite_button_active.png')
                   : require('../../assets/images/Buttons/favourite_button.png')
               }
-            />
+            /> */}
           </View>
         </View>
       </View>
@@ -112,6 +138,16 @@ Beer.propTypes = {
 export default compose(
   graphql(ADD_TO_USER_BEERS, {
     name: 'addBeerToFavourites',
+    options: () => ({
+      refetchQueries: [
+        {
+          query: USER_QUERY
+        }
+      ]
+    })
+  }),
+  graphql(REMOVE_FROM_USER_BEERS, {
+    name: 'removeBeerFromFavourites',
     options: () => ({
       refetchQueries: [
         {

@@ -241,7 +241,7 @@ export const REMOVE_FROM_USER_BEERS = gql`
       favouriteBeersBeerId: $favouriteBeersBeerId
       usersUserId: $usersUserId
     ) {
-      favouriteBeersBeerId {
+      favouriteBeersBeer {
         id
       }
     }

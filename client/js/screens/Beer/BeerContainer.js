@@ -35,7 +35,6 @@ class BeerContainer extends Component {
         fetchPolicy="network-only"
       >
         {({ loading, error, data }) => {
-          console.log('BeerContainer USER_QUERY');
           if (loading) return <Loader />;
           if (error) return <Text>{error.message}</Text>;
           const user = data.allUsers && data.allUsers[0];
@@ -43,10 +42,8 @@ class BeerContainer extends Component {
           return (
             <Query query={BEER_QUERY} variables={{ id }}>
               {({ loading, error, data }) => {
-                console.log('BeerContainer BEER_QUERY');
                 if (loading) return <Loader />;
                 if (error) return <Text>{error.message}</Text>;
-                console.log('Loaded beers...');
                 return (
                   <View style={{ height: '100%' }}>
                     <Beer

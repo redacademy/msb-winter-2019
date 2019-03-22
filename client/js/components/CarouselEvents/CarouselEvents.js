@@ -42,7 +42,6 @@ class CarouselEvents extends Component {
       removeFromFavouriteEvents
     } = this.props;
     const event = events[this.state.currentIndex];
-    console.log('toggleevent');
     if (this.isEventFavourited()) {
       await removeFromFavouriteEvents({
         variables: { usersUserId: user.id, favouriteEventsEventId: event.id }

@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import { View, Image, FlatList } from 'react-native';
+import {
+  View,
+  Image,
+  FlatList,
+  Platform,
+  ProgressBarAndroid,
+  ProgressViewIOS,
+  TouchableOpacity,
+  Text
+} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { Query } from 'react-apollo';
 import moment from 'moment';
@@ -9,16 +18,26 @@ import { getLoggedInUser } from '../../../config/models';
 import Loader from '../../Loader';
 import CustomText from '../../CustomText';
 import styles from './styles';
+import { colors } from '../../../config/styles';
 
 class HistoryTab extends Component {
   constructor(props) {
     super(props);
-    this.state = { viewerId: null };
+    this.state = { viewerId: null, progressBarProgress: 0.0 };
   }
 
   componentDidMount = async () => {
     const viewerId = await getLoggedInUser();
     this.setState({ viewerId });
+    this.changeProgress();
+  };
+
+  changeProgress = () => {
+    this.setState({
+      // progressBarProgress: parseFloat(Math.random().toFixed(1))
+      // progressBarProgress: data.allUsers[0].points / 240
+      progressBarProgress: 50 / 240
+    });
   };
 
   renderSeparator = () => {
@@ -26,6 +45,8 @@ class HistoryTab extends Component {
   };
 
   render() {
+    // const { progressBarProgress } = this.state;
+
     return (
       <Query
         query={HISTORY_QUERY}
@@ -39,14 +60,41 @@ class HistoryTab extends Component {
           if (!user) return <Loader />;
 
           // const { pointsHistory } = this.props.;
-          const { pointsHistory } = user;
-          console.log('>>>>>>HISTORY USER', pointsHistory);
+          const { pointsHistory, points } = user;
+
+          console.log('>>>>>>HISTORY USER', points);
+
+          // const rewardsProgress = this.setState({
+          //   progressBarProgress: points / 240
+          // });
 
           return (
             <View style={styles.container}>
               <View style={[styles.container, styles.rewardsWrapper]}>
                 <View style={styles.container}>
-                  <CustomText>rewards indicator</CustomText>
+                  <View>
+                    <CustomText>rewards indicator</CustomText>
+                    {Platform.OS === 'android' ? (
+                      <ProgressBarAndroid
+                        progress={progressBarProgress}
+                        styleAttr='Horizontal'
+                        indeterminate={false}
+                      />
+                    ) : (
+                      <ProgressViewIOS
+                        // progress={progressBarProgress}
+                        progress={this.state.progressBarProgress}
+                        // style={{ flex: 1, height: '100%' }}
+                        progressTintColor={colors.brand}
+                        // progressViewStyle
+                        // trackImage
+                        trackTintColor={colors.neutralLight}
+                        // onChange={() =>
+                        //   this.setState({ progressBarProgress: points / 240 })
+                        // }
+                      />
+                    )}
+                  </View>
                 </View>
                 <View style={styles.rewards}>
                   <View style={styles.container}>

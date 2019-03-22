@@ -139,6 +139,7 @@ export const HISTORY_QUERY = gql`
   query($id: ID) {
     allUsers(filter: { id: $id }) {
       id
+      points
       pointsHistory {
         id
         date

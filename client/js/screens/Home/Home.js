@@ -5,11 +5,8 @@ import { withNavigation } from 'react-navigation';
 import styles from './styles';
 import { center, h2, h3, row, vl } from '../../config/styles';
 import Subheader from '../../components/Subheader';
-// import { TouchableHighlight } from 'react-native-gesture-handler';
 
 const Home = props => {
-  console.log(props);
-
   return (
     <View style={styles.container}>
       <Text style={styles.greet}>hi {props.user.name}!</Text>

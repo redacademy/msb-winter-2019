@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, FlatList } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { Query } from 'react-apollo';
+import moment from 'moment';
 
-import { USER_QUERY } from '../../../apollo/queries';
+import { HISTORY_QUERY } from '../../../apollo/queries';
 import { getLoggedInUser } from '../../../config/models';
 import Loader from '../../Loader';
 import CustomText from '../../CustomText';
@@ -20,10 +21,14 @@ class HistoryTab extends Component {
     this.setState({ viewerId });
   };
 
+  renderSeparator = () => {
+    return <View style={styles.hr} />;
+  };
+
   render() {
     return (
       <Query
-        query={USER_QUERY}
+        query={HISTORY_QUERY}
         variables={{ id: this.state.viewerId }}
         fetchPolicy='network-only'
       >
@@ -32,6 +37,11 @@ class HistoryTab extends Component {
           if (error) return <CustomText>Error</CustomText>;
           const user = data.allUsers && data.allUsers[0];
           if (!user) return <Loader />;
+
+          // const { pointsHistory } = this.props.;
+          const { pointsHistory } = user;
+          console.log('>>>>>>HISTORY USER', pointsHistory);
+
           return (
             <View style={styles.container}>
               <View style={[styles.container, styles.rewardsWrapper]}>
@@ -68,7 +78,45 @@ class HistoryTab extends Component {
                 </View>
               </View>
               <View style={[styles.container, styles.historyWrapper]}>
-                <CustomText>This is history.</CustomText>
+                <FlatList
+                  data={user.pointsHistory}
+                  renderItem={({ item }) => (
+                    <View style={[styles.row, styles.pointsHistory]}>
+                      <View style={[styles.row, styles.beerInfoWrapper]}>
+                        <Image
+                          source={require('../../../assets/images/Card/your_card.png')}
+                          style={[styles.img, { maxWidth: 25 }]}
+                        />
+                        <View style={styles.beerInfo}>
+                          <CustomText style={styles.beerText}>
+                            {item.beer.title}
+                          </CustomText>
+                          <CustomText style={[styles.beerText, styles.grey]}>
+                            {item.beer.subtitle}
+                          </CustomText>
+                        </View>
+                      </View>
+                      <View style={styles.row}>
+                        <View>
+                          <Image
+                            source={require('../../../assets/images/Card/your_card.png')}
+                            style={[styles.img, { maxWidth: 25 }]}
+                          />
+                          <CustomText style={styles.beerStamps}>
+                            {item.stamps} Stamps
+                          </CustomText>
+                        </View>
+                        <View>
+                          <CustomText style={styles.beerText}>
+                            {moment(item.date).format('D MMM')}
+                          </CustomText>
+                        </View>
+                      </View>
+                    </View>
+                  )}
+                  keyExtractor={item => item.id + ''}
+                  ItemSeparatorComponent={this.renderSeparator}
+                />
               </View>
             </View>
           );

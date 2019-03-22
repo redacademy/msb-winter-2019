@@ -87,7 +87,7 @@ class CarouselEvents extends Component {
             <Text style={styles.eventData}>
               <Text style={styles.boldData}>Date: </Text>
               {moment(events[this.state.currentIndex].date).format(
-                'MMM Do YYYY'
+                'dddd, MMMM D, YYYY'
               )}
             </Text>
             <Text style={styles.eventData}>

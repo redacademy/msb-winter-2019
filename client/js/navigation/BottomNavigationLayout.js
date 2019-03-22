@@ -2,9 +2,7 @@ import React from 'react';
 import {
   createStackNavigator,
   createBottomTabNavigator,
-  createMaterialTopTabNavigator,
-  NavigationActions,
-  StackActions
+  createMaterialTopTabNavigator
 } from 'react-navigation';
 import { Image } from 'react-native';
 

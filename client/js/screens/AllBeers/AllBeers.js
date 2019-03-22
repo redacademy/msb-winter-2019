@@ -8,7 +8,6 @@ import Subheader from '../../components/Subheader';
 import Availability from '../../components/Availability';
 
 const AllBeers = props => {
-  console.log(props);
   return (
     <View style={styles.container}>
       <Subheader style={styles.subheader}>Growler</Subheader>

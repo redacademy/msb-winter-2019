@@ -1,17 +1,21 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { center, colors, fonts, h2, hr, subtitle1 } from '../../config/styles';
+import {
+  center,
+  colors,
+  fonts,
+  h2,
+  hr,
+  margin,
+  subtitle1
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
+    height: Dimensions.get('window').height * 0.6,
     flex: 1,
-    padding: 15,
-    paddingBottom: 0,
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
-  carouselContainer: {
-    flex: 1,
-    paddingTop: 15
+    padding: 20,
+    paddingTop: 35,
+    alignItems: 'center'
   },
   imgWrapper: {
     shadowOffset: { width: 1, height: 1 },
@@ -24,20 +28,24 @@ const styles = StyleSheet.create({
     width: 215,
     height: 215
   },
-  title: { ...h2, ...center, paddingBottom: 0 },
+  title: { ...h2, ...center, fontSize: 38, paddingTop: 12, paddingBottom: 2 },
   subtitle: {
     color: colors.neutralDark,
-    fontSize: fonts.sm,
-    paddingBottom: 0
+    fontSize: 15,
+    fontFamily: fonts.primarySemi
   },
 
-  infoWrapper: { ...center, paddingBottom: 10 },
+  infoWrapper: {
+    ...center,
+    paddingBottom: 15,
+    width: Dimensions.get('window').width
+  },
   dataWrapper: {
     width: Dimensions.get('window').width * 0.8,
     alignItems: 'flex-start',
     justifyContent: 'space-evenly',
-    paddingLeft: 24,
-    paddingRight: 15
+    paddingLeft: 22,
+    paddingRight: 16
   },
   eventData: {
     ...subtitle1,
@@ -49,7 +57,7 @@ const styles = StyleSheet.create({
   boldData: {
     ...subtitle1
   },
-  border: { ...hr, width: 270 }
+  border: { ...hr, width: 295, marginVertical: margin.sm }
 });
 
 export default styles;

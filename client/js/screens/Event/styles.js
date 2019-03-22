@@ -1,11 +1,10 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { center, colors, fonts, h1, hr, subtitle1 } from '../../config/styles';
+import { center, colors, fonts, hr, subtitle1 } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
     height: Dimensions.get('window').height,
     width: Dimensions.get('window').width
-    // justifyContent: 'space-between'
   },
   headerImg: {
     maxHeight: 200,
@@ -15,7 +14,6 @@ const styles = StyleSheet.create({
   infoWrapper: {
     padding: 20,
     paddingHorizontal: 25
-    // justifyContent: 'space-between'
   },
   title: {
     fontFamily: fonts.primaryBold,

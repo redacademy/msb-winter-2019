@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 35,
     alignItems: 'center'
-    // justifyContent: 'space-around'
   },
   imgWrapper: {
     shadowOffset: { width: 1, height: 1 },
@@ -45,7 +44,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width * 0.8,
     alignItems: 'flex-start',
     justifyContent: 'space-evenly',
-    // height: 80,
     paddingLeft: 22,
     paddingRight: 16
   },

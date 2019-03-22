@@ -5,8 +5,6 @@ import {
   container,
   fonts,
   h1,
-  h2,
-  h3,
   h4,
   row,
   vl
@@ -32,7 +30,6 @@ const styles = StyleSheet.create({
   },
   singleGrid: {
     ...center,
-    // height: 170,
     width: Dimensions.get('window').width * 0.5
   },
   growlerImg: {

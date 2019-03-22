@@ -11,14 +11,19 @@ const styles = StyleSheet.create({
     color: colors.neutralLight
   },
   redeem: {
-    ...h1
+    ...h1,
+    marginBottom: 20
   },
   rewardTitle: {
     fontFamily: fonts.primaryBold,
     fontSize: fonts.md,
-    marginBottom: 20
+    marginBottom: 20,
+    marginTop: 20
   },
 
+  rewardImg: {
+    marginBottom: 20
+  },
   redeemButton: {
     padding: 20,
     backgroundColor: colors.brand,

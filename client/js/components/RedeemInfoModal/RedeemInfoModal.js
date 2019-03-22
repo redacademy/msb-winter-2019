@@ -11,27 +11,29 @@ class RedeemInfoModal extends Component {
 
     let redeemImg;
     if (reward.title === "Monthy Draw") {
-      redeemImg = require("../../assets/images/Redeem/20_stamps_icon.png");
+      redeemImg = require("../../assets/images/Redeem/20_stamp_reward_icon.png");
     } else if (reward.title === "16 oz Beer In Tasting Room") {
-      redeemImg = require("../../assets/images/Redeem/40_stamps_icon.png");
+      redeemImg = require("../../assets/images/Redeem/40_stamp_reward_icon.png");
     } else if (reward.title === "Growler Fill") {
-      redeemImg = require("../../assets/images/Redeem/60_stamps_icon.png");
+      redeemImg = require("../../assets/images/Redeem/60_stamp_reward_icon.png");
     } else if (reward.title === "T-Shirt") {
-      redeemImg = require("../../assets/images/Redeem/80_stamps_icon.png");
+      redeemImg = require("../../assets/images/Redeem/80_stamp_reward_icon.png");
     } else if (reward.title === "Nachos and Two Flight In Tasting Room") {
-      redeemImg = require("../../assets/images/Redeem/140_stamps_icon.png");
+      redeemImg = require("../../assets/images/Redeem/140_stamp_reward_icon.png");
     } else if (reward.title === "Tour and Beer for Two") {
-      redeemImg = require("../../assets/images/Redeem/200_Stamps_icon.png");
+      redeemImg = require("../../assets/images/Redeem/200_stamp_reward_icon.png");
     } else if (reward.title === "Ultimate Brew Day") {
-      redeemImg = require("../../assets/images/Redeem/240_Stamps_icon.png");
+      redeemImg = require("../../assets/images/Redeem/240_stamp_reward_icon.png");
     }
 
     return (
       <View style={styles.container}>
         <Text style={styles.heading}>You are now redeeming</Text>
         <Text style={styles.redeem}>{`${reward.points} stamps`}</Text>
+
+        <Image style={styles.rewardImg} source={redeemImg} />
+
         <Text style={styles.rewardTitle}>{reward.title}</Text>
-        <Image source={redeemImg} />
         <TouchableOpacity
           style={styles.redeemButton}
           onPress={() => {

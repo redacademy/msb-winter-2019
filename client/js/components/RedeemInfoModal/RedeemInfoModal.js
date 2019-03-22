@@ -11,19 +11,19 @@ class RedeemInfoModal extends Component {
 
     let redeemImg;
     if (reward.title === "Monthy Draw") {
-      redeemImg = require();
+      redeemImg = require("../../assets/images/Redeem/20_stamps_icon.png");
     } else if (reward.title === "16 oz Beer In Tasting Room") {
-      redeemImg = require();
+      redeemImg = require("../../assets/images/Redeem/40_stamps_icon.png");
     } else if (reward.title === "Growler Fill") {
-      redeemImg = require();
+      redeemImg = require("../../assets/images/Redeem/60_stamps_icon.png");
     } else if (reward.title === "T-Shirt") {
-      redeemImg = require();
+      redeemImg = require("../../assets/images/Redeem/80_stamps_icon.png");
     } else if (reward.title === "Nachos and Two Flight In Tasting Room") {
-      redeemImg = require();
+      redeemImg = require("../../assets/images/Redeem/140_stamps_icon.png");
     } else if (reward.title === "Tour and Beer for Two") {
-      redeemImg = require();
+      redeemImg = require("../../assets/images/Redeem/200_Stamps_icon.png");
     } else if (reward.title === "Ultimate Brew Day") {
-      redeemImg = require();
+      redeemImg = require("../../assets/images/Redeem/240_Stamps_icon.png");
     }
 
     return (

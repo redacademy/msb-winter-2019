@@ -8,12 +8,30 @@ class RedeemInfoModal extends Component {
     const { navigation } = this.props;
     const user = navigation.getParam("user");
     const reward = navigation.getParam("reward");
+
+    let redeemImg;
+    if (reward.title === "Monthy Draw") {
+      redeemImg = require();
+    } else if (reward.title === "16 oz Beer In Tasting Room") {
+      redeemImg = require();
+    } else if (reward.title === "Growler Fill") {
+      redeemImg = require();
+    } else if (reward.title === "T-Shirt") {
+      redeemImg = require();
+    } else if (reward.title === "Nachos and Two Flight In Tasting Room") {
+      redeemImg = require();
+    } else if (reward.title === "Tour and Beer for Two") {
+      redeemImg = require();
+    } else if (reward.title === "Ultimate Brew Day") {
+      redeemImg = require();
+    }
+
     return (
       <View style={styles.container}>
         <Text style={styles.heading}>You are now redeeming</Text>
         <Text style={styles.redeem}>{`${reward.points} stamps`}</Text>
         <Text style={styles.rewardTitle}>{reward.title}</Text>
-
+        <Image source={redeemImg} />
         <TouchableOpacity
           style={styles.redeemButton}
           onPress={() => {

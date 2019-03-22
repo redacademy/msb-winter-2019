@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { Image, View, Text } from 'react-native';
+import { Image, View, Text, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { graphql, compose, Query } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import { withNavigation } from 'react-navigation';
 import styles from './styles';
 import CustomIcon from '../../components/CustomIcon';
 import BlackButton from '../../components/Buttons/BlackButton';
-import OrangeButton from '../../components/Buttons/OrangeButton';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { colors } from '../../config/styles';
 import {
@@ -35,9 +34,7 @@ class Beer extends Component {
   };
 
   render() {
-    console.log('Hi beer');
     const { beer, user, navigation } = this.props;
-    console.log('got props');
     let beerBanner;
     if (beer.title === 'FRUIT BOMB') {
       beerBanner = require('../../assets/images/Beers/SpecificBeer/fruit_bomb.png');
@@ -111,18 +108,17 @@ class Beer extends Component {
                 this.toggleFavourite(user, beer);
               }}
             >
+              <Icon
+                name={Platform.select({
+                  ios: 'ios-heart',
+                  android: 'md-heart'
+                })}
+                size={15}
+                color={'white'}
+                style={{ marginRight: 15 }}
+              />
               Favourite
             </BlackButton>
-            {/* <CustomIcon
-              onPress={() => {
-                this.toggleFavourite(user, beer);
-              }}
-              source={
-                this.isFavourited(user, beer)
-                  ? require('../../assets/images/Buttons/favourite_button_active.png')
-                  : require('../../assets/images/Buttons/favourite_button.png')
-              }
-            /> */}
           </View>
         </View>
       </View>

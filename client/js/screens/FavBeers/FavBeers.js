@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const FavBeers = props => {
+const FavBeers = ({ beers }) => {
   return (
     <View style={styles.container}>
       <Text>This is FavBeers.</Text>

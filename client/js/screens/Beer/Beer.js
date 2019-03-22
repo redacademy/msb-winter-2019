@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Image, View, Text, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -108,16 +108,18 @@ class Beer extends Component {
                 this.toggleFavourite(user, beer);
               }}
             >
-              <Icon
-                name={Platform.select({
-                  ios: 'ios-heart',
-                  android: 'md-heart'
-                })}
-                size={15}
-                color={'white'}
-                style={{ marginRight: 15 }}
-              />
-              Favourite
+              <Fragment>
+                <Icon
+                  name={Platform.select({
+                    ios: 'ios-heart',
+                    android: 'md-heart'
+                  })}
+                  size={15}
+                  color={'white'}
+                  style={{ marginRight: 15 }}
+                />
+                Favourite
+              </Fragment>
             </BlackButton>
           </View>
         </View>

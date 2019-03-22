@@ -168,10 +168,6 @@ export const ADD_TO_USER_EVENTS = gql`
         date
         description
       }
-      userUser {
-        id
-        name
-      }
     }
   }
 `;
@@ -254,7 +250,7 @@ export const REMOVE_FROM_USER_EVENTS = gql`
       favouriteEventsEventId: $favouriteEventsEventId
       usersUserId: $usersUserId
     ) {
-      favouriteEventsEventId {
+      favouriteEventsEvent {
         id
       }
     }

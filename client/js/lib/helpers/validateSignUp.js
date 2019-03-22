@@ -2,21 +2,21 @@ export default function validate(values, isLegal) {
   const errors = {};
 
   if (!values.name) {
-    errors.name = 'Required';
+    errors.name = '*Required field';
   }
 
   if (!values.email || values.email === '') {
-    errors.email = 'Email is required';
+    errors.email = '*Required field';
   } else if (/.*@.*\..*/.test(values.email) === false) {
-    errors.email = 'Please enter a valid email';
+    errors.email = '*Please enter a valid email address';
   }
 
   if (!values.password) {
-    errors.password = 'Password is required';
+    errors.password = '*Required field';
   }
 
   if (!isLegal) {
-    errors.isLegal = 'Required';
+    errors.isLegal = '*Required field';
   }
 
   return errors;

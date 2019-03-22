@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
 
 import { SIGNUP_MUTATION } from '../../apollo/queries';
 import Loader from '../../components/Loader';
-import CustomText from '../../components/CustomText';
+import CustomText from '../../components/CustomText/CustomText';
 import WhiteButton from '../../components/Buttons/WhiteButton';
 import { setUserToken } from '../../config/models';
 import validate from '../../lib/helpers/validateSignUp';
@@ -37,9 +37,7 @@ class Signup extends React.Component {
     try {
       await this.props.signupMutation({ values });
     } catch (e) {
-      return {
-        [FORM_ERROR]: 'An account with this email already exists.'
-      };
+      return { [FORM_ERROR]: 'An account with this email already exists.' };
     }
   };
 
@@ -63,7 +61,7 @@ class Signup extends React.Component {
           <CustomText style={styles.title}>Sign Up</CustomText>
           <Form
             onSubmit={this.onSubmit}
-            validate={values => validate(values, this.state.date)}
+            validate={validate}
             render={({ handleSubmit, hasSubmitErrors, submitError }) => (
               <Fragment>
                 <View style={styles.field}>
@@ -71,18 +69,23 @@ class Signup extends React.Component {
                   <Field name="name">
                     {({ input, meta }) => (
                       <View style={styles.textInputWrapper}>
-                        <TextInput
-                          editable={true}
-                          autoCapitalize="none"
-                          autoCorrect={false}
-                          {...input}
-                          style={styles.textInput}
-                          autoFocus={true}
-                          returnKeyType="next"
-                          onSubmitEditing={() => this.emailInput.focus()}
-                        />
-                        {meta.touched && meta.invalid && meta.error}
-
+                        <View>
+                          <TextInput
+                            editable={true}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            {...input}
+                            style={styles.textInput}
+                            autoFocus={true}
+                            returnKeyType="next"
+                            onSubmitEditing={() => this.emailInput.focus()}
+                          />
+                          {meta.error && meta.touched && (
+                            <CustomText style={styles.errorMessage}>
+                              {meta.error}
+                            </CustomText>
+                          )}
+                        </View>
                         <Ionicons
                           name={Platform.select({
                             android: 'md-checkmark-circle-outline',
@@ -101,18 +104,24 @@ class Signup extends React.Component {
                   <Field name="email">
                     {({ input, meta }) => (
                       <View style={styles.textInputWrapper}>
-                        <TextInput
-                          editable={true}
-                          autoCapitalize="none"
-                          autoCorrect={false}
-                          {...input}
-                          style={styles.textInput}
-                          returnKeyType="next"
-                          keyboardType="email-address"
-                          ref={input => (this.emailInput = input)}
-                          onSubmitEditing={() => this.passwordInput.focus()}
-                        />
-                        {meta.touched && meta.invalid && meta.error}
+                        <View>
+                          <TextInput
+                            editable={true}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            {...input}
+                            style={styles.textInput}
+                            returnKeyType="next"
+                            keyboardType="email-address"
+                            ref={input => (this.emailInput = input)}
+                            onSubmitEditing={() => this.passwordInput.focus()}
+                          />
+                          {meta.error && meta.touched && (
+                            <CustomText style={styles.errorMessage}>
+                              {meta.error}
+                            </CustomText>
+                          )}
+                        </View>
                         <Ionicons
                           name={Platform.select({
                             android: 'md-checkmark-circle-outline',
@@ -131,20 +140,26 @@ class Signup extends React.Component {
                   <Field name="password">
                     {({ input, meta }) => (
                       <View style={styles.textInputWrapper}>
-                        <TextInput
-                          editable={true}
-                          autoCapitalize="none"
-                          autoCorrect={false}
-                          secureTextEntry={true}
-                          {...input}
-                          style={styles.textInput}
-                          returnKeyType="next"
-                          ref={input => (this.passwordInput = input)}
-                          onSubmitEditing={() =>
-                            this.confirmPasswordInput.focus()
-                          }
-                        />
-                        {meta.touched && meta.invalid && meta.error}
+                        <View>
+                          <TextInput
+                            editable={true}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            secureTextEntry={true}
+                            {...input}
+                            style={styles.textInput}
+                            returnKeyType="next"
+                            ref={input => (this.passwordInput = input)}
+                            onSubmitEditing={() =>
+                              this.confirmPasswordInput.focus()
+                            }
+                          />
+                          {meta.error && meta.touched && (
+                            <CustomText style={styles.errorMessage}>
+                              {meta.error}
+                            </CustomText>
+                          )}
+                        </View>
                         <Ionicons
                           name={Platform.select({
                             android: 'md-checkmark-circle-outline',
@@ -175,7 +190,6 @@ class Signup extends React.Component {
                           ref={input => (this.confirmPasswordInput = input)}
                           onSubmitEditing={() => this.datePicker.onPressDate()}
                         />
-                        {meta.touched && meta.invalid && meta.error}
                         <Ionicons
                           name={Platform.select({
                             android: 'md-checkmark-circle-outline',
@@ -215,7 +229,7 @@ class Signup extends React.Component {
                             placeholder="select date"
                             format="YYYY-MM-DD"
                             minDate="1920-01-01"
-                            maxDate="2040-01-01"
+                            maxDate="2019-12-31"
                             confirmBtnText="Confirm"
                             cancelBtnText="Cancel"
                             onDateChange={date => {
@@ -226,7 +240,11 @@ class Signup extends React.Component {
                               this.datePicker = picker;
                             }}
                           />
-                          {meta.touched && meta.invalid && meta.error}
+                          {meta.error && meta.touched && (
+                            <CustomText style={styles.errorMessage}>
+                              {meta.error}
+                            </CustomText>
+                          )}
                           <Ionicons
                             name={Platform.select({
                               android: 'md-checkmark-circle-outline',

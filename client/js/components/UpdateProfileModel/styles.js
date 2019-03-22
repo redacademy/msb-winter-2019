@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: colors.white,
-    height: "40%"
+    height: "50%"
   },
   title: {
     fontFamily: fonts.secondary,
@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: fonts.primaryBold,
     fontSize: fonts.md,
-    marginTop: 20
+    marginTop: 20,
+    marginBottom: 20
   },
   half: {
     backgroundColor: colors.neutralLight,

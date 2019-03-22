@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
 import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 
@@ -15,7 +14,7 @@ class AllEventsContainer extends Component {
 
   render() {
     return (
-      <Query query={ALL_EVENTS_QUERY}>
+      <Query query={ALL_EVENTS_QUERY} fetchPolicy="network-only">
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
           if (error) return <CustomText>{error.message}</CustomText>;

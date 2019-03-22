@@ -1,14 +1,35 @@
-import React from 'react';
-import { View } from 'react-native';
-import styles from './styles';
+import React, { Component } from 'react';
+import { Query } from 'react-apollo';
+import { ALL_EVENTS_QUERY } from '../../../apollo/queries';
+import CustomText from '../../CustomText/';
+import { withNavigation } from 'react-navigation';
+import Loader from '../../Loader';
 import CarouselEvents from '../../CarouselEvents';
 
-const AllEventsTab = props => {
-  return (
-    <View style={styles.carouselWrapper}>
-      <CarouselEvents events={props.navigation.getParam('events')} />
-    </View>
-  );
-};
+class AllEventsTab extends Component {
+  render() {
+    const { navigation } = this.props;
+    const id = navigation
+      ? navigation.getParam('eventId')
+      : 'cjti75gpr06j20182zuu2k0xg';
 
-export default AllEventsTab;
+    return (
+      <Query
+        query={ALL_EVENTS_QUERY}
+        variables={{ id }}
+        fetchPolicy="network-only"
+      >
+        {({ loading, error, data }) => {
+          if (loading) return <Loader />;
+          if (error) return <CustomText>Error</CustomText>;
+
+          return (
+            <CarouselEvents events={data.allEvents} navigation={navigation} />
+          );
+        }}
+      </Query>
+    );
+  }
+}
+
+export default withNavigation(AllEventsTab);

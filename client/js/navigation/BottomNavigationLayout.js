@@ -20,6 +20,9 @@ import HistoryTab from '../components/Tabs/HistoryTab';
 import RewardsTab from '../components/Tabs/RewardsTab';
 import AllEventsTab from '../components/Tabs/AllEventsTab';
 import FavEventsTab from '../components/Tabs/FavEventsTab';
+import ProfileScreen from '../screens/Profile';
+import FavBeersScreen from '../screens/FavBeers/';
+import ContactScreen from '../screens/Contact';
 import {
   colors,
   contain,
@@ -98,7 +101,10 @@ const AllEventsTabScreens = createMaterialTopTabNavigator(
 
 const HomeStack = createStackNavigator(
   {
-    HomeScreen
+    HomeScreen,
+    Profile: ProfileScreen,
+    FavBeers: FavBeersScreen,
+    Contact: ContactScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

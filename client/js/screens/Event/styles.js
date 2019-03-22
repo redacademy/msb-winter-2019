@@ -1,8 +1,9 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { center, colors, fonts, h1, hr, subtitle1 } from '../../config/styles';
+import { center, colors, fonts, hr, subtitle1 } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
+    height: Dimensions.get('window').height,
     width: Dimensions.get('window').width
   },
   headerImg: {
@@ -10,7 +11,10 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width
   },
 
-  infoWrapper: { padding: 20, paddingHorizontal: 25 },
+  infoWrapper: {
+    padding: 20,
+    paddingHorizontal: 25
+  },
   title: {
     fontFamily: fonts.primaryBold,
     fontSize: fonts.lg,
@@ -35,9 +39,10 @@ const styles = StyleSheet.create({
   boldData: {
     fontFamily: fonts.primaryBold
   },
-  border: { ...hr, width: 300 },
+  border: { ...hr, width: 295 },
   description: {
-    width: Dimensions.get('window').width * 0.8
+    width: Dimensions.get('window').width * 0.8,
+    lineHeight: 2
   }
 });
 

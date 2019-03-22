@@ -70,7 +70,7 @@ class HistoryTab extends Component {
                 <View style={styles.container}>
                   <View style={styles.pointsWrapper}>
                     {/* <CustomText>rewards indicator</CustomText> */}
-                    <View style={styles.currentProgress}>
+                    <View style={[styles.currentProgress]}>
                       <Image
                         source={require('../../../assets/images/Icons/exit_button.png')}
                         // style={styles.img}

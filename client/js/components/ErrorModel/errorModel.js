@@ -1,19 +1,23 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 
 import styles from "./styles";
 
 const ErrorModel = () => {
   return (
-    <View style={styles.constainer}>
+    <View style={styles.container}>
       <View style={styles.titleContainer}>
+        <View />
         <Text style={styles.title}>SORRY!</Text>
-        <Image
-          style={styles.exitButton}
-          source={require("../../assets/images/Icons/exit_icon.png")}
-        />
+        <TouchableOpacity>
+          <Image source={require("../../assets/images/Icons/exit_icon.png")} />
+        </TouchableOpacity>
       </View>
-      <Image source={require("../../assets/images/Icons/spill_icon.png")} />
+
+      <Image
+        style={styles.beer}
+        source={require("../../assets/images/Icons/spill_icon.png")}
+      />
       <View style={styles.textContainer}>
         <Text style={styles.text}>But don't cry over spilled beer.</Text>
         <Text style={styles.text}>Try Again!</Text>

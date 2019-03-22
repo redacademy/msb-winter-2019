@@ -1,32 +1,38 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import { colors, fonts } from "../../config/styles";
 
 const styles = StyleSheet.create({
-  constainer: {
+  container: {
     backgroundColor: colors.black,
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
   },
   titleContainer: {
-    flexDirection: "row"
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 20,
+    width: Dimensions.get("window").width * 0.6
   },
-  exitButton: {
-    justifyContent: "flex-end"
-  },
+
   title: {
     color: colors.white,
     fontFamily: fonts.secondary,
-    fontSize: fonts.xxl
+    fontSize: fonts.xxl,
+    paddingLeft: 20
+  },
+  beer: {
+    marginTop: 20,
+    marginBottom: 20
   },
   textContainer: {
-    alignSelf: "center",
-    justifyContent: "center"
+    marginTop: 20
   },
   text: {
     color: colors.white,
     fontFamily: fonts.primarySemi,
-    fontSize: fonts.md
+    fontSize: fonts.md,
+    alignSelf: "center"
   }
 });
 

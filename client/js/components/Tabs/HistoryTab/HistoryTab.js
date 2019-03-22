@@ -72,8 +72,9 @@ class HistoryTab extends Component {
             <View style={styles.container}>
               <View style={[styles.container, styles.rewardsWrapper]}>
                 <View style={styles.container}>
-                  <View>
-                    <CustomText>rewards indicator</CustomText>
+                  <View style={styles.pointsWrapper}>
+                    {/* <CustomText>rewards indicator</CustomText> */}
+                    <View style={styles.endPts} />
                     {Platform.OS === 'android' ? (
                       <ProgressBarAndroid
                         progress={progressBarProgress}
@@ -87,13 +88,15 @@ class HistoryTab extends Component {
                         // style={{ flex: 1, height: '100%' }}
                         progressTintColor={colors.brand}
                         // progressViewStyle
-                        // trackImage
+                        // trackImage={require('../../../assets/images/Card/stores_inactive.png')}
                         trackTintColor={colors.neutralLight}
                         // onChange={() =>
                         //   this.setState({ progressBarProgress: points / 240 })
                         // }
+                        style={styles.progressBar}
                       />
                     )}
+                    <View style={styles.endPts} />
                   </View>
                 </View>
                 <View style={styles.rewards}>

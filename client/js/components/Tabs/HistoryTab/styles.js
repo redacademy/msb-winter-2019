@@ -13,7 +13,9 @@ import {
   hr,
   colors,
   subtitle1,
-  mv0
+  mv0,
+  dimensions,
+  margin
 } from '../../../config/styles';
 
 const styles = StyleSheet.create({
@@ -24,6 +26,12 @@ const styles = StyleSheet.create({
     maxHeight: 275,
     width: '100%',
     ...shadow2
+  },
+  pointsWrapper: { ...row, ...center },
+  endPts: { height: 23, width: 6.5, backgroundColor: colors.neutralLight },
+  progressBar: {
+    transform: [{ scaleX: 1.0 }, { scaleY: 3 }],
+    width: dimensions.fullWidth * 0.8
   },
   rewards: { ...row },
   rewardsTitle: { ...h4 },

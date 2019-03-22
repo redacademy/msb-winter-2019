@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Text } from 'react-native';
 import { Query } from 'react-apollo';
+
 import { EVENT_QUERY } from '../../apollo/queries';
-import Event from './Event';
 import Loader from '../../components/Loader';
+import Event from './Event';
 
 class EventContainer extends Component {
   static navigationOptions = {
@@ -19,7 +19,7 @@ class EventContainer extends Component {
   render() {
     const { navigation } = this.props;
     const id = navigation.getParam('eventId');
-    console.log('SINGLE EVENT Container');
+
     return (
       <Query query={EVENT_QUERY} variables={{ id }}>
         {({ loading, error, data }) => {

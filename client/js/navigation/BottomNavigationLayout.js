@@ -9,8 +9,6 @@ import { Image } from 'react-native';
 import { sharedNavigationOptions } from './config';
 import BeersScreen from '../screens/AllBeers';
 import BeerModal from '../screens/Beer';
-import CardScreen from '../screens/Card';
-import EventsScreen from '../screens/AllEvents';
 import EventModal from '../screens/Event';
 import FavEventsScreen from '../screens/FavEvents';
 import HomeScreen from '../screens/Home';

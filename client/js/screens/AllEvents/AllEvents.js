@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-const AllEvents = props => {
-  props.navigation.navigate('AllEventsTabScreens', { events: props.events });
+const AllEvents = ({ navigation }) => {
+  navigation.navigate('AllEventsTabScreens');
 
   return null;
 };

@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import Card from './Card';
 
 class CardContainer extends Component {
-  static navigationOptions = {
-    title: 'Card'
-  };
-
   render() {
     return <Card navigation={this.props.navigation} />;
   }

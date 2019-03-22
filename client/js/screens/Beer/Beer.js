@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { Image, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+<<<<<<< HEAD
 import { graphql, compose, Query } from 'react-apollo';
+=======
+import { withNavigation } from 'react-navigation';
+>>>>>>> develop
 import styles from './styles';
 import CustomIcon from '../../components/CustomIcon';
 import { ADD_TO_USER_BEERS, USER_QUERY } from '../../apollo/queries';
@@ -104,7 +108,8 @@ class Beer extends Component {
 }
 
 Beer.propTypes = {
-  beer: PropTypes.object.isRequired
+  beer: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired
 };
 
 export default compose(
@@ -117,5 +122,6 @@ export default compose(
         }
       ]
     })
-  })
+  }),
+  withNavigation
 )(Beer);

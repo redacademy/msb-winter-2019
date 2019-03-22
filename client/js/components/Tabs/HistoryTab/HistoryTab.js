@@ -15,7 +15,7 @@ import { HISTORY_QUERY } from '../../../apollo/queries';
 import { getLoggedInUser } from '../../../config/models';
 import Loader from '../../Loader';
 import CustomText from '../../CustomText';
-import { colors } from '../../../config/styles';
+import { colors, dimensions } from '../../../config/styles';
 import styles from './styles';
 
 class HistoryTab extends Component {
@@ -27,11 +27,14 @@ class HistoryTab extends Component {
   componentDidMount = async () => {
     const viewerId = await getLoggedInUser();
     this.setState({ viewerId });
-    // this.setState({ progressBarProgress: this.props.data / 240 });
   };
 
   getProgress = points => {
     return points / 240;
+  };
+
+  updateProgress = points => {
+    return (points / 240) * dimensions.fullWidth * 0.5;
   };
 
   renderSeparator = () => {
@@ -39,8 +42,6 @@ class HistoryTab extends Component {
   };
 
   render() {
-    // const { progressBarProgress } = this.state;
-
     return (
       <Query
         query={HISTORY_QUERY}
@@ -55,20 +56,19 @@ class HistoryTab extends Component {
 
           const { pointsHistory, points } = user;
 
-          // const rewardsProgress = this.setState({
-          //   progressBarProgress: points / 240
-          // });
-
           return (
             <View style={styles.container}>
               <View style={[styles.container, styles.rewardsWrapper]}>
                 <View style={styles.container}>
                   <View style={styles.pointsWrapper}>
-                    {/* <CustomText>rewards indicator</CustomText> */}
-                    <View style={[styles.currentProgress]}>
+                    <View
+                      style={[
+                        styles.currentProgress,
+                        { left: this.updateProgress(points) }
+                      ]}
+                    >
                       <Image
                         source={require('../../../assets/images/Card/point_location.png')}
-                        // style={styles.img}
                       />
                       <View style={styles.progressPt} />
                       <CustomText style={styles.endPtsText}>
@@ -84,16 +84,9 @@ class HistoryTab extends Component {
                       />
                     ) : (
                       <ProgressViewIOS
-                        // progress={progressBarProgress}
                         progress={this.getProgress(points)}
-                        // progress={rewardsProgress}
                         progressTintColor={colors.brand}
-                        // progressViewStyle
-                        // trackImage={require('../../../assets/images/Card/stores_inactive.png')}
                         trackTintColor={colors.neutralLight}
-                        // onChange={() =>
-                        //   this.setState({ progressBarProgress: points / 240 })
-                        // }
                         style={styles.progressBar}
                       />
                     )}
@@ -112,7 +105,7 @@ class HistoryTab extends Component {
                     </CustomText>
                     <CustomText style={styles.stamps}>Stamps</CustomText>
                     <Image
-                      source={require('../../../assets/images/Card/your_card.png')}
+                      source={require('../../../assets/images/Icons/growler_icon.png')}
                       style={styles.img}
                     />
                     <CustomText style={styles.reward}>
@@ -125,7 +118,7 @@ class HistoryTab extends Component {
                     </CustomText>
                     <CustomText style={styles.stamps}>Stamps</CustomText>
                     <Image
-                      source={require('../../../assets/images/Card/your_card.png')}
+                      source={require('../../../assets/images/Icons/growler_icon.png')}
                       style={styles.img}
                     />
                     <CustomText style={styles.reward}>
@@ -158,8 +151,8 @@ class HistoryTab extends Component {
                       <View style={styles.row}>
                         <View style={styles.center}>
                           <Image
-                            source={require('../../../assets/images/Card/your_card.png')}
-                            style={[styles.img, { maxWidth: 25 }]}
+                            source={require('../../../assets/images/Card/star_2_stamps.png')}
+                            style={[styles.img]}
                           />
                           <CustomText style={styles.beerStamps}>
                             {item.stamps} Stamps

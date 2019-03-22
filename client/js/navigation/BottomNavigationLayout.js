@@ -9,8 +9,6 @@ import { Image } from 'react-native';
 import { sharedNavigationOptions } from './config';
 import BeersScreen from '../screens/AllBeers';
 import BeerModal from '../screens/Beer';
-import CardScreen from '../screens/Card';
-import EventsScreen from '../screens/AllEvents';
 import EventModal from '../screens/Event';
 import FavEventsScreen from '../screens/FavEvents';
 import HomeScreen from '../screens/Home';
@@ -48,9 +46,9 @@ const CardTabScreens = createMaterialTopTabNavigator(
       inactiveTintColor: colors.neutralLight,
       indicatorStyle: {
         ...underline,
-        borderBottomWidth: 3,
+        borderBottomWidth: 4,
         backgroundColor: colors.brand,
-        marginBottom: margin.sm,
+        marginBottom: margin.sm * 0.8,
         marginLeft: margin.sm * 1.5,
         maxWidth: dimensions.fullWidth / 3 - 30,
         width: '100%'
@@ -79,9 +77,9 @@ const AllEventsTabScreens = createMaterialTopTabNavigator(
       inactiveTintColor: colors.neutralLight,
       indicatorStyle: {
         ...underline,
-        borderBottomWidth: 3,
+        borderBottomWidth: 4,
         backgroundColor: colors.brand,
-        marginBottom: margin.sm,
+        marginBottom: margin.sm * 0.8,
         marginLeft: margin.lg,
         maxWidth: dimensions.fullWidth / 2 - 60,
         width: '100%'
@@ -104,7 +102,8 @@ const HomeStack = createStackNavigator(
     HomeScreen,
     Profile: ProfileScreen,
     FavBeers: FavBeersScreen,
-    Contact: ContactScreen
+    Contact: ContactScreen,
+    Beer: BeerModal
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -125,10 +124,9 @@ const BeersStack = createStackNavigator(
 );
 const EventsStack = createStackNavigator(
   {
-    EventsScreen,
-    Event: EventModal,
     AllEventsTabScreens,
-    FavEvents: FavEventsScreen
+    FavEvents: FavEventsScreen,
+    Event: EventModal
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -149,7 +147,6 @@ const StoresStack = createStackNavigator(
 
 const CardStack = createStackNavigator(
   {
-    CardScreen,
     CardTabScreens
   },
   {

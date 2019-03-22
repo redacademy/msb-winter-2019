@@ -126,10 +126,9 @@ const BeersStack = createStackNavigator(
 );
 const EventsStack = createStackNavigator(
   {
-    // EventsScreen,
-    Event: EventModal,
     AllEventsTabScreens,
-    FavEvents: FavEventsScreen
+    FavEvents: FavEventsScreen,
+    Event: EventModal
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

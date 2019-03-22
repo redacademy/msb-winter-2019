@@ -18,10 +18,8 @@ class EventContainer extends Component {
 
   render() {
     const { navigation } = this.props;
-    const id = navigation
-      ? navigation.getParam('eventId')
-      : 'cjti75gpr06j20182zuu2k0xg';
-
+    const id = navigation.getParam('eventId');
+    console.log('SINGLE EVENT Container');
     return (
       <Query query={EVENT_QUERY} variables={{ id }}>
         {({ loading, error, data }) => {

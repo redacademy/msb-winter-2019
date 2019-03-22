@@ -28,6 +28,7 @@ class CarouselEvents extends Component {
     }
   };
   render() {
+    console.log('CarouselEvents');
     const { events, navigation } = this.props;
 
     return (

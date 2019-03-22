@@ -139,7 +139,7 @@ export const USER_QUERY = gql`
 
 export const ADD_TO_USER_BEERS = gql`
   mutation($favouriteBeersBeerId: ID!, $usersUserId: ID!) {
-    addToUserBeer(
+    addToUserBeers(
       favouriteBeersBeerId: $favouriteBeersBeerId
       usersUserId: $usersUserId
     ) {

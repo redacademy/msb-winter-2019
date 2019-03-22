@@ -12,9 +12,11 @@ class Beer extends Component {
     return user.favouriteBeers.some(userBeer => userBeer.id === beer.id);
   };
 
-  toggleFavourite = (user, beer) => {
+  toggleFavourite = async (user, beer) => {
     const { addBeerToFavourites } = this.props;
-    console.log('toggle');
+    await addBeerToFavourites({
+      variables: { usersUserId: user.id, favouriteBeersBeerId: beer.id }
+    });
   };
 
   render() {
@@ -105,17 +107,15 @@ Beer.propTypes = {
   beer: PropTypes.object.isRequired
 };
 
-export default Beer;
-
-// export default compose(
-//   graphql(ADD_TO_USER_BEERS, {
-//     name: 'addBeerToFavourites',
-//     options: () => ({
-//       refetchQueries: [
-//         {
-//           query: USER_QUERY
-//         }
-//       ]
-//     })
-//   })
-// )(Beer);
+export default compose(
+  graphql(ADD_TO_USER_BEERS, {
+    name: 'addBeerToFavourites',
+    options: () => ({
+      refetchQueries: [
+        {
+          query: USER_QUERY
+        }
+      ]
+    })
+  })
+)(Beer);

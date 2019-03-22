@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 
-const AllEvents = props => {
-  props.navigation.navigate('AllEventsTabScreens', { events: props.events });
+const AllEvents = ({ navigation }) => {
+  navigation.navigate('AllEventsTabScreens');
 
   return null;
 };
 
 AllEvents.propTypes = {
-  navigation: PropTypes.object.isRequired,
-  events: PropTypes.array.isRequired
+  navigation: PropTypes.object.isRequired
 };
 
 export default AllEvents;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {
   Dimensions,
   View,
@@ -8,9 +7,11 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native';
-import Carousel from 'react-native-snap-carousel';
 import { withNavigation } from 'react-navigation';
+import Carousel from 'react-native-snap-carousel';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+
 import styles from './styles';
 
 class CarouselEvents extends Component {

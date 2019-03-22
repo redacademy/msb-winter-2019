@@ -104,7 +104,8 @@ const HomeStack = createStackNavigator(
     HomeScreen,
     Profile: ProfileScreen,
     FavBeers: FavBeersScreen,
-    Contact: ContactScreen
+    Contact: ContactScreen,
+    Beer: BeerModal
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -125,7 +126,7 @@ const BeersStack = createStackNavigator(
 );
 const EventsStack = createStackNavigator(
   {
-    EventsScreen,
+    // EventsScreen,
     Event: EventModal,
     AllEventsTabScreens,
     FavEvents: FavEventsScreen
@@ -149,7 +150,6 @@ const StoresStack = createStackNavigator(
 
 const CardStack = createStackNavigator(
   {
-    CardScreen,
     CardTabScreens
   },
   {

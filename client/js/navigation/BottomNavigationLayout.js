@@ -2,7 +2,9 @@ import React from 'react';
 import {
   createStackNavigator,
   createBottomTabNavigator,
-  createMaterialTopTabNavigator
+  createMaterialTopTabNavigator,
+  NavigationActions,
+  StackActions
 } from 'react-navigation';
 import { Image } from 'react-native';
 
@@ -46,9 +48,9 @@ const CardTabScreens = createMaterialTopTabNavigator(
       inactiveTintColor: colors.neutralLight,
       indicatorStyle: {
         ...underline,
-        borderBottomWidth: 3,
+        borderBottomWidth: 4,
         backgroundColor: colors.brand,
-        marginBottom: margin.sm,
+        marginBottom: margin.sm * 0.8,
         marginLeft: margin.sm * 1.5,
         maxWidth: dimensions.fullWidth / 3 - 30,
         width: '100%'
@@ -77,9 +79,9 @@ const AllEventsTabScreens = createMaterialTopTabNavigator(
       inactiveTintColor: colors.neutralLight,
       indicatorStyle: {
         ...underline,
-        borderBottomWidth: 3,
+        borderBottomWidth: 4,
         backgroundColor: colors.brand,
-        marginBottom: margin.sm,
+        marginBottom: margin.sm * 0.8,
         marginLeft: margin.lg,
         maxWidth: dimensions.fullWidth / 2 - 60,
         width: '100%'

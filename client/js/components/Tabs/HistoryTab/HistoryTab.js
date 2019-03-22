@@ -21,22 +21,17 @@ import styles from './styles';
 class HistoryTab extends Component {
   constructor(props) {
     super(props);
-    this.state = { viewerId: null, progressBarProgress: 0.0 };
+    this.state = { viewerId: null };
   }
 
   componentDidMount = async () => {
     const viewerId = await getLoggedInUser();
     this.setState({ viewerId });
-    this.changeProgress();
     // this.setState({ progressBarProgress: this.props.data / 240 });
   };
 
-  changeProgress = () => {
-    this.setState({
-      // progressBarProgress: parseFloat(Math.random().toFixed(1))
-      // progressBarProgress: data.allUsers[0].points / 240
-      progressBarProgress: 50 / 240
-    });
+  getProgress = points => {
+    return points / 240;
   };
 
   renderSeparator = () => {
@@ -72,7 +67,7 @@ class HistoryTab extends Component {
                     {/* <CustomText>rewards indicator</CustomText> */}
                     <View style={[styles.currentProgress]}>
                       <Image
-                        source={require('../../../assets/images/Icons/exit_button.png')}
+                        source={require('../../../assets/images/Card/point_location.png')}
                         // style={styles.img}
                       />
                       <View style={styles.progressPt} />
@@ -90,7 +85,7 @@ class HistoryTab extends Component {
                     ) : (
                       <ProgressViewIOS
                         // progress={progressBarProgress}
-                        progress={this.state.progressBarProgress}
+                        progress={this.getProgress(points)}
                         // progress={rewardsProgress}
                         progressTintColor={colors.brand}
                         // progressViewStyle

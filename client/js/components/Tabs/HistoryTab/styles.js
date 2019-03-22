@@ -35,12 +35,17 @@ const styles = StyleSheet.create({
     paddingBottom: padding.md
   },
   pointsWrapper: { ...row, ...center },
-  currentProgress: { ...center, position: 'absolute', zIndex: 888 },
+  currentProgress: {
+    ...center,
+    position: 'absolute',
+    zIndex: 888,
+    paddingBottom: padding.sm
+  },
   progressPt: {
-    height: 16,
+    height: 13,
     width: 4,
     backgroundColor: colors.black,
-    marginTop: margin.xxs
+    marginVertical: margin.xxs
   },
   endPts: { height: 20, width: 6, backgroundColor: colors.neutralLight },
   progressBar: {
@@ -52,7 +57,7 @@ const styles = StyleSheet.create({
     width: dimensions.fullWidth * 0.77,
     paddingLeft: padding.xxs
   },
-  endPtsText: { ...body1, ...mv0 },
+  endPtsText: { ...body1, ...pv0 },
   rewards: { ...row },
   rewardsTitle: { ...h4 },
   stamps: { ...subtitle3 },

@@ -6,6 +6,8 @@ import {
   fonts,
   h1,
   h2,
+  h3,
+  h4,
   row,
   vl
 } from '../../config/styles';
@@ -13,7 +15,9 @@ import {
 const styles = StyleSheet.create({
   container: { ...container },
   greet: {
-    ...h1
+    ...h1,
+    marginTop: 10,
+    paddingBottom: 0
   },
 
   /**
@@ -23,7 +27,7 @@ const styles = StyleSheet.create({
     ...row,
     ...center,
     justifyContent: 'space-around',
-    width: Dimensions.get('window').width,
+    width: Dimensions.get('window').width * 0.97,
     height: 190
   },
   singleGrid: {
@@ -33,26 +37,35 @@ const styles = StyleSheet.create({
   },
   growlerImg: {
     resizeMode: 'contain',
-    height: 100
+    width: 140
   },
+  points: { ...h4, fontSize: 21, marginTop: -5 },
   toNextReward: {
     color: colors.neutralDark,
     fontSize: fonts.xs,
     fontFamily: fonts.primary
   },
-  vl: { ...vl, height: 150, borderLeftWidth: 4 },
-  cardImg: { resizeMode: 'contain', height: 85 },
+
+  vl: { ...vl, height: 157, borderLeftWidth: 4 },
+  cardImg: { resizeMode: 'contain', width: 140 },
 
   /**
    * Beer Flatlist
    **/
-  subheader: { ...h2, paddingTop: 3, paddingBottom: 2 },
-  flatlistContainer: {
-    width: Dimensions.get('window').width * 0.9
+
+  beerList: {
+    paddingBottom: 10,
+    marginTop: 5,
+    height: '50%'
   },
-  beerBanner: {
-    // maxWidth: Dimensions.get('window').width *
-    resizeMode: 'contain'
+  flatlistContainer: {
+    ...center,
+    width: Dimensions.get('window').width,
+    maxWidth: 350,
+    maxHeight: 80
+  },
+  beerType: {
+    height: 75
   }
 });
 

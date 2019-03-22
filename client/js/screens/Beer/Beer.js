@@ -66,7 +66,7 @@ const Beer = props => {
         </View>
         <CustomIcon
           onPress={() => {}}
-          source={require('../../assets/images/Icons/socialmedia_fb_icon.png')}
+          source={require('../../assets/images/Icons/social_media_button.png')}
           style={styles.socialbtn}
         />
       </View>

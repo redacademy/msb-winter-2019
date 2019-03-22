@@ -7,7 +7,8 @@ const AllEvents = props => {
 };
 
 AllEvents.propTypes = {
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  events: PropTypes.array.isRequired
 };
 
 export default AllEvents;

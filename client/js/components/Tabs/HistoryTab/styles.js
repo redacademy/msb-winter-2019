@@ -12,46 +12,71 @@ import {
   row,
   hr,
   colors,
-  subtitle1,
   mv0,
   dimensions,
-  margin
+  body1,
+  jusBetweenRow,
+  pv0,
+  margin,
+  w100
 } from '../../../config/styles';
 
 const styles = StyleSheet.create({
   container: { ...container },
   hr: { ...hr, ...mv0 },
+  flex: { flex: 1 },
+  center: { ...center },
   rewardsWrapper: {
     justifyContent: 'space-around',
     maxHeight: 275,
-    width: '100%',
-    ...shadow2
+    ...w100,
+    ...shadow2,
+    paddingTop: padding.xl,
+    paddingBottom: padding.md
   },
   pointsWrapper: { ...row, ...center },
-  endPts: { height: 23, width: 6.5, backgroundColor: colors.neutralLight },
+  currentProgress: { ...center, position: 'absolute', zIndex: 888 },
+  progressPt: {
+    height: 16,
+    width: 4,
+    backgroundColor: colors.black,
+    marginTop: margin.xxs
+  },
+  endPts: { height: 20, width: 6, backgroundColor: colors.neutralLight },
   progressBar: {
     transform: [{ scaleX: 1.0 }, { scaleY: 3 }],
-    width: dimensions.fullWidth * 0.8
+    width: dimensions.fullWidth * 0.7
   },
+  endPtsWrapper: {
+    ...jusBetweenRow,
+    width: dimensions.fullWidth * 0.77,
+    paddingLeft: padding.xxs
+  },
+  endPtsText: { ...body1, ...mv0 },
   rewards: { ...row },
   rewardsTitle: { ...h4 },
   stamps: { ...subtitle3 },
   img: { height: 50, ...contain },
   reward: {
     ...subtitle2,
-    paddingHorizontal: padding.lg,
+    paddingHorizontal: padding.xl,
     ...center
   },
-  nextReward: { ...vl },
+  prevReward: { justifyContent: 'flex-start' },
+  nextReward: { ...vl, marginHorizontal: 0, justifyContent: 'flex-start' },
   // historyWrapper: {}
   pointsHistory: {
     height: 83
   },
   beerInfoWrapper: { width: '66%' },
-  beerInfo: { alignItems: 'center' },
-  beerText: { ...subtitle1, textTransform: 'capitalize' },
+  beerInfo: {
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    marginLeft: margin.md
+  },
+  beerText: { ...subtitle2, textTransform: 'capitalize', ...pv0 },
   beerStamps: { ...subtitle3 },
-  grey: { color: colors.neutralDark },
+  beerType: { ...body1, textTransform: 'capitalize', ...pv0 },
   row: { ...row }
 });
 

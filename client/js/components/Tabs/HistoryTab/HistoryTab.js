@@ -5,9 +5,7 @@ import {
   FlatList,
   Platform,
   ProgressBarAndroid,
-  ProgressViewIOS,
-  TouchableOpacity,
-  Text
+  ProgressViewIOS
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { Query } from 'react-apollo';
@@ -17,8 +15,8 @@ import { HISTORY_QUERY } from '../../../apollo/queries';
 import { getLoggedInUser } from '../../../config/models';
 import Loader from '../../Loader';
 import CustomText from '../../CustomText';
-import styles from './styles';
 import { colors } from '../../../config/styles';
+import styles from './styles';
 
 class HistoryTab extends Component {
   constructor(props) {
@@ -30,6 +28,7 @@ class HistoryTab extends Component {
     const viewerId = await getLoggedInUser();
     this.setState({ viewerId });
     this.changeProgress();
+    // this.setState({ progressBarProgress: this.props.data / 240 });
   };
 
   changeProgress = () => {
@@ -59,10 +58,7 @@ class HistoryTab extends Component {
           const user = data.allUsers && data.allUsers[0];
           if (!user) return <Loader />;
 
-          // const { pointsHistory } = this.props.;
           const { pointsHistory, points } = user;
-
-          console.log('>>>>>>HISTORY USER', points);
 
           // const rewardsProgress = this.setState({
           //   progressBarProgress: points / 240
@@ -74,6 +70,16 @@ class HistoryTab extends Component {
                 <View style={styles.container}>
                   <View style={styles.pointsWrapper}>
                     {/* <CustomText>rewards indicator</CustomText> */}
+                    <View style={styles.currentProgress}>
+                      <Image
+                        source={require('../../../assets/images/Icons/exit_button.png')}
+                        // style={styles.img}
+                      />
+                      <View style={styles.progressPt} />
+                      <CustomText style={styles.endPtsText}>
+                        {points}
+                      </CustomText>
+                    </View>
                     <View style={styles.endPts} />
                     {Platform.OS === 'android' ? (
                       <ProgressBarAndroid
@@ -85,7 +91,7 @@ class HistoryTab extends Component {
                       <ProgressViewIOS
                         // progress={progressBarProgress}
                         progress={this.state.progressBarProgress}
-                        // style={{ flex: 1, height: '100%' }}
+                        // progress={rewardsProgress}
                         progressTintColor={colors.brand}
                         // progressViewStyle
                         // trackImage={require('../../../assets/images/Card/stores_inactive.png')}
@@ -98,9 +104,14 @@ class HistoryTab extends Component {
                     )}
                     <View style={styles.endPts} />
                   </View>
+                  <View style={styles.endPtsWrapper}>
+                    <CustomText style={styles.endPtsText}>0</CustomText>
+                    <View style={styles.flex} />
+                    <CustomText style={styles.endPtsText}>240</CustomText>
+                  </View>
                 </View>
                 <View style={styles.rewards}>
-                  <View style={styles.container}>
+                  <View style={[styles.container, styles.prevReward]}>
                     <CustomText style={styles.rewardsTitle}>
                       Previous Reward
                     </CustomText>
@@ -134,21 +145,23 @@ class HistoryTab extends Component {
                   renderItem={({ item }) => (
                     <View style={[styles.row, styles.pointsHistory]}>
                       <View style={[styles.row, styles.beerInfoWrapper]}>
-                        <Image
-                          source={require('../../../assets/images/Card/your_card.png')}
-                          style={[styles.img, { maxWidth: 25 }]}
-                        />
+                        <View style={styles.center}>
+                          <Image
+                            source={require('../../../assets/images/Card/your_card.png')}
+                            style={[styles.img, { maxWidth: 25 }]}
+                          />
+                        </View>
                         <View style={styles.beerInfo}>
                           <CustomText style={styles.beerText}>
                             {item.beer.title}
                           </CustomText>
-                          <CustomText style={[styles.beerText, styles.grey]}>
+                          <CustomText style={styles.beerType}>
                             {item.beer.subtitle}
                           </CustomText>
                         </View>
                       </View>
                       <View style={styles.row}>
-                        <View>
+                        <View style={styles.center}>
                           <Image
                             source={require('../../../assets/images/Card/your_card.png')}
                             style={[styles.img, { maxWidth: 25 }]}
@@ -157,7 +170,7 @@ class HistoryTab extends Component {
                             {item.stamps} Stamps
                           </CustomText>
                         </View>
-                        <View>
+                        <View style={styles.center}>
                           <CustomText style={styles.beerText}>
                             {moment(item.date).format('D MMM')}
                           </CustomText>

@@ -10,7 +10,6 @@ import {
 import Barcode from 'react-native-barcode-builder';
 import { graphql, compose, Query } from 'react-apollo';
 import { withNavigation } from 'react-navigation';
-import PropTypes from 'prop-types';
 
 import {
   SET_USER_POINTS,
@@ -26,6 +25,9 @@ class CardTab extends Component {
     super(props);
     this.state = { viewerId: null };
   }
+  static navigationOptions = {
+    title: 'Card'
+  };
 
   componentDidMount = async () => {
     const viewerId = await getLoggedInUser();
@@ -66,7 +68,7 @@ class CardTab extends Component {
       <Query
         query={USER_QUERY}
         variables={{ id: this.state.viewerId }}
-        fetchPolicy='network-only'
+        fetchPolicy="network-only"
       >
         {({ loading, error, data }) => {
           if (loading) return <ActivityIndicator />;
@@ -88,7 +90,7 @@ class CardTab extends Component {
                     source={require('../../../assets/images/Card/your_card.png')}
                     style={styles.card}
                   />
-                  <Barcode value='Test Card' format='CODE128' height={40} />
+                  <Barcode value="Test Card" format="CODE128" height={40} />
                 </TouchableOpacity>
               </View>
             </ImageBackground>

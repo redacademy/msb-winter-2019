@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-
+import { withNavigation } from 'react-navigation';
 import styles from './styles';
 import CustomIcon from '../../components/CustomIcon';
 
@@ -75,7 +75,8 @@ const Beer = props => {
 };
 
 Beer.propTypes = {
-  beer: PropTypes.object.isRequired
+  beer: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired
 };
 
-export default Beer;
+export default withNavigation(Beer);

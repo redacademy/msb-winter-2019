@@ -69,6 +69,7 @@ class HistoryTab extends Component {
                     >
                       <Image
                         source={require('../../../assets/images/Card/point_location.png')}
+                        style={{ height: 30, resizeMode: 'contain' }}
                       />
                       <View style={styles.progressPt} />
                       <CustomText style={styles.endPtsText}>
@@ -106,7 +107,7 @@ class HistoryTab extends Component {
                     <CustomText style={styles.stamps}>Stamps</CustomText>
                     <Image
                       source={require('../../../assets/images/Icons/growler_icon.png')}
-                      style={styles.img}
+                      style={styles.rewardsImg}
                     />
                     <CustomText style={styles.reward}>
                       16oz Beer in Tasting Room
@@ -119,7 +120,7 @@ class HistoryTab extends Component {
                     <CustomText style={styles.stamps}>Stamps</CustomText>
                     <Image
                       source={require('../../../assets/images/Icons/growler_icon.png')}
-                      style={styles.img}
+                      style={styles.rewardsImg}
                     />
                     <CustomText style={styles.reward}>
                       Growler Refill
@@ -130,42 +131,60 @@ class HistoryTab extends Component {
               <View style={[styles.container, styles.historyWrapper]}>
                 <FlatList
                   data={user.pointsHistory}
-                  renderItem={({ item }) => (
-                    <View style={[styles.row, styles.pointsHistory]}>
-                      <View style={[styles.row, styles.beerInfoWrapper]}>
-                        <View style={styles.center}>
-                          <Image
-                            source={require('../../../assets/images/Card/your_card.png')}
-                            style={[styles.img, { maxWidth: 25 }]}
-                          />
+                  renderItem={({ item }) => {
+                    let beerLogo;
+                    if (item.beer.title === 'FRUIT BOMB') {
+                      beerLogo = require('../../../assets/images/Beers/squre_fruit_bomb.png');
+                    } else if (item.beer.title === 'NAKED FOX') {
+                      beerLogo = require('../../../assets/images/Beers/squre_naked_fox.png');
+                    } else if (item.beer.title === 'GIMME SOME MO’') {
+                      beerLogo = require('../../../assets/images/Beers/squre_gimme_some_mo.png');
+                    } else if (item.beer.title === 'MAIN STREET') {
+                      beerLogo = require('../../../assets/images/Beers/squre_main_street.png');
+                    } else if (item.beer.title === 'WESTMINSTER') {
+                      beerLogo = require('../../../assets/images/Beers/squre_westminster.png');
+                    } else if (item.beer.title === 'AUSTRALIAN') {
+                      beerLogo = require('../../../assets/images/Beers/squre_australian_saison.png');
+                    } else if (item.beer.title === 'SLAUGHTERHOUSE') {
+                      beerLogo = require('../../../assets/images/Beers/squre_slaughterhouse.png');
+                    } else if (item.beer.title === 'BARKING MAD') {
+                      beerLogo = require('../../../assets/images/Beers/squre_barking_mad.png');
+                    }
+                    return (
+                      <View style={[styles.row, styles.pointsHistory]}>
+                        <View style={[styles.row, styles.beerInfoWrapper]}>
+                          <View style={styles.center}>
+                            <Image source={beerLogo} style={styles.beerImg} />
+                          </View>
+                          <View style={styles.beerInfo}>
+                            <CustomText style={styles.beerText}>
+                              {item.beer.title}
+                            </CustomText>
+                            <CustomText style={styles.beerType}>
+                              {item.beer.subtitle}
+                            </CustomText>
+                          </View>
                         </View>
-                        <View style={styles.beerInfo}>
-                          <CustomText style={styles.beerText}>
-                            {item.beer.title}
-                          </CustomText>
-                          <CustomText style={styles.beerType}>
-                            {item.beer.subtitle}
-                          </CustomText>
+                        <View style={[styles.row, styles.beerRewardsWrapper]}>
+                          <View style={styles.center}>
+                            <Image
+                              source={require('../../../assets/images/Card/star_2_stamps.png')}
+                              style={styles.img}
+                            />
+                            <CustomText style={styles.beerStamps}>
+                              {item.stamps} Stamps
+                            </CustomText>
+                          </View>
+                          {/* <View style={[styles.flex, { width: '10%' }]} /> */}
+                          <View style={styles.center}>
+                            <CustomText style={styles.beerText}>
+                              {moment(item.date).format('D MMM')}
+                            </CustomText>
+                          </View>
                         </View>
                       </View>
-                      <View style={styles.row}>
-                        <View style={styles.center}>
-                          <Image
-                            source={require('../../../assets/images/Card/star_2_stamps.png')}
-                            style={[styles.img]}
-                          />
-                          <CustomText style={styles.beerStamps}>
-                            {item.stamps} Stamps
-                          </CustomText>
-                        </View>
-                        <View style={styles.center}>
-                          <CustomText style={styles.beerText}>
-                            {moment(item.date).format('D MMM')}
-                          </CustomText>
-                        </View>
-                      </View>
-                    </View>
-                  )}
+                    );
+                  }}
                   keyExtractor={item => item.id + ''}
                   ItemSeparatorComponent={this.renderSeparator}
                 />

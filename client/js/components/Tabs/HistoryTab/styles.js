@@ -18,7 +18,9 @@ import {
   jusBetweenRow,
   pv0,
   margin,
-  w100
+  w100,
+  pb0,
+  capitalize
 } from '../../../config/styles';
 
 const styles = StyleSheet.create({
@@ -28,11 +30,12 @@ const styles = StyleSheet.create({
   center: { ...center },
   rewardsWrapper: {
     justifyContent: 'space-around',
-    maxHeight: 275,
+    maxHeight: 255,
     ...w100,
     ...shadow2,
-    paddingTop: padding.xl,
-    paddingBottom: padding.md
+    paddingTop: padding.lg,
+    paddingBottom: padding.sm
+    // paddingVertical: padding.md
   },
   pointsWrapper: { ...row, ...center },
   currentProgress: {
@@ -45,7 +48,8 @@ const styles = StyleSheet.create({
     height: 13,
     width: 4,
     backgroundColor: colors.black,
-    marginVertical: margin.xxs
+    marginTop: margin.xs,
+    marginBottom: margin.xxs
   },
   endPts: { height: 20, width: 6, backgroundColor: colors.neutralLight },
   progressBar: {
@@ -61,27 +65,36 @@ const styles = StyleSheet.create({
   rewards: { ...row },
   rewardsTitle: { ...h4 },
   stamps: { ...subtitle3 },
+  rewardsImg: { marginTop: margin.sm, height: 50, ...contain },
   img: { height: 50, ...contain },
   reward: {
     ...subtitle2,
     paddingHorizontal: padding.xl,
-    ...center
+    ...center,
+    ...pb0
   },
   prevReward: { justifyContent: 'flex-start' },
   nextReward: { ...vl, marginHorizontal: 0, justifyContent: 'flex-start' },
   // historyWrapper: {}
   pointsHistory: {
-    height: 83
+    height: 75,
+    justifyContent: 'space-between'
   },
-  beerInfoWrapper: { width: '66%' },
+  beerInfoWrapper: { width: '60%' },
   beerInfo: {
     justifyContent: 'center',
     alignItems: 'flex-start',
-    marginLeft: margin.md
+    paddingLeft: padding.md
   },
-  beerText: { ...subtitle2, textTransform: 'capitalize', ...pv0 },
+  beerText: { ...subtitle2, ...capitalize, ...pv0 },
+  beerRewardsWrapper: { width: '30%', justifyContent: 'space-between' },
+  beerImg: {
+    ...contain,
+    height: 50,
+    width: 50
+  },
   beerStamps: { ...subtitle3 },
-  beerType: { ...body1, textTransform: 'capitalize', ...pv0 },
+  beerType: { ...body1, ...capitalize, ...pv0 },
   row: { ...row }
 });
 

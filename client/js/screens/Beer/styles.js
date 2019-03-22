@@ -19,6 +19,10 @@ const styles = StyleSheet.create({
     top: 20,
     left: 8
   },
+
+  /**
+   *  Beer Data
+   **/
   beerContainer: {
     marginTop: 25,
     marginLeft: 25,
@@ -33,10 +37,9 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   title: {
-    ...h2,
-    ...center,
-    paddingTop: 0,
-    paddingBottom: 0
+    fontFamily: fonts.primaryBold,
+    fontSize: 24,
+    textTransform: 'capitalize'
   },
   subtitle: {
     color: colors.neutralDark,

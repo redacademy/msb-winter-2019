@@ -22,14 +22,15 @@ const Event = props => {
         source={
           eventImg
             ? eventImg
-            : require('../../assets/images/Events/turnstile_middle.png')
+            : require('../../assets/images/Events/craft-beer-background-5.jpg')
         }
       />
 
       <View style={styles.infoWrapper}>
-        <Text style={styles.title}>{props.event.title}</Text>
-        <Text style={styles.subtitle}>{props.event.subtitle}</Text>
-
+        <View>
+          <Text style={styles.title}>{props.event.title}</Text>
+          <Text style={styles.subtitle}>{props.event.subtitle}</Text>
+        </View>
         <View style={styles.dataWrapper}>
           <View style={styles.border} />
 

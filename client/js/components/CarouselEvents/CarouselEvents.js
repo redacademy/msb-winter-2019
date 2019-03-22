@@ -103,12 +103,21 @@ class CarouselEvents extends Component {
           <View style={styles.border} />
         </View>
 
-        <TouchableOpacity>
-          <Image
-            style={{ alignSelf: 'flex-end' }}
-            source={require('../../assets/images/Icons/social_media_button.png')}
-          />
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity>
+            <Image
+              style={{ alignSelf: 'flex-end' }}
+              source={require('../../assets/images/Icons/social_media_button.png')}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => {}}>
+            <Image
+              style={{ alignSelf: 'flex-end' }}
+              source={require('../../assets/images/Buttons/save_button_inactive.png')}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -119,4 +128,19 @@ CarouselEvents.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 
+// export default compose(
+//   graphql(SET_USER_POINTS, {
+//     name: 'setUserPoints',
+//     options: () => ({
+//       refetchQueries: [
+//         {
+//           query: USER_QUERY
+//         }
+//       ]
+//     })
+//   }),
+//   graphql(ADD_TO_USER_POINT_HISTORY, { name: 'addToUserPointHistory' }),
+//   graphql(ALL_BEERS_QUERY, { name: 'allBeersQuery' }),
+//   withNavigation
+// )(CarouselEvents);
 export default withNavigation(CarouselEvents);

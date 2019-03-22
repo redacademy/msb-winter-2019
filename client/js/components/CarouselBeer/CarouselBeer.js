@@ -30,6 +30,7 @@ class CarouselBeer extends Component {
   };
 
   render() {
+    console.log('CarouselBeer');
     const { beers, navigation } = this.props;
 
     return (

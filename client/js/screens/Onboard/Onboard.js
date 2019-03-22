@@ -81,7 +81,6 @@ class Onboard extends Component {
       <View style={styles.btn}>
         <Text
           onPress={() => {
-            console.log('ONBOARD -> DONE');
             this.props.navigation.navigate('Home');
           }}
           style={[styles.btnText, styles.button]}

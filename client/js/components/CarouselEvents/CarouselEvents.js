@@ -11,7 +11,12 @@ import { withNavigation } from 'react-navigation';
 import Carousel from 'react-native-snap-carousel';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-
+import {
+  ADD_TO_USER_EVENTS,
+  REMOVE_FROM_USER_EVENTS,
+  USER_QUERY
+} from '../../apollo/queries';
+import { graphql, compose } from 'react-apollo';
 import styles from './styles';
 
 class CarouselEvents extends Component {
@@ -22,6 +27,31 @@ class CarouselEvents extends Component {
       currentIndex: 0
     };
   }
+
+  isEventFavourited = () => {
+    const { events, user } = this.props;
+    const event = events[this.state.currentIndex];
+    return user.favouriteEvents.some(favEvent => favEvent.id === event.id);
+  };
+
+  toggleFavouriteEvent = async () => {
+    const {
+      events,
+      user,
+      addToFavouriteEvents,
+      removeFromFavouriteEvents
+    } = this.props;
+    const event = events[this.state.currentIndex];
+    if (this.isEventFavourited()) {
+      await removeFromFavouriteEvents({
+        variables: { usersUserId: user.id, favouriteEventsEventId: event.id }
+      });
+    } else {
+      await addToFavouriteEvents({
+        variables: { usersUserId: user.id, favouriteEventsEventId: event.id }
+      });
+    }
+  };
 
   updateIndex = () => {
     if (this._carousel) {
@@ -102,12 +132,29 @@ class CarouselEvents extends Component {
           <View style={styles.border} />
         </View>
 
-        <TouchableOpacity onPress={() => {}}>
-          <Image
-            style={{ alignSelf: 'flex-end' }}
-            source={require('../../assets/images/Icons/social_media_button.png')}
-          />
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity>
+            <Image
+              style={{ alignSelf: 'flex-end' }}
+              source={require('../../assets/images/Icons/social_media_button.png')}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              this.toggleFavouriteEvent();
+            }}
+          >
+            <Image
+              style={{ alignSelf: 'flex-end' }}
+              source={
+                this.isEventFavourited()
+                  ? require('../../assets/images/Buttons/save_button_active.png')
+                  : require('../../assets/images/Buttons/save_button_inactive.png')
+              }
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -118,4 +165,26 @@ CarouselEvents.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 
-export default withNavigation(CarouselEvents);
+export default compose(
+  graphql(ADD_TO_USER_EVENTS, {
+    name: 'addToFavouriteEvents',
+    options: () => ({
+      refetchQueries: [
+        {
+          query: USER_QUERY
+        }
+      ]
+    })
+  }),
+  graphql(REMOVE_FROM_USER_EVENTS, {
+    name: 'removeFromFavouriteEvents',
+    options: () => ({
+      refetchQueries: [
+        {
+          query: USER_QUERY
+        }
+      ]
+    })
+  }),
+  withNavigation
+)(CarouselEvents);

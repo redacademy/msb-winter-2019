@@ -1,4 +1,4 @@
-export default function validate(values, isLegal) {
+export default function validate(values) {
   const errors = {};
 
   if (!values.name) {
@@ -15,8 +15,10 @@ export default function validate(values, isLegal) {
     errors.password = '*Required field';
   }
 
-  if (!isLegal) {
-    errors.isLegal = '*Required field';
+  if (!values.confirmpassword) {
+    errors.confirmpassword = '*Required field';
+  } else if (values.confirmpassword !== values.password) {
+    errors.confirmpassword = '*Password mismatched';
   }
 
   return errors;

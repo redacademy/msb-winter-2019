@@ -69,6 +69,7 @@ class Signup extends React.Component {
                   <Field name="name">
                     {({ input, meta }) => (
                       <View style={styles.textInputWrapper}>
+                        {console.log('NAME:', input, meta)}
                         <View>
                           <TextInput
                             editable={true}
@@ -86,15 +87,27 @@ class Signup extends React.Component {
                             </CustomText>
                           )}
                         </View>
-                        <Ionicons
-                          name={Platform.select({
-                            android: 'md-checkmark-circle-outline',
-                            ios: 'ios-checkmark-circle-outline'
-                          })}
-                          size={35}
-                          color={'#fff'}
-                          style={{ marginLeft: 20 }}
-                        />
+                        {!input.value ? (
+                          <Ionicons
+                            name={Platform.select({
+                              android: 'md-checkmark-circle-outline',
+                              ios: 'ios-checkmark-circle-outline'
+                            })}
+                            size={35}
+                            color={'#fff'}
+                            style={{ marginLeft: 20 }}
+                          />
+                        ) : (
+                          <Ionicons
+                            name={Platform.select({
+                              android: 'md-checkmark-circle',
+                              ios: 'ios-checkmark-circle'
+                            })}
+                            size={35}
+                            color={colors.brand}
+                            style={{ marginLeft: 20 }}
+                          />
+                        )}
                       </View>
                     )}
                   </Field>
@@ -122,15 +135,27 @@ class Signup extends React.Component {
                             </CustomText>
                           )}
                         </View>
-                        <Ionicons
-                          name={Platform.select({
-                            android: 'md-checkmark-circle-outline',
-                            ios: 'ios-checkmark-circle-outline'
-                          })}
-                          size={35}
-                          color={'white'}
-                          style={{ marginLeft: 20 }}
-                        />
+                        {meta.valid && meta.active === false ? (
+                          <Ionicons
+                            name={Platform.select({
+                              android: 'md-checkmark-circle',
+                              ios: 'ios-checkmark-circle'
+                            })}
+                            size={35}
+                            color={colors.brand}
+                            style={{ marginLeft: 20 }}
+                          />
+                        ) : (
+                          <Ionicons
+                            name={Platform.select({
+                              android: 'md-checkmark-circle-outline',
+                              ios: 'ios-checkmark-circle-outline'
+                            })}
+                            size={35}
+                            color={'white'}
+                            style={{ marginLeft: 20 }}
+                          />
+                        )}
                       </View>
                     )}
                   </Field>
@@ -150,8 +175,61 @@ class Signup extends React.Component {
                             style={styles.textInput}
                             returnKeyType="next"
                             ref={input => (this.passwordInput = input)}
+                            onSubmitEditing={() => {
+                              this.confirmPasswordInput.focus();
+                            }}
+                          />
+                          {meta.error && meta.touched && (
+                            <CustomText style={styles.errorMessage}>
+                              {meta.error}
+                            </CustomText>
+                          )}
+                        </View>
+                        {!input.value ? (
+                          <Ionicons
+                            name={Platform.select({
+                              android: 'md-checkmark-circle-outline',
+                              ios: 'ios-checkmark-circle-outline'
+                            })}
+                            size={35}
+                            color={'#fff'}
+                            style={{ marginLeft: 20 }}
+                          />
+                        ) : (
+                          <Ionicons
+                            name={Platform.select({
+                              android: 'md-checkmark-circle',
+                              ios: 'ios-checkmark-circle'
+                            })}
+                            size={35}
+                            color={colors.brand}
+                            style={{ marginLeft: 20 }}
+                          />
+                        )}
+                      </View>
+                    )}
+                  </Field>
+                </View>
+
+                <View style={styles.field}>
+                  <CustomText style={styles.label}>Confirm Password</CustomText>
+                  <Field name="confirmpassword">
+                    {({ input, meta }) => (
+                      <View style={styles.textInputWrapper}>
+                        {console.log('ConfirmPW:', input, meta)}
+
+                        <View>
+                          <TextInput
+                            editable={true}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            secureTextEntry={true}
+                            {...input}
+                            style={styles.textInput}
+                            returnKeyType="next"
+                            ref={input => (this.confirmPasswordInput = input)}
                             onSubmitEditing={() =>
-                              this.confirmPasswordInput.focus()
+                              this.datePicker.onPressDate()
                             }
                           />
                           {meta.error && meta.touched && (
@@ -160,52 +238,34 @@ class Signup extends React.Component {
                             </CustomText>
                           )}
                         </View>
-                        <Ionicons
-                          name={Platform.select({
-                            android: 'md-checkmark-circle-outline',
-                            ios: 'ios-checkmark-circle-outline'
-                          })}
-                          size={35}
-                          color={'white'}
-                          style={{ marginLeft: 20 }}
-                        />
-                      </View>
-                    )}
-                  </Field>
-                </View>
-
-                <View style={styles.field}>
-                  <CustomText style={styles.label}>Confirm Password</CustomText>
-                  <Field name="confirm-password">
-                    {({ input, meta }) => (
-                      <View style={styles.textInputWrapper}>
-                        <TextInput
-                          editable={true}
-                          autoCapitalize="none"
-                          autoCorrect={false}
-                          secureTextEntry={true}
-                          {...input}
-                          style={styles.textInput}
-                          returnKeyType="next"
-                          ref={input => (this.confirmPasswordInput = input)}
-                          onSubmitEditing={() => this.datePicker.onPressDate()}
-                        />
-                        <Ionicons
-                          name={Platform.select({
-                            android: 'md-checkmark-circle-outline',
-                            ios: 'ios-checkmark-circle-outline'
-                          })}
-                          size={35}
-                          color={'white'}
-                          style={{ marginLeft: 20 }}
-                        />
+                        {meta.error ? (
+                          <Ionicons
+                            name={Platform.select({
+                              android: 'md-checkmark-circle-outline',
+                              ios: 'ios-checkmark-circle-outline'
+                            })}
+                            size={35}
+                            color={'#fff'}
+                            style={{ marginLeft: 20 }}
+                          />
+                        ) : (
+                          <Ionicons
+                            name={Platform.select({
+                              android: 'md-checkmark-circle',
+                              ios: 'ios-checkmark-circle'
+                            })}
+                            size={35}
+                            color={colors.brand}
+                            style={{ marginLeft: 20 }}
+                          />
+                        )}
                       </View>
                     )}
                   </Field>
                 </View>
                 <View style={styles.field}>
                   <CustomText style={styles.label}>
-                    Date of Birth (YYYY / MM / DD)
+                    Date of Birth ( YYYY / MM / DD )
                   </CustomText>
                   <Field name="dateOfBirth">
                     {({ input, meta }) => (
@@ -226,7 +286,7 @@ class Signup extends React.Component {
                             date={this.state.date}
                             mode="date"
                             showIcon={false}
-                            placeholder="select date"
+                            placeholder="Select Date"
                             format="YYYY-MM-DD"
                             minDate="1920-01-01"
                             maxDate="2019-12-31"
@@ -240,20 +300,27 @@ class Signup extends React.Component {
                               this.datePicker = picker;
                             }}
                           />
-                          {meta.error && meta.touched && (
-                            <CustomText style={styles.errorMessage}>
-                              {meta.error}
-                            </CustomText>
+                          {this.state.date ? (
+                            <Ionicons
+                              name={Platform.select({
+                                android: 'md-checkmark-circle',
+                                ios: 'ios-checkmark-circle'
+                              })}
+                              size={35}
+                              color={colors.brand}
+                              style={{ marginLeft: 20 }}
+                            />
+                          ) : (
+                            <Ionicons
+                              name={Platform.select({
+                                android: 'md-checkmark-circle-outline',
+                                ios: 'ios-checkmark-circle-outline'
+                              })}
+                              size={35}
+                              color={'#fff'}
+                              style={{ marginLeft: 20 }}
+                            />
                           )}
-                          <Ionicons
-                            name={Platform.select({
-                              android: 'md-checkmark-circle-outline',
-                              ios: 'ios-checkmark-circle-outline'
-                            })}
-                            size={35}
-                            color={'white'}
-                            style={{ marginLeft: 20 }}
-                          />
                         </View>
                         <CustomText style={styles.signup}>
                           * You must be 19 or older to use this app.
@@ -267,6 +334,7 @@ class Signup extends React.Component {
                   <WhiteButton onPress={() => handleSubmit()}>
                     Sign Up
                   </WhiteButton>
+
                   <TouchableHighlight
                     underlayColor={colors.neutralLight}
                     onPress={() => {

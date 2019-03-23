@@ -4,7 +4,8 @@ export const getLoggedInUser = async () => {
   try {
     const token = await AsyncStorage.getItem('userToken');
     const userId = await AsyncStorage.getItem('userId');
-    if (!token || !userId) throw 'Authentication error.';
+    if (!token) throw `Authentication error. Token: ${token}.`;
+    if (!userId) throw `Authentication error. UserId: ${userId}`;
     return userId;
   } catch (e) {
     console.log(e);

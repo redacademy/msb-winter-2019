@@ -6,7 +6,6 @@ import styles from './styles';
 import Subheader from '../../components/Subheader';
 
 const Home = props => {
-  console.log(props);
   return (
     <View style={styles.container}>
       <Text style={styles.greet}>

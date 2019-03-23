@@ -36,6 +36,7 @@ class Signin extends Component {
     if (this.state.error) {
       return <CustomText>Error</CustomText>;
     }
+
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <View style={styles.imgBgWrapper}>
@@ -162,7 +163,10 @@ class Signin extends Component {
   };
 }
 
-Signin.propTypes = {};
+Signin.propTypes = {
+  signinMutation: PropTypes.func.isRequired,
+  navigation: PropTypes.object.isRequired
+};
 
 export default compose(
   graphql(SIGNIN_MUTATION, { name: 'signinMutation' }),

@@ -69,7 +69,6 @@ class Signup extends React.Component {
                   <Field name="name">
                     {({ input, meta }) => (
                       <View style={styles.textInputWrapper}>
-                        {console.log('NAME:', input, meta)}
                         <View>
                           <TextInput
                             editable={true}
@@ -216,8 +215,6 @@ class Signup extends React.Component {
                   <Field name="confirmpassword">
                     {({ input, meta }) => (
                       <View style={styles.textInputWrapper}>
-                        {console.log('ConfirmPW:', input, meta)}
-
                         <View>
                           <TextInput
                             editable={true}
@@ -378,7 +375,10 @@ class Signup extends React.Component {
   };
 }
 
-Signup.propTypes = {};
+Signup.propTypes = {
+  signupMutation: PropTypes.func.isRequired,
+  navigation: PropTypes.object.isRequired
+};
 
 export default compose(
   graphql(SIGNUP_MUTATION, { name: 'signupMutation' }),

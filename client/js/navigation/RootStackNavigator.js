@@ -34,7 +34,13 @@ const AppStack = createStackNavigator(
 );
 
 const AuthStack = createSwitchNavigator({
-  Signin,
+  Signin: createStackNavigator(
+    { Signin, Error: ErrorModal },
+    {
+      headerMode: 'none',
+      mode: 'modal'
+    }
+  ),
   Signup: createStackNavigator(
     { Signup, Error: ErrorModal },
     {

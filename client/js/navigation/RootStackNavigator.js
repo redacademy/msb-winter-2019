@@ -7,6 +7,7 @@ import {
 import DrawerNavigationLayout from './DrawerNavigationLayout';
 import BeerModal from '../screens/Beer';
 import EventModal from '../screens/Event';
+import ErrorModal from '../components/ErrorModal';
 import StampsReceivedModal from '../components/StampsReceivedModal';
 import RedeemInfoModal from '../components/RedeemInfoModal';
 import RedeemBarcode from '../components/RedeemBarcode';
@@ -24,7 +25,8 @@ const AppStack = createStackNavigator(
     StampsReceived: StampsReceivedModal,
     RedeemInfo: RedeemInfoModal,
     RedeemBarcode: RedeemBarcode,
-    RedeemSuccess: RedeemSuccess
+    RedeemSuccess: RedeemSuccess,
+    Error: ErrorModal
   },
   {
     headerMode: 'none',

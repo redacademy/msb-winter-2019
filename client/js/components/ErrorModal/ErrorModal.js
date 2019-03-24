@@ -1,22 +1,22 @@
-import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import React from 'react';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
-import styles from "./styles";
+import styles from './styles';
 
-const ErrorModel = () => {
+const ErrorModal = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <View />
         <Text style={styles.title}>SORRY!</Text>
         <TouchableOpacity>
-          <Image source={require("../../assets/images/Icons/exit_icon.png")} />
+          <Image source={require('../../assets/images/Icons/exit_icon.png')} />
         </TouchableOpacity>
       </View>
 
       <Image
         style={styles.beer}
-        source={require("../../assets/images/Icons/spill_icon.png")}
+        source={require('../../assets/images/Icons/spill_icon.png')}
       />
       <View style={styles.textContainer}>
         <Text style={styles.text}>But don't cry over spilled beer.</Text>
@@ -26,4 +26,4 @@ const ErrorModel = () => {
   );
 };
 
-export default ErrorModel;
+export default ErrorModal;

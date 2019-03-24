@@ -1,15 +1,57 @@
 import { StyleSheet } from 'react-native';
-import { colors } from '../../config/styles';
+import {
+  container,
+  colors,
+  h4,
+  margin,
+  contain,
+  subtitle2,
+  padding,
+  center,
+  pb0,
+  hr
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   redeemButton: {
-    width: '50%'
+    width: '44%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingVertical: padding.xs,
+    paddingHorizontal: padding.xs,
+    borderBottomColor: colors.neutralLight,
+    borderBottomWidth: 2,
+    marginHorizontal: margin.sm
   },
+
   availableReward: {
+    ...h4,
     color: colors.neutralDark
   },
   unavailableReward: {
+    ...h4,
     color: colors.neutralLight
+  },
+  unavailableImg: {
+    marginTop: margin.sm,
+    height: 50,
+    width: 50,
+    ...contain,
+    opacity: 0.1
+  },
+  availableImg: {
+    marginTop: margin.sm,
+    height: 50,
+    width: 50,
+    ...contain,
+    opacity: 1
+  },
+  rewardTitle: {
+    ...subtitle2,
+    paddingHorizontal: padding.xl,
+    ...center,
+    ...pb0,
+    textAlign: 'center'
   }
 });
 

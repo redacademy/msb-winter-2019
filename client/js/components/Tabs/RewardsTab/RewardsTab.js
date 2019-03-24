@@ -38,8 +38,9 @@ class RewardsTab extends Component {
                 if (error) return <Text>Error</Text>;
                 const user = data.allUsers && data.allUsers[0];
                 if (!user) return <ActivityIndicator />;
+
                 return (
-                  <View>
+                  <View style={styles.rewards}>
                     {allRewards.map(reward => {
                       return (
                         <RedeemRewardButton
@@ -49,6 +50,7 @@ class RewardsTab extends Component {
                         />
                       );
                     })}
+                    <View style={styles.vl} />
                   </View>
                 );
               }}

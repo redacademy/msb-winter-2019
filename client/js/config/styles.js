@@ -60,14 +60,16 @@ export const center = { justifyContent: 'center', alignItems: 'center' };
 
 export const row = { flexDirection: 'row' };
 
+export const jusBtwn = { justifyContent: 'space-between' };
+
 export const jusCenterRow = {
   ...row,
-  justifyContent: 'center'
+  ...jusBtwn
 };
 
-export const jusBetweenRow = {
+export const jusBtwnRow = {
   ...row,
-  justifyContent: 'space-between'
+  ...jusBtwn
 };
 
 export const iteCenterRow = {

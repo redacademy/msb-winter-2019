@@ -190,7 +190,7 @@ class HistoryTab extends Component {
                                 <View style={styles.center}>
                                   <Image
                                     source={require('../../../assets/images/Card/star_2_stamps.png')}
-                                    style={styles.img}
+                                    style={styles.stampsImg}
                                   />
                                   <CustomText style={styles.beerStamps}>
                                     {item.stamps} Stamps

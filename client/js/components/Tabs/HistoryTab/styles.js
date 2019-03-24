@@ -13,11 +13,12 @@ import {
   mv0,
   dimensions,
   body1,
-  jusBetweenRow,
+  jusBtwnRow,
   pv0,
   margin,
   w100,
-  capitalize
+  capitalize,
+  jusBtwn
 } from '../../../config/styles';
 
 const styles = StyleSheet.create({
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     ...w100,
     ...shadow2,
-    paddingVertical: padding.md
+    paddingVertical: padding.sm
   },
   pointsWrapper: { ...row, ...center },
   currentProgress: {
@@ -53,14 +54,14 @@ const styles = StyleSheet.create({
     width: dimensions.fullWidth * 0.7
   },
   endPtsWrapper: {
-    ...jusBetweenRow,
+    ...jusBtwnRow,
     width: dimensions.fullWidth * 0.77,
     paddingLeft: padding.xxs
   },
   endPtsText: { ...body1, ...pv0 },
   pointsHistory: {
     height: 75,
-    justifyContent: 'space-between'
+    ...jusBtwn
   },
   beerInfoWrapper: { width: '60%' },
   beerInfo: {
@@ -69,12 +70,13 @@ const styles = StyleSheet.create({
     paddingLeft: padding.md
   },
   beerText: { ...subtitle2, ...capitalize, ...pv0 },
-  beerRewardsWrapper: { width: '30%', justifyContent: 'space-between' },
+  beerRewardsWrapper: { width: '30%', ...jusBtwn },
   beerImg: {
     ...contain,
     height: 50,
     width: 50
   },
+  stampsImg: { ...contain, height: 30 },
   beerStamps: { ...subtitle3 },
   beerType: { ...body1, ...capitalize, ...pv0 },
   row: { ...row }

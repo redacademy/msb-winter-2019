@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import {
   container,
-  row,
+  jusBtwnRow,
   dimensions,
   margin,
   colors
@@ -9,7 +9,7 @@ import {
 
 const styles = StyleSheet.create({
   container: { ...container },
-  rewards: { ...row, flexWrap: 'wrap', justifyContent: 'space-between' },
+  rewards: { ...jusBtwnRow, flexWrap: 'wrap' },
   vl: {
     marginHorizontal: 0,
     marginVertical: margin.sm,

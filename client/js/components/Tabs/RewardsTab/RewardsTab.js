@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { View, Text, ActivityIndicator, ScrollView } from 'react-native';
 import { ALL_REWARDS_QUERY, USER_QUERY } from '../../../apollo/queries';
 import { Query } from 'react-apollo';
 import { getLoggedInUser } from '../../../config/models';
@@ -40,7 +40,7 @@ class RewardsTab extends Component {
                 if (!user) return <ActivityIndicator />;
 
                 return (
-                  <View style={styles.rewards}>
+                  <ScrollView contentContainerStyle={styles.rewards}>
                     {allRewards.map(reward => {
                       return (
                         <RedeemRewardButton
@@ -51,7 +51,7 @@ class RewardsTab extends Component {
                       );
                     })}
                     <View style={styles.vl} />
-                  </View>
+                  </ScrollView>
                 );
               }}
             </Query>

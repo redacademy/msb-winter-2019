@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import { View, TouchableHighlight, Image } from 'react-native';
+import { TouchableHighlight, Image, View } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 import CustomText from '../CustomText';
+import OrangeButton from '../Buttons/OrangeButton';
 import { colors } from '../../config/styles';
 import styles from './styles';
 
@@ -14,7 +15,6 @@ class RedeemRewardButton extends Component {
 
     if (reward.points === 20) {
       rewardImg = require('../../assets/images/Card/20_stamps_icon.png');
-      // console.log(reward.img);
     } else if (reward.points === 40) {
       rewardImg = require('../../assets/images/Card/40_stamps_icon.png');
     } else if (reward.points === 60) {
@@ -29,15 +29,10 @@ class RedeemRewardButton extends Component {
       rewardImg = require('../../assets/images/Card/240_stamps_icon.png');
     }
 
-    user.points = 100;
-
     return (
       <TouchableHighlight
         underlayColor={colors.neutralLight}
         style={styles.redeemButton}
-        // style={
-        //   user.points < reward.points ? styles.unavailable : styles.available
-        // }
         onPress={() => {
           if (user.points < reward.points) return;
           navigation.navigate('RedeemInfo', { user, reward });
@@ -47,14 +42,13 @@ class RedeemRewardButton extends Component {
           <CustomText
             style={
               user.points < reward.points
-                ? styles.unavailableReward
-                : styles.availableReward
+                ? [styles.unavailable, styles.stamps]
+                : [styles.available, styles.stamps]
             }
           >
             {reward.points} Stamps
           </CustomText>
           <Image
-            // source={require('../../assets/images/Card/240_stamps_icon.png')}
             source={rewardImg}
             style={
               user.points < reward.points
@@ -65,8 +59,8 @@ class RedeemRewardButton extends Component {
           <CustomText
             style={
               user.points < reward.points
-                ? [styles.unavailableReward, styles.rewardTitle]
-                : [styles.availableReward, styles.rewardTitle]
+                ? [styles.unavailable, styles.rewardTitle]
+                : [styles.available, styles.rewardTitle]
             }
           >
             {reward.title}

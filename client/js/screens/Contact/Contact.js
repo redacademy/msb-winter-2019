@@ -6,7 +6,7 @@ import CustomIcon from '../../components/CustomIcon';
 import Subheader from '../../components/Subheader';
 import styles from './styles';
 
-const Contact = () => {
+const Contact = ({ store }) => {
   return (
     <View style={styles.container}>
       <Subheader styles={styles.subheader}>Contact Us</Subheader>
@@ -19,14 +19,14 @@ const Contact = () => {
           <View>
             <CustomText style={styles.msbTitle}>Main Street Brewing</CustomText>
             <CustomText style={styles.msbAddress}>
-              261 East 7th Avenue
+              {store.address.split(',', 1)}
             </CustomText>
             <CustomText style={styles.msbAddress}>Vancouver, BC</CustomText>
-            <CustomText style={styles.msbHours}>2:00 pm - 10:00 pm</CustomText>
+            <CustomText style={styles.msbHours}>{store.hours}</CustomText>
           </View>
           <View style={styles.msbContact}>
             <CustomIcon
-              onPress={() => Linking.openURL(`tel:6043367711`)}
+              onPress={() => Linking.openURL(`tel:${store.phone}`)}
               source={require('../../assets/images/Icons/phone_button.png')}
             />
             <CustomIcon

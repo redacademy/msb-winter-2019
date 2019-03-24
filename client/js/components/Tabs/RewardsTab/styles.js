@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     left: dimensions.fullWidth * 0.5,
     borderColor: colors.neutralLight,
     borderLeftWidth: 4,
-    height: '93%'
+    height: '97%'
   }
 });
 

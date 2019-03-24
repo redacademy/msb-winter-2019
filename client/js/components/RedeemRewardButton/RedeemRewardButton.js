@@ -10,29 +10,24 @@ class RedeemRewardButton extends Component {
   render() {
     const { reward, user, navigation } = this.props;
 
-    const setImg = reward => {
-      if (reward.points === 20) {
-        reward.img = require('../../assets/images/Card/20_stamps_icon.png');
-        // console.log(reward.img);
-      } else if (reward.points === 40) {
-        reward.img = require('../../assets/images/Card/40_stamps_icon.png');
-      } else if (reward.points === 60) {
-        reward.img = require('../../assets/images/Card/60_stamps_icon.png');
-      } else if (reward.points === 80) {
-        reward.img = require('../../assets/images/Card/80_stamps_icon.png');
-      } else if (reward.points === 140) {
-        reward.img = require('../../assets/images/Card/140_stamps_icon.png');
-      } else if (reward.points === 200) {
-        reward.img = require('../../assets/images/Card/200_stamps_icon.png');
-      } else if (reward.points === 240) {
-        reward.img = require('../../assets/images/Card/240_stamps_icon.png');
-      }
-    };
+    let rewardImg;
 
-    let rewardInfo = { title: null, img: null, points: null };
-    // console.log(rewardInfo);
-
-    setImg(rewardInfo);
+    if (reward.points === 20) {
+      rewardImg = require('../../assets/images/Card/20_stamps_icon.png');
+      // console.log(reward.img);
+    } else if (reward.points === 40) {
+      rewardImg = require('../../assets/images/Card/40_stamps_icon.png');
+    } else if (reward.points === 60) {
+      rewardImg = require('../../assets/images/Card/60_stamps_icon.png');
+    } else if (reward.points === 80) {
+      rewardImg = require('../../assets/images/Card/80_stamps_icon.png');
+    } else if (reward.points === 140) {
+      rewardImg = require('../../assets/images/Card/140_stamps_icon.png');
+    } else if (reward.points === 200) {
+      rewardImg = require('../../assets/images/Card/200_stamps_icon.png');
+    } else if (reward.points === 240) {
+      rewardImg = require('../../assets/images/Card/240_stamps_icon.png');
+    }
 
     user.points = 100;
 
@@ -59,11 +54,12 @@ class RedeemRewardButton extends Component {
             {reward.points} Stamps
           </CustomText>
           <Image
-            source={require('../../assets/images/Card/240_stamps_icon.png')}
+            // source={require('../../assets/images/Card/240_stamps_icon.png')}
+            source={rewardImg}
             style={
               user.points < reward.points
-                ? styles.unavailableImg
-                : styles.availableImg
+                ? [styles.unavailableImg, styles.img]
+                : [styles.availableImg, styles.img]
             }
           />
           <CustomText

@@ -142,7 +142,7 @@ class HistoryTab extends Component {
                     </View>
                     <View style={styles.container}>
                       <FlatList
-                        data={user.pointsHistory}
+                        data={pointsHistory}
                         renderItem={({ item }) => {
                           let beerLogo;
 

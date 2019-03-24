@@ -25,8 +25,7 @@ const AppStack = createStackNavigator(
     StampsReceived: StampsReceivedModal,
     RedeemInfo: RedeemInfoModal,
     RedeemBarcode: RedeemBarcode,
-    RedeemSuccess: RedeemSuccess,
-    Error: ErrorModal
+    RedeemSuccess: RedeemSuccess
   },
   {
     headerMode: 'none',
@@ -34,7 +33,17 @@ const AppStack = createStackNavigator(
   }
 );
 
-const AuthStack = createSwitchNavigator({ Signin, Signup, Onboard });
+const AuthStack = createSwitchNavigator({
+  Signin,
+  Signup: createStackNavigator(
+    { Signup, Error: ErrorModal },
+    {
+      headerMode: 'none',
+      mode: 'modal'
+    }
+  ),
+  Onboard
+});
 
 const RootStackNavigator = createAppContainer(
   createSwitchNavigator(

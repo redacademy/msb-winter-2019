@@ -1,15 +1,20 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-
+import { withNavigation } from 'react-navigation';
+import PropTypes from 'prop-types';
 import styles from './styles';
 
-const ErrorModal = () => {
+const ErrorModal = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <View />
         <Text style={styles.title}>SORRY!</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+        >
           <Image source={require('../../assets/images/Icons/exit_icon.png')} />
         </TouchableOpacity>
       </View>
@@ -26,4 +31,8 @@ const ErrorModal = () => {
   );
 };
 
-export default ErrorModal;
+ErrorModal.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
+
+export default withNavigation(ErrorModal);

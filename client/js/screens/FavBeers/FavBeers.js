@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, Image } from 'react-native';
+import { FlatList, Image } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import { withNavigation } from 'react-navigation';
 import { graphql, compose } from 'react-apollo';
 import { USER_QUERY, REMOVE_FROM_USER_BEERS } from '../../apollo/queries';
-import { colors, subtitle1, fonts } from '../../config/styles';
+import { colors } from '../../config/styles';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
@@ -49,20 +49,15 @@ const FavBeers = ({ beers, user, navigation, removeBeerFromFavourites }) => {
   };
 
   return (
-    <View>
-      {beers.map(beer => (
-        <Swipeout key={beer.id} right={getSwipeButton(beer)} autoClose={true}>
-          <TouchableHighlight
-            underlayColor={'transparent'}
-            onPress={() => {
-              navigation.navigate('Beer', { beerId: beer.id });
-            }}
-          >
-            <Image source={getBeerType(beer)} style={styles.beerType} />
-          </TouchableHighlight>
+    <FlatList
+      data={beers}
+      renderItem={({ item }) => (
+        <Swipeout right={getSwipeButton(item)} autoClose={true}>
+          <Image source={getBeerType(item)} style={styles.beerType} />
         </Swipeout>
-      ))}
-    </View>
+      )}
+      keyExtractor={item => item.id}
+    />
   );
 };
 

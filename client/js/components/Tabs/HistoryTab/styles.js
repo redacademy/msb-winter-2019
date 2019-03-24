@@ -2,8 +2,6 @@ import { StyleSheet } from 'react-native';
 import {
   container,
   shadow2,
-  h4,
-  vl,
   contain,
   subtitle3,
   subtitle2,
@@ -19,7 +17,6 @@ import {
   pv0,
   margin,
   w100,
-  pb0,
   capitalize
 } from '../../../config/styles';
 
@@ -31,11 +28,8 @@ const styles = StyleSheet.create({
   rewardsWrapper: {
     ...container,
     justifyContent: 'space-around',
-    // maxHeight: 255,
     ...w100,
     ...shadow2,
-    // paddingTop: padding.lg,
-    // paddingBottom: padding.sm
     paddingVertical: padding.md
   },
   pointsWrapper: { ...row, ...center },
@@ -45,6 +39,7 @@ const styles = StyleSheet.create({
     zIndex: 888,
     paddingBottom: padding.sm
   },
+  progressIcon: { height: 30, ...contain },
   progressPt: {
     height: 13,
     width: 4,
@@ -63,7 +58,6 @@ const styles = StyleSheet.create({
     paddingLeft: padding.xxs
   },
   endPtsText: { ...body1, ...pv0 },
-  // historyWrapper: {}
   pointsHistory: {
     height: 75,
     justifyContent: 'space-between'

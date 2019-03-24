@@ -86,8 +86,7 @@ class HistoryTab extends Component {
                 const user = data.allUsers && data.allUsers[0];
                 if (!user) return <Loader />;
 
-                // const { pointsHistory, points } = user;
-                const points = 200;
+                const { pointsHistory, points } = user;
 
                 return (
                   <View style={styles.container}>
@@ -102,7 +101,7 @@ class HistoryTab extends Component {
                           >
                             <Image
                               source={require('../../../assets/images/Card/point_location.png')}
-                              style={{ height: 30, resizeMode: 'contain' }}
+                              style={styles.progressIcon}
                             />
                             <View style={styles.progressPt} />
                             <CustomText style={styles.endPtsText}>
@@ -112,9 +111,12 @@ class HistoryTab extends Component {
                           <View style={styles.endPts} />
                           {Platform.OS === 'android' ? (
                             <ProgressBarAndroid
-                              progress={progressBarProgress}
                               styleAttr='Horizontal'
                               indeterminate={false}
+                              progress={this.getProgress(points)}
+                              progressTintColor={colors.brand}
+                              trackTintColor={colors.neutralLight}
+                              style={styles.progressBar}
                             />
                           ) : (
                             <ProgressViewIOS
@@ -137,41 +139,13 @@ class HistoryTab extends Component {
                         points={points}
                         navigation={navigation}
                       />
-
-                      {/* <View style={styles.rewards}>
-                        <View style={[styles.container, styles.prevReward]}>
-                          <CustomText style={styles.rewardsTitle}>
-                            Previous Reward
-                          </CustomText>
-                          <CustomText style={styles.stamps}>Stamps</CustomText>
-                          <Image
-                            source={require('../../../assets/images/Icons/growler_icon.png')}
-                            style={styles.rewardsImg}
-                          />
-                          <CustomText style={styles.reward}>
-                            16oz Beer in Tasting Room
-                          </CustomText>
-                        </View>
-                        <View style={[styles.container, styles.nextReward]}>
-                          <CustomText style={styles.rewardsTitle}>
-                            next reward
-                          </CustomText>
-                          <CustomText style={styles.stamps}>Stamps</CustomText>
-                          <Image
-                            source={require('../../../assets/images/Icons/growler_icon.png')}
-                            style={styles.rewardsImg}
-                          />
-                          <CustomText style={styles.reward}>
-                            Growler Refill
-                          </CustomText>
-                        </View>
-                      </View> */}
                     </View>
-                    <View style={[styles.container, styles.historyWrapper]}>
+                    <View style={styles.container}>
                       <FlatList
                         data={user.pointsHistory}
                         renderItem={({ item }) => {
                           let beerLogo;
+
                           if (item.beer.title === 'FRUIT BOMB') {
                             beerLogo = require('../../../assets/images/Beers/squre_fruit_bomb.png');
                           } else if (item.beer.title === 'NAKED FOX') {
@@ -189,6 +163,7 @@ class HistoryTab extends Component {
                           } else if (item.beer.title === 'BARKING MAD') {
                             beerLogo = require('../../../assets/images/Beers/squre_barking_mad.png');
                           }
+
                           return (
                             <View style={[styles.row, styles.pointsHistory]}>
                               <View

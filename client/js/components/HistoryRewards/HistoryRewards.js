@@ -30,10 +30,7 @@ const HistoryRewards = ({ allRewards, points, navigation }) => {
   let previousReward = { title: null, img: null, points: null };
   let nextReward = { title: null, img: null, points: null };
 
-  // sort allRewards by points that the reward requires, in increasing order
   allRewards.sort((reward1, reward2) => reward1.points - reward2.points);
-  console.log(allRewards);
-  // go through each reward in allRewards, stop as soon as reward.points >= points
 
   let nextRewardIndex;
   for (let i = 0; i < allRewards.length; i++) {
@@ -52,7 +49,6 @@ const HistoryRewards = ({ allRewards, points, navigation }) => {
       previousReward.points = allRewards[nextRewardIndex - 1].points;
     }
   } else {
-    // this is the case when the number of points is larger than all of the rewards
     const lastReward = allRewards[allRewards.length - 1];
     previousReward.title = lastReward.title;
     previousReward.points = lastReward.points;
@@ -61,45 +57,6 @@ const HistoryRewards = ({ allRewards, points, navigation }) => {
   setImg(nextReward);
 
   const rewardsArray = [previousReward, nextReward];
-  // this reward will become nextReward, and the one before that will become previousReward
-
-  // let rewardImg;
-  // let rewardTitle;
-  // let rewardPts;
-
-  // if (allRewards.points < 20) {
-  //   rewardImg = require('../../assets/images/Card/star_1_stamp.png');
-  //   rewardTitle = allRewards.title;
-  //   rewardPts = allRewards.points;
-  // } else if (allRewards.points === 20) {
-  //   rewardImg = require('../../assets/images/Card/20_stamps_icon.png');
-  //   rewardTitle = allRewards.title;
-  //   rewardPts = allRewards.points;
-  // } else if (allRewards.points === 40) {
-  //   rewardImg = require('../../assets/images/Card/40_stamps_icon.png');
-  //   rewardTitle = allRewards.title;
-  //   rewardPts = allRewards.points;
-  // } else if (allRewards.points === 60) {
-  //   rewardImg = require('../../assets/images/Card/60_stamps_icon.png');
-  //   rewardTitle = allRewards.title;
-  //   rewardPts = allRewards.points;
-  // } else if (allRewards.points === 80) {
-  //   rewardImg = require('../../assets/images/Card/80_stamps_icon.png');
-  //   rewardTitle = allRewards.title;
-  //   rewardPts = allRewards.points;
-  // } else if (allRewards.points === 140) {
-  //   rewardImg = require('../../assets/images/Card/140_stamps_icon.png');
-  //   rewardTitle = allRewards.title;
-  //   rewardPts = allRewards.points;
-  // } else if (allRewards.points === 200) {
-  //   rewardImg = require('../../assets/images/Card/200_stamps_icon.png');
-  //   rewardTitle = allRewards.title;
-  //   rewardPts = allRewards.points;
-  // } else if (allRewards.points === 240) {
-  //   rewardImg = require('../../assets/images/Card/240_stamps_icon.png');
-  //   rewardTitle = allRewards.title;
-  //   rewardPts = allRewards.points;
-  // }
 
   return (
     <View style={styles.rewards}>

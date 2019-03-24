@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
 import {
   container,
-  shadow2,
   h4,
   vl,
   contain,
@@ -10,17 +9,9 @@ import {
   padding,
   center,
   row,
-  hr,
-  colors,
-  mv0,
   dimensions,
-  body1,
-  jusBetweenRow,
-  pv0,
   margin,
-  w100,
-  pb0,
-  capitalize
+  pb0
 } from '../../config/styles';
 
 const styles = StyleSheet.create({

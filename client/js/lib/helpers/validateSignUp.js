@@ -23,3 +23,13 @@ export default function validate(values) {
 
   return errors;
 }
+
+export const isLegalAge = dateOfBirth => {
+  const today = new Date();
+  let age = today.getFullYear() - dateOfBirth.getFullYear();
+  const month = today.getMonth() - dateOfBirth.getMonth();
+  if (month < 0 || (month === 0 && today.getDate() < dateOfBirth.getDate())) {
+    age--;
+  }
+  return age >= 19;
+};

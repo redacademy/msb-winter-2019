@@ -62,19 +62,19 @@ const styles = StyleSheet.create({
     paddingLeft: padding.xxs
   },
   endPtsText: { ...body1, ...pv0 },
-  rewards: { ...row },
-  rewardsTitle: { ...h4 },
-  stamps: { ...subtitle3 },
-  rewardsImg: { marginTop: margin.sm, height: 50, ...contain },
-  img: { height: 50, ...contain },
-  reward: {
-    ...subtitle2,
-    paddingHorizontal: padding.xl,
-    ...center,
-    ...pb0
-  },
-  prevReward: { justifyContent: 'flex-start' },
-  nextReward: { ...vl, marginHorizontal: 0, justifyContent: 'flex-start' },
+  // rewards: { ...row },
+  // rewardsTitle: { ...h4 },
+  // stamps: { ...subtitle3 },
+  // rewardsImg: { marginTop: margin.sm, height: 50, ...contain },
+  // img: { height: 50, ...contain },
+  // reward: {
+  //   ...subtitle2,
+  //   paddingHorizontal: padding.xl,
+  //   ...center,
+  //   ...pb0
+  // },
+  // prevReward: { justifyContent: 'flex-start' },
+  // nextReward: { ...vl, marginHorizontal: 0, justifyContent: 'flex-start' },
   // historyWrapper: {}
   pointsHistory: {
     height: 75,

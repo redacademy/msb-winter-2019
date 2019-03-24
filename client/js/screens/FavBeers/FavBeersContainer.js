@@ -19,7 +19,7 @@ class FavBeersContainer extends Component {
   };
 
   static navigationOptions = {
-    title: 'FavBeers'
+    title: 'Your Favourites'
   };
 
   render() {

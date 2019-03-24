@@ -25,23 +25,24 @@ import {
 
 const styles = StyleSheet.create({
   rewards: { ...row },
-  rewardsTitle: { ...h4 },
+  reward: { ...container, justifyContent: 'flex-start' },
+  header: { ...h4 },
   stamps: { ...subtitle3 },
-  rewardsImg: { marginTop: margin.sm, height: 50, ...contain },
-  reward: {
+  rewardImg: { marginTop: margin.sm, height: 50, ...contain },
+  rewardTitle: {
     ...subtitle2,
     paddingHorizontal: padding.xl,
     ...center,
-    ...pb0
+    ...pb0,
+    textAlign: 'center'
   },
-  prevReward: { ...container, justifyContent: 'flex-start' },
-  nextReward: {
-    ...container,
+  vl: {
     ...vl,
     marginHorizontal: 0,
-    justifyContent: 'flex-start'
-  },
-  vl: { ...vl, marginHorizontal: 0, position: 'absolute' }
+    position: 'absolute',
+    left: dimensions.fullWidth * 0.5,
+    borderLeftWidth: 4
+  }
 });
 
 export default styles;

@@ -12,6 +12,8 @@ class RewardsTab extends Component {
     this.state = { viewerId: null };
   }
 
+  static Navigation = { title: 'Rewards' };
+
   componentDidMount = async () => {
     const viewerId = await getLoggedInUser();
     this.setState({ viewerId });
@@ -29,7 +31,7 @@ class RewardsTab extends Component {
             <Query
               query={USER_QUERY}
               variables={{ id: this.state.viewerId }}
-              fetchPolicy="network-only"
+              fetchPolicy='network-only'
             >
               {({ loading, error, data }) => {
                 if (loading) return <ActivityIndicator />;

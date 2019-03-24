@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, TouchableHighlight } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
 import CustomText from '../CustomText';
+import { colors } from '../../config/styles';
 import styles from './styles';
 
-const HistoryRewards = ({ allRewards, points }) => {
+const HistoryRewards = ({ allRewards, points, navigation }) => {
   const setImg = reward => {
     if (reward.points === null) {
       reward.img = require('../../assets/images/Card/star_1_stamp.png');
@@ -103,16 +105,25 @@ const HistoryRewards = ({ allRewards, points }) => {
     <View style={styles.rewards}>
       {rewardsArray.map((reward, index) => {
         return (
-          <View style={styles.prevReward} key={reward.title}>
-            <CustomText style={styles.rewardsTitle}>
-              {index === 0 ? 'Previous Reward' : 'Next Reward'}
-            </CustomText>
-            <CustomText style={styles.stamps}>
-              {reward.points === 0 ? '0 Stamp' : `${reward.points} Stamps`}
-            </CustomText>
-            <Image source={reward.img} style={styles.rewardsImg} />
-            <CustomText style={styles.reward}>{reward.title}</CustomText>
-          </View>
+          <TouchableHighlight
+            underlayColor={colors.neutralLight}
+            onPress={() => {
+              navigation.navigate('Rewards');
+            }}
+            style={styles.reward}
+            key={reward.title}
+          >
+            <Fragment>
+              <CustomText style={styles.header}>
+                {index === 0 ? 'Previous Reward' : 'Next Reward'}
+              </CustomText>
+              <CustomText style={styles.stamps}>
+                {reward.points === 0 ? '0 Stamp' : `${reward.points} Stamps`}
+              </CustomText>
+              <Image source={reward.img} style={styles.rewardImg} />
+              <CustomText style={styles.rewardTitle}>{reward.title}</CustomText>
+            </Fragment>
+          </TouchableHighlight>
         );
       })}
       <View style={styles.vl} />
@@ -120,4 +131,4 @@ const HistoryRewards = ({ allRewards, points }) => {
   );
 };
 
-export default HistoryRewards;
+export default withNavigation(HistoryRewards);

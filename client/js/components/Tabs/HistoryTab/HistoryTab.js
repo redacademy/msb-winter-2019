@@ -65,6 +65,8 @@ class HistoryTab extends Component {
   };
 
   render() {
+    const { navigation } = this.props;
+
     return (
       <Query query={ALL_REWARDS_QUERY}>
         {({ loading, error, data }) => {
@@ -84,12 +86,12 @@ class HistoryTab extends Component {
                 const user = data.allUsers && data.allUsers[0];
                 if (!user) return <Loader />;
 
-                const { pointsHistory, points } = user;
-                // const points = 250;
+                // const { pointsHistory, points } = user;
+                const points = 200;
 
                 return (
                   <View style={styles.container}>
-                    <View style={[styles.container, styles.rewardsWrapper]}>
+                    <View style={styles.rewardsWrapper}>
                       <View style={styles.container}>
                         <View style={styles.pointsWrapper}>
                           <View
@@ -130,7 +132,11 @@ class HistoryTab extends Component {
                           <CustomText style={styles.endPtsText}>240</CustomText>
                         </View>
                       </View>
-                      <HistoryRewards allRewards={allRewards} points={points} />
+                      <HistoryRewards
+                        allRewards={allRewards}
+                        points={points}
+                        navigation={navigation}
+                      />
 
                       {/* <View style={styles.rewards}>
                         <View style={[styles.container, styles.prevReward]}>

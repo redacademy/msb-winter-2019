@@ -7,6 +7,7 @@ import {
 import DrawerNavigationLayout from './DrawerNavigationLayout';
 import BeerModal from '../screens/Beer';
 import EventModal from '../screens/Event';
+import ErrorModal from '../components/ErrorModal';
 import StampsReceivedModal from '../components/StampsReceivedModal';
 import RedeemInfoModal from '../components/RedeemInfoModal';
 import RedeemBarcode from '../components/RedeemBarcode';
@@ -32,7 +33,23 @@ const AppStack = createStackNavigator(
   }
 );
 
-const AuthStack = createSwitchNavigator({ Signin, Signup, Onboard });
+const AuthStack = createSwitchNavigator({
+  Signin: createStackNavigator(
+    { Signin, Error: ErrorModal },
+    {
+      headerMode: 'none',
+      mode: 'modal'
+    }
+  ),
+  Signup: createStackNavigator(
+    { Signup, Error: ErrorModal },
+    {
+      headerMode: 'none',
+      mode: 'modal'
+    }
+  ),
+  Onboard
+});
 
 const RootStackNavigator = createAppContainer(
   createSwitchNavigator(

@@ -20,6 +20,16 @@ export default function validate(values) {
   } else if (values.confirmpassword !== values.password) {
     errors.confirmpassword = '*Password mismatched';
   }
-
   return errors;
 }
+
+export const isLegalAge = dateOfBirth => {
+  const today = new Date();
+  dateOfBirth = new Date(dateOfBirth);
+  let age = today.getFullYear() - dateOfBirth.getFullYear();
+  const month = today.getMonth() - dateOfBirth.getMonth();
+  if (month < 0 || (month === 0 && today.getDate() < dateOfBirth.getDate())) {
+    age--;
+  }
+  return age >= 19;
+};

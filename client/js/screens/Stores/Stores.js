@@ -26,9 +26,7 @@ class Stores extends Component {
         latitude: 49.26473,
         latitudeDelta: 0.004,
         longitudeDelta: 0.004
-      },
-      currentLatitude: null,
-      currentLongitude: null
+      }
     };
   }
 
@@ -69,14 +67,8 @@ class Stores extends Component {
                 Dimensions.get('window').height) *
               0.003
           };
-          const latitude = position.coords.latitude;
-          console.log('findCoordinates() LATITUDE', latitude);
-          const longitude = position.coords.longitude;
-          console.log('findCoordinates() LONGITUDE', longitude);
 
           this.setState({ focusedLocation: location });
-          this.setState({ currentLatitude: latitude });
-          this.setState({ currentLongitude: longitude });
         },
         error => Alert.alert(error.message),
         { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
@@ -145,6 +137,23 @@ class Stores extends Component {
 
   render() {
     const { stores } = this.props;
+    const storesWithDistances =
+      this.state.focusedLocation &&
+      stores.map(store => {
+        const lat1 = this.state.focusedLocation.latitude;
+        const lon1 = this.state.focusedLocation.longitude;
+        const lat2 = store.lat;
+        const lon2 = store.long;
+
+        console.log('LAT1', lat1);
+        console.log('LON1', lon1);
+        console.log('LAT2', lat2);
+        console.log('LON2', lon2);
+        const distance = Math.round(
+          this.getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2)
+        );
+        return { ...store, distance };
+      });
     console.log('STORES', stores);
 
     const { currentLatitude, currentLongitude } = this.state;
@@ -284,21 +293,24 @@ class Stores extends Component {
         </View>
         {this.state.focusedLocation && (
           <FlatList
-            data={stores}
+            data={storesWithDistances.sort(
+              (store1, store2) => store1.distance - store2.distance
+            )}
             renderItem={({ item }) => {
-              const lat1 = this.state.focusedLocation.latitude;
-              const lon1 = this.state.focusedLocation.longitude;
-              const lat2 = item.lat;
-              const lon2 = item.long;
+              // const lat1 = this.state.focusedLocation.latitude;
+              // const lon1 = this.state.focusedLocation.longitude;
+              // const lat2 = item.lat;
+              // const lon2 = item.long;
 
-              console.log('LAT1', lat1);
-              console.log('LON1', lon1);
-              console.log('LAT2', lat2);
-              console.log('LON2', lon2);
+              // console.log('LAT1', lat1);
+              // console.log('LON1', lon1);
+              // console.log('LAT2', lat2);
+              // console.log('LON2', lon2);
 
-              const distance = Math.round(
-                this.getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2)
-              ).toFixed(2);
+              // const distance = Math.round(
+              //   this.getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2)
+              // );
+              const { distance } = item;
 
               return (
                 <View style={styles.storeItem}>
@@ -327,9 +339,9 @@ class Stores extends Component {
                   </TouchableHighlight>
                   <View style={[styles.distanceWrapper, { ...row, ...center }]}>
                     <CustomText style={[styles.distance, { ...h3 }]}>
-                      {distance}
+                      {item.distance}
                     </CustomText>
-                    <CustomText style={styles.body}>km</CustomText>
+                    <CustomText style={styles.body}> km</CustomText>
                   </View>
                 </View>
               );

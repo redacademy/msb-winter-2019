@@ -1,5 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { View, TouchableOpacity, Platform, FlatList } from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Platform,
+  FlatList,
+  TouchableHighlight
+} from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
@@ -22,8 +28,7 @@ class Stores extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      region: {},
-      myLocation: null
+      region: {}
     };
   }
 
@@ -38,12 +43,12 @@ class Stores extends Component {
     });
   }
 
-  changeLocation = () => {
-    return {
-      longitude: this.longitude,
-      latitude: this.latitude
-    };
-  };
+  // changeLocation = () => {
+  //   return {
+  //     longitude: this.longitude,
+  //     latitude: this.latitude
+  //   };
+  // };
 
   render() {
     const { stores } = this.props;
@@ -56,15 +61,14 @@ class Stores extends Component {
           {this.state.region.longitude && (
             <MapView
               style={styles.map}
-              // region={{
-              //   latitude: 49.26473,
-              //   longitude: -123.099305,
-              //   latitudeDelta: 0.015,
-              //   longitudeDelta: 0.0121
-              // }}
-              initialRegion={this.state.region}
-              followsUserLocation={true}
-              showsUserLocation={true}
+              // initialRegion={this.state.region}
+              region={this.state.region}
+              followsUserLocation
+              showsUserLocation
+              showsMyLocationButton
+              loadingEnabled
+              zoomEnabled
+              zoomControlEnabled
               loadingIndicatorColor='#fea405'
               loadingBackgroundColor='#ffffff'
             >
@@ -91,7 +95,7 @@ class Stores extends Component {
                     }
                   ]}
                   onPress={() => {
-                    this.zoomin();
+                    this.zoomIn();
                   }}
                 >
                   <Ionicons
@@ -112,7 +116,7 @@ class Stores extends Component {
                     }
                   ]}
                   onPress={() => {
-                    this.zoomin();
+                    this.zoomOut();
                   }}
                 >
                   <Ionicons
@@ -138,8 +142,6 @@ class Stores extends Component {
                   >
                     <View
                       style={{
-                        // backgroundColor: 'white',
-                        // width: 100,
                         height: 30,
                         top: -5,
                         left: 26,
@@ -157,39 +159,30 @@ class Stores extends Component {
             </MapView>
           )}
         </View>
-        {/* <ScrollView style={styles.storesWrapper}>
-          {stores.map(store => {
-            return (
-              <View key={store.id} style={styles.storeItem}>
-                <TouchableOpacity
-                  onPress={() => {
-                    const newRegion = {
-                      longitude: parseFloat(store.long),
-                      latitude: parseFloat(store.lat),
-                      latitudeDelta: 0.004,
-                      longitudeDelta: 0.004
-                    };
-                    this.setState({ region: newRegion });
-                  }}
-                >
-                  <View>
-                    <CustomText style={styles.bold}>{store.name}</CustomText>
-                    <CustomText style={styles.body}>{store.address}</CustomText>
-                    <CustomText style={styles.bold}>{store.hours}</CustomText>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            );
-          })}
-        </ScrollView> */}
+
         <FlatList
           data={stores}
           renderItem={({ item }) => (
-            <Fragment>
-              <CustomText style={styles.bold}>{item.name}</CustomText>
-              <CustomText style={styles.body}>{item.address}</CustomText>
-              <CustomText style={styles.bold}>{item.hours}</CustomText>
-            </Fragment>
+            <View style={styles.storeItem}>
+              <TouchableHighlight
+                underlayColor={colors.neutralLight}
+                onPress={() => {
+                  const newRegion = {
+                    longitude: parseFloat(item.long),
+                    latitude: parseFloat(item.lat),
+                    latitudeDelta: 0.004,
+                    longitudeDelta: 0.004
+                  };
+                  this.setState({ region: newRegion });
+                }}
+              >
+                <Fragment>
+                  <CustomText style={styles.bold}>{item.name}</CustomText>
+                  <CustomText style={styles.body}>{item.address}</CustomText>
+                  <CustomText style={styles.bold}>{item.hours}</CustomText>
+                </Fragment>
+              </TouchableHighlight>
+            </View>
           )}
           keyExtractor={(item, index) => item + index}
           ItemSeparatorComponent={renderSeparator}

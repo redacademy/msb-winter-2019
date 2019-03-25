@@ -28,9 +28,21 @@ class CarouselEvents extends Component {
     };
   }
 
+  getCurrentEvent = () => {
+    const { events } = this.props;
+    return events[this.state.currentIndex] || events[events.length - 1];
+  };
+
+  componentDidUpdate = prevProps => {
+    const { events } = this.props;
+    if (this.state.currentIndex >= events.length) {
+      this.setState({ currentIndex: events.length - 1 });
+    }
+  };
+
   isEventFavourited = () => {
-    const { events, user } = this.props;
-    const event = events[this.state.currentIndex];
+    const { user } = this.props;
+    const event = this.getCurrentEvent();
     return user.favouriteEvents.some(favEvent => favEvent.id === event.id);
   };
 
@@ -41,7 +53,7 @@ class CarouselEvents extends Component {
       addToFavouriteEvents,
       removeFromFavouriteEvents
     } = this.props;
-    const event = events[this.state.currentIndex];
+    const event = this.getCurrentEvent();
     if (this.isEventFavourited()) {
       await removeFromFavouriteEvents({
         variables: { usersUserId: user.id, favouriteEventsEventId: event.id }
@@ -58,9 +70,10 @@ class CarouselEvents extends Component {
       Store.updateIndex(this._carousel.currentIndex);
     }
   };
+
   render() {
     const { events, navigation } = this.props;
-
+    const currentEvent = this.getCurrentEvent();
     return (
       <View style={styles.container}>
         <Carousel
@@ -116,16 +129,16 @@ class CarouselEvents extends Component {
             <Text style={styles.eventData}>
               <Text style={styles.boldData}>Date: </Text>
               {moment(events[this.state.currentIndex].date).format(
-                'MMM Do YYYY'
+                'dddd, MMMM D, YYYY'
               )}
             </Text>
             <Text style={styles.eventData}>
               <Text style={styles.boldData}>Time: </Text>
-              {events[this.state.currentIndex].time}
+              {currentEvent.time}
             </Text>
             <Text style={styles.eventData}>
               <Text style={styles.boldData}>Location: </Text>
-              {events[this.state.currentIndex].location}
+              {currentEvent.location}
             </Text>
           </View>
 

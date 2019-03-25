@@ -4,32 +4,18 @@ import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 import styles from './styles';
 import Subheader from '../../components/Subheader';
+import HomePoints from '../../components/HomePoints';
 
 const Home = props => {
+  const { rewards, user, navigation } = props;
+
   return (
     <View style={styles.container}>
-      <Text style={styles.greet}>
-        hi {props.user.name ? props.user.name : 'friend'}!
-      </Text>
+      <Text style={styles.greet}>hi {user.name ? user.name : 'friend'}!</Text>
 
       <View style={styles.rewardsGrid}>
         <View style={styles.singleGrid}>
-          <TouchableHighlight
-            underlayColor="transparent"
-            onPress={() => {
-              props.navigation.navigate('Rewards');
-            }}
-          >
-            <Image
-              source={require('../../assets/images/Home/loader_no_numbers.png')}
-              style={styles.growlerImg}
-            />
-          </TouchableHighlight>
-          <Text style={styles.points}>{props.user.points}/20</Text>
-
-          <Text style={styles.toNextReward}>
-            {20 - props.user.points} to Next Reward
-          </Text>
+          <HomePoints rewards={rewards} user={user} />
         </View>
 
         <View style={styles.vl} />
@@ -38,7 +24,7 @@ const Home = props => {
           underlayColor="transparent"
           style={styles.singleGrid}
           onPress={() => {
-            props.navigation.navigate('Card');
+            navigation.navigate('Card');
           }}
         >
           <Image
@@ -78,7 +64,7 @@ const Home = props => {
                 <TouchableHighlight
                   underlayColor={'transparent'}
                   onPress={() => {
-                    props.navigation.navigate('Beer', { beerId: item.id });
+                    navigation.navigate('Beer', { beerId: item.id });
                   }}
                 >
                   <Image source={beerType} style={styles.beerType} />

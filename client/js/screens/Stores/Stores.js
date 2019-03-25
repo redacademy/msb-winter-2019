@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
-import { View, TouchableOpacity, Platform, ScrollView } from 'react-native';
+import React, { Component, Fragment } from 'react';
+import { View, TouchableOpacity, Platform, FlatList } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
 
 import Subheader from '../../components/Subheader';
 import CustomText from '../../components/CustomText';
+import { renderSeparator } from '../../lib/helpers/separator';
 import {
   colors,
   center,
@@ -49,98 +50,100 @@ class Stores extends Component {
     return (
       <View style={styles.container}>
         <Subheader>Stores</Subheader>
-        {this.state.region.longitude && (
-          <MapView
-            style={styles.map}
-            // region={{
-            //   latitude: 49.26473,
-            //   longitude: -123.099305,
-            //   latitudeDelta: 0.015,
-            //   longitudeDelta: 0.0121
-            // }}
-            initialRegion={this.state.region}
-            followsUserLocation={true}
-            showsUserLocation={true}
-            loadingIndicatorColor='#fea405'
-            loadingBackgroundColor='#ffffff'
-          >
-            <View
-              style={[
-                styles.zoom,
-                {
-                  ...row,
-                  width: '20%',
-                  position: 'absolute',
-                  right: 0,
-                  bottom: 0,
-                  paddingVertical: padding.xxxs,
-                  paddingHorizontal: padding.xxxs
-                }
-              ]}
+        <View style={styles.mapWrapper}>
+          {this.state.region.longitude && (
+            <MapView
+              style={styles.map}
+              // region={{
+              //   latitude: 49.26473,
+              //   longitude: -123.099305,
+              //   latitudeDelta: 0.015,
+              //   longitudeDelta: 0.0121
+              // }}
+              initialRegion={this.state.region}
+              followsUserLocation={true}
+              showsUserLocation={true}
+              loadingIndicatorColor='#fea405'
+              loadingBackgroundColor='#ffffff'
             >
-              <TouchableOpacity
+              <View
                 style={[
-                  styles.zoomin,
+                  styles.zoom,
                   {
-                    width: 37,
-                    ...center
+                    ...row,
+                    width: '20%',
+                    position: 'absolute',
+                    right: 0,
+                    bottom: 0,
+                    paddingVertical: padding.xxxs,
+                    paddingHorizontal: padding.xxxs
                   }
                 ]}
-                onPress={() => {
-                  this.zoomin();
-                }}
               >
-                <Ionicons
-                  name={Platform.select({
-                    android: 'md-add-circle',
-                    ios: 'ios-add-circle'
-                  })}
-                  size={35}
-                  color={colors.brand}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[
-                  styles.zoomout,
-                  {
-                    width: 37,
-                    ...center
-                  }
-                ]}
-                onPress={() => {
-                  this.zoomin();
-                }}
-              >
-                <Ionicons
-                  name={Platform.select({
-                    android: 'md-remove-circle',
-                    ios: 'ios-remove-circle'
-                  })}
-                  size={35}
-                  color={colors.brand}
-                />
-              </TouchableOpacity>
-            </View>
-            {stores.map(store => {
-              return (
-                <Marker
-                  // coordinate={{ latitude: 49.26473, longitude: -123.099305 }}
-                  // title={'Main Street Brewing Beer Provider'}
-                  // description={'Main Street Brewing Beer Provider'}
-                  // image={require('../../assets/images/Icons/point_location.png')}
-                  key={store.id}
-                  coordinate={{
-                    latitude: parseFloat(store.lat),
-                    longitude: parseFloat(store.long)
+                <TouchableOpacity
+                  style={[
+                    styles.zoomin,
+                    {
+                      width: 37,
+                      ...center
+                    }
+                  ]}
+                  onPress={() => {
+                    this.zoomin();
                   }}
-                  title={store.name}
-                  image={require('../../assets/images/Icons/point_location.png')}
-                />
-              );
-            })}
-          </MapView>
-        )}
-        <ScrollView style={styles.storesWrapper}>
+                >
+                  <Ionicons
+                    name={Platform.select({
+                      android: 'md-add-circle',
+                      ios: 'ios-add-circle'
+                    })}
+                    size={35}
+                    color={colors.brand}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[
+                    styles.zoomout,
+                    {
+                      width: 37,
+                      ...center
+                    }
+                  ]}
+                  onPress={() => {
+                    this.zoomin();
+                  }}
+                >
+                  <Ionicons
+                    name={Platform.select({
+                      android: 'md-remove-circle',
+                      ios: 'ios-remove-circle'
+                    })}
+                    size={35}
+                    color={colors.brand}
+                  />
+                </TouchableOpacity>
+              </View>
+              {stores.map(store => {
+                return (
+                  <Marker
+                    // coordinate={{ latitude: 49.26473, longitude: -123.099305 }}
+                    // title={'Main Street Brewing Beer Provider'}
+                    // description={'Main Street Brewing Beer Provider'}
+                    // image={require('../../assets/images/Icons/point_location.png')}
+                    key={store.id}
+                    coordinate={{
+                      latitude: parseFloat(store.lat),
+                      longitude: parseFloat(store.long)
+                    }}
+                    title={store.name}
+                    image={require('../../assets/images/Icons/point_location.png')}
+                  />
+                );
+              })}
+            </MapView>
+          )}
+        </View>
+        {/* <ScrollView style={styles.storesWrapper}>
           {stores.map(store => {
             return (
               <View key={store.id} style={styles.storeItem}>
@@ -164,7 +167,20 @@ class Stores extends Component {
               </View>
             );
           })}
-        </ScrollView>
+        </ScrollView> */}
+        <FlatList
+          data={stores}
+          renderItem={({ item }) => (
+            <Fragment>
+              <CustomText style={styles.bold}>{item.name}</CustomText>
+              <CustomText style={styles.body}>{item.address}</CustomText>
+              <CustomText style={styles.bold}>{item.hours}</CustomText>
+            </Fragment>
+          )}
+          keyExtractor={(item, index) => item + index}
+          ItemSeparatorComponent={renderSeparator}
+          style={styles.storesWrapper}
+        />
       </View>
     );
   }

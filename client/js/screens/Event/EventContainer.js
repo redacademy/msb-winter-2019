@@ -25,6 +25,7 @@ class EventContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
           if (error) return <Text>{error.message}</Text>;
+          if (!data.allEvents || !data.allEvents[0]) return <Loader />;
           return (
             <Event event={data.allEvents[0]} navigation={{ navigation }} />
           );

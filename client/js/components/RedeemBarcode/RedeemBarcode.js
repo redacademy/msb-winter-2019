@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Text } from "react-native";
 import { withNavigation } from "react-navigation";
 import styles from "./styles";
 import CustomIcon from "../CustomIcon";
+import PropTypes from "prop-types";
 import Barcode from "react-native-barcode-builder";
 import { compose, graphql } from "react-apollo";
 import {
@@ -61,6 +62,12 @@ class RedeemBarcode extends Component {
     );
   }
 }
+
+RedeemBarcode.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  setUserPoints: PropTypes.func.isRequired,
+  addToUserRedeems: PropTypes.func.isRequired
+};
 
 export default compose(
   graphql(SET_USER_POINTS, {

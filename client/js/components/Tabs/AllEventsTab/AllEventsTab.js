@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import { withNavigation } from 'react-navigation';
-import { Query } from 'react-apollo';
-import { getLoggedInUser } from '../../../config/models';
-import { ALL_EVENTS_QUERY, USER_QUERY } from '../../../apollo/queries';
-import Loader from '../../Loader';
-import CustomText from '../../CustomText/';
-import CarouselEvents from '../../CarouselEvents';
+import React, { Component } from "react";
+import { withNavigation } from "react-navigation";
+import { Query } from "react-apollo";
+import { getLoggedInUser } from "../../../config/models";
+import { ALL_EVENTS_QUERY, USER_QUERY } from "../../../apollo/queries";
+import Loader from "../../Loader";
+import CustomText from "../../CustomText/";
+import CarouselEvents from "../../CarouselEvents";
+import PropTypes from "prop-types";
 
 class AllEventsTab extends Component {
-  static navigationOptions = { title: 'All Events' };
+  static navigationOptions = { title: "All Events" };
 
   constructor(props) {
     super(props);
@@ -55,5 +56,9 @@ class AllEventsTab extends Component {
     );
   }
 }
+
+AllEventsTab.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default withNavigation(AllEventsTab);

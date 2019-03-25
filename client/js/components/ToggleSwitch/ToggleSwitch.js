@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import SwitchToggle from 'react-native-switch-toggle';
-import { colors } from '../../config/styles';
-import styles from './styles';
+import React, { Component } from "react";
+import { View, Text } from "react-native";
+import SwitchToggle from "react-native-switch-toggle";
+import { colors } from "../../config/styles";
+import styles from "./styles";
 
 class ToggleSwitch extends Component {
   constructor(props) {

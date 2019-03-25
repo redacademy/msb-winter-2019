@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import { graphql, compose } from 'react-apollo';
-import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import Subheader from '../../components/Subheader';
 import ToggleSwitch from '../../components/ToggleSwitch';
@@ -205,6 +204,5 @@ export default compose(
         }
       ]
     })
-  }),
-  withNavigation
+  })
 )(Profile);

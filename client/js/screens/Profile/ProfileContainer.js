@@ -29,7 +29,12 @@ class ProfileContainer extends Component {
           if (loading) return <Loader />;
           if (error) return <Text>{error.message}</Text>;
           if (!data.allUsers || !data.allUsers[0]) return <Loader />;
-          return <Profile user={data.allUsers[0]} />;
+          return (
+            <Profile
+              user={data.allUsers[0]}
+              navigation={this.props.navigation}
+            />
+          );
         }}
       </Query>
     );

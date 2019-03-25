@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     fontSize: fonts.xxl,
     paddingLeft: 20
   },
-  beer: {
+  img: {
     marginTop: 20,
     marginBottom: 20
   },

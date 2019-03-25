@@ -15,7 +15,7 @@ const UnderAgeModal = () => {
       </View>
 
       <Image
-        style={styles.beer}
+        style={styles.img}
         source={require("../../assets/images/Icons/lock_growler_icon.png")}
       />
       <View style={styles.textContainer}>

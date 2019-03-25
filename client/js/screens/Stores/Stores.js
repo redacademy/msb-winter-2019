@@ -4,7 +4,8 @@ import {
   TouchableOpacity,
   Platform,
   FlatList,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -28,20 +29,38 @@ class Stores extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      region: {}
+      region: {},
+      focusedLocation: {
+        latitude: 49.26473,
+        longitude: -123.099305,
+        latitudeDelta: 0.00522,
+        longitudeDelta:
+          (Dimensions.get('window').width / Dimensions.get('window').height) *
+          0.00522
+      }
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      region: {
-        longitude: -123.099305,
-        latitude: 49.26473,
-        latitudeDelta: 0.004,
-        longitudeDelta: 0.004
-      }
-    });
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     // region: {
+  //     //   longitude: -123.099305,
+  //     //   latitude: 49.26473,
+  //     //   latitudeDelta: 0.004,
+  //     //   longitudeDelta: 0.004
+  //     // }
+  //     focusedLocation: {
+  //       // latitude: 36.14319077106534,
+  //       // longitude: -86.76708101838142,
+  //       latitude: 49.26473,
+  //       longitude: -123.099305,
+  //       latitudeDelta: 0.00522,
+  //       longitudeDelta:
+  //         (Dimensions.get('window').width / Dimensions.get('window').height) *
+  //         0.00522
+  //     }
+  //   });
+  // }
 
   // changeLocation = () => {
   //   return {
@@ -49,6 +68,43 @@ class Stores extends Component {
   //     latitude: this.latitude
   //   };
   // };
+
+  zoomOut = () => {
+    this.region = {
+      latitude: this.state.focusedLocation.latitude,
+      longitude: this.state.focusedLocation.longitude,
+      latitudeDelta: this.state.focusedLocation.latitudeDelta * 10,
+      longitudeDelta: this.state.focusedLocation.longitudeDelta * 10
+    };
+
+    this.setState({
+      focusedLocation: {
+        latitudeDelta: this.region.latitudeDelta,
+        longitudeDelta: this.region.longitudeDelta,
+        latitude: this.region.latitude,
+        longitude: this.region.longitude
+      }
+    });
+    this.map.animateToRegion(this.region, 100);
+  };
+
+  zoomIn = () => {
+    this.region = {
+      latitude: this.state.focusedLocation.latitude,
+      longitude: this.state.focusedLocation.longitude,
+      latitudeDelta: this.state.focusedLocation.latitudeDelta / 10,
+      longitudeDelta: this.state.focusedLocation.longitudeDelta / 10
+    };
+    this.setState({
+      focusedLocation: {
+        latitudeDelta: this.region.latitudeDelta,
+        longitudeDelta: this.region.longitudeDelta,
+        latitude: this.region.latitude,
+        longitude: this.region.longitude
+      }
+    });
+    this.map.animateToRegion(this.region, 100);
+  };
 
   render() {
     const { stores } = this.props;
@@ -62,15 +118,20 @@ class Stores extends Component {
             <MapView
               style={styles.map}
               // initialRegion={this.state.region}
-              region={this.state.region}
-              followsUserLocation
-              showsUserLocation
-              showsMyLocationButton
-              loadingEnabled
-              zoomEnabled
-              zoomControlEnabled
+              // region={this.state.region}
+              followsUserLocation={true}
+              showsUserLocation={true}
+              showsMyLocationButton={true}
+              loadingEnabled={true}
+              zoomEnabled={true}
+              zoomControlEnabled={true}
               loadingIndicatorColor='#fea405'
               loadingBackgroundColor='#ffffff'
+              //
+              region={this.state.focusedLocation}
+              // onPress={this.pickLocationHandler}
+              // customMapStyle={mapStyle}
+              ref={ref => (this.map = ref)}
             >
               <View
                 style={[
@@ -139,6 +200,7 @@ class Stores extends Component {
                     }}
                     title={store.name}
                     image={require('../../assets/images/Icons/point_location.png')}
+                    onPress={e => console.log(e.nativeEvent)}
                   >
                     <View
                       style={{

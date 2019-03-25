@@ -1,14 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import {
-  center,
-  colors,
-  container,
-  fonts,
-  h1,
-  h4,
-  row,
-  vl
-} from '../../config/styles';
+import { center, container, h1, row, vl } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: { ...container },
@@ -32,16 +23,6 @@ const styles = StyleSheet.create({
     ...center,
     width: Dimensions.get('window').width * 0.5
   },
-  growlerImg: {
-    resizeMode: 'contain',
-    width: 140
-  },
-  points: { ...h4, fontSize: 21, marginTop: -5 },
-  toNextReward: {
-    color: colors.neutralDark,
-    fontSize: fonts.xs,
-    fontFamily: fonts.primary
-  },
 
   vl: { ...vl, height: 157, borderLeftWidth: 4 },
   cardImg: { resizeMode: 'contain', width: 140 },
@@ -57,12 +38,11 @@ const styles = StyleSheet.create({
   },
   flatlistContainer: {
     ...center,
-    width: Dimensions.get('window').width,
-    maxWidth: 350,
-    maxHeight: 80
+    width: Dimensions.get('window').width
   },
   beerType: {
-    height: 75
+    maxWidth: 350,
+    resizeMode: 'contain'
   }
 });
 

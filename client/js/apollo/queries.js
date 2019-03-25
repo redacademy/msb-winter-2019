@@ -164,7 +164,7 @@ export const HISTORY_QUERY = gql`
 
 export const ADD_TO_USER_BEERS = gql`
   mutation($favouriteBeersBeerId: ID!, $usersUserId: ID!) {
-    addToUserBeer(
+    addToUserBeers(
       favouriteBeersBeerId: $favouriteBeersBeerId
       usersUserId: $usersUserId
     ) {
@@ -192,10 +192,6 @@ export const ADD_TO_USER_EVENTS = gql`
         time
         date
         description
-      }
-      userUser {
-        id
-        name
       }
     }
   }
@@ -266,7 +262,7 @@ export const REMOVE_FROM_USER_BEERS = gql`
       favouriteBeersBeerId: $favouriteBeersBeerId
       usersUserId: $usersUserId
     ) {
-      favouriteBeersBeerId {
+      favouriteBeersBeer {
         id
       }
     }
@@ -279,7 +275,7 @@ export const REMOVE_FROM_USER_EVENTS = gql`
       favouriteEventsEventId: $favouriteEventsEventId
       usersUserId: $usersUserId
     ) {
-      favouriteEventsEventId {
+      favouriteEventsEvent {
         id
       }
     }

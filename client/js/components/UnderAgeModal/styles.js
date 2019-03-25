@@ -1,4 +1,5 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+import { colors, fonts } from "../../config/styles";
 
 const styles = StyleSheet.create({
   container: {
@@ -25,13 +26,13 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   textContainer: {
-    marginTop: 20
+    margin: 20
   },
   text: {
     color: colors.white,
     fontFamily: fonts.primarySemi,
     fontSize: fonts.md,
-    alignSelf: "center"
+    textAlign: "center"
   }
 });
 

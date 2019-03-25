@@ -4,7 +4,8 @@ import {
   TouchableOpacity,
   Platform,
   FlatList,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -25,8 +26,7 @@ class Stores extends Component {
         latitude: 49.26473,
         latitudeDelta: 0.004,
         longitudeDelta: 0.004
-      },
-      location: null
+      }
 
       // focusedLocation: {
       //   latitude: 49.26473,
@@ -40,35 +40,43 @@ class Stores extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      // region: {
-      //   longitude: -123.099305,
-      //   latitude: 49.26473,
-      //   latitudeDelta: 0.004,
-      //   longitudeDelta: 0.004
-      // },
-      // focusedLocation: {
-      //   latitude: 49.26473,
-      //   longitude: -123.099305,
-      //   // latitudeDelta: 0.00522,
-      //   latitudeDelta: 0.003,
-      //   longitudeDelta:
-      //     (Dimensions.get('window').width / Dimensions.get('window').height) *
-      //     0.003
-      //   // 0.00522
-      // }
+    this.findCoordinates();
+    // this.setState({
+    //   // region: {
+    //   //   longitude: -123.099305,
+    //   //   latitude: 49.26473,
+    //   //   latitudeDelta: 0.004,
+    //   //   longitudeDelta: 0.004
+    //   // },
+    //   // focusedLocation: {
+    //   //   latitude: 49.26473,
+    //   //   longitude: -123.099305,
+    //   //   // latitudeDelta: 0.00522,
+    //   //   latitudeDelta: 0.003,
+    //   //   longitudeDelta:
+    //   //     (Dimensions.get('window').width / Dimensions.get('window').height) *
+    //   //     0.003
+    //   //   // 0.00522
+    //   // }
 
-      focusedLocation: this.findCoordinates()
-    });
+    //   focusedLocation: this.findCoordinates() // needs to return an object
+    // });
   }
 
   findCoordinates = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
-          const location = JSON.stringify(position);
-
-          this.setState({ location });
+          console.log('POSITION', position);
+          const location = {
+            ...position.coords,
+            latitudeDelta: 0.003,
+            longitudeDelta:
+              (Dimensions.get('window').width /
+                Dimensions.get('window').height) *
+              0.003
+          };
+          this.setState({ focusedLocation: location });
         },
         error => Alert.alert(error.message),
         { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
@@ -116,7 +124,7 @@ class Stores extends Component {
 
   render() {
     const { stores } = this.props;
-    console.log(stores);
+    console.log('STORES', stores);
 
     return (
       <View style={styles.container}>
@@ -145,7 +153,7 @@ class Stores extends Component {
                 style={[
                   styles.zoom,
                   {
-                    ...row,
+                    // ...row,
                     // position: 'absolute',
                     // right: 0,
                     // bottom: 0,
@@ -271,6 +279,9 @@ class Stores extends Component {
                 <Fragment>
                   <CustomText style={styles.bold}>{item.name}</CustomText>
                   <CustomText style={styles.body}>{item.address}</CustomText>
+                  <CustomText style={styles.body}>{`${item.city}, ${
+                    item.province
+                  }`}</CustomText>
                   <CustomText style={styles.bold}>{item.hours}</CustomText>
                 </Fragment>
               </TouchableHighlight>

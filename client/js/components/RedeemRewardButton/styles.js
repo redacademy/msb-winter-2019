@@ -7,8 +7,7 @@ import {
   subtitle2,
   padding,
   center,
-  pb0,
-  hr
+  pb0
 } from '../../config/styles';
 
 const styles = StyleSheet.create({

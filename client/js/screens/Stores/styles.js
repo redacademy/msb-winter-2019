@@ -7,8 +7,7 @@ import {
   subtitle2,
   body1,
   pv0,
-  padding,
-  shadow1
+  padding
 } from '../../config/styles';
 
 const styles = StyleSheet.create({

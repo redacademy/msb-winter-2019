@@ -4,8 +4,7 @@ import {
   TouchableOpacity,
   Platform,
   FlatList,
-  TouchableHighlight,
-  Dimensions
+  TouchableHighlight
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -14,15 +13,7 @@ import PropTypes from 'prop-types';
 import Subheader from '../../components/Subheader';
 import CustomText from '../../components/CustomText';
 import { renderSeparator } from '../../lib/helpers/separator';
-import {
-  colors,
-  center,
-  row,
-  margin,
-  jusBetweenRow,
-  padding,
-  subtitle2
-} from '../../config/styles';
+import { colors, center, row, padding } from '../../config/styles';
 import styles from './styles';
 
 class Stores extends Component {

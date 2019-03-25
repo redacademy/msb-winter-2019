@@ -5155,8 +5155,6 @@ react-native-snap-carousel@^3.7.5:
     prop-types "^15.6.1"
     react-addons-shallow-compare "15.6.2"
 
-<<<<<<< HEAD
-=======
 react-native-swipeout@^2.3.6:
   version "2.3.6"
   resolved "https://registry.yarnpkg.com/react-native-swipeout/-/react-native-swipeout-2.3.6.tgz#47dac8a835825cf3f2eef9e495574a3d9ab6d3fa"
@@ -5166,7 +5164,6 @@ react-native-swipeout@^2.3.6:
     prop-types "^15.5.10"
     react-tween-state "^0.1.5"
 
->>>>>>> develop
 react-native-switch-toggle@^1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/react-native-switch-toggle/-/react-native-switch-toggle-1.0.8.tgz#e0234932c42d0cef624638c24238c3994a719240"

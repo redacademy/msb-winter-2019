@@ -40,7 +40,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>App needs Camera Access Permission to change profile image</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App needs Photo Library access to change profile image</string>
 	<key>UIAppFonts</key>

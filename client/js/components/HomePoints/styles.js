@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
     color: colors.neutralDark,
     fontSize: fonts.xs,
     fontFamily: fonts.primary
+  },
+  toNextRewardPoints: {
+    fontFamily: fonts.primarySemi
   }
 });
 

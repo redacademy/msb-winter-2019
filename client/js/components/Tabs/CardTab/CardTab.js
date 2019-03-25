@@ -8,7 +8,8 @@ import {
   SET_USER_POINTS,
   ADD_TO_USER_POINT_HISTORY,
   ALL_BEERS_QUERY,
-  USER_QUERY
+  USER_QUERY,
+  HISTORY_QUERY
 } from '../../../apollo/queries';
 import { getLoggedInUser } from '../../../config/models';
 import Loader from '../../Loader';
@@ -63,7 +64,7 @@ class CardTab extends Component {
       <Query
         query={USER_QUERY}
         variables={{ id: this.state.viewerId }}
-        fetchPolicy='network-only'
+        fetchPolicy="network-only"
       >
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
@@ -85,7 +86,7 @@ class CardTab extends Component {
                     source={require('../../../assets/images/Card/your_card.png')}
                     style={styles.card}
                   />
-                  <Barcode value='Test Card' format='CODE128' height={40} />
+                  <Barcode value="Test Card" format="CODE128" height={40} />
                 </TouchableOpacity>
               </View>
             </ImageBackground>
@@ -109,7 +110,16 @@ export default compose(
       ]
     })
   }),
-  graphql(ADD_TO_USER_POINT_HISTORY, { name: 'addToUserPointHistory' }),
+  graphql(ADD_TO_USER_POINT_HISTORY, {
+    name: 'addToUserPointHistory',
+    options: () => ({
+      refetchQueries: [
+        {
+          query: HISTORY_QUERY
+        }
+      ]
+    })
+  }),
   graphql(ALL_BEERS_QUERY, { name: 'allBeersQuery' }),
   withNavigation
 )(CardTab);

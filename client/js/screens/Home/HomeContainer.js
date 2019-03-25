@@ -34,7 +34,7 @@ class HomeContainer extends Component {
               const rewardsLoading = rewardsQuery.loading;
               const rewardsError = rewardsQuery.error;
               const rewardsData = rewardsQuery.data;
-              console.log(rewardsData);
+
               return (
                 <Query query={ALL_BEERS_QUERY}>
                   {beersQuery => {

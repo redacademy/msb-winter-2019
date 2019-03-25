@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, Linking } from 'react-native';
+import PropTypes from 'prop-types';
 
 import CustomText from '../../components/CustomText';
 import CustomIcon from '../../components/CustomIcon';
@@ -18,10 +19,10 @@ const Contact = ({ store }) => {
         <View style={styles.msbInfo}>
           <View>
             <CustomText style={styles.msbTitle}>Main Street Brewing</CustomText>
-            <CustomText style={styles.msbAddress}>
-              {store.address.split(',', 1)}
-            </CustomText>
-            <CustomText style={styles.msbAddress}>Vancouver, BC</CustomText>
+            <CustomText style={styles.msbAddress}>{store.address}</CustomText>
+            <CustomText style={styles.msbAddress}>{`${store.city}, ${
+              store.province
+            }`}</CustomText>
             <CustomText style={styles.msbHours}>{store.hours}</CustomText>
           </View>
           <View style={styles.msbContact}>
@@ -71,5 +72,7 @@ const Contact = ({ store }) => {
     </View>
   );
 };
+
+Contact.propTypes = {};
 
 export default Contact;

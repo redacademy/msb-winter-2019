@@ -7,6 +7,7 @@ const AgeDisclaimer = () => {
   return (
     <View>
       <Image source={require("../../assets/images/Icons/star_bottle.png")} />
+      <Text />
     </View>
   );
 };

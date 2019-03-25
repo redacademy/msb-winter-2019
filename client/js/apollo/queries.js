@@ -135,11 +135,36 @@ export const USER_QUERY = gql`
   }
 `;
 
+export const HISTORY_QUERY = gql`
+  query($id: ID) {
+    allUsers(filter: { id: $id }) {
+      id
+      points
+      pointsHistory {
+        id
+        date
+        stamps
+        beer {
+          id
+          title
+          abv
+          subtitle
+          description
+          ibu
+          rating
+          releaseDate
+          style
+        }
+      }
+    }
+  }
+`;
+
 //----------------- MUTATIONS------------------>
 
 export const ADD_TO_USER_BEERS = gql`
   mutation($favouriteBeersBeerId: ID!, $usersUserId: ID!) {
-    addToUserBeer(
+    addToUserBeers(
       favouriteBeersBeerId: $favouriteBeersBeerId
       usersUserId: $usersUserId
     ) {
@@ -167,10 +192,6 @@ export const ADD_TO_USER_EVENTS = gql`
         time
         date
         description
-      }
-      userUser {
-        id
-        name
       }
     }
   }
@@ -218,20 +239,18 @@ export const ADD_TO_USER_POINT_HISTORY = gql`
 `;
 
 export const ADD_TO_USER_REDEEMS = gql`
-  mutation($redeemHistory: ID, $usersUserId: ID) {
-    addToUserRedeems(redeemHistory: $redeemHistory, usersUserId: $usersUserId) {
-      redeemHistoryRedeem {
+  mutation($date: DateTime!, $rewardId: ID!, $userId: ID!) {
+    createRedeem(date: $date, rewardId: $rewardId, userId: $userId) {
+      id
+      date
+      reward {
         id
-        reward {
-          title
-          id
-          points
-        }
+        title
       }
-      userUser {
+      user {
         id
         name
-        points
+        email
       }
     }
   }
@@ -243,7 +262,7 @@ export const REMOVE_FROM_USER_BEERS = gql`
       favouriteBeersBeerId: $favouriteBeersBeerId
       usersUserId: $usersUserId
     ) {
-      favouriteBeersBeerId {
+      favouriteBeersBeer {
         id
       }
     }
@@ -256,7 +275,7 @@ export const REMOVE_FROM_USER_EVENTS = gql`
       favouriteEventsEventId: $favouriteEventsEventId
       usersUserId: $usersUserId
     ) {
-      favouriteEventsEventId {
+      favouriteEventsEvent {
         id
       }
     }

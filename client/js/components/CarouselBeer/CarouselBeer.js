@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {
   Dimensions,
   View,
@@ -7,12 +6,13 @@ import {
   TouchableHighlight,
   Image
 } from 'react-native';
-import Carousel from 'react-native-snap-carousel';
 import { withNavigation } from 'react-navigation';
+import Carousel from 'react-native-snap-carousel';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
-import styles from './styles';
 import { center } from '../../config/styles';
+import styles from './styles';
 
 class CarouselBeer extends Component {
   constructor(props) {
@@ -43,9 +43,7 @@ class CarouselBeer extends Component {
           loopClonesPerSide={2}
           firstItem={0}
           onSnapToItem={index => {
-            this.setState({ currentIndex: index }, () => {
-              console.log(this.state.currentIndex);
-            });
+            this.setState({ currentIndex: index });
           }}
           renderItem={({ item }) => {
             let beerLogo;
@@ -103,7 +101,7 @@ class CarouselBeer extends Component {
               <Text style={styles.beerData}>
                 <Text style={styles.boldData}>Released: </Text>
                 {moment(beers[this.state.currentIndex].releaseDate).format(
-                  'MMM YY'
+                  'MMM YYYY'
                 )}
               </Text>
             </View>

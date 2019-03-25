@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 import { USER_QUERY } from '../../apollo/queries';
 import { Query } from 'react-apollo';
 import { getLoggedInUser } from '../../config/models';
@@ -28,7 +28,18 @@ class FavBeersContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
           if (error) return <Text>Error</Text>;
-          return <FavBeers user={data.allUsers[0].favouriteBeers} />;
+          if (
+            !data.allUsers ||
+            !data.allUsers[0] ||
+            !data.allUsers[0].favouriteBeers
+          )
+            return <Loader />;
+          return (
+            <FavBeers
+              beers={data.allUsers[0].favouriteBeers}
+              user={data.allUsers[0]}
+            />
+          );
         }}
       </Query>
     ) : (

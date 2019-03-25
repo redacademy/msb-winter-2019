@@ -13,7 +13,8 @@ import {
   row,
   margin,
   jusBetweenRow,
-  padding
+  padding,
+  subtitle2
 } from '../../config/styles';
 import styles from './styles';
 
@@ -21,7 +22,8 @@ class Stores extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      region: {}
+      region: {},
+      myLocation: null
     };
   }
 
@@ -126,10 +128,6 @@ class Stores extends Component {
               {stores.map(store => {
                 return (
                   <Marker
-                    // coordinate={{ latitude: 49.26473, longitude: -123.099305 }}
-                    // title={'Main Street Brewing Beer Provider'}
-                    // description={'Main Street Brewing Beer Provider'}
-                    // image={require('../../assets/images/Icons/point_location.png')}
                     key={store.id}
                     coordinate={{
                       latitude: parseFloat(store.lat),
@@ -137,7 +135,23 @@ class Stores extends Component {
                     }}
                     title={store.name}
                     image={require('../../assets/images/Icons/point_location.png')}
-                  />
+                  >
+                    <View
+                      style={{
+                        // backgroundColor: 'white',
+                        // width: 100,
+                        height: 30,
+                        top: -5,
+                        left: 26,
+                        zIndex: 2,
+                        position: 'absolute'
+                      }}
+                    >
+                      <CustomText style={styles.markerTitle}>
+                        {store.name}
+                      </CustomText>
+                    </View>
+                  </Marker>
                 );
               })}
             </MapView>

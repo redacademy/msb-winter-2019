@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     height: dimensions.fullHeight * 0.3,
     width: dimensions.fullWidth
   },
+  markerTitle: { ...subtitle2, textAlign: 'center' },
   storesWrapper: {
     width: '100%',
     paddingVertical: padding.sm,

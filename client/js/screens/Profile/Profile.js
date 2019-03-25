@@ -102,13 +102,7 @@ class Profile extends Component {
             >
               <Image
                 style={styles.profilePic}
-                source={
-                  this.getAvatarImageSource()
-                  // this.state.avatarSource || {
-                  //   uri:
-                  //     'https://via.placeholder.com/200x200?text=No+image+available'
-                  // }
-                }
+                source={this.getAvatarImageSource()}
               />
             </TouchableOpacity>
             <Text style={styles.name}>{user.name}</Text>

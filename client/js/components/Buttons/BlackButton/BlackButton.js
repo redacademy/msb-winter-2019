@@ -18,7 +18,7 @@ const BlackButton = props => {
 };
 
 BlackButton.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired
 };
 
 export default BlackButton;

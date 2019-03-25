@@ -135,6 +135,31 @@ export const USER_QUERY = gql`
   }
 `;
 
+export const HISTORY_QUERY = gql`
+  query($id: ID) {
+    allUsers(filter: { id: $id }) {
+      id
+      points
+      pointsHistory {
+        id
+        date
+        stamps
+        beer {
+          id
+          title
+          abv
+          subtitle
+          description
+          ibu
+          rating
+          releaseDate
+          style
+        }
+      }
+    }
+  }
+`;
+
 //----------------- MUTATIONS------------------>
 
 export const ADD_TO_USER_BEERS = gql`

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Image, Text, TouchableHighlight, View } from 'react-native';
-import PropTypes from 'prop-types';
-import { withNavigation } from 'react-navigation';
-import styles from './styles';
+import React, { Component } from "react";
+import { Image, Text, TouchableHighlight, View } from "react-native";
+import PropTypes from "prop-types";
+import { withNavigation } from "react-navigation";
+import styles from "./styles";
 
 class HomePoints extends Component {
   render() {
@@ -10,27 +10,32 @@ class HomePoints extends Component {
 
     let rewardsArr = [];
     for (let i = 0; i < rewards.length; i++) {
-      rewardsArr.push(rewards.find(reward => reward.points >= user.points));
+      rewardsArr.push(
+        rewards.find(reward => {
+          console.log(reward.points >= user.points);
+          return reward.points >= user.points;
+        })
+      );
     }
+    console.log(">>>>", rewardsArr);
 
     return (
       <View style={styles.singleGrid}>
         <TouchableHighlight
           underlayColor="transparent"
           onPress={() => {
-            navigation.navigate('Rewards');
+            navigation.navigate("Rewards");
           }}
         >
           <Image
-            source={require('../../assets/images/Home/loader_no_numbers.png')}
+            source={require("../../assets/images/Home/loader_no_numbers.png")}
             style={styles.growlerImg}
           />
         </TouchableHighlight>
 
         <Text style={styles.points}>
-          {user.points <= rewardsArr[0].points
-            ? `${user.points}/${rewardsArr[0].points}`
-            : null}
+          {user.points <= rewardsArr[0].points &&
+            `${user.points}/${rewardsArr[0].points}`}
         </Text>
 
         <Text style={styles.toNextReward}>

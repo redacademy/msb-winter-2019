@@ -7,12 +7,12 @@ import AgeDisclaimer from "./components/AgeDisclaimer";
 
 export default class App extends Component {
   render() {
-    // StatusBar.setBarStyle("light-content");
+    StatusBar.setBarStyle("light-content");
     return (
-      // <ApolloProvider client={client}>
-      //   <RootStackNavigator />
-      // </ApolloProvider>
-      <AgeDisclaimer />
+      <ApolloProvider client={client}>
+        <RootStackNavigator />
+      </ApolloProvider>
+      // <AgeDisclaimer />
     );
   }
 }

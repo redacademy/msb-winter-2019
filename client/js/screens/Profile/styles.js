@@ -1,35 +1,37 @@
-import { StyleSheet } from "react-native";
-import { colors, fonts } from "../../config/styles";
+import { StyleSheet } from 'react-native';
+import { colors, fonts } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    height: "100%",
-    width: "100%"
+    alignItems: 'center',
+    height: '100%',
+    width: '100%'
   },
   imageWrapper: {
     flexGrow: 1.5,
     marginTop: 20,
-    justifyContent: "space-evenly"
+    justifyContent: 'space-evenly'
   },
   profilePic: {
-    resizeMode: "contain",
-    borderRadius: 110,
+    resizeMode: 'contain',
+    borderRadius: 100,
     borderWidth: 10,
+    width: 200,
+    height: 200,
     borderColor: colors.brand
   },
   name: {
-    alignSelf: "center",
+    alignSelf: 'center',
     fontFamily: fonts.primaryBold,
     fontSize: fonts.lg,
     marginBottom: 20
   },
   emailContainer: {
-    flexDirection: "row",
-    alignSelf: "flex-start",
-    justifyContent: "flex-start",
-    width: "70%",
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    justifyContent: 'flex-start',
+    width: '70%',
     marginLeft: 20
   },
   heading: {
@@ -42,13 +44,13 @@ const styles = StyleSheet.create({
   userEmailContainer: {
     borderBottomWidth: 2,
     borderColor: colors.neutralLight,
-    width: "100%"
+    width: '100%'
   },
   divider: {
-    flexDirection: "row",
-    alignSelf: "flex-start",
-    justifyContent: "flex-start",
-    width: "85%",
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    justifyContent: 'flex-start',
+    width: '85%',
     marginLeft: 20,
     marginTop: 20,
     borderBottomColor: colors.neutralLight,

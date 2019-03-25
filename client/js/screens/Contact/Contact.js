@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Image, Linking } from 'react-native';
+import PropTypes from 'prop-types';
 
 import CustomText from '../../components/CustomText';
 import CustomIcon from '../../components/CustomIcon';
 import Subheader from '../../components/Subheader';
 import styles from './styles';
 
-const Contact = () => {
+const Contact = ({ store }) => {
   return (
     <View style={styles.container}>
       <Subheader styles={styles.subheader}>Contact Us</Subheader>
@@ -18,15 +19,15 @@ const Contact = () => {
         <View style={styles.msbInfo}>
           <View>
             <CustomText style={styles.msbTitle}>Main Street Brewing</CustomText>
-            <CustomText style={styles.msbAddress}>
-              261 East 7th Avenue
-            </CustomText>
-            <CustomText style={styles.msbAddress}>Vancouver, BC</CustomText>
-            <CustomText style={styles.msbHours}>2:00 pm - 10:00 pm</CustomText>
+            <CustomText style={styles.msbAddress}>{store.address}</CustomText>
+            <CustomText style={styles.msbAddress}>{`${store.city}, ${
+              store.province
+            }`}</CustomText>
+            <CustomText style={styles.msbHours}>{store.hours}</CustomText>
           </View>
           <View style={styles.msbContact}>
             <CustomIcon
-              onPress={() => Linking.openURL(`tel:6043367711`)}
+              onPress={() => Linking.openURL(`tel:${store.phone}`)}
               source={require('../../assets/images/Icons/phone_button.png')}
             />
             <CustomIcon
@@ -71,5 +72,7 @@ const Contact = () => {
     </View>
   );
 };
+
+Contact.propTypes = {};
 
 export default Contact;

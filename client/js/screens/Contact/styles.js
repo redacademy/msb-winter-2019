@@ -10,26 +10,30 @@ import {
   row,
   h4,
   hr,
-  margin
+  margin,
+  jusBtwn,
+  jusStrt,
+  pv0,
+  ph0
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: { ...container, justifyContent: 'flex-start' },
+  container: { ...container, ...jusStrt },
   img: { width: dimensions.fullWidth },
   contactWrapper: {
     flex: 1,
-    justifyContent: 'space-between',
+    ...jusBtwn,
     padding: padding.md
   },
-  msbInfo: { ...row, justifyContent: 'space-between' },
+  msbInfo: { ...row, ...jusBtwn },
   msbTitle: {
     ...button,
     color: colors.black,
-    paddingVertical: 0,
-    paddingHorizontal: 0
+    ...pv0,
+    ...ph0
   },
-  msbAddress: { ...body1, paddingVertical: 0 },
-  msbHours: { ...subtitle2, paddingVertical: 0 },
+  msbAddress: { ...body1, ...pv0 },
+  msbHours: { ...subtitle2, ...pv0 },
   msbContact: { ...row, paddingLeft: padding.md },
   socialWrapper: { height: '40%' },
   socialTitle: {

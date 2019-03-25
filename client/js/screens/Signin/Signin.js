@@ -24,17 +24,13 @@ class Signin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
-      error: false
+      loading: false
     };
   }
 
   render() {
     if (this.state.loading) {
       return <Loader />;
-    }
-    if (this.state.error) {
-      return <CustomText>Error</CustomText>;
     }
 
     return (
@@ -54,7 +50,7 @@ class Signin extends Component {
               onSubmit={this.onSubmit}
               validate={validate}
               style={styles.loginForm}
-              render={({ handleSubmit, hasSubmitErrors, submitError }) => (
+              render={({ handleSubmit }) => (
                 <Fragment>
                   <Field name="email">
                     {({ input, meta }) => (
@@ -111,12 +107,6 @@ class Signin extends Component {
                       Sign In
                     </WhiteButton>
                   </View>
-
-                  {hasSubmitErrors && (
-                    <CustomText style={styles.errorMessage}>
-                      {submitError}
-                    </CustomText>
-                  )}
                 </Fragment>
               )}
             />
@@ -149,16 +139,17 @@ class Signin extends Component {
   onSubmit = async values => {
     try {
       const { email, password } = values;
-      this.setState({ loading: true, error: false });
+      this.setState({ loading: true });
       const result = await this.props.signinMutation({
         variables: { email, password }
       });
       const userInfo = result.data.authenticateUser;
       await setUserToken(userInfo.id, userInfo.token);
-      this.setState({ loading: false, error: false });
+      this.setState({ loading: false });
       this.props.navigation.navigate('App');
     } catch (e) {
-      this.setState({ error: true, loading: false });
+      this.setState({ loading: false });
+      this.props.navigation.navigate('Error');
     }
   };
 }

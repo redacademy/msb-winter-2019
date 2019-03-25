@@ -24,6 +24,10 @@
     "react-native-maps": "^0.23.0",
     "react-native-reanimated": "^1.0.0-alpha.12",
     "react-native-snap-carousel": "^3.7.5",
+<<<<<<< HEAD
+=======
+    "react-native-swipeout": "^2.3.6",
+>>>>>>> develop
     "react-native-switch-toggle": "^1.0.8",
     "react-native-tab-view": "^2.0.3",
     "react-native-vector-icons": "^6.4.1",

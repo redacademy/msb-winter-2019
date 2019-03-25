@@ -18,7 +18,11 @@ const BlackButton = props => {
 };
 
 BlackButton.propTypes = {
+<<<<<<< HEAD
   children: PropTypes.object.isRequired
+=======
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired
+>>>>>>> develop
 };
 
 export default BlackButton;

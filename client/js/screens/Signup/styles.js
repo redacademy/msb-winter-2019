@@ -54,6 +54,10 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     textDecorationLine: 'underline',
     marginTop: margin.xs
+  },
+  errorMessage: {
+    ...subtitle2,
+    color: colors.brand
   }
 });
 

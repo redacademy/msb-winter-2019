@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 
 import styles from "./styles";
 
-const ErrorModel = () => {
+const UnderAgeModal = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -15,15 +15,16 @@ const ErrorModel = () => {
       </View>
 
       <Image
-        style={styles.beer}
-        source={require("../../assets/images/Icons/spill_icon.png")}
+        style={styles.img}
+        source={require("../../assets/images/Icons/lock_growler_icon.png")}
       />
       <View style={styles.textContainer}>
-        <Text style={styles.text}>But don't cry over spilled beer.</Text>
-        <Text style={styles.text}>Try Again!</Text>
+        <Text style={styles.text}>
+          Please come again when you are of legal age to drink!
+        </Text>
       </View>
     </View>
   );
 };
 
-export default ErrorModel;
+export default UnderAgeModal;

@@ -37,6 +37,20 @@ export default async (event: FunctionEvent<EventData>) => {
       return { error: 'Email already in use' };
     }
 
+    const isLegalAge = (dateOfBirth: string) => {
+      const today = new Date();
+      const dob: Date = new Date(dateOfBirth);
+      let age = today.getFullYear() - dob.getFullYear();
+      const month = today.getMonth() - dob.getMonth();
+      if (month < 0 || (month === 0 && today.getDate() < dob.getDate())) {
+        age--;
+      }
+      return age >= 19;
+    };
+    if (!isLegalAge(dateOfBirth)) {
+      return { error: 'Not of legal age' };
+    }
+
     // create password hash
     const salt = bcrypt.genSaltSync(SALT_ROUNDS);
     const hash = await bcrypt.hash(password, salt);

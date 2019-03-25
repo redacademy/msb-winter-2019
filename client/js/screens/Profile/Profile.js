@@ -8,10 +8,16 @@ import {
   TextInput
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
+import { graphql, compose } from 'react-apollo';
 import PropTypes from 'prop-types';
 import Subheader from '../../components/Subheader';
 import ToggleSwitch from '../../components/ToggleSwitch';
 import BlackButton from '../../components/Buttons/BlackButton';
+import {
+  UPDATE_USER_EMAIL,
+  USER_QUERY,
+  UPDATE_USER_PROFILE_IMAGE
+} from '../../apollo/queries';
 
 import styles from './styles';
 
@@ -19,7 +25,7 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editing: true,
+      editing: false,
       avatarSource: null,
       text: null
     };
@@ -43,8 +49,23 @@ class Profile extends Component {
     });
   };
 
+  handleButtonPress = async () => {
+    const { editing, avatarSource, text } = this.state;
+    const { updateUserProfileImage, updateUserEmail } = this.props;
+    if (editing) {
+      if (text) {
+        // save new email
+      }
+      if (avatarSource && avatarSource.uri) {
+        // save new avatar
+      }
+    }
+    this.setState({ editing: !editing, avatarSource: null, text: null });
+  };
+
   render() {
     const { user } = this.props;
+    const { editing } = this.state;
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -74,7 +95,7 @@ class Profile extends Component {
           <View style={styles.emailContainer}>
             <Text style={styles.heading}>Email: </Text>
             <View style={styles.userEmailContainer}>
-              {this.state.editing ? (
+              {editing ? (
                 <TextInput
                   style={styles.userEmail}
                   placeholder={user.email}
@@ -94,9 +115,10 @@ class Profile extends Component {
           </View>
           <View style={styles.buttonSaveContainer}>
             <BlackButton
-              style={this.state.editing ? styles.buttonSave : styles.button}
+              style={editing ? styles.buttonSave : styles.button}
+              onPress={this.handleButtonPress}
             >
-              {this.state.editing ? 'Save Changes' : 'Edit'}
+              {editing ? 'Save Changes' : 'Edit'}
             </BlackButton>
           </View>
         </View>
@@ -109,4 +131,25 @@ Profile.propTypes = {
   user: PropTypes.object.isRequired
 };
 
-export default Profile;
+export default compose(
+  graphql(UPDATE_USER_EMAIL, {
+    name: 'updateUserEmail',
+    options: () => ({
+      refetchQueries: [
+        {
+          query: USER_QUERY
+        }
+      ]
+    })
+  }),
+  graphql(UPDATE_USER_PROFILE_IMAGE, {
+    name: 'updateUserProfileImage',
+    options: () => ({
+      refetchQueries: [
+        {
+          query: USER_QUERY
+        }
+      ]
+    })
+  })
+)(Profile);

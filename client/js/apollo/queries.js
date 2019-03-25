@@ -257,6 +257,36 @@ export const REMOVE_FROM_USER_EVENTS = gql`
   }
 `;
 
+export const UPDATE_USER_EMAIL = gql`
+  mutation($id: ID!, $email: String!) {
+    updateUser(id: $id, email: $email) {
+      id
+      name
+      email
+    }
+  }
+`;
+
+export const UPDATE_USER_PROFILE_IMAGE = gql`
+  mutation($userId: ID!, $url: String!, $contentType: String!, $name: String!) {
+    createFile(
+      userId: $userId
+      url: $url
+      contentType: $contentType
+      name: $name
+    ) {
+      id
+      name
+      url
+      contentType
+      user {
+        id
+        email
+      }
+    }
+  }
+`;
+
 export const SIGNUP_MUTATION = gql`
   mutation(
     $email: String!

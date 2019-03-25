@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import { USER_QUERY } from '../../../apollo/queries';
+import { ALL_EVENTS_QUERY, USER_QUERY } from '../../../apollo/queries';
 import { Query } from 'react-apollo';
 import { getLoggedInUser } from '../../../config/models';
 import CarouselEvents from '../../CarouselEvents';
@@ -36,6 +36,7 @@ class FavEventsTab extends Component {
           if (error) return <Text>Error</Text>;
           const user = data.allUsers && data.allUsers[0];
           if (!user) return <Loader />;
+          console.log(user);
 
           return user.favouriteEvents && user.favouriteEvents.length > 0 ? (
             <CarouselEvents

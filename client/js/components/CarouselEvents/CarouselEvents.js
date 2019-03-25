@@ -75,6 +75,8 @@ class CarouselEvents extends Component {
   render() {
     const { events, navigation } = this.props;
     const currentEvent = this.getCurrentEvent();
+
+    console.log('****', this.props);
     return (
       <View style={styles.container}>
         <Carousel
@@ -95,6 +97,7 @@ class CarouselEvents extends Component {
             } else if (item.title === 'Brewery Tour') {
               eventImg = require('../../assets/images/Events/Oskar_Blues_Festival_1200.jpg');
             }
+
             return (
               <TouchableHighlight
                 underlayColor={'transparent'}

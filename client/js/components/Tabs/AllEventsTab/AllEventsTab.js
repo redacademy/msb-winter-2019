@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withNavigation } from 'react-navigation';
 import { Query } from 'react-apollo';
-import { ActivityIndicator } from 'react-native';
 import { getLoggedInUser } from '../../../config/models';
 import { ALL_EVENTS_QUERY, USER_QUERY } from '../../../apollo/queries';
 import Loader from '../../Loader';
@@ -37,10 +36,10 @@ class AllEventsTab extends Component {
               fetchPolicy="network-only"
             >
               {({ loading, error, data }) => {
-                if (loading) return <ActivityIndicator />;
+                if (loading) return <Loader />;
                 if (error) return <Text>Error</Text>;
                 const user = data.allUsers && data.allUsers[0];
-                if (!user) return <ActivityIndicator />;
+                if (!user) return <Loader />;
                 return (
                   <CarouselEvents
                     events={events}

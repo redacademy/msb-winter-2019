@@ -136,6 +136,11 @@ export const USER_QUERY = gql`
       favouriteEvents {
         id
         title
+        subtitle
+        location
+        time
+        date
+        description
       }
     }
   }

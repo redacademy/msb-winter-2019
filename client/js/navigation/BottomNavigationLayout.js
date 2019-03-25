@@ -66,36 +66,6 @@ const CardTabScreens = createMaterialTopTabNavigator(
   }
 );
 
-const FavBeersTabScreens = createMaterialTopTabNavigator(
-  {
-    'Your Favourites': FavBeersScreen
-  },
-  {
-    tabBarOptions: {
-      activeTintColor: colors.black,
-      inactiveTintColor: colors.neutralLight,
-      indicatorStyle: {
-        ...underline,
-        borderBottomWidth: 4,
-        backgroundColor: colors.brand,
-        marginBottom: margin.sm * 0.8,
-        marginLeft: dimensions.fullWidth / 2 - 63,
-        maxWidth: dimensions.fullWidth / 2 - 60,
-        width: '100%'
-      },
-      labelStyle: {
-        ...h3,
-        marginTop: 0
-      },
-      style: {
-        backgroundColor: colors.white,
-        ...shadow2,
-        height: 50
-      }
-    }
-  }
-);
-
 const AllEventsTabScreens = createMaterialTopTabNavigator(
   {
     'All Events': AllEventsTab,
@@ -131,7 +101,7 @@ const HomeStack = createStackNavigator(
   {
     HomeScreen,
     Profile: ProfileScreen,
-    'Your Favourites': FavBeersTabScreens,
+    FavBeers: FavBeersScreen,
     Contact: ContactScreen,
     Beer: BeerModal
   },

@@ -34,7 +34,8 @@ class Stores extends Component {
         latitude: 49.26473,
         latitudeDelta: 0.004,
         longitudeDelta: 0.004
-      }
+      },
+      location: null
 
       // focusedLocation: {
       //   latitude: 49.26473,
@@ -55,18 +56,36 @@ class Stores extends Component {
       //   latitudeDelta: 0.004,
       //   longitudeDelta: 0.004
       // },
-      focusedLocation: {
-        latitude: 49.26473,
-        longitude: -123.099305,
-        // latitudeDelta: 0.00522,
-        latitudeDelta: 0.003,
-        longitudeDelta:
-          (Dimensions.get('window').width / Dimensions.get('window').height) *
-          0.003
-        // 0.00522
-      }
+      // focusedLocation: {
+      //   latitude: 49.26473,
+      //   longitude: -123.099305,
+      //   // latitudeDelta: 0.00522,
+      //   latitudeDelta: 0.003,
+      //   longitudeDelta:
+      //     (Dimensions.get('window').width / Dimensions.get('window').height) *
+      //     0.003
+      //   // 0.00522
+      // }
+
+      focusedLocation: this.findCoordinates()
     });
   }
+
+  findCoordinates = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const location = JSON.stringify(position);
+
+          this.setState({ location });
+        },
+        error => Alert.alert(error.message),
+        { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      );
+    } else {
+      error => console.log(error);
+    }
+  };
 
   zoomOut = () => {
     this.region = {
@@ -136,9 +155,11 @@ class Stores extends Component {
                   styles.zoom,
                   {
                     ...row,
-                    position: 'absolute',
-                    right: 0,
-                    bottom: 0,
+                    // position: 'absolute',
+                    // right: 0,
+                    // bottom: 0,
+                    // justifyContent: 'space-between',
+                    alignItems: 'flex-end',
                     paddingVertical: padding.xxxs,
                     paddingHorizontal: padding.xxxs
                   }
@@ -181,6 +202,27 @@ class Stores extends Component {
                     name={Platform.select({
                       android: 'md-remove-circle',
                       ios: 'ios-remove-circle'
+                    })}
+                    size={35}
+                    color={colors.brand}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[
+                    styles.coordinates,
+                    {
+                      width: 37,
+                      ...center
+                    }
+                  ]}
+                  onPress={() => {
+                    this.findCoordinates();
+                  }}
+                >
+                  <Ionicons
+                    name={Platform.select({
+                      android: 'md-navigate',
+                      ios: 'ios-navigate'
                     })}
                     size={35}
                     color={colors.brand}

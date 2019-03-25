@@ -1,7 +1,6 @@
 import React from 'react';
 import { FlatList, Image, View } from 'react-native';
 import Swipeout from 'react-native-swipeout';
-import { withNavigation } from 'react-navigation';
 import { graphql, compose } from 'react-apollo';
 import { USER_QUERY, REMOVE_FROM_USER_BEERS } from '../../apollo/queries';
 import { colors } from '../../config/styles';
@@ -77,6 +76,5 @@ export default compose(
         }
       ]
     })
-  }),
-  withNavigation
+  })
 )(FavBeers);

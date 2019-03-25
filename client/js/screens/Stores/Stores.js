@@ -29,45 +29,44 @@ class Stores extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      region: {},
-      focusedLocation: {
-        latitude: 49.26473,
+      region: {
         longitude: -123.099305,
-        latitudeDelta: 0.00522,
-        longitudeDelta:
-          (Dimensions.get('window').width / Dimensions.get('window').height) *
-          0.00522
+        latitude: 49.26473,
+        latitudeDelta: 0.004,
+        longitudeDelta: 0.004
       }
+
+      // focusedLocation: {
+      //   latitude: 49.26473,
+      //   longitude: -123.099305,
+      //   latitudeDelta: 0.003,
+      //   longitudeDelta:
+      //     (Dimensions.get('window').width / Dimensions.get('window').height) *
+      //     0.003
+      // }
     };
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     // region: {
-  //     //   longitude: -123.099305,
-  //     //   latitude: 49.26473,
-  //     //   latitudeDelta: 0.004,
-  //     //   longitudeDelta: 0.004
-  //     // }
-  //     focusedLocation: {
-  //       // latitude: 36.14319077106534,
-  //       // longitude: -86.76708101838142,
-  //       latitude: 49.26473,
-  //       longitude: -123.099305,
-  //       latitudeDelta: 0.00522,
-  //       longitudeDelta:
-  //         (Dimensions.get('window').width / Dimensions.get('window').height) *
-  //         0.00522
-  //     }
-  //   });
-  // }
-
-  // changeLocation = () => {
-  //   return {
-  //     longitude: this.longitude,
-  //     latitude: this.latitude
-  //   };
-  // };
+  componentDidMount() {
+    this.setState({
+      // region: {
+      //   longitude: -123.099305,
+      //   latitude: 49.26473,
+      //   latitudeDelta: 0.004,
+      //   longitudeDelta: 0.004
+      // },
+      focusedLocation: {
+        latitude: 49.26473,
+        longitude: -123.099305,
+        // latitudeDelta: 0.00522,
+        latitudeDelta: 0.003,
+        longitudeDelta:
+          (Dimensions.get('window').width / Dimensions.get('window').height) *
+          0.003
+        // 0.00522
+      }
+    });
+  }
 
   zoomOut = () => {
     this.region = {
@@ -76,7 +75,6 @@ class Stores extends Component {
       latitudeDelta: this.state.focusedLocation.latitudeDelta * 10,
       longitudeDelta: this.state.focusedLocation.longitudeDelta * 10
     };
-
     this.setState({
       focusedLocation: {
         latitudeDelta: this.region.latitudeDelta,
@@ -129,7 +127,7 @@ class Stores extends Component {
               loadingBackgroundColor='#ffffff'
               //
               region={this.state.focusedLocation}
-              // onPress={this.pickLocationHandler}
+              onPress={this.pickLocationHandler}
               // customMapStyle={mapStyle}
               ref={ref => (this.map = ref)}
             >
@@ -138,7 +136,6 @@ class Stores extends Component {
                   styles.zoom,
                   {
                     ...row,
-                    width: '20%',
                     position: 'absolute',
                     right: 0,
                     bottom: 0,
@@ -235,7 +232,7 @@ class Stores extends Component {
                     latitudeDelta: 0.004,
                     longitudeDelta: 0.004
                   };
-                  this.setState({ region: newRegion });
+                  this.setState({ focusedLocation: newRegion });
                 }}
               >
                 <Fragment>

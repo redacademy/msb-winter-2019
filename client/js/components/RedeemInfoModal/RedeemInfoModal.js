@@ -19,9 +19,9 @@ class RedeemInfoModal extends Component {
     } else if (reward.title === "T-Shirt") {
       redeemImg = require("../../assets/images/Redeem/80_stamp_reward_icon.png");
     } else if (reward.title === "Nachos and Two Flight In Tasting Room") {
-      redeemImg = require("../../assets/images/Redeem/140_stamp_reward_icon.png");
+      redeemImg = require("../../assets/images/Redeem/140_stamps_icon_2x.png");
     } else if (reward.title === "Tour and Beer for Two") {
-      redeemImg = require("../../assets/images/Redeem/200_stamp_reward_icon.png");
+      redeemImg = require("../../assets/images/Redeem/200_Stamps_icon2x.png");
     } else if (reward.title === "Ultimate Brew Day") {
       redeemImg = require("../../assets/images/Redeem/240_stamp_reward_icon.png");
     }

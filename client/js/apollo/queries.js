@@ -271,6 +271,15 @@ export const UPDATE_USER_EMAIL = gql`
   }
 `;
 
+export const UPDATE_USER_NAME = gql`
+  mutation($id: ID!, $name: String!) {
+    updateUser(id: $id, name: $name) {
+      id
+      name
+    }
+  }
+`;
+
 export const UPDATE_USER_PROFILE_IMAGE = gql`
   mutation($userId: ID!, $url: String!, $contentType: String!, $name: String!) {
     createFile(

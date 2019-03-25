@@ -15,6 +15,7 @@ import ToggleSwitch from '../../components/ToggleSwitch';
 import BlackButton from '../../components/Buttons/BlackButton';
 import {
   UPDATE_USER_EMAIL,
+  UPDATE_USER_NAME,
   USER_QUERY,
   UPDATE_USER_PROFILE_IMAGE
 } from '../../apollo/queries';
@@ -27,7 +28,8 @@ class Profile extends Component {
     this.state = {
       editing: false,
       avatarSource: null,
-      text: null
+      emailInput: null,
+      nameInput: null
     };
     this.selectImageOptions = {
       title: 'Select Image',
@@ -62,12 +64,22 @@ class Profile extends Component {
   };
 
   handleButtonPress = async () => {
-    const { editing, avatarSource, text } = this.state;
-    const { user, updateUserProfileImage, updateUserEmail } = this.props;
+    const { editing, avatarSource, emailInput, nameInput } = this.state;
+    const {
+      user,
+      updateUserProfileImage,
+      updateUserEmail,
+      updateUserName
+    } = this.props;
     if (editing) {
-      if (text) {
+      if (emailInput) {
         await updateUserEmail({
-          variables: { id: user.id, email: text }
+          variables: { id: user.id, email: emailInput }
+        });
+      }
+      if (nameInput) {
+        await updateUserName({
+          variables: { id: user.id, name: nameInput }
         });
       }
       if (avatarSource && avatarSource.uri) {
@@ -81,7 +93,7 @@ class Profile extends Component {
         });
       }
     }
-    this.setState({ editing: !editing, avatarSource: null, text: null });
+    this.setState({ editing: !editing, avatarSource: null, emailInput: null });
   };
 
   render() {
@@ -105,7 +117,16 @@ class Profile extends Component {
                 source={this.getAvatarImageSource()}
               />
             </TouchableOpacity>
-            <Text style={styles.name}>{user.name}</Text>
+            {editing ? (
+              <TextInput
+                style={styles.name}
+                onChangeText={nameInput => this.setState({ nameInput })}
+              >
+                {user.name}
+              </TextInput>
+            ) : (
+              <Text style={styles.name}>{user.name}</Text>
+            )}
           </View>
 
           <View style={styles.emailContainer}>
@@ -115,7 +136,7 @@ class Profile extends Component {
                 <TextInput
                   autoCapitalize="none"
                   style={styles.userEmail}
-                  onChangeText={text => this.setState({ text })}
+                  onChangeText={emailInput => this.setState({ emailInput })}
                 >
                   {user.email}
                 </TextInput>
@@ -152,6 +173,16 @@ Profile.propTypes = {
 export default compose(
   graphql(UPDATE_USER_EMAIL, {
     name: 'updateUserEmail',
+    options: () => ({
+      refetchQueries: [
+        {
+          query: USER_QUERY
+        }
+      ]
+    })
+  }),
+  graphql(UPDATE_USER_NAME, {
+    name: 'updateUserName',
     options: () => ({
       refetchQueries: [
         {

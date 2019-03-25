@@ -76,6 +76,9 @@ export const ALL_STORES_QUERY = gql`
       phone
       hours
       address
+      city
+      province
+      postalCode
     }
   }
 `;
@@ -90,6 +93,9 @@ export const STORE_QUERY = gql`
       phone
       hours
       address
+      city
+      province
+      postalCode
     }
   }
 `;
@@ -130,6 +136,11 @@ export const USER_QUERY = gql`
       favouriteEvents {
         id
         title
+        subtitle
+        location
+        time
+        date
+        description
       }
     }
   }

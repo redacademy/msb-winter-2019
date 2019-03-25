@@ -62,6 +62,8 @@ export const row = { flexDirection: 'row' };
 
 export const jusBtwn = { justifyContent: 'space-between' };
 
+export const jusStrt = { justifyContent: 'flex-start' };
+
 export const jusCenterRow = {
   ...row,
   ...jusBtwn
@@ -113,6 +115,8 @@ export const pt0 = {
 };
 
 export const pv0 = { paddingVertical: 0 };
+
+export const ph0 = { paddingHorizontal: 0 };
 
 // Typography
 export const fonts = {

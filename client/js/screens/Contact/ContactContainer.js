@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { STORE_QUERY } from '../../apollo/queries';
 import { Query } from 'react-apollo';
+
+import { STORE_QUERY } from '../../apollo/queries';
+import Loader from '../../components/Loader';
+import ErrorMessage from '../../components/ErrorMessage';
 import Contact from './Contact';
-import styles from './styles';
 
 class ContactContainer extends Component {
   constructor(props) {
@@ -19,8 +20,9 @@ class ContactContainer extends Component {
     return (
       <Query query={STORE_QUERY} variables={{ id: this.storeId }}>
         {({ loading, error, data }) => {
-          if (loading) return <Text>Loading</Text>;
-          if (error) return <Text>{error.message}</Text>;
+          if (loading) return <Loader />;
+          if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
+
           return <Contact store={data.allStores[0]} />;
         }}
       </Query>

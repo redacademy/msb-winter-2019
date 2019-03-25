@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import {
-  jusBetweenRow,
+  jusBtwnRow,
   padding,
   h3,
   margin,
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   // DrawerScreen
   drawerContainer: { flex: 1 },
   drawerItemWrapper: {
-    ...jusBetweenRow,
+    ...jusBtwnRow,
     paddingVertical: padding.md,
     paddingHorizontal: padding.xl
   },

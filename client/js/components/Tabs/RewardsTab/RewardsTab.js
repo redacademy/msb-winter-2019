@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { View, Text, ActivityIndicator, ScrollView } from 'react-native';
 import { ALL_REWARDS_QUERY, USER_QUERY } from '../../../apollo/queries';
 import { Query } from 'react-apollo';
 import { getLoggedInUser } from '../../../config/models';
@@ -11,6 +11,8 @@ class RewardsTab extends Component {
     super(props);
     this.state = { viewerId: null };
   }
+
+  static Navigation = { title: 'Rewards' };
 
   componentDidMount = async () => {
     const viewerId = await getLoggedInUser();
@@ -29,15 +31,16 @@ class RewardsTab extends Component {
             <Query
               query={USER_QUERY}
               variables={{ id: this.state.viewerId }}
-              fetchPolicy="network-only"
+              fetchPolicy='network-only'
             >
               {({ loading, error, data }) => {
                 if (loading) return <ActivityIndicator />;
                 if (error) return <Text>Error</Text>;
                 const user = data.allUsers && data.allUsers[0];
                 if (!user) return <ActivityIndicator />;
+
                 return (
-                  <View>
+                  <ScrollView contentContainerStyle={styles.rewards}>
                     {allRewards.map(reward => {
                       return (
                         <RedeemRewardButton
@@ -47,7 +50,8 @@ class RewardsTab extends Component {
                         />
                       );
                     })}
-                  </View>
+                    <View style={styles.vl} />
+                  </ScrollView>
                 );
               }}
             </Query>

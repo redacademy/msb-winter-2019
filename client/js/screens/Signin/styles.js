@@ -51,6 +51,11 @@ const styles = StyleSheet.create({
   signupLink: {
     fontStyle: 'italic',
     textDecorationLine: 'underline'
+  },
+
+  errorMessage: {
+    ...subtitle2,
+    color: colors.brand
   }
 });
 

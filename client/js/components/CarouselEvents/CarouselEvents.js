@@ -18,6 +18,7 @@ import {
 } from '../../apollo/queries';
 import { graphql, compose } from 'react-apollo';
 import styles from './styles';
+import { center } from '../../config/styles';
 
 class CarouselEvents extends Component {
   constructor(props) {
@@ -74,6 +75,8 @@ class CarouselEvents extends Component {
   render() {
     const { events, navigation } = this.props;
     const currentEvent = this.getCurrentEvent();
+
+    console.log('****', this.props);
     return (
       <View style={styles.container}>
         <Carousel
@@ -94,6 +97,7 @@ class CarouselEvents extends Component {
             } else if (item.title === 'Brewery Tour') {
               eventImg = require('../../assets/images/Events/Oskar_Blues_Festival_1200.jpg');
             }
+
             return (
               <TouchableHighlight
                 underlayColor={'transparent'}
@@ -145,10 +149,10 @@ class CarouselEvents extends Component {
           <View style={styles.border} />
         </View>
 
-        <View style={{ flexDirection: 'row' }}>
-          <TouchableOpacity>
+        <View style={styles.btnContainer}>
+          <View />
+          <TouchableOpacity style={styles.socialBtnWrapper} onPress={() => {}}>
             <Image
-              style={{ alignSelf: 'flex-end' }}
               source={require('../../assets/images/Icons/social_media_button.png')}
             />
           </TouchableOpacity>
@@ -159,7 +163,7 @@ class CarouselEvents extends Component {
             }}
           >
             <Image
-              style={{ alignSelf: 'flex-end' }}
+              style={styles.saveBtn}
               source={
                 this.isEventFavourited()
                   ? require('../../assets/images/Buttons/save_button_active.png')

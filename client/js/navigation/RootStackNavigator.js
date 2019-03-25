@@ -2,20 +2,21 @@ import {
   createStackNavigator,
   createAppContainer,
   createSwitchNavigator
-} from 'react-navigation';
+} from "react-navigation";
 
-import DrawerNavigationLayout from './DrawerNavigationLayout';
-import BeerModal from '../screens/Beer';
-import EventModal from '../screens/Event';
-import ErrorModal from '../components/ErrorModal';
-import StampsReceivedModal from '../components/StampsReceivedModal';
-import RedeemInfoModal from '../components/RedeemInfoModal';
-import RedeemBarcode from '../components/RedeemBarcode';
-import RedeemSuccess from '../components/RedeemSuccess';
-import Signin from '../screens/Signin';
-import Signup from '../screens/Signup';
-import Onboard from '../screens/Onboard';
-import AuthLoading from '../components/AuthLoading';
+import DrawerNavigationLayout from "./DrawerNavigationLayout";
+import BeerModal from "../screens/Beer";
+import EventModal from "../screens/Event";
+import ErrorModal from "../components/ErrorModal";
+import StampsReceivedModal from "../components/StampsReceivedModal";
+import RedeemInfoModal from "../components/RedeemInfoModal";
+import RedeemBarcode from "../components/RedeemBarcode";
+import RedeemSuccess from "../components/RedeemSuccess";
+import Signin from "../screens/Signin";
+import Signup from "../screens/Signup";
+import Onboard from "../screens/Onboard";
+import AuthLoading from "../components/AuthLoading";
+import AgeDisclaimer from "../components/AgeDisclaimer";
 
 const AppStack = createStackNavigator(
   {
@@ -28,24 +29,25 @@ const AppStack = createStackNavigator(
     RedeemSuccess: RedeemSuccess
   },
   {
-    headerMode: 'none',
-    mode: 'modal'
+    headerMode: "none",
+    mode: "modal"
   }
 );
 
 const AuthStack = createSwitchNavigator({
+  AgeDisclaimer,
   Signin: createStackNavigator(
     { Signin, Error: ErrorModal },
     {
-      headerMode: 'none',
-      mode: 'modal'
+      headerMode: "none",
+      mode: "modal"
     }
   ),
   Signup: createStackNavigator(
     { Signup, Error: ErrorModal },
     {
-      headerMode: 'none',
-      mode: 'modal'
+      headerMode: "none",
+      mode: "modal"
     }
   ),
   Onboard
@@ -59,7 +61,7 @@ const RootStackNavigator = createAppContainer(
       Auth: AuthStack
     },
     {
-      initialRouteName: 'AuthLoading'
+      initialRouteName: "AuthLoading"
     }
   )
 );

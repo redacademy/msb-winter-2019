@@ -61,6 +61,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderBottomColor: colors.neutralLight,
     borderBottomWidth: 2
+  },
+  button: {
+    width: 120
+  },
+  buttonSave: {
+    color: colors.white,
+    backgroundColor: colors.brand
+  },
+  buttonSaveContainer: {
+    alignItems: 'center',
+    marginBottom: 20
   }
 });
 

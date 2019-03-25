@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  TextInput
+} from 'react-native';
+import ImagePicker from 'react-native-image-picker';
 import PropTypes from 'prop-types';
 import Subheader from '../../components/Subheader';
 import ToggleSwitch from '../../components/ToggleSwitch';
-import ImagePicker from 'react-native-image-picker';
+import BlackButton from '../../components/Buttons/BlackButton';
+
 import styles from './styles';
 
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      edited: false,
-      avatarSource: null
+      editing: true,
+      avatarSource: null,
+      text: null
     };
     this.selectImageOptions = {
       title: 'Select Image',
@@ -29,7 +39,7 @@ class Profile extends Component {
     const source = { uri: response.uri };
     this.setState({
       avatarSource: source,
-      edited: true
+      editing: true
     });
   };
 
@@ -64,7 +74,15 @@ class Profile extends Component {
           <View style={styles.emailContainer}>
             <Text style={styles.heading}>Email: </Text>
             <View style={styles.userEmailContainer}>
-              <Text style={styles.userEmail}>{user.email}</Text>
+              {this.state.editing ? (
+                <TextInput
+                  style={styles.userEmail}
+                  placeholder={user.email}
+                  onChangeText={text => this.setState({ text })}
+                />
+              ) : (
+                <Text style={styles.userEmail}>{user.email}</Text>
+              )}
             </View>
           </View>
 
@@ -73,6 +91,13 @@ class Profile extends Component {
           </View>
           <View>
             <ToggleSwitch />
+          </View>
+          <View style={styles.buttonSaveContainer}>
+            <BlackButton
+              style={this.state.editing ? styles.buttonSave : styles.button}
+            >
+              {this.state.editing ? 'Save Changes' : 'Edit'}
+            </BlackButton>
           </View>
         </View>
       </ScrollView>

@@ -9,6 +9,7 @@ import BeerModal from '../screens/Beer';
 import EventModal from '../screens/Event';
 import StampsReceivedModal from '../components/StampsReceivedModal';
 import RedeemInfoModal from '../components/RedeemInfoModal';
+import UpdateProfileModal from '../components/UpdateProfileModal';
 import RedeemBarcode from '../components/RedeemBarcode';
 import RedeemSuccess from '../components/RedeemSuccess';
 import Signin from '../screens/Signin';
@@ -24,7 +25,8 @@ const AppStack = createStackNavigator(
     StampsReceived: StampsReceivedModal,
     RedeemInfo: RedeemInfoModal,
     RedeemBarcode: RedeemBarcode,
-    RedeemSuccess: RedeemSuccess
+    RedeemSuccess: RedeemSuccess,
+    UpdateProfile: UpdateProfileModal
   },
   {
     headerMode: 'none',

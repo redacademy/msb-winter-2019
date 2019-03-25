@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import { graphql, compose } from 'react-apollo';
+import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import Subheader from '../../components/Subheader';
 import ToggleSwitch from '../../components/ToggleSwitch';
@@ -69,7 +70,8 @@ class Profile extends Component {
       user,
       updateUserProfileImage,
       updateUserEmail,
-      updateUserName
+      updateUserName,
+      navigation
     } = this.props;
     if (editing) {
       if (emailInput) {
@@ -94,6 +96,9 @@ class Profile extends Component {
       }
     }
     this.setState({ editing: !editing, avatarSource: null, emailInput: null });
+    if (editing) {
+      navigation.navigate('UpdateProfile');
+    }
   };
 
   render() {
@@ -200,5 +205,6 @@ export default compose(
         }
       ]
     })
-  })
+  }),
+  withNavigation
 )(Profile);

@@ -122,6 +122,10 @@ export const USER_QUERY = gql`
       dateOfBirth
       points
       name
+      profilePicture {
+        id
+        url
+      }
       favouriteBeers {
         id
         title

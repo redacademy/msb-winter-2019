@@ -38,6 +38,18 @@ class Profile extends Component {
     };
   }
 
+  getAvatarImageSource = () => {
+    let uri = 'https://via.placeholder.com/200x200?text=No+image+available';
+    const { user } = this.props;
+    const { editing, avatarSource } = this.state;
+    if (editing && avatarSource) {
+      uri = avatarSource.uri;
+    } else if (user.profilePicture && user.profilePicture.url) {
+      uri = user.profilePicture.url;
+    }
+    return { uri };
+  };
+
   handleImagePickerResponse = response => {
     if (response.didCancel || response.error) {
       return;
@@ -51,13 +63,22 @@ class Profile extends Component {
 
   handleButtonPress = async () => {
     const { editing, avatarSource, text } = this.state;
-    const { updateUserProfileImage, updateUserEmail } = this.props;
+    const { user, updateUserProfileImage, updateUserEmail } = this.props;
     if (editing) {
       if (text) {
-        // save new email
+        await updateUserEmail({
+          variables: { id: user.id, email: text }
+        });
       }
       if (avatarSource && avatarSource.uri) {
-        // save new avatar
+        await updateUserProfileImage({
+          variables: {
+            userId: user.id,
+            url: avatarSource.uri,
+            contentType: 'image/png',
+            name: 'profile_image'
+          }
+        });
       }
     }
     this.setState({ editing: !editing, avatarSource: null, text: null });
@@ -82,10 +103,11 @@ class Profile extends Component {
               <Image
                 style={styles.profilePic}
                 source={
-                  this.state.avatarSource || {
-                    uri:
-                      'https://via.placeholder.com/200x200?text=No+image+available'
-                  }
+                  this.getAvatarImageSource()
+                  // this.state.avatarSource || {
+                  //   uri:
+                  //     'https://via.placeholder.com/200x200?text=No+image+available'
+                  // }
                 }
               />
             </TouchableOpacity>
@@ -97,10 +119,12 @@ class Profile extends Component {
             <View style={styles.userEmailContainer}>
               {editing ? (
                 <TextInput
+                  autoCapitalize="none"
                   style={styles.userEmail}
-                  placeholder={user.email}
                   onChangeText={text => this.setState({ text })}
-                />
+                >
+                  {user.email}
+                </TextInput>
               ) : (
                 <Text style={styles.userEmail}>{user.email}</Text>
               )}
@@ -116,7 +140,7 @@ class Profile extends Component {
           <View style={styles.buttonSaveContainer}>
             <BlackButton
               style={editing ? styles.buttonSave : styles.button}
-              onPress={this.handleButtonPress}
+              onPress={() => this.handleButtonPress()}
             >
               {editing ? 'Save Changes' : 'Edit'}
             </BlackButton>

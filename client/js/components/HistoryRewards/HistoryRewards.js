@@ -75,7 +75,9 @@ const HistoryRewards = ({ allRewards, points, navigation }) => {
                 {index === 0 ? 'Previous Reward' : 'Next Reward'}
               </CustomText>
               <CustomText style={styles.stamps}>
-                {reward.points === 0 ? '0 Stamp' : `${reward.points} Stamps`}
+                {reward.points === null
+                  ? 'Keep collecting!'
+                  : `${reward.points} Stamps`}
               </CustomText>
               <Image source={reward.img} style={styles.rewardImg} />
               <CustomText style={styles.rewardTitle}>{reward.title}</CustomText>

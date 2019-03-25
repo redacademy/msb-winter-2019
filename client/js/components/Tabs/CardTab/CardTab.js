@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-  Text,
-  ActivityIndicator
-} from 'react-native';
+import { View, Image, ImageBackground, TouchableOpacity } from 'react-native';
 import Barcode from 'react-native-barcode-builder';
 import { graphql, compose, Query } from 'react-apollo';
 import { withNavigation } from 'react-navigation';
@@ -18,6 +11,8 @@ import {
   USER_QUERY
 } from '../../../apollo/queries';
 import { getLoggedInUser } from '../../../config/models';
+import Loader from '../../Loader';
+import CustomText from '../../CustomText';
 import styles from './styles';
 
 class CardTab extends Component {
@@ -68,13 +63,13 @@ class CardTab extends Component {
       <Query
         query={USER_QUERY}
         variables={{ id: this.state.viewerId }}
-        fetchPolicy="network-only"
+        fetchPolicy='network-only'
       >
         {({ loading, error, data }) => {
-          if (loading) return <ActivityIndicator />;
-          if (error) return <Text>Error</Text>;
+          if (loading) return <Loader />;
+          if (error) return <CustomText>Error</CustomText>;
           const user = data.allUsers && data.allUsers[0];
-          if (!user) return <ActivityIndicator />;
+          if (!user) return <Loader />;
           return (
             <ImageBackground
               source={require('../../../assets/images/Card/logo_bg.png')}
@@ -90,7 +85,7 @@ class CardTab extends Component {
                     source={require('../../../assets/images/Card/your_card.png')}
                     style={styles.card}
                   />
-                  <Barcode value="Test Card" format="CODE128" height={40} />
+                  <Barcode value='Test Card' format='CODE128' height={40} />
                 </TouchableOpacity>
               </View>
             </ImageBackground>

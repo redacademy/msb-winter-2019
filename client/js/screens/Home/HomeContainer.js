@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
-import { USER_QUERY, ALL_BEERS_QUERY } from '../../apollo/queries';
+import {
+  USER_QUERY,
+  ALL_BEERS_QUERY,
+  ALL_REWARDS_QUERY
+} from '../../apollo/queries';
 import { getLoggedInUser } from '../../config/models';
 import Home from './Home';
 import Loader from '../../components/Loader';
@@ -25,17 +29,39 @@ class HomeContainer extends Component {
     return (
       <Query query={USER_QUERY} variables={{ id: this.state.viewerId }}>
         {({ loading, error, data }) => (
-          <Query query={ALL_BEERS_QUERY}>
-            {beersQuery => {
-              const beersLoading = beersQuery.loading;
-              const beersError = beersQuery.error;
-              const beersData = beersQuery.data;
-              if (loading || beersLoading) return <Loader />;
-              if (error || beersError) return <CustomText>Error</CustomText>;
-              if (!data.allUsers || !data.allUsers[0] || !beersData.allBeers)
-                return <Loader />;
+          <Query query={ALL_REWARDS_QUERY}>
+            {rewardsQuery => {
+              const rewardsLoading = rewardsQuery.loading;
+              const rewardsError = rewardsQuery.error;
+              const rewardsData = rewardsQuery.data;
+
               return (
-                <Home user={data.allUsers[0]} beers={beersData.allBeers} />
+                <Query query={ALL_BEERS_QUERY}>
+                  {beersQuery => {
+                    const beersLoading = beersQuery.loading;
+                    const beersError = beersQuery.error;
+                    const beersData = beersQuery.data;
+
+                    if (loading || beersLoading || rewardsLoading)
+                      return <Loader />;
+                    if (error || beersError || rewardsError)
+                      return <CustomText>Error</CustomText>;
+                    if (
+                      !data.allUsers ||
+                      !data.allUsers[0] ||
+                      !beersData.allBeers ||
+                      !rewardsData.allRewards
+                    )
+                      return <Loader />;
+                    return (
+                      <Home
+                        user={data.allUsers[0]}
+                        beers={beersData.allBeers}
+                        rewards={rewardsData.allRewards}
+                      />
+                    );
+                  }}
+                </Query>
               );
             }}
           </Query>

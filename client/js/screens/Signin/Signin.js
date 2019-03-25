@@ -17,14 +17,14 @@ import CustomText from '../../components/CustomText';
 import WhiteButton from '../../components/Buttons/WhiteButton';
 import { setUserToken } from '../../config/models';
 import { colors } from '../../config/styles';
+import validate from '../../lib/helpers/validateSignIn';
 import styles from './styles';
 
 class Signin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
-      error: false
+      loading: false
     };
   }
 
@@ -32,11 +32,9 @@ class Signin extends Component {
     if (this.state.loading) {
       return <Loader />;
     }
-    if (this.state.error) {
-      return <CustomText>Error</CustomText>;
-    }
+
     return (
-      <KeyboardAvoidingView style={styles.container} behavior='padding' enabled>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <View style={styles.imgBgWrapper}>
           <Image
             source={require('../../assets/images/Logos/msb_logo.png')}
@@ -50,40 +48,57 @@ class Signin extends Component {
           <View>
             <Form
               onSubmit={this.onSubmit}
+              validate={validate}
               style={styles.loginForm}
               render={({ handleSubmit }) => (
                 <Fragment>
-                  <Field name='email'>
+                  <Field name="email">
                     {({ input, meta }) => (
-                      <TextInput
-                        editable={true}
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        {...input}
-                        style={styles.textInput}
-                        placeholder='Email'
-                        placeholderTextColor={colors.neutralDark}
-                        returnKeyType='next'
-                        onSubmitEditing={() => this.passwordInput.focus()}
-                        keyboardType='email-address'
-                      />
+                      <View>
+                        <TextInput
+                          editable={true}
+                          autoCapitalize="none"
+                          autoCorrect={false}
+                          {...input}
+                          style={styles.textInput}
+                          placeholder="Email"
+                          placeholderTextColor={colors.neutralDark}
+                          returnKeyType="next"
+                          onSubmitEditing={() => this.passwordInput.focus()}
+                          keyboardType="email-address"
+                        />
+                        {meta.error && meta.touched && (
+                          <CustomText style={styles.errorMessage}>
+                            {meta.error}
+                          </CustomText>
+                        )}
+                      </View>
                     )}
                   </Field>
-                  <Field name='password'>
+
+                  <Field name="password">
                     {({ input, meta }) => (
-                      <TextInput
-                        editable={true}
-                        autoCapitalize='none'
-                        secureTextEntry={true}
-                        {...input}
-                        style={styles.textInput}
-                        placeholder='Password'
-                        placeholderTextColor={colors.neutralDark}
-                        returnKeyType='go'
-                        ref={input => (this.passwordInput = input)}
-                      />
+                      <View>
+                        <TextInput
+                          editable={true}
+                          autoCapitalize="none"
+                          secureTextEntry={true}
+                          {...input}
+                          style={styles.textInput}
+                          placeholder="Password"
+                          placeholderTextColor={colors.neutralDark}
+                          returnKeyType="go"
+                          ref={input => (this.passwordInput = input)}
+                        />
+                        {meta.error && meta.touched && (
+                          <CustomText style={styles.errorMessage}>
+                            {meta.error}
+                          </CustomText>
+                        )}
+                      </View>
                     )}
                   </Field>
+
                   <View style={styles.signinWrapper}>
                     <WhiteButton
                       onPress={handleSubmit}
@@ -124,21 +139,25 @@ class Signin extends Component {
   onSubmit = async values => {
     try {
       const { email, password } = values;
-      this.setState({ loading: true, error: false });
+      this.setState({ loading: true });
       const result = await this.props.signinMutation({
         variables: { email, password }
       });
       const userInfo = result.data.authenticateUser;
       await setUserToken(userInfo.id, userInfo.token);
-      this.setState({ loading: false, error: false });
+      this.setState({ loading: false });
       this.props.navigation.navigate('App');
     } catch (e) {
-      this.setState({ error: true, loading: false });
+      this.setState({ loading: false });
+      this.props.navigation.navigate('Error');
     }
   };
 }
 
-Signin.propTypes = {};
+Signin.propTypes = {
+  signinMutation: PropTypes.func.isRequired,
+  navigation: PropTypes.object.isRequired
+};
 
 export default compose(
   graphql(SIGNIN_MUTATION, { name: 'signinMutation' }),

@@ -5,6 +5,9 @@ export const dimensions = {
   fullWidth: Dimensions.get('window').width
 };
 
+export const w100 = { width: '100%' };
+export const h100 = { height: '100%' };
+
 export const colors = {
   neutralLight: '#dddddd', // light grey
   neutralDark: '#636363', // med grey
@@ -57,14 +60,18 @@ export const center = { justifyContent: 'center', alignItems: 'center' };
 
 export const row = { flexDirection: 'row' };
 
+export const jusBtwn = { justifyContent: 'space-between' };
+
+export const jusStrt = { justifyContent: 'flex-start' };
+
 export const jusCenterRow = {
   ...row,
-  justifyContent: 'center'
+  ...jusBtwn
 };
 
-export const jusBetweenRow = {
+export const jusBtwnRow = {
   ...row,
-  justifyContent: 'space-between'
+  ...jusBtwn
 };
 
 export const iteCenterRow = {
@@ -109,6 +116,8 @@ export const pt0 = {
 
 export const pv0 = { paddingVertical: 0 };
 
+export const ph0 = { paddingHorizontal: 0 };
+
 // Typography
 export const fonts = {
   xxxs: 9,
@@ -126,32 +135,36 @@ export const fonts = {
   secondary: 'Franchise Free'
 };
 
+export const capitalize = { textTransform: 'capitalize' };
+
+export const uppercase = { textTransform: 'uppercase' };
+
 export const h1 = {
   paddingVertical: padding.sm,
   fontFamily: fonts.secondary,
   fontSize: fonts.xxl,
-  textTransform: 'uppercase'
+  ...uppercase
 };
 
 export const h2 = {
   paddingVertical: padding.xs,
   fontFamily: fonts.secondary,
   fontSize: fonts.xl,
-  textTransform: 'uppercase'
+  ...uppercase
 };
 
 export const h3 = {
   paddingVertical: padding.xxxs,
   fontFamily: fonts.secondary,
   fontSize: fonts.lg,
-  textTransform: 'uppercase'
+  ...uppercase
 };
 
 export const h4 = {
   paddingVertical: padding.xxxs,
   fontFamily: fonts.secondary,
   fontSize: fonts.md,
-  textTransform: 'uppercase'
+  ...uppercase
 };
 
 export const subtitle1 = {
@@ -171,7 +184,7 @@ export const subtitle3 = {
   fontSize: fonts.xxxs,
   paddingVertical: padding.xxxs,
   fontFamily: fonts.primarySemi,
-  textTransform: 'capitalize'
+  ...capitalize
 };
 
 export const body1 = {
@@ -189,7 +202,7 @@ export const button = {
   color: colors.white,
   textAlign: 'center',
   fontSize: fonts.md,
-  fontFamily: 'OpenSans-Bold',
+  fontFamily: fonts.primaryBold,
   paddingVertical: padding.xs,
   paddingHorizontal: padding.lg
 };
@@ -210,12 +223,12 @@ export const hr = {
   height: 2,
   backgroundColor: colors.neutralLight,
   marginVertical: margin.sm * 1.5,
-  width: '100%'
+  ...w100
 };
 
 export const vl = {
   marginHorizontal: margin.sm * 1.7,
-  height: '100%',
+  ...h100,
   borderLeftColor: colors.neutralLight,
   borderLeftWidth: 2
 };

@@ -10,8 +10,13 @@ class HomePoints extends Component {
 
     let rewardsArr = [];
     for (let i = 0; i < rewards.length; i++) {
-      rewardsArr.push(rewards.find(reward => reward.points >= user.points));
+      rewardsArr.push(
+        rewards.find(reward => {
+          return reward.points >= user.points;
+        })
+      );
     }
+    console.log(rewardsArr);
 
     return (
       <View style={styles.singleGrid}>
@@ -28,13 +33,18 @@ class HomePoints extends Component {
         </TouchableHighlight>
 
         <Text style={styles.points}>
-          {user.points <= rewardsArr[0].points
+          {user.points <= 240
             ? `${user.points}/${rewardsArr[0].points}`
-            : null}
+            : `${user.points}/240`}
         </Text>
 
         <Text style={styles.toNextReward}>
-          {rewardsArr[0].points - user.points} to Next Reward
+          {user.points <= 240 ? (
+            rewardsArr[0].points - user.points
+          ) : (
+            <Text style={styles.toNextRewardPoints}>0</Text>
+          )}{' '}
+          to Next Reward
         </Text>
       </View>
     );

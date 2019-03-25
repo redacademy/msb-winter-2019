@@ -128,7 +128,9 @@ class CarouselEvents extends Component {
           <View style={styles.dataWrapper}>
             <Text style={styles.eventData}>
               <Text style={styles.boldData}>Date: </Text>
-              {moment(currentEvent.date).format('MMM Do YYYY')}
+              {moment(events[this.state.currentIndex].date).format(
+                'dddd, MMMM D, YYYY'
+              )}
             </Text>
             <Text style={styles.eventData}>
               <Text style={styles.boldData}>Time: </Text>

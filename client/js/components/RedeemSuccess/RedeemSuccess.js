@@ -3,6 +3,7 @@ import { View, Text, Image } from "react-native";
 import { withNavigation } from "react-navigation";
 import styles from "./styles";
 import CustomIcon from "../CustomIcon";
+import PropTypes from "prop-types";
 
 class RedeemSuccess extends Component {
   render() {
@@ -47,5 +48,9 @@ class RedeemSuccess extends Component {
     );
   }
 }
+
+RedeemSuccess.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default withNavigation(RedeemSuccess);

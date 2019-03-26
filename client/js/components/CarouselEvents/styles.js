@@ -63,19 +63,13 @@ const styles = StyleSheet.create({
   /** -------- Buttons -------- **/
   btnContainer: {
     ...center,
-    ...row,
-    width: Dimensions.get('window').width,
-    position: 'relative'
+    ...row
   },
-  socialBtnWrapper: {
-    // width: Dimensions.get('window').width * 0.5,
-    maxWidth: Dimensions.get('window').width
+  socialIconsWrapper: {
+    ...center
   },
-  socialBtn: {
-    position: 'absolute',
-    left: Dimensions.get('window').width * 0.5
-  },
-  saveBtn: { alignSelf: 'flex-end' }
+  socialbtn: { marginHorizontal: 2 },
+  outerBtnContainer: { width: 80 }
 });
 
 export default styles;

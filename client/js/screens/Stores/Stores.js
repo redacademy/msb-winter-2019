@@ -14,7 +14,15 @@ import PropTypes from 'prop-types';
 import Subheader from '../../components/Subheader';
 import CustomText from '../../components/CustomText';
 import { renderSeparator } from '../../lib/helpers/separator';
-import { colors, center, row, padding, h3 } from '../../config/styles';
+import {
+  colors,
+  center,
+  row,
+  padding,
+  h3,
+  jusBtwnRow,
+  w100
+} from '../../config/styles';
 import styles from './styles';
 
 class Stores extends Component {
@@ -175,7 +183,6 @@ class Stores extends Component {
               zoomControlEnabled={true}
               loadingIndicatorColor='#fea405'
               loadingBackgroundColor='#ffffff'
-              //
               region={this.state.focusedLocation}
               onPress={this.pickLocationHandler}
               // customMapStyle={mapStyle}
@@ -185,25 +192,20 @@ class Stores extends Component {
                 style={[
                   styles.zoom,
                   {
-                    // ...row,
-                    // position: 'absolute',
-                    // right: 0,
-                    // bottom: 0,
-                    // justifyContent: 'space-between',
-                    alignItems: 'flex-end',
-                    paddingVertical: padding.xxxs,
-                    paddingHorizontal: padding.xxxs
+                    // ...row
+
+                    position: 'absolute',
+                    right: 0,
+                    bottom: 0
+                    // justifyContent: 'space-between'
+                    // alignItems: 'flex-end'
+                    // paddingVertical: padding.xxxs,
+                    // paddingHorizontal: padding.xxxs
                   }
                 ]}
               >
                 <TouchableOpacity
-                  style={[
-                    styles.zoomin,
-                    {
-                      width: 37,
-                      ...center
-                    }
-                  ]}
+                  style={styles.mapIcon}
                   onPress={() => {
                     this.zoomIn();
                   }}
@@ -218,13 +220,7 @@ class Stores extends Component {
                   />
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={[
-                    styles.zoomout,
-                    {
-                      width: 37,
-                      ...center
-                    }
-                  ]}
+                  style={styles.mapIcon}
                   onPress={() => {
                     this.zoomOut();
                   }}
@@ -239,13 +235,7 @@ class Stores extends Component {
                   />
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={[
-                    styles.coordinates,
-                    {
-                      width: 37,
-                      ...center
-                    }
-                  ]}
+                  style={styles.mapIcon}
                   onPress={() => {
                     this.findCoordinates();
                   }}
@@ -256,7 +246,7 @@ class Stores extends Component {
                       ios: 'ios-navigate'
                     })}
                     size={35}
-                    color={colors.brand}
+                    color={colors.black}
                   />
                 </TouchableOpacity>
               </View>
@@ -337,11 +327,11 @@ class Stores extends Component {
                       <CustomText style={styles.bold}>{item.hours}</CustomText>
                     </Fragment>
                   </TouchableHighlight>
-                  <View style={[styles.distanceWrapper, { ...row, ...center }]}>
-                    <CustomText style={[styles.distance, { ...h3 }]}>
+                  <View style={styles.distanceWrapper}>
+                    <CustomText style={styles.distance}>
                       {item.distance}
                     </CustomText>
-                    <CustomText style={styles.body}> km</CustomText>
+                    <CustomText style={styles.body}> kms</CustomText>
                   </View>
                 </View>
               );

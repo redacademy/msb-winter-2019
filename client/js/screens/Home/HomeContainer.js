@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Query } from 'react-apollo';
+import React, { Component } from "react";
+import { Query } from "react-apollo";
 import {
   USER_QUERY,
   ALL_BEERS_QUERY,
   ALL_REWARDS_QUERY
-} from '../../apollo/queries';
-import { getLoggedInUser } from '../../config/models';
-import Home from './Home';
-import Loader from '../../components/Loader';
-import CustomText from '../../components/CustomText';
+} from "../../apollo/queries";
+import { getLoggedInUser } from "../../config/models";
+import Home from "./Home";
+import Loader from "../../components/Loader";
+import ErrorMessage from "../../components/ErrorMessage";
 
 class HomeContainer extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class HomeContainer extends Component {
   };
 
   static navigationOptions = {
-    title: 'Home'
+    title: "Home"
   };
 
   render() {
@@ -45,7 +45,7 @@ class HomeContainer extends Component {
                     if (loading || beersLoading || rewardsLoading)
                       return <Loader />;
                     if (error || beersError || rewardsError)
-                      return <CustomText>Error</CustomText>;
+                      return <ErrorMessage>Error</ErrorMessage>;
                     if (
                       !data.allUsers ||
                       !data.allUsers[0] ||

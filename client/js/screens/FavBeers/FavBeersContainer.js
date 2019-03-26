@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Text } from 'react-native';
-import { USER_QUERY } from '../../apollo/queries';
-import { Query } from 'react-apollo';
-import { getLoggedInUser } from '../../config/models';
-import FavBeers from './FavBeers';
-import styles from './styles';
-import Loader from '../../components/Loader';
+import React, { Component } from "react";
+import { Text } from "react-native";
+import { USER_QUERY } from "../../apollo/queries";
+import { Query } from "react-apollo";
+import { getLoggedInUser } from "../../config/models";
+import FavBeers from "./FavBeers";
+import Loader from "../../components/Loader";
+import ErrorMessage from "../../components/ErrorMessage";
 
 class FavBeersContainer extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class FavBeersContainer extends Component {
   };
 
   static navigationOptions = {
-    title: 'FavBeers'
+    title: "FavBeers"
   };
 
   render() {
@@ -27,7 +27,7 @@ class FavBeersContainer extends Component {
       <Query query={USER_QUERY} variables={{ id: this.state.viewerId }}>
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
-          if (error) return <Text>Error</Text>;
+          if (error) return <ErrorMessage>Error</ErrorMessage>;
           if (
             !data.allUsers ||
             !data.allUsers[0] ||

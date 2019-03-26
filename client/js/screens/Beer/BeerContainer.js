@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import { Text, View, ActivityIndicator } from 'react-native';
-import { BEER_QUERY, USER_QUERY } from '../../apollo/queries';
-import { Query } from 'react-apollo';
-import Beer from './Beer';
-import Loader from '../../components/Loader';
-import { getLoggedInUser } from '../../config/models';
+import React, { Component } from "react";
+import { View } from "react-native";
+import { BEER_QUERY, USER_QUERY } from "../../apollo/queries";
+import { Query } from "react-apollo";
+import Beer from "./Beer";
+import Loader from "../../components/Loader";
+import ErrorMessage from "../../components/ErrorMessage";
+import { getLoggedInUser } from "../../config/models";
 
 class BeerContainer extends Component {
   static navigationOptions = {
-    title: 'Beer',
+    title: "Beer",
     header: null
   };
 
@@ -25,8 +26,8 @@ class BeerContainer extends Component {
   render() {
     const { navigation } = this.props;
     const id = navigation
-      ? navigation.getParam('beerId')
-      : 'cjt7gjosi031i01936wp2rwvm';
+      ? navigation.getParam("beerId")
+      : "cjt7gjosi031i01936wp2rwvm";
 
     return (
       <Query
@@ -36,16 +37,16 @@ class BeerContainer extends Component {
       >
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
-          if (error) return <Text>{error.message}</Text>;
+          if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
           const user = data.allUsers && data.allUsers[0];
-          if (!user) return <ActivityIndicator />;
+          if (!user) return <Loader />;
           return (
             <Query query={BEER_QUERY} variables={{ id }}>
               {({ loading, error, data }) => {
                 if (loading) return <Loader />;
-                if (error) return <Text>{error.message}</Text>;
+                if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
                 return (
-                  <View style={{ height: '100%' }}>
+                  <View style={{ height: "100%" }}>
                     <Beer
                       beer={data.allBeers[0]}
                       user={user}

@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { View, Image, ImageBackground, TouchableOpacity } from 'react-native';
-import Barcode from 'react-native-barcode-builder';
-import { graphql, compose, Query } from 'react-apollo';
-import { withNavigation } from 'react-navigation';
+import React, { Component } from "react";
+import { View, Image, ImageBackground, TouchableOpacity } from "react-native";
+import Barcode from "react-native-barcode-builder";
+import { graphql, compose, Query } from "react-apollo";
+import { withNavigation } from "react-navigation";
 
 import {
   SET_USER_POINTS,
   ADD_TO_USER_POINT_HISTORY,
   ALL_BEERS_QUERY,
   USER_QUERY
-} from '../../../apollo/queries';
-import { getLoggedInUser } from '../../../config/models';
-import Loader from '../../Loader';
-import CustomText from '../../CustomText';
-import styles from './styles';
+} from "../../../apollo/queries";
+import { getLoggedInUser } from "../../../config/models";
+import Loader from "../../Loader";
+import ErrorMessage from "../../ErrorMessage";
+import styles from "./styles";
 
 class CardTab extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class CardTab extends Component {
     this.state = { viewerId: null };
   }
   static navigationOptions = {
-    title: 'Card'
+    title: "Card"
   };
 
   componentDidMount = async () => {
@@ -55,7 +55,7 @@ class CardTab extends Component {
     await setUserPoints({
       variables: { id: user.id, points: user.points + pointsToAdd }
     });
-    navigation.navigate('StampsReceived', { stamps: pointsToAdd });
+    navigation.navigate("StampsReceived", { stamps: pointsToAdd });
   };
 
   render() {
@@ -63,16 +63,16 @@ class CardTab extends Component {
       <Query
         query={USER_QUERY}
         variables={{ id: this.state.viewerId }}
-        fetchPolicy='network-only'
+        fetchPolicy="network-only"
       >
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
-          if (error) return <CustomText>Error</CustomText>;
+          if (error) return <ErrorMessage>Error</ErrorMessage>;
           const user = data.allUsers && data.allUsers[0];
           if (!user) return <Loader />;
           return (
             <ImageBackground
-              source={require('../../../assets/images/Card/logo_bg.png')}
+              source={require("../../../assets/images/Card/logo_bg.png")}
               style={styles.imgBg}
             >
               <View style={styles.container}>
@@ -82,10 +82,10 @@ class CardTab extends Component {
                   onPress={() => this.addPoints(user)}
                 >
                   <Image
-                    source={require('../../../assets/images/Card/your_card.png')}
+                    source={require("../../../assets/images/Card/your_card.png")}
                     style={styles.card}
                   />
-                  <Barcode value='Test Card' format='CODE128' height={40} />
+                  <Barcode value="Test Card" format="CODE128" height={40} />
                 </TouchableOpacity>
               </View>
             </ImageBackground>
@@ -100,7 +100,7 @@ CardTab.propTypes = {};
 
 export default compose(
   graphql(SET_USER_POINTS, {
-    name: 'setUserPoints',
+    name: "setUserPoints",
     options: () => ({
       refetchQueries: [
         {
@@ -109,7 +109,7 @@ export default compose(
       ]
     })
   }),
-  graphql(ADD_TO_USER_POINT_HISTORY, { name: 'addToUserPointHistory' }),
-  graphql(ALL_BEERS_QUERY, { name: 'allBeersQuery' }),
+  graphql(ADD_TO_USER_POINT_HISTORY, { name: "addToUserPointHistory" }),
+  graphql(ALL_BEERS_QUERY, { name: "allBeersQuery" }),
   withNavigation
 )(CardTab);

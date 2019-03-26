@@ -1,19 +1,19 @@
-import React, { Component, Fragment } from 'react';
-import { Image, View, Text, Platform } from 'react-native';
-import PropTypes from 'prop-types';
-import moment from 'moment';
-import { graphql, compose } from 'react-apollo';
-import { withNavigation } from 'react-navigation';
-import styles from './styles';
-import CustomIcon from '../../components/CustomIcon';
-import BlackButton from '../../components/Buttons/BlackButton';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { colors } from '../../config/styles';
+import React, { Component, Fragment } from "react";
+import { Image, View, Text, Platform } from "react-native";
+import PropTypes from "prop-types";
+import moment from "moment";
+import { graphql, compose } from "react-apollo";
+import { withNavigation } from "react-navigation";
+import styles from "./styles";
+import CustomIcon from "../../components/CustomIcon";
+import BlackButton from "../../components/Buttons/BlackButton";
+import Icon from "react-native-vector-icons/Ionicons";
+import { colors } from "../../config/styles";
 import {
   ADD_TO_USER_BEERS,
   USER_QUERY,
   REMOVE_FROM_USER_BEERS
-} from '../../apollo/queries';
+} from "../../apollo/queries";
 
 class Beer extends Component {
   isFavourited = (user, beer) => {
@@ -36,22 +36,22 @@ class Beer extends Component {
   render() {
     const { beer, user, navigation } = this.props;
     let beerBanner;
-    if (beer.title === 'FRUIT BOMB') {
-      beerBanner = require('../../assets/images/Beers/SpecificBeer/fruit_bomb.png');
-    } else if (beer.title === 'NAKED FOX') {
-      beerBanner = require('../../assets/images/Beers/SpecificBeer/naked_fox.png');
-    } else if (beer.title === 'GIMME SOME MO’') {
-      beerBanner = require('../../assets/images/Beers/SpecificBeer/gimme_some_mo.png');
-    } else if (beer.title === 'MAIN STREET') {
-      beerBanner = require('../../assets/images/Beers/SpecificBeer/main_street_pilsner.png');
-    } else if (beer.title === 'WESTMINSTER') {
-      beerBanner = require('../../assets/images/Beers/SpecificBeer/westminster.png');
-    } else if (beer.title === 'AUSTRALIAN') {
-      beerBanner = require('../../assets/images/Beers/SpecificBeer/australian_saison.png');
-    } else if (beer.title === 'SLAUGHTERHOUSE') {
-      beerBanner = require('../../assets/images/Beers/SpecificBeer/slaughterhouse.png');
-    } else if (beer.title === 'BARKING MAD') {
-      beerBanner = require('../../assets/images/Beers/SpecificBeer/barking_mad.png');
+    if (beer.title === "FRUIT BOMB") {
+      beerBanner = require("../../assets/images/Beers/SpecificBeer/fruit_bomb.png");
+    } else if (beer.title === "NAKED FOX") {
+      beerBanner = require("../../assets/images/Beers/SpecificBeer/naked_fox.png");
+    } else if (beer.title === "GIMME SOME MO’") {
+      beerBanner = require("../../assets/images/Beers/SpecificBeer/gimme_some_mo.png");
+    } else if (beer.title === "MAIN STREET") {
+      beerBanner = require("../../assets/images/Beers/SpecificBeer/main_street_pilsner.png");
+    } else if (beer.title === "WESTMINSTER") {
+      beerBanner = require("../../assets/images/Beers/SpecificBeer/westminster.png");
+    } else if (beer.title === "AUSTRALIAN") {
+      beerBanner = require("../../assets/images/Beers/SpecificBeer/australian_saison.png");
+    } else if (beer.title === "SLAUGHTERHOUSE") {
+      beerBanner = require("../../assets/images/Beers/SpecificBeer/slaughterhouse.png");
+    } else if (beer.title === "BARKING MAD") {
+      beerBanner = require("../../assets/images/Beers/SpecificBeer/barking_mad.png");
     }
 
     return (
@@ -61,7 +61,7 @@ class Beer extends Component {
         </View>
         <CustomIcon
           onPress={() => navigation.goBack()}
-          source={require('../../assets/images/Icons/BackButton-Circle.png')}
+          source={require("../../assets/images/Icons/BackButton-Circle.png")}
           style={styles.backIcon}
         />
 
@@ -85,7 +85,7 @@ class Beer extends Component {
                 </Text>
                 <Text style={styles.beerData}>
                   <Text style={styles.infoBold}>Released: </Text>
-                  {moment(beer.releaseDate).format('MMM YY')}
+                  {moment(beer.releaseDate).format("MMM YY")}
                 </Text>
               </View>
             </View>
@@ -95,7 +95,7 @@ class Beer extends Component {
           <View>
             <CustomIcon
               onPress={() => {}}
-              source={require('../../assets/images/Icons/social_media_button.png')}
+              source={require("../../assets/images/Icons/social_media_button.png")}
               style={styles.socialbtn}
             />
             <BlackButton
@@ -111,11 +111,11 @@ class Beer extends Component {
               <Fragment>
                 <Icon
                   name={Platform.select({
-                    ios: 'ios-heart',
-                    android: 'md-heart'
+                    ios: "ios-heart",
+                    android: "md-heart"
                   })}
                   size={15}
-                  color={'white'}
+                  color={"white"}
                   style={{ marginRight: 15 }}
                 />
                 Favourite
@@ -130,12 +130,15 @@ class Beer extends Component {
 
 Beer.propTypes = {
   beer: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  addBeerToFavourites: PropTypes.func.isRequired,
+  removeBeerFromFavourites: PropTypes.func.isRequired
 };
 
 export default compose(
   graphql(ADD_TO_USER_BEERS, {
-    name: 'addBeerToFavourites',
+    name: "addBeerToFavourites",
     options: () => ({
       refetchQueries: [
         {
@@ -145,7 +148,7 @@ export default compose(
     })
   }),
   graphql(REMOVE_FROM_USER_BEERS, {
-    name: 'removeBeerFromFavourites',
+    name: "removeBeerFromFavourites",
     options: () => ({
       refetchQueries: [
         {

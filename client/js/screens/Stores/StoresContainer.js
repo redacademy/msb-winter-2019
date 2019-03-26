@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
 import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 
 import { ALL_STORES_QUERY } from '../../apollo/queries';
+import Loader from '../../components/Loader';
+import ErrorMessage from '../../components/ErrorMessage';
 import Stores from './Stores';
 
 class StoresContainer extends Component {
@@ -15,8 +16,9 @@ class StoresContainer extends Component {
     return (
       <Query query={ALL_STORES_QUERY}>
         {({ loading, error, data }) => {
-          if (loading) return <Text>Loading</Text>;
-          if (error) return <Text>{error.message}</Text>;
+          if (loading) return <Loader />;
+          if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
+
           return <Stores stores={data.allStores} />;
         }}
       </Query>

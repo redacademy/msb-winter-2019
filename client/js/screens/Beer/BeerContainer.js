@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Text, View, ActivityIndicator } from "react-native";
+import { View } from "react-native";
 import { BEER_QUERY, USER_QUERY } from "../../apollo/queries";
 import { Query } from "react-apollo";
 import Beer from "./Beer";
 import Loader from "../../components/Loader";
+import ErrorMessage from "../../components/ErrorMessage";
 import { getLoggedInUser } from "../../config/models";
 import PropTypes from "prop-types";
 
@@ -37,14 +38,14 @@ class BeerContainer extends Component {
       >
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
-          if (error) return <Text>{error.message}</Text>;
+          if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
           const user = data.allUsers && data.allUsers[0];
-          if (!user) return <ActivityIndicator />;
+          if (!user) return <Loader />;
           return (
             <Query query={BEER_QUERY} variables={{ id }}>
               {({ loading, error, data }) => {
                 if (loading) return <Loader />;
-                if (error) return <Text>{error.message}</Text>;
+                if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
                 return (
                   <View style={{ height: "100%" }}>
                     <Beer

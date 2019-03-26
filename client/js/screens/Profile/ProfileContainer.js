@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
 import { USER_QUERY } from "../../apollo/queries";
 import { Query } from "react-apollo";
 import { getLoggedInUser } from "../../config/models";
 import Loader from "../../components/Loader";
+import ErrorMessage from "../../components/ErrorMessage";
 import Profile from "./Profile";
+
 import PropTypes from "prop-types";
 import styles from "./styles";
 
@@ -28,7 +29,7 @@ class ProfileContainer extends Component {
       <Query query={USER_QUERY} variables={{ id: this.state.viewerId }}>
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
-          if (error) return <Text>{error.message}</Text>;
+          if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
           if (!data.allUsers || !data.allUsers[0]) return <Loader />;
           return (
             <Profile

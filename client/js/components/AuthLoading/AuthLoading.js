@@ -1,6 +1,7 @@
 import React from "react";
 import { getLoggedInUser } from "../../config/models";
-import { ActivityIndicator } from "react-native";
+import Loader from "../../components/Loader";
+
 import PropTypes from "prop-types";
 
 class AuthLoading extends React.Component {
@@ -10,7 +11,7 @@ class AuthLoading extends React.Component {
   };
 
   render() {
-    return <ActivityIndicator />;
+    return <Loader />;
   }
 }
 

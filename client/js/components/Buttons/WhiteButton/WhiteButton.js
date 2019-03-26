@@ -18,7 +18,7 @@ const WhiteButton = props => {
 };
 
 WhiteButton.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired
 };
 
 export default WhiteButton;

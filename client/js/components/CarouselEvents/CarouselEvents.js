@@ -48,7 +48,6 @@ class CarouselEvents extends Component {
 
   toggleFavouriteEvent = async () => {
     const {
-      events,
       user,
       addToFavouriteEvents,
       removeFromFavouriteEvents
@@ -128,9 +127,7 @@ class CarouselEvents extends Component {
           <View style={styles.dataWrapper}>
             <Text style={styles.eventData}>
               <Text style={styles.boldData}>Date: </Text>
-              {moment(events[this.state.currentIndex].date).format(
-                'dddd, MMMM D, YYYY'
-              )}
+              {moment(currentEvent.date).format('dddd, MMMM D, YYYY')}
             </Text>
             <Text style={styles.eventData}>
               <Text style={styles.boldData}>Time: </Text>

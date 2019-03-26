@@ -97,7 +97,7 @@ const AllEventsTabScreens = createMaterialTopTabNavigator(
   }
 );
 
-export const HomeStack = createStackNavigator(
+const HomeStack = createStackNavigator(
   {
     HomeScreen,
     Profile: ProfileScreen,

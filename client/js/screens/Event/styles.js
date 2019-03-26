@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   border: { ...hr, width: 295 },
   description: {
     width: Dimensions.get('window').width * 0.8,
-    lineHeight: 2
+    lineHeight: 22
   }
 });
 

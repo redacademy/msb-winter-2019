@@ -1,14 +1,18 @@
 import React, { Component, Fragment } from 'react';
-import { Image, View, Text, Platform } from 'react-native';
+import { Image, View, ScrollView, Text, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { graphql, compose } from 'react-apollo';
 import { withNavigation } from 'react-navigation';
+import ActionButton from 'react-native-action-button';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 import styles from './styles';
 import CustomIcon from '../../components/CustomIcon';
 import BlackButton from '../../components/Buttons/BlackButton';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { colors } from '../../config/styles';
+import SocialIconsPopout from '../../components/SocialIconsPopout';
+import AvailabilityBtn from '../../components/AvailabilityBtn';
+import { center, colors, vl } from '../../config/styles';
 import {
   ADD_TO_USER_BEERS,
   USER_QUERY,
@@ -16,6 +20,13 @@ import {
 } from '../../apollo/queries';
 
 class Beer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hideAvail: true,
+      hideIcons: true
+    };
+  }
   isFavourited = (user, beer) => {
     return user.favouriteBeers.some(userBeer => userBeer.id === beer.id);
   };
@@ -31,6 +42,20 @@ class Beer extends Component {
         variables: { usersUserId: user.id, favouriteBeersBeerId: beer.id }
       });
     }
+  };
+
+  toggleAvail = () => {
+    this.setState({
+      hideAvail: !this.state.hideAvail,
+      hideIcons: true
+    });
+  };
+
+  toggleIcons = () => {
+    this.setState({
+      hideIcons: !this.state.hideIcons,
+      hideAvail: true
+    });
   };
 
   render() {
@@ -66,43 +91,72 @@ class Beer extends Component {
         />
 
         <View style={styles.beerContainer}>
-          <View>
-            <View style={styles.beerInfoContainer}>
+          <View style={styles.beerWrapper}>
+            <View style={styles.beerGrid}>
               <View style={styles.beerType}>
                 <Text style={styles.title}>{beer.title}</Text>
                 <Text style={styles.subtitle}>{beer.subtitle}</Text>
+                <Image
+                  style={styles.rating}
+                  source={require('../../assets/images/Beers/stars_rating.png')}
+                />
               </View>
 
-              <View style={styles.beerDataContainer}>
-                <Text style={styles.beerData}>
-                  <Text style={styles.infoBold}>Style: </Text> {beer.style}
-                </Text>
-                <Text style={styles.beerData}>
-                  <Text style={styles.infoBold}>ABV: </Text> {beer.abv}%
-                </Text>
-                <Text style={styles.beerData}>
-                  <Text style={styles.infoBold}>IBU: </Text> {beer.ibu}
-                </Text>
-                <Text style={styles.beerData}>
-                  <Text style={styles.infoBold}>Released: </Text>
-                  {moment(beer.releaseDate).format('MMM YY')}
-                </Text>
+              <View style={{ ...vl }}>
+                <View style={styles.beerDataContainer}>
+                  <Text style={styles.beerData}>
+                    <Text style={styles.infoBold}>Style: </Text> {beer.style}
+                  </Text>
+                  <Text style={styles.beerData}>
+                    <Text style={styles.infoBold}>ABV: </Text> {beer.abv}%
+                  </Text>
+                  <Text style={styles.beerData}>
+                    <Text style={styles.infoBold}>IBU: </Text> {beer.ibu}
+                  </Text>
+
+                  <Text style={styles.released}>
+                    <Text style={styles.infoBold}>Released: </Text>
+                    {moment(beer.releaseDate).format('MMM YY')}
+                  </Text>
+                </View>
               </View>
             </View>
 
-            <Text style={styles.description}>{beer.description}</Text>
+            <ScrollView style={{ maxHeight: 190 }}>
+              <Text style={styles.description}>{beer.description}</Text>
+            </ScrollView>
           </View>
-          <View>
-            <CustomIcon
-              onPress={() => {}}
-              source={require('../../assets/images/Icons/social_media_button.png')}
-              style={styles.socialbtn}
-            />
+
+          <View style={styles.btnContainer}>
+            <View>
+              {!this.state.hideAvail && <AvailabilityBtn />}
+              <BlackButton
+                style={{ width: 100 }}
+                onPress={() => {
+                  this.toggleAvail();
+                }}
+              >
+                Availability
+              </BlackButton>
+            </View>
+
+            <View style={styles.socialIconsWrapper}>
+              {!this.state.hideIcons && <SocialIconsPopout />}
+              <CustomIcon
+                onPress={() => {
+                  this.toggleIcons();
+                }}
+                source={require('../../assets/images/Icons/social_media_button.png')}
+                style={styles.socialbtn}
+              />
+            </View>
+
             <BlackButton
               style={{
                 backgroundColor: this.isFavourited(user, beer)
                   ? colors.brand
-                  : colors.black
+                  : colors.black,
+                width: 100
               }}
               onPress={() => {
                 this.toggleFavourite(user, beer);
@@ -116,8 +170,8 @@ class Beer extends Component {
                   })}
                   size={15}
                   color={'white'}
-                  style={{ marginRight: 15 }}
-                />
+                  style={{ marginRight: 15, ...center }}
+                />{' '}
                 Favourite
               </Fragment>
             </BlackButton>

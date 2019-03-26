@@ -1,11 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import { TouchableHighlight, Image, View } from 'react-native';
-import { withNavigation } from 'react-navigation';
+import React, { Component, Fragment } from "react";
+import { TouchableHighlight, Image, View } from "react-native";
+import { withNavigation } from "react-navigation";
+import PropTypes from "prop-types";
 
-import CustomText from '../CustomText';
-import OrangeButton from '../Buttons/OrangeButton';
-import { colors } from '../../config/styles';
-import styles from './styles';
+import CustomText from "../CustomText";
+import OrangeButton from "../Buttons/OrangeButton";
+import { colors } from "../../config/styles";
+import styles from "./styles";
 
 class RedeemRewardButton extends Component {
   render() {
@@ -14,19 +15,19 @@ class RedeemRewardButton extends Component {
     let rewardImg;
 
     if (reward.points === 20) {
-      rewardImg = require('../../assets/images/Card/20_stamps_icon.png');
+      rewardImg = require("../../assets/images/Card/20_stamps_icon.png");
     } else if (reward.points === 40) {
-      rewardImg = require('../../assets/images/Card/40_stamps_icon.png');
+      rewardImg = require("../../assets/images/Card/40_stamps_icon.png");
     } else if (reward.points === 60) {
-      rewardImg = require('../../assets/images/Card/60_stamps_icon.png');
+      rewardImg = require("../../assets/images/Card/60_stamps_icon.png");
     } else if (reward.points === 80) {
-      rewardImg = require('../../assets/images/Card/80_stamps_icon.png');
+      rewardImg = require("../../assets/images/Card/80_stamps_icon.png");
     } else if (reward.points === 140) {
-      rewardImg = require('../../assets/images/Card/140_stamps_icon.png');
+      rewardImg = require("../../assets/images/Card/140_stamps_icon.png");
     } else if (reward.points === 200) {
-      rewardImg = require('../../assets/images/Card/200_stamps_icon.png');
+      rewardImg = require("../../assets/images/Card/200_stamps_icon.png");
     } else if (reward.points === 240) {
-      rewardImg = require('../../assets/images/Card/240_stamps_icon.png');
+      rewardImg = require("../../assets/images/Card/240_stamps_icon.png");
     }
 
     return (
@@ -35,7 +36,7 @@ class RedeemRewardButton extends Component {
         style={styles.redeemButton}
         onPress={() => {
           if (user.points < reward.points) return;
-          navigation.navigate('RedeemInfo', { user, reward });
+          navigation.navigate("RedeemInfo", { user, reward });
         }}
       >
         <Fragment>
@@ -70,5 +71,11 @@ class RedeemRewardButton extends Component {
     );
   }
 }
+
+RedeemRewardButton.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  reward: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
+};
 
 export default withNavigation(RedeemRewardButton);

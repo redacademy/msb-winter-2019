@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { withNavigation } from "react-navigation";
+import PropTypes from "prop-types";
 import styles from "./styles";
 
 class RedeemInfoModal extends Component {
@@ -55,5 +56,9 @@ class RedeemInfoModal extends Component {
     );
   }
 }
+
+RedeemInfoModal.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default withNavigation(RedeemInfoModal);

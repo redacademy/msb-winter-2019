@@ -1,5 +1,7 @@
 # Main Street Brewing Rewards Program 🍺
 
+## Screenshot
+
 ## Technologies Used
 
 `Must Have`

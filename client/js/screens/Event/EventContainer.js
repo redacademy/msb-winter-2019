@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { Query } from 'react-apollo';
+import PropTypes from 'prop-types';
 
 import { EVENT_QUERY } from '../../apollo/queries';
 import Loader from '../../components/Loader';
@@ -18,7 +19,7 @@ class EventContainer extends Component {
 
   render() {
     const { navigation } = this.props;
-    const id = navigation.getParam('eventId', 'index');
+    const id = navigation.getParam('eventId');
 
     return (
       <Query query={EVENT_QUERY} variables={{ id }}>
@@ -34,5 +35,9 @@ class EventContainer extends Component {
     );
   }
 }
+
+EventContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default EventContainer;

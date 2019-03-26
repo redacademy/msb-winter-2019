@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { center, colors, fonts, row } from '../../config/styles';
+import { center, colors, fonts, row, shadow2 } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,12 +7,9 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   bannerWrapper: {
-    shadowOffset: { width: 1, height: 1 },
-    shadowColor: colors.neutralLight,
-    shadowOpacity: 10,
-    shadowRadius: 2,
-    backgroundColor: colors.neutralLight,
-    marginLeft: -10
+    ...shadow2,
+    zIndex: 0,
+    marginLeft: -20
   },
   backIcon: {
     position: 'absolute',

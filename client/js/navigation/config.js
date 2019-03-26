@@ -1,8 +1,36 @@
 import React from 'react';
 import { Image, Platform } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 import { colors } from '../config/styles';
+
+export const headerLeftFromDrawer = navigation => {
+  const drawerRoutes = ['FavBeers', 'Contact', 'Profile'];
+  return (
+    <Ionicons
+      name={
+        drawerRoutes.includes(navigation.state.routeName)
+          ? Platform.select({
+              ios: 'ios-arrow-dropleft-circle',
+              android: 'md-arrow-dropleft-circle'
+            })
+          : Platform.select({
+              ios: 'ios-menu',
+              android: 'md-menu'
+            })
+      }
+      onPress={() => {
+        if (drawerRoutes.includes(navigation.state.routeName)) {
+          navigation.goBack();
+        } else {
+          navigation.toggleDrawer();
+        }
+      }}
+      size={40}
+      color={'white'}
+      style={{ marginLeft: 20 }}
+    />
+  );
+};
 
 export const sharedNavigationOptions = navigation => ({
   headerTitle: (

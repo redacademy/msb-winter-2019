@@ -188,7 +188,10 @@ class CarouselEvents extends Component {
 
 CarouselEvents.propTypes = {
   events: PropTypes.array.isRequired,
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  addToFavouriteEvents: PropTypes.func.isRequired,
+  removeFromFavouriteEvents: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 export default compose(

@@ -6,7 +6,6 @@ import { graphql, compose } from 'react-apollo';
 import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import styles from './styles';
 import CustomIcon from '../../components/CustomIcon';
 import BlackButton from '../../components/Buttons/BlackButton';
 import SocialIconsPopout from '../../components/SocialIconsPopout';
@@ -17,6 +16,7 @@ import {
   USER_QUERY,
   REMOVE_FROM_USER_BEERS
 } from '../../apollo/queries';
+import styles from './styles';
 
 class Beer extends Component {
   constructor(props) {
@@ -183,7 +183,10 @@ class Beer extends Component {
 
 Beer.propTypes = {
   beer: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  addBeerToFavourites: PropTypes.func.isRequired,
+  removeBeerFromFavourites: PropTypes.func.isRequired
 };
 
 export default compose(

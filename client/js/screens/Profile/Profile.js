@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   View,
   Text,
@@ -6,21 +6,21 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput
-} from 'react-native';
-import ImagePicker from 'react-native-image-picker';
-import { graphql, compose } from 'react-apollo';
-import PropTypes from 'prop-types';
-import Subheader from '../../components/Subheader';
-import ToggleSwitch from '../../components/ToggleSwitch';
-import BlackButton from '../../components/Buttons/BlackButton';
+} from "react-native";
+import ImagePicker from "react-native-image-picker";
+import { graphql, compose } from "react-apollo";
+import PropTypes from "prop-types";
+import Subheader from "../../components/Subheader";
+import ToggleSwitch from "../../components/ToggleSwitch";
+import BlackButton from "../../components/Buttons/BlackButton";
 import {
   UPDATE_USER_EMAIL,
   UPDATE_USER_NAME,
   USER_QUERY,
   UPDATE_USER_PROFILE_IMAGE
-} from '../../apollo/queries';
+} from "../../apollo/queries";
 
-import styles from './styles';
+import styles from "./styles";
 
 class Profile extends Component {
   constructor(props) {
@@ -32,16 +32,16 @@ class Profile extends Component {
       nameInput: null
     };
     this.selectImageOptions = {
-      title: 'Select Image',
+      title: "Select Image",
       storageOptions: {
         skipBackup: true,
-        path: 'images'
+        path: "images"
       }
     };
   }
 
   getAvatarImageSource = () => {
-    let uri = 'https://via.placeholder.com/200x200?text=No+image+available';
+    let uri = "https://via.placeholder.com/200x200?text=No+image+available";
     const { user } = this.props;
     const { editing, avatarSource } = this.state;
     if (editing && avatarSource) {
@@ -88,15 +88,15 @@ class Profile extends Component {
           variables: {
             userId: user.id,
             url: avatarSource.uri,
-            contentType: 'image/png',
-            name: 'profile_image'
+            contentType: "image/png",
+            name: "profile_image"
           }
         });
       }
     }
     this.setState({ editing: !editing, avatarSource: null, emailInput: null });
     if (editing) {
-      navigation.navigate('UpdateProfile');
+      navigation.navigate("UpdateProfile");
     }
   };
 
@@ -161,7 +161,7 @@ class Profile extends Component {
               style={editing ? styles.buttonSave : styles.button}
               onPress={() => this.handleButtonPress()}
             >
-              {editing ? 'Save Changes' : 'Edit'}
+              {editing ? "Save Changes" : "Edit"}
             </BlackButton>
           </View>
         </View>
@@ -171,12 +171,16 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  updateUserProfileImage: PropTypes.func.isRequired,
+  updateUserEmail: PropTypes.func.isRequired,
+  updateUserName: PropTypes.func.isRequired,
+  navigation: PropTypes.object.isRequired
 };
 
 export default compose(
   graphql(UPDATE_USER_EMAIL, {
-    name: 'updateUserEmail',
+    name: "updateUserEmail",
     options: () => ({
       refetchQueries: [
         {
@@ -186,7 +190,7 @@ export default compose(
     })
   }),
   graphql(UPDATE_USER_NAME, {
-    name: 'updateUserName',
+    name: "updateUserName",
     options: () => ({
       refetchQueries: [
         {
@@ -196,7 +200,7 @@ export default compose(
     })
   }),
   graphql(UPDATE_USER_PROFILE_IMAGE, {
-    name: 'updateUserProfileImage',
+    name: "updateUserProfileImage",
     options: () => ({
       refetchQueries: [
         {

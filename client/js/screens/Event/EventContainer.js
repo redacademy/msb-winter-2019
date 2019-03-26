@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Text } from "react-native";
 import { Query } from "react-apollo";
+import PropTypes from "prop-types";
 
 import { EVENT_QUERY } from "../../apollo/queries";
 import Loader from "../../components/Loader";
 import ErrorMessage from "../../components/ErrorMessage";
+
 import Event from "./Event";
 
 class EventContainer extends Component {
@@ -35,5 +37,9 @@ class EventContainer extends Component {
     );
   }
 }
+
+EventContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default EventContainer;

@@ -6,6 +6,9 @@ import Loader from "../../components/Loader";
 import ErrorMessage from "../../components/ErrorMessage";
 import Profile from "./Profile";
 
+import PropTypes from "prop-types";
+import styles from "./styles";
+
 class ProfileContainer extends Component {
   constructor(props) {
     super(props);
@@ -39,5 +42,9 @@ class ProfileContainer extends Component {
     );
   }
 }
+
+ProfileContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default ProfileContainer;

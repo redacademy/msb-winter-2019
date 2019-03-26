@@ -3,6 +3,7 @@ import { View, Image, ImageBackground, TouchableOpacity } from "react-native";
 import Barcode from "react-native-barcode-builder";
 import { graphql, compose, Query } from "react-apollo";
 import { withNavigation } from "react-navigation";
+import PropTypes from "prop-types";
 
 import {
   SET_USER_POINTS,
@@ -13,6 +14,7 @@ import {
 import { getLoggedInUser } from "../../../config/models";
 import Loader from "../../Loader";
 import ErrorMessage from "../../ErrorMessage";
+
 import styles from "./styles";
 
 class CardTab extends Component {
@@ -96,7 +98,11 @@ class CardTab extends Component {
   }
 }
 
-CardTab.propTypes = {};
+CardTab.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  setUserPoints: PropTypes.func.isRequired,
+  addToUserPointHistory: PropTypes.func.isRequired
+};
 
 export default compose(
   graphql(SET_USER_POINTS, {

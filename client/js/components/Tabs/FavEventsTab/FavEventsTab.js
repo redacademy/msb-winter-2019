@@ -9,6 +9,7 @@ import CustomText from "../../CustomText";
 import styles from "./styles";
 import Loader from "../../Loader";
 import ErrorMessage from "../../ErrorMessage";
+import PropTypes from "prop-types";
 
 class FavEventsTab extends Component {
   static navigationOptions = {
@@ -54,5 +55,9 @@ class FavEventsTab extends Component {
     );
   }
 }
+
+FavEventsTab.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default withNavigation(FavEventsTab);

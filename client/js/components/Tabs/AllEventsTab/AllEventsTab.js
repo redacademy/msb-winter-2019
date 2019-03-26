@@ -7,6 +7,8 @@ import Loader from "../../Loader";
 import ErrorMessage from "../../ErrorMessage";
 import CarouselEvents from "../../CarouselEvents";
 
+import PropTypes from "prop-types";
+
 class AllEventsTab extends Component {
   static navigationOptions = { title: "All Events" };
 
@@ -55,5 +57,9 @@ class AllEventsTab extends Component {
     );
   }
 }
+
+AllEventsTab.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default withNavigation(AllEventsTab);

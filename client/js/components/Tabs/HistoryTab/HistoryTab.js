@@ -10,6 +10,7 @@ import {
 import { withNavigation } from "react-navigation";
 import { Query } from "react-apollo";
 import moment from "moment";
+import PropTypes from "prop-types";
 
 import { HISTORY_QUERY, ALL_REWARDS_QUERY } from "../../../apollo/queries";
 import { getLoggedInUser } from "../../../config/models";
@@ -220,5 +221,9 @@ class HistoryTab extends Component {
     );
   }
 }
+
+HistoryTab.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default withNavigation(HistoryTab);

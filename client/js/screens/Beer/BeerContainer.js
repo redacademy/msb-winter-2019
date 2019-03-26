@@ -6,6 +6,7 @@ import Beer from "./Beer";
 import Loader from "../../components/Loader";
 import ErrorMessage from "../../components/ErrorMessage";
 import { getLoggedInUser } from "../../config/models";
+import PropTypes from "prop-types";
 
 class BeerContainer extends Component {
   static navigationOptions = {
@@ -63,6 +64,8 @@ class BeerContainer extends Component {
   }
 }
 
-BeerContainer.propTypes = {};
+BeerContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default BeerContainer;

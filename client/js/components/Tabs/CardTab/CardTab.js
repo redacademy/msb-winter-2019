@@ -11,11 +11,11 @@ import {
   ALL_BEERS_QUERY,
   USER_QUERY,
   HISTORY_QUERY
-} from '../../../apollo/queries';
-import { getLoggedInUser } from '../../../config/models';
-import Loader from '../../Loader';
-import CustomText from '../../CustomText';
-import styles from './styles';
+} from "../../../apollo/queries";
+import { getLoggedInUser } from "../../../config/models";
+import Loader from "../../Loader";
+import ErrorMessage from "../../ErrorMessage";
+import styles from "./styles";
 
 class CardTab extends Component {
   constructor(props) {
@@ -69,7 +69,7 @@ class CardTab extends Component {
       >
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
-          if (error) return <CustomText>Error</CustomText>;
+          if (error) return <ErrorMessage>Error</ErrorMessage>;
           const user = data.allUsers && data.allUsers[0];
           if (!user) return <Loader />;
           return (
@@ -116,7 +116,7 @@ export default compose(
     })
   }),
   graphql(ADD_TO_USER_POINT_HISTORY, {
-    name: 'addToUserPointHistory',
+    name: "addToUserPointHistory",
     options: () => ({
       refetchQueries: [
         {
@@ -125,6 +125,6 @@ export default compose(
       ]
     })
   }),
-  graphql(ALL_BEERS_QUERY, { name: 'allBeersQuery' }),
+  graphql(ALL_BEERS_QUERY, { name: "allBeersQuery" }),
   withNavigation
 )(CardTab);

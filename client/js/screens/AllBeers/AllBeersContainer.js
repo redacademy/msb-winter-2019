@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import { Text } from 'react-native';
-import { Query } from 'react-apollo';
+import React, { Component } from "react";
+import { Query } from "react-apollo";
+import Loader from "../../components/Loader";
+import ErrorMessage from "../../components/ErrorMessage";
 
-import { ALL_BEERS_QUERY } from '../../apollo/queries';
-import AllBeers from './AllBeers';
+import { ALL_BEERS_QUERY } from "../../apollo/queries";
+import AllBeers from "./AllBeers";
 
 class AllBeersContainer extends Component {
   static navigationOptions = {
-    title: 'AllBeers'
+    title: "AllBeers"
   };
 
   render() {
     return (
       <Query query={ALL_BEERS_QUERY}>
         {({ loading, error, data }) => {
-          if (loading) return <Text>Loading</Text>;
-          if (error) return <Text>{error.message}</Text>;
+          if (loading) return <Loader />;
+          if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
           return <AllBeers beers={data.allBeers} />;
         }}
       </Query>

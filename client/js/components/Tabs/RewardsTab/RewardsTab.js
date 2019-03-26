@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import { View, Text, ActivityIndicator, ScrollView } from 'react-native';
-import { Query } from 'react-apollo';
+import React, { Component } from "react";
+import { View, ScrollView } from "react-native";
+import { Query } from "react-apollo";
 
-import { ALL_REWARDS_QUERY, USER_QUERY } from '../../../apollo/queries';
-import { getLoggedInUser } from '../../../config/models';
-import RedeemRewardButton from '../../RedeemRewardButton';
-import styles from './styles';
+import { ALL_REWARDS_QUERY, USER_QUERY } from "../../../apollo/queries";
+import { getLoggedInUser } from "../../../config/models";
+import RedeemRewardButton from "../../RedeemRewardButton";
+import Loader from "../../Loader";
+import ErrorMessage from "../../ErrorMessage";
+import styles from "./styles";
 
 class RewardsTab extends Component {
   constructor(props) {
@@ -13,7 +15,7 @@ class RewardsTab extends Component {
     this.state = { viewerId: null };
   }
 
-  static Navigation = { title: 'Rewards' };
+  static Navigation = { title: "Rewards" };
 
   componentDidMount = async () => {
     const viewerId = await getLoggedInUser();
@@ -24,21 +26,21 @@ class RewardsTab extends Component {
     return (
       <Query query={ALL_REWARDS_QUERY}>
         {({ loading, error, data }) => {
-          if (loading) return <Text>Loading</Text>;
-          if (error) return <Text>Error</Text>;
+          if (loading) return <Loader />;
+          if (error) return <ErrorMessage>Error</ErrorMessage>;
           const allRewards = data.allRewards;
 
           return (
             <Query
               query={USER_QUERY}
               variables={{ id: this.state.viewerId }}
-              fetchPolicy='network-only'
+              fetchPolicy="network-only"
             >
               {({ loading, error, data }) => {
-                if (loading) return <ActivityIndicator />;
-                if (error) return <Text>Error</Text>;
+                if (loading) return <Loader />;
+                if (error) return <ErrorMessage>Error</ErrorMessage>;
                 const user = data.allUsers && data.allUsers[0];
-                if (!user) return <ActivityIndicator />;
+                if (!user) return <Loader />;
 
                 return (
                   <ScrollView contentContainerStyle={styles.rewards}>

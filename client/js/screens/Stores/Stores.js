@@ -44,11 +44,9 @@ class Stores extends Component {
 
           this.setState({ focusedLocation: location });
         },
-        error => Alert.alert(error.message),
+        error => console.log(error.message),
         { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
       );
-    } else {
-      error => console.log('Stores Error >>>', error);
     }
   };
 
@@ -136,8 +134,8 @@ class Stores extends Component {
             loadingEnabled={true}
             zoomEnabled={true}
             zoomControlEnabled={true}
-            loadingIndicatorColor='#fea405'
-            loadingBackgroundColor='#ffffff'
+            loadingIndicatorColor="#fea405"
+            loadingBackgroundColor="#ffffff"
             region={this.state.focusedLocation}
             onPress={this.pickLocationHandler}
             ref={ref => (this.map = ref)}

@@ -1,13 +1,13 @@
-import React from "react";
-import { FlatList, Image, View } from "react-native";
-import Swipeout from "react-native-swipeout";
-import { graphql, compose } from "react-apollo";
-import { USER_QUERY, REMOVE_FROM_USER_BEERS } from "../../apollo/queries";
-import { colors } from "../../config/styles";
-import Subheader from "../../components/Subheader";
-import PropTypes from "prop-types";
+import React from 'react';
+import { FlatList, Image, View } from 'react-native';
+import Swipeout from 'react-native-swipeout';
+import { graphql, compose } from 'react-apollo';
+import PropTypes from 'prop-types';
 
-import styles from "./styles";
+import { USER_QUERY, REMOVE_FROM_USER_BEERS } from '../../apollo/queries';
+import Subheader from '../../components/Subheader';
+import { colors, padding } from '../../config/styles';
+import styles from './styles';
 
 const FavBeers = ({ beers, user, removeBeerFromFavourites }) => {
   const getSwipeButton = beer => {
@@ -48,18 +48,25 @@ const FavBeers = ({ beers, user, removeBeerFromFavourites }) => {
     return beerType;
   };
 
+  renderSeparator = () => {
+    return <View style={styles.hr} />;
+  };
+
   return (
-    <View>
+    <View style={styles.container}>
       <Subheader>Your Favourites</Subheader>
-      <FlatList
-        data={beers}
-        renderItem={({ item }) => (
-          <Swipeout right={getSwipeButton(item)} autoClose={true}>
-            <Image source={getBeerType(item)} style={styles.beerType} />
-          </Swipeout>
-        )}
-        keyExtractor={item => item.id}
-      />
+      <View style={styles.list}>
+        <FlatList
+          data={beers}
+          renderItem={({ item }) => (
+            <Swipeout right={getSwipeButton(item)} autoClose={true}>
+              <Image source={getBeerType(item)} style={styles.beer} />
+            </Swipeout>
+          )}
+          keyExtractor={item => item.id}
+          ItemSeparatorComponent={this.renderSeparator}
+        />
+      </View>
     </View>
   );
 };

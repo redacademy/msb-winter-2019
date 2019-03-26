@@ -1,5 +1,4 @@
 import { createDrawerNavigator } from 'react-navigation';
-
 import BottomNavigationLayout from './BottomNavigationLayout';
 import DrawerScreen from './DrawerScreen';
 import { dimensions } from '../config/styles';

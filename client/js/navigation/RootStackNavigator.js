@@ -8,14 +8,17 @@ import DrawerNavigationLayout from './DrawerNavigationLayout';
 import BeerModal from '../screens/Beer';
 import EventModal from '../screens/Event';
 import ErrorModal from '../components/ErrorModal';
+import UnderAgeModal from '../components/UnderAgeModal';
 import StampsReceivedModal from '../components/StampsReceivedModal';
 import RedeemInfoModal from '../components/RedeemInfoModal';
+import UpdateProfileModal from '../components/UpdateProfileModal';
 import RedeemBarcode from '../components/RedeemBarcode';
 import RedeemSuccess from '../components/RedeemSuccess';
 import Signin from '../screens/Signin';
 import Signup from '../screens/Signup';
 import Onboard from '../screens/Onboard';
 import AuthLoading from '../components/AuthLoading';
+import AgeDisclaimer from '../components/AgeDisclaimer';
 
 const AppStack = createStackNavigator(
   {
@@ -25,7 +28,8 @@ const AppStack = createStackNavigator(
     StampsReceived: StampsReceivedModal,
     RedeemInfo: RedeemInfoModal,
     RedeemBarcode: RedeemBarcode,
-    RedeemSuccess: RedeemSuccess
+    RedeemSuccess: RedeemSuccess,
+    UpdateProfile: UpdateProfileModal
   },
   {
     headerMode: 'none',
@@ -34,6 +38,7 @@ const AppStack = createStackNavigator(
 );
 
 const AuthStack = createSwitchNavigator({
+  AgeDisclaimer,
   Signin: createStackNavigator(
     { Signin, Error: ErrorModal },
     {
@@ -42,7 +47,7 @@ const AuthStack = createSwitchNavigator({
     }
   ),
   Signup: createStackNavigator(
-    { Signup, Error: ErrorModal },
+    { Signup, Error: ErrorModal, UnderAge: UnderAgeModal },
     {
       headerMode: 'none',
       mode: 'modal'

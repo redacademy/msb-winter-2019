@@ -128,6 +128,10 @@ export const USER_QUERY = gql`
       dateOfBirth
       points
       name
+      profilePicture {
+        id
+        url
+      }
       favouriteBeers {
         id
         title
@@ -136,6 +140,11 @@ export const USER_QUERY = gql`
       favouriteEvents {
         id
         title
+        subtitle
+        location
+        time
+        date
+        description
       }
     }
   }
@@ -283,6 +292,45 @@ export const REMOVE_FROM_USER_EVENTS = gql`
     ) {
       favouriteEventsEvent {
         id
+      }
+    }
+  }
+`;
+
+export const UPDATE_USER_EMAIL = gql`
+  mutation($id: ID!, $email: String!) {
+    updateUser(id: $id, email: $email) {
+      id
+      name
+      email
+    }
+  }
+`;
+
+export const UPDATE_USER_NAME = gql`
+  mutation($id: ID!, $name: String!) {
+    updateUser(id: $id, name: $name) {
+      id
+      name
+    }
+  }
+`;
+
+export const UPDATE_USER_PROFILE_IMAGE = gql`
+  mutation($userId: ID!, $url: String!, $contentType: String!, $name: String!) {
+    createFile(
+      userId: $userId
+      url: $url
+      contentType: $contentType
+      name: $name
+    ) {
+      id
+      name
+      url
+      contentType
+      user {
+        id
+        email
       }
     }
   }

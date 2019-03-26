@@ -1,13 +1,14 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-
+import { withNavigation } from "react-navigation";
+import PropTypes from "prop-types";
 import styles from "./styles";
 
-const UpdateProfileModel = () => {
+const UpdateProfileModal = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.closeContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
             style={styles.close}
             source={require("../../assets/images/Icons/exit_button.png")}
@@ -24,4 +25,8 @@ const UpdateProfileModel = () => {
   );
 };
 
-export default UpdateProfileModel;
+UpdateProfileModal.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
+
+export default withNavigation(UpdateProfileModal);

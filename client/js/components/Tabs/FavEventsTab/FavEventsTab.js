@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
-import { View, ActivityIndicator } from 'react-native';
-import { withNavigation } from 'react-navigation';
-import { USER_QUERY } from '../../../apollo/queries';
-import { Query } from 'react-apollo';
-import { getLoggedInUser } from '../../../config/models';
-import CarouselEvents from '../../CarouselEvents';
-import CustomText from '../../CustomText';
-import styles from './styles';
+import React, { Component } from "react";
+import { View } from "react-native";
+import { withNavigation } from "react-navigation";
+import { ALL_EVENTS_QUERY, USER_QUERY } from "../../../apollo/queries";
+import { Query } from "react-apollo";
+import { getLoggedInUser } from "../../../config/models";
+import CarouselEvents from "../../CarouselEvents";
+import CustomText from "../../CustomText";
+import styles from "./styles";
+import Loader from "../../Loader";
+import PropTypes from "prop-types";
 
 class FavEventsTab extends Component {
   static navigationOptions = {
-    title: 'Your Events'
+    title: "Your Events"
   };
 
   constructor(props) {
@@ -31,10 +33,12 @@ class FavEventsTab extends Component {
         fetchPolicy="network-only"
       >
         {({ loading, error, data }) => {
-          if (loading) return <ActivityIndicator />;
+          if (loading) return <Loader />;
           if (error) return <Text>Error</Text>;
           const user = data.allUsers && data.allUsers[0];
-          if (!user) return <ActivityIndicator />;
+          if (!user) return <Loader />;
+          console.log(user);
+
           return user.favouriteEvents && user.favouriteEvents.length > 0 ? (
             <CarouselEvents
               events={user.favouriteEvents}
@@ -42,12 +46,18 @@ class FavEventsTab extends Component {
               navigation={this.props.navigation}
             />
           ) : (
-            <CustomText>No events</CustomText>
+            <View style={styles.noEventsWrapper}>
+              <CustomText style={styles.noEvents}>No events</CustomText>
+            </View>
           );
         }}
       </Query>
     );
   }
 }
+
+FavEventsTab.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default withNavigation(FavEventsTab);

@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { View, Image, ImageBackground, TouchableOpacity } from 'react-native';
-import Barcode from 'react-native-barcode-builder';
-import { graphql, compose, Query } from 'react-apollo';
-import { withNavigation } from 'react-navigation';
+import React, { Component } from "react";
+import { View, Image, ImageBackground, TouchableOpacity } from "react-native";
+import Barcode from "react-native-barcode-builder";
+import { graphql, compose, Query } from "react-apollo";
+import { withNavigation } from "react-navigation";
+import PropTypes from "prop-types";
 
 import {
   SET_USER_POINTS,
@@ -22,7 +23,7 @@ class CardTab extends Component {
     this.state = { viewerId: null };
   }
   static navigationOptions = {
-    title: 'Card'
+    title: "Card"
   };
 
   componentDidMount = async () => {
@@ -56,7 +57,7 @@ class CardTab extends Component {
     await setUserPoints({
       variables: { id: user.id, points: user.points + pointsToAdd }
     });
-    navigation.navigate('StampsReceived', { stamps: pointsToAdd });
+    navigation.navigate("StampsReceived", { stamps: pointsToAdd });
   };
 
   render() {
@@ -73,7 +74,7 @@ class CardTab extends Component {
           if (!user) return <Loader />;
           return (
             <ImageBackground
-              source={require('../../../assets/images/Card/logo_bg.png')}
+              source={require("../../../assets/images/Card/logo_bg.png")}
               style={styles.imgBg}
             >
               <View style={styles.container}>
@@ -83,7 +84,7 @@ class CardTab extends Component {
                   onPress={() => this.addPoints(user)}
                 >
                   <Image
-                    source={require('../../../assets/images/Card/your_card.png')}
+                    source={require("../../../assets/images/Card/your_card.png")}
                     style={styles.card}
                   />
                   <Barcode value="Test Card" format="CODE128" height={40} />
@@ -97,11 +98,15 @@ class CardTab extends Component {
   }
 }
 
-CardTab.propTypes = {};
+CardTab.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  setUserPoints: PropTypes.func.isRequired,
+  addToUserPointHistory: PropTypes.func.isRequired
+};
 
 export default compose(
   graphql(SET_USER_POINTS, {
-    name: 'setUserPoints',
+    name: "setUserPoints",
     options: () => ({
       refetchQueries: [
         {

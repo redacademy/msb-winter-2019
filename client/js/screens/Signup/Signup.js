@@ -348,7 +348,7 @@ class Signup extends React.Component {
     } catch (e) {
       this.setState({ loading: false });
       if (e === 'Not of legal age') {
-        this.props.navigation.navigate('Error'); // @TODO replace with legal age specific error
+        this.props.navigation.navigate('UnderAge');
       } else {
         this.props.navigation.navigate('Error');
       }

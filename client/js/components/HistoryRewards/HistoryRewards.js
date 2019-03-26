@@ -1,29 +1,29 @@
-import React, { Fragment } from 'react';
-import { View, Image, TouchableHighlight } from 'react-native';
-import { withNavigation } from 'react-navigation';
+import React, { Fragment } from "react";
+import { View, Image, TouchableHighlight } from "react-native";
+import { withNavigation } from "react-navigation";
 
-import CustomText from '../CustomText';
-import { colors } from '../../config/styles';
-import styles from './styles';
+import CustomText from "../CustomText";
+import { colors } from "../../config/styles";
+import styles from "./styles";
 
 const HistoryRewards = ({ allRewards, points, navigation }) => {
   const setImg = reward => {
     if (reward.points === null) {
-      reward.img = require('../../assets/images/Card/star_1_stamp.png');
+      reward.img = require("../../assets/images/Card/star_1_stamp.png");
     } else if (reward.points === 20) {
-      reward.img = require('../../assets/images/Card/20_stamps_icon.png');
+      reward.img = require("../../assets/images/Card/20_stamps_icon.png");
     } else if (reward.points === 40) {
-      reward.img = require('../../assets/images/Card/40_stamps_icon.png');
+      reward.img = require("../../assets/images/Card/40_stamps_icon.png");
     } else if (reward.points === 60) {
-      reward.img = require('../../assets/images/Card/60_stamps_icon.png');
+      reward.img = require("../../assets/images/Card/60_stamps_icon.png");
     } else if (reward.points === 80) {
-      reward.img = require('../../assets/images/Card/80_stamps_icon.png');
+      reward.img = require("../../assets/images/Card/80_stamps_icon.png");
     } else if (reward.points === 140) {
-      reward.img = require('../../assets/images/Card/140_stamps_icon.png');
+      reward.img = require("../../assets/images/Card/140_stamps_icon.png");
     } else if (reward.points === 200) {
-      reward.img = require('../../assets/images/Card/200_stamps_icon.png');
+      reward.img = require("../../assets/images/Card/200_stamps_icon.png");
     } else if (reward.points === 240) {
-      reward.img = require('../../assets/images/Card/240_stamps_icon.png');
+      reward.img = require("../../assets/images/Card/240_stamps_icon.png");
     }
   };
 
@@ -65,18 +65,18 @@ const HistoryRewards = ({ allRewards, points, navigation }) => {
           <TouchableHighlight
             underlayColor={colors.neutralLight}
             onPress={() => {
-              navigation.navigate('Rewards');
+              navigation.navigate("Rewards");
             }}
             style={styles.reward}
             key={reward.title}
           >
             <Fragment>
               <CustomText style={styles.header}>
-                {index === 0 ? 'Previous Reward' : 'Next Reward'}
+                {index === 0 ? "Previous Reward" : "Next Reward"}
               </CustomText>
               <CustomText style={styles.stamps}>
                 {reward.points === null
-                  ? 'Keep collecting!'
+                  ? "Keep collecting!"
                   : `${reward.points} Stamps`}
               </CustomText>
               <Image source={reward.img} style={styles.rewardImg} />

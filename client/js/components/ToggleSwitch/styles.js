@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { colors } from "../../config/styles";
+import { StyleSheet } from 'react-native';
+import { colors } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,32 +7,18 @@ const styles = StyleSheet.create({
   },
 
   toggleContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 20,
     width: 300
   },
   buttonEditContainer: {
-    alignItems: "center",
+    alignItems: 'center',
     marginBottom: 10,
     borderBottomWidth: 2,
     borderBottomColor: colors.neutralLight
   },
-
-  buttonSaveContainer: {
-    alignItems: "center",
-    marginBottom: 20
-  },
-  button: {
-    width: 120
-  },
-
-  buttonSave: {
-    color: colors.white,
-    backgroundColor: colors.brand
-  },
-
   toggle: {
     width: 58,
     height: 31,

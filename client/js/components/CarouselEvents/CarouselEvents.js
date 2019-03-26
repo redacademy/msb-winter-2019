@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Dimensions,
   View,
@@ -6,19 +6,19 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   Image
-} from 'react-native';
-import { withNavigation } from 'react-navigation';
-import Carousel from 'react-native-snap-carousel';
-import moment from 'moment';
-import PropTypes from 'prop-types';
+} from "react-native";
+import { withNavigation } from "react-navigation";
+import Carousel from "react-native-snap-carousel";
+import moment from "moment";
+import PropTypes from "prop-types";
 import {
   ADD_TO_USER_EVENTS,
   REMOVE_FROM_USER_EVENTS,
   USER_QUERY
-} from '../../apollo/queries';
-import { graphql, compose } from 'react-apollo';
-import styles from './styles';
-import { center } from '../../config/styles';
+} from "../../apollo/queries";
+import { graphql, compose } from "react-apollo";
+import styles from "./styles";
+import { center } from "../../config/styles";
 
 class CarouselEvents extends Component {
   constructor(props) {
@@ -76,7 +76,6 @@ class CarouselEvents extends Component {
     const { events, navigation } = this.props;
     const currentEvent = this.getCurrentEvent();
 
-    console.log('****', this.props);
     return (
       <View style={styles.container}>
         <Carousel
@@ -92,27 +91,27 @@ class CarouselEvents extends Component {
           }}
           renderItem={({ item }) => {
             let eventImg;
-            if (item.title === 'Live Music & Beers') {
-              eventImg = require('../../assets/images/Events/livemusic.jpg');
-            } else if (item.title === 'Brewery Tour') {
-              eventImg = require('../../assets/images/Events/Oskar_Blues_Festival_1200.jpg');
+            if (item.title === "Live Music & Beers") {
+              eventImg = require("../../assets/images/Events/livemusic.jpg");
+            } else if (item.title === "Brewery Tour") {
+              eventImg = require("../../assets/images/Events/Oskar_Blues_Festival_1200.jpg");
             }
 
             return (
               <TouchableHighlight
-                underlayColor={'transparent'}
+                underlayColor={"transparent"}
                 onPress={() => {
-                  navigation.navigate('Event', { eventId: item.id });
+                  navigation.navigate("Event", { eventId: item.id });
                 }}
               >
-                <View style={{ alignItems: 'center' }}>
+                <View style={{ alignItems: "center" }}>
                   <View style={styles.imgWrapper}>
                     <Image
                       style={styles.img}
                       source={
                         eventImg
                           ? eventImg
-                          : require('../../assets/images/Events/craft-beer-background-5.jpg')
+                          : require("../../assets/images/Events/craft-beer-background-5.jpg")
                       }
                     />
                   </View>
@@ -122,7 +121,7 @@ class CarouselEvents extends Component {
               </TouchableHighlight>
             );
           }}
-          sliderWidth={Dimensions.get('window').width}
+          sliderWidth={Dimensions.get("window").width}
           itemWidth={250}
         />
 
@@ -133,7 +132,7 @@ class CarouselEvents extends Component {
             <Text style={styles.eventData}>
               <Text style={styles.boldData}>Date: </Text>
               {moment(events[this.state.currentIndex].date).format(
-                'dddd, MMMM D, YYYY'
+                "dddd, MMMM D, YYYY"
               )}
             </Text>
             <Text style={styles.eventData}>
@@ -153,7 +152,7 @@ class CarouselEvents extends Component {
           <View />
           <TouchableOpacity style={styles.socialBtnWrapper} onPress={() => {}}>
             <Image
-              source={require('../../assets/images/Icons/social_media_button.png')}
+              source={require("../../assets/images/Icons/social_media_button.png")}
             />
           </TouchableOpacity>
 
@@ -166,8 +165,8 @@ class CarouselEvents extends Component {
               style={styles.saveBtn}
               source={
                 this.isEventFavourited()
-                  ? require('../../assets/images/Buttons/save_button_active.png')
-                  : require('../../assets/images/Buttons/save_button_inactive.png')
+                  ? require("../../assets/images/Buttons/save_button_active.png")
+                  : require("../../assets/images/Buttons/save_button_inactive.png")
               }
             />
           </TouchableOpacity>
@@ -179,12 +178,15 @@ class CarouselEvents extends Component {
 
 CarouselEvents.propTypes = {
   events: PropTypes.array.isRequired,
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  addToFavouriteEvents: PropTypes.func.isRequired,
+  removeFromFavouriteEvents: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 export default compose(
   graphql(ADD_TO_USER_EVENTS, {
-    name: 'addToFavouriteEvents',
+    name: "addToFavouriteEvents",
     options: () => ({
       refetchQueries: [
         {
@@ -194,7 +196,7 @@ export default compose(
     })
   }),
   graphql(REMOVE_FROM_USER_EVENTS, {
-    name: 'removeFromFavouriteEvents',
+    name: "removeFromFavouriteEvents",
     options: () => ({
       refetchQueries: [
         {

@@ -4,7 +4,8 @@ import {
   TextInput,
   TouchableHighlight,
   Image,
-  Platform
+  Platform,
+  ScrollView
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { Form, Field } from 'react-final-form';
@@ -36,202 +37,258 @@ class Signup extends React.Component {
       return <Loader />;
     }
     return (
-      <View style={styles.container}>
-        <View style={styles.imgBgWrapper}>
-          <Image
-            source={require('../../assets/images/Logos/msb_logo.png')}
-            style={styles.imgBg}
-          />
-        </View>
-        <View style={styles.signupWrapper}>
-          <CustomText style={styles.title}>Sign Up</CustomText>
-          <Form
-            onSubmit={this.onSubmit}
-            validate={validate}
-            render={({ handleSubmit }) => (
-              <Fragment>
-                <View style={styles.field}>
-                  <CustomText style={styles.label}>Name</CustomText>
-                  <Field name="name">
-                    {({ input, meta }) => (
-                      <View style={styles.textInputWrapper}>
-                        <View>
-                          <TextInput
-                            editable={true}
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            {...input}
-                            style={styles.textInput}
-                            autoFocus={true}
-                            returnKeyType="next"
-                            onSubmitEditing={() => this.emailInput.focus()}
-                          />
-                          {meta.error && meta.touched && (
-                            <CustomText style={styles.errorMessage}>
-                              {meta.error}
-                            </CustomText>
-                          )}
-                        </View>
-                        {!input.value ? (
-                          <Ionicons
-                            name={Platform.select({
-                              android: 'md-checkmark-circle-outline',
-                              ios: 'ios-checkmark-circle-outline'
-                            })}
-                            size={35}
-                            color={'#fff'}
-                            style={{ marginLeft: 20 }}
-                          />
-                        ) : (
-                          <Ionicons
-                            name={Platform.select({
-                              android: 'md-checkmark-circle',
-                              ios: 'ios-checkmark-circle'
-                            })}
-                            size={35}
-                            color={colors.brand}
-                            style={{ marginLeft: 20 }}
-                          />
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.container}>
+          <View style={styles.imgBgWrapper}>
+            <Image
+              source={require('../../assets/images/Logos/msb_logo.png')}
+              style={styles.imgBg}
+            />
+          </View>
+          <View style={styles.signupView}>
+            <View style={styles.signupWrapper}>
+              <CustomText style={styles.title}>Sign Up</CustomText>
+              <Form
+                onSubmit={this.onSubmit}
+                validate={validate}
+                render={({ handleSubmit }) => (
+                  <Fragment>
+                    <View style={styles.field}>
+                      <CustomText style={styles.label}>Name</CustomText>
+                      <Field name="name">
+                        {({ input, meta }) => (
+                          <View style={styles.textInputWrapper}>
+                            <View>
+                              <TextInput
+                                editable={true}
+                                autoCapitalize="none"
+                                autoCorrect={false}
+                                {...input}
+                                style={styles.textInput}
+                                autoFocus={true}
+                                returnKeyType="next"
+                                onSubmitEditing={() => this.emailInput.focus()}
+                              />
+                              {meta.error && meta.touched && (
+                                <CustomText style={styles.errorMessage}>
+                                  {meta.error}
+                                </CustomText>
+                              )}
+                            </View>
+                            {!input.value ? (
+                              <Ionicons
+                                name={Platform.select({
+                                  android: 'md-checkmark-circle-outline',
+                                  ios: 'ios-checkmark-circle-outline'
+                                })}
+                                size={35}
+                                color={'#fff'}
+                                style={{ marginLeft: 20 }}
+                              />
+                            ) : (
+                              <Ionicons
+                                name={Platform.select({
+                                  android: 'md-checkmark-circle',
+                                  ios: 'ios-checkmark-circle'
+                                })}
+                                size={35}
+                                color={colors.brand}
+                                style={{ marginLeft: 20 }}
+                              />
+                            )}
+                          </View>
                         )}
-                      </View>
-                    )}
-                  </Field>
-                </View>
-                <View style={styles.field}>
-                  <CustomText style={styles.label}>Email</CustomText>
-                  <Field name="email">
-                    {({ input, meta }) => (
-                      <View style={styles.textInputWrapper}>
-                        <View>
-                          <TextInput
-                            editable={true}
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            {...input}
-                            style={styles.textInput}
-                            returnKeyType="next"
-                            keyboardType="email-address"
-                            ref={input => (this.emailInput = input)}
-                            onSubmitEditing={() => this.passwordInput.focus()}
-                          />
-                          {meta.error && meta.touched && (
-                            <CustomText style={styles.errorMessage}>
-                              {meta.error}
-                            </CustomText>
-                          )}
-                        </View>
-                        {meta.touched && meta.valid ? (
-                          <Ionicons
-                            name={Platform.select({
-                              android: 'md-checkmark-circle',
-                              ios: 'ios-checkmark-circle'
-                            })}
-                            size={35}
-                            color={colors.brand}
-                            style={{ marginLeft: 20 }}
-                          />
-                        ) : (
-                          <Ionicons
-                            name={Platform.select({
-                              android: 'md-checkmark-circle-outline',
-                              ios: 'ios-checkmark-circle-outline'
-                            })}
-                            size={35}
-                            color={'white'}
-                            style={{ marginLeft: 20 }}
-                          />
+                      </Field>
+                    </View>
+                    <View style={styles.field}>
+                      <CustomText style={styles.label}>Email</CustomText>
+                      <Field name="email">
+                        {({ input, meta }) => (
+                          <View style={styles.textInputWrapper}>
+                            <View>
+                              <TextInput
+                                editable={true}
+                                autoCapitalize="none"
+                                autoCorrect={false}
+                                {...input}
+                                style={styles.textInput}
+                                returnKeyType="next"
+                                keyboardType="email-address"
+                                ref={input => (this.emailInput = input)}
+                                onSubmitEditing={() =>
+                                  this.passwordInput.focus()
+                                }
+                              />
+                              {meta.error && meta.touched && (
+                                <CustomText style={styles.errorMessage}>
+                                  {meta.error}
+                                </CustomText>
+                              )}
+                            </View>
+                            {meta.touched && meta.valid ? (
+                              <Ionicons
+                                name={Platform.select({
+                                  android: 'md-checkmark-circle',
+                                  ios: 'ios-checkmark-circle'
+                                })}
+                                size={35}
+                                color={colors.brand}
+                                style={{ marginLeft: 20 }}
+                              />
+                            ) : (
+                              <Ionicons
+                                name={Platform.select({
+                                  android: 'md-checkmark-circle-outline',
+                                  ios: 'ios-checkmark-circle-outline'
+                                })}
+                                size={35}
+                                color={'white'}
+                                style={{ marginLeft: 20 }}
+                              />
+                            )}
+                          </View>
                         )}
-                      </View>
-                    )}
-                  </Field>
-                </View>
-                <View style={styles.field}>
-                  <CustomText style={styles.label}>Password</CustomText>
-                  <Field name="password">
-                    {({ input, meta }) => (
-                      <View style={styles.textInputWrapper}>
-                        <View>
-                          <TextInput
-                            editable={true}
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            secureTextEntry={true}
-                            {...input}
-                            style={styles.textInput}
-                            returnKeyType="next"
-                            ref={input => (this.passwordInput = input)}
-                            onSubmitEditing={() => {
-                              this.confirmPasswordInput.focus();
-                            }}
-                          />
-                          {meta.error && meta.touched && (
-                            <CustomText style={styles.errorMessage}>
-                              {meta.error}
-                            </CustomText>
-                          )}
-                        </View>
-                        {!input.value ? (
-                          <Ionicons
-                            name={Platform.select({
-                              android: 'md-checkmark-circle-outline',
-                              ios: 'ios-checkmark-circle-outline'
-                            })}
-                            size={35}
-                            color={'#fff'}
-                            style={{ marginLeft: 20 }}
-                          />
-                        ) : (
-                          <Ionicons
-                            name={Platform.select({
-                              android: 'md-checkmark-circle',
-                              ios: 'ios-checkmark-circle'
-                            })}
-                            size={35}
-                            color={colors.brand}
-                            style={{ marginLeft: 20 }}
-                          />
+                      </Field>
+                    </View>
+                    <View style={styles.field}>
+                      <CustomText style={styles.label}>Password</CustomText>
+                      <Field name="password">
+                        {({ input, meta }) => (
+                          <View style={styles.textInputWrapper}>
+                            <View>
+                              <TextInput
+                                editable={true}
+                                autoCapitalize="none"
+                                autoCorrect={false}
+                                secureTextEntry={true}
+                                {...input}
+                                style={styles.textInput}
+                                returnKeyType="next"
+                                ref={input => (this.passwordInput = input)}
+                                onSubmitEditing={() => {
+                                  this.confirmPasswordInput.focus();
+                                }}
+                              />
+                              {meta.error && meta.touched && (
+                                <CustomText style={styles.errorMessage}>
+                                  {meta.error}
+                                </CustomText>
+                              )}
+                            </View>
+                            {!input.value ? (
+                              <Ionicons
+                                name={Platform.select({
+                                  android: 'md-checkmark-circle-outline',
+                                  ios: 'ios-checkmark-circle-outline'
+                                })}
+                                size={35}
+                                color={'#fff'}
+                                style={{ marginLeft: 20 }}
+                              />
+                            ) : (
+                              <Ionicons
+                                name={Platform.select({
+                                  android: 'md-checkmark-circle',
+                                  ios: 'ios-checkmark-circle'
+                                })}
+                                size={35}
+                                color={colors.brand}
+                                style={{ marginLeft: 20 }}
+                              />
+                            )}
+                          </View>
                         )}
-                      </View>
-                    )}
-                  </Field>
-                </View>
+                      </Field>
+                    </View>
 
-                <View style={styles.field}>
-                  <CustomText style={styles.label}>Confirm Password</CustomText>
-                  <Field name="confirmpassword">
-                    {({ input, meta }) => (
+                    <View style={styles.field}>
+                      <CustomText style={styles.label}>
+                        Confirm Password
+                      </CustomText>
+                      <Field name="confirmpassword">
+                        {({ input, meta }) => (
+                          <View style={styles.textInputWrapper}>
+                            <View>
+                              <TextInput
+                                editable={true}
+                                autoCapitalize="none"
+                                autoCorrect={false}
+                                secureTextEntry={true}
+                                {...input}
+                                style={styles.textInput}
+                                returnKeyType="next"
+                                ref={input =>
+                                  (this.confirmPasswordInput = input)
+                                }
+                                onSubmitEditing={() =>
+                                  this.datePicker.onPressDate()
+                                }
+                              />
+                              {meta.error && meta.touched && (
+                                <CustomText style={styles.errorMessage}>
+                                  {meta.error}
+                                </CustomText>
+                              )}
+                            </View>
+                            {meta.error ? (
+                              <Ionicons
+                                name={Platform.select({
+                                  android: 'md-checkmark-circle-outline',
+                                  ios: 'ios-checkmark-circle-outline'
+                                })}
+                                size={35}
+                                color={'#fff'}
+                                style={{ marginLeft: 20 }}
+                              />
+                            ) : (
+                              <Ionicons
+                                name={Platform.select({
+                                  android: 'md-checkmark-circle',
+                                  ios: 'ios-checkmark-circle'
+                                })}
+                                size={35}
+                                color={colors.brand}
+                                style={{ marginLeft: 20 }}
+                              />
+                            )}
+                          </View>
+                        )}
+                      </Field>
+                    </View>
+                    <View style={styles.field}>
+                      <CustomText style={styles.label}>
+                        Date of Birth ( YYYY / MM / DD )
+                      </CustomText>
                       <View style={styles.textInputWrapper}>
-                        <View>
-                          <TextInput
-                            editable={true}
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            secureTextEntry={true}
-                            {...input}
-                            style={styles.textInput}
-                            returnKeyType="next"
-                            ref={input => (this.confirmPasswordInput = input)}
-                            onSubmitEditing={() =>
-                              this.datePicker.onPressDate()
+                        <DatePicker
+                          style={styles.datePicker}
+                          customStyles={{
+                            dateInput: {
+                              alignItems: 'flex-start',
+                              paddingLeft: padding.sm
+                            },
+                            dateText: {
+                              color: colors.neutralDark
                             }
-                          />
-                          {meta.error && meta.touched && (
-                            <CustomText style={styles.errorMessage}>
-                              {meta.error}
-                            </CustomText>
-                          )}
-                        </View>
-                        {meta.error ? (
-                          <Ionicons
-                            name={Platform.select({
-                              android: 'md-checkmark-circle-outline',
-                              ios: 'ios-checkmark-circle-outline'
-                            })}
-                            size={35}
-                            color={'#fff'}
-                            style={{ marginLeft: 20 }}
-                          />
-                        ) : (
+                          }}
+                          date={this.state.date}
+                          mode="date"
+                          showIcon={false}
+                          placeholder="Select Date"
+                          format="YYYY-MM-DD"
+                          minDate="1920-01-01"
+                          maxDate="2019-12-31"
+                          confirmBtnText="Confirm"
+                          cancelBtnText="Cancel"
+                          onDateChange={date => {
+                            this.setState({ date: date });
+                          }}
+                          returnKeyType="go"
+                          ref={picker => {
+                            this.datePicker = picker;
+                          }}
+                        />
+                        {this.state.date ? (
                           <Ionicons
                             name={Platform.select({
                               android: 'md-checkmark-circle',
@@ -241,92 +298,47 @@ class Signup extends React.Component {
                             color={colors.brand}
                             style={{ marginLeft: 20 }}
                           />
+                        ) : (
+                          <Ionicons
+                            name={Platform.select({
+                              android: 'md-checkmark-circle-outline',
+                              ios: 'ios-checkmark-circle-outline'
+                            })}
+                            size={35}
+                            color={'#fff'}
+                            style={{ marginLeft: 20 }}
+                          />
                         )}
                       </View>
-                    )}
-                  </Field>
-                </View>
-                <View style={styles.field}>
-                  <CustomText style={styles.label}>
-                    Date of Birth ( YYYY / MM / DD )
-                  </CustomText>
-                  <View style={styles.textInputWrapper}>
-                    <DatePicker
-                      style={styles.datePicker}
-                      customStyles={{
-                        dateInput: {
-                          alignItems: 'flex-start',
-                          paddingLeft: padding.sm
-                        },
-                        dateText: {
-                          color: colors.neutralDark
-                        }
-                      }}
-                      date={this.state.date}
-                      mode="date"
-                      showIcon={false}
-                      placeholder="Select Date"
-                      format="YYYY-MM-DD"
-                      minDate="1920-01-01"
-                      maxDate="2019-12-31"
-                      confirmBtnText="Confirm"
-                      cancelBtnText="Cancel"
-                      onDateChange={date => {
-                        this.setState({ date: date });
-                      }}
-                      returnKeyType="go"
-                      ref={picker => {
-                        this.datePicker = picker;
-                      }}
-                    />
-                    {this.state.date ? (
-                      <Ionicons
-                        name={Platform.select({
-                          android: 'md-checkmark-circle',
-                          ios: 'ios-checkmark-circle'
-                        })}
-                        size={35}
-                        color={colors.brand}
-                        style={{ marginLeft: 20 }}
-                      />
-                    ) : (
-                      <Ionicons
-                        name={Platform.select({
-                          android: 'md-checkmark-circle-outline',
-                          ios: 'ios-checkmark-circle-outline'
-                        })}
-                        size={35}
-                        color={'#fff'}
-                        style={{ marginLeft: 20 }}
-                      />
-                    )}
-                  </View>
-                  <CustomText style={styles.signup}>
-                    * You must be 19 or older to use this app.
-                  </CustomText>
-                </View>
+                      <CustomText style={styles.signup}>
+                        * You must be 19 or older to use this app.
+                      </CustomText>
+                    </View>
 
-                <View style={styles.signupBtnWrapper}>
-                  <WhiteButton onPress={() => handleSubmit()}>
-                    Sign Up
-                  </WhiteButton>
+                    <View style={styles.signupBtnWrapper}>
+                      <WhiteButton onPress={() => handleSubmit()}>
+                        Sign Up
+                      </WhiteButton>
 
-                  <TouchableHighlight
-                    underlayColor={colors.neutralLight}
-                    onPress={() => {
-                      this.props.navigation.navigate('Signin');
-                    }}
-                  >
-                    <CustomText style={[styles.signup, styles.signupLink]}>
-                      Back to Login
-                    </CustomText>
-                  </TouchableHighlight>
-                </View>
-              </Fragment>
-            )}
-          />
+                      <TouchableHighlight
+                        underlayColor={colors.neutralLight}
+                        onPress={() => {
+                          this.props.navigation.navigate('Signin');
+                        }}
+                      >
+                        <CustomText style={[styles.signup, styles.signupLink]}>
+                          Back to Login
+                        </CustomText>
+                      </TouchableHighlight>
+                    </View>
+                  </Fragment>
+                )}
+              />
+            </View>
+          </View>
         </View>
-      </View>
+        <View style={{ marginBottom: 200 }} />
+      </ScrollView>
     );
   }
 
@@ -348,7 +360,7 @@ class Signup extends React.Component {
     } catch (e) {
       this.setState({ loading: false });
       if (e === 'Not of legal age') {
-        this.props.navigation.navigate('Error'); // @TODO replace with legal age specific error
+        this.props.navigation.navigate('UnderAge');
       } else {
         this.props.navigation.navigate('Error');
       }

@@ -66,7 +66,7 @@ export const jusStrt = { justifyContent: 'flex-start' };
 
 export const jusCenterRow = {
   ...row,
-  ...jusBtwn
+  justifyContent: 'center'
 };
 
 export const jusBtwnRow = {

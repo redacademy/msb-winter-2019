@@ -15,6 +15,7 @@ import PropTypes from "prop-types";
 import { HISTORY_QUERY, ALL_REWARDS_QUERY } from "../../../apollo/queries";
 import { getLoggedInUser } from "../../../config/models";
 import Loader from "../../Loader";
+import ErrorMessage from "../../ErrorMessage";
 import CustomText from "../../CustomText";
 import HistoryRewards from "../../HistoryRewards";
 import { colors, dimensions } from "../../../config/styles";
@@ -72,7 +73,7 @@ class HistoryTab extends Component {
       <Query query={ALL_REWARDS_QUERY}>
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
-          if (error) return <CustomText>Error</CustomText>;
+          if (error) return <ErrorMessage>Error</ErrorMessage>;
           const allRewards = data.allRewards;
 
           return (
@@ -83,7 +84,7 @@ class HistoryTab extends Component {
             >
               {({ loading, error, data }) => {
                 if (loading) return <Loader />;
-                if (error) return <CustomText>Error</CustomText>;
+                if (error) return <ErrorMessage>Error</ErrorMessage>;
                 const user = data.allUsers && data.allUsers[0];
                 if (!user) return <Loader />;
 

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { graphql, compose } from 'react-apollo';
 import { withNavigation } from 'react-navigation';
-import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
@@ -42,6 +41,7 @@ class Beer extends Component {
         variables: { usersUserId: user.id, favouriteBeersBeerId: beer.id }
       });
     }
+    this.setState({ hideIcons: true, hideAvail: true });
   };
 
   toggleAvail = () => {
@@ -50,7 +50,6 @@ class Beer extends Component {
       hideIcons: true
     });
   };
-
   toggleIcons = () => {
     this.setState({
       hideIcons: !this.state.hideIcons,

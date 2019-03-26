@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { center, colors, fonts, h2, row, vl } from '../../config/styles';
+import { center, colors, fonts, row } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   /**
    *  Beer
    **/
+
   beerContainer: {
     justifyContent: 'space-between',
     padding: 25,
@@ -36,13 +37,11 @@ const styles = StyleSheet.create({
   },
   beerGrid: {
     ...row,
-
     justifyContent: 'space-between',
     paddingBottom: 25,
     maxHeight: 250,
     maxWidth: 350
   },
-  beerType: {},
   title: {
     fontFamily: fonts.primaryBold,
     fontSize: 24,

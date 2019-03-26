@@ -5,6 +5,13 @@ import CustomIcon from '../../components/CustomIcon';
 import styles from './styles';
 
 class SocialIconsPopout extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hideIcons: true
+    };
+  }
+
   render() {
     return (
       <View style={styles.socialIcons}>
@@ -19,7 +26,7 @@ class SocialIconsPopout extends Component {
           onPress={() =>
             Linking.openURL('https://www.instagram.com/mainstreetbeer/')
           }
-          style={styles.ig}
+          style={styles.centerIcon}
           source={require('../../assets/images/Icons/socialmedia_ig_icon.png')}
         />
         <CustomIcon

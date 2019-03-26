@@ -18,7 +18,7 @@ class EventContainer extends Component {
 
   render() {
     const { navigation } = this.props;
-    const id = navigation.getParam('eventId');
+    const id = navigation.getParam('eventId', 'index');
 
     return (
       <Query query={EVENT_QUERY} variables={{ id }}>

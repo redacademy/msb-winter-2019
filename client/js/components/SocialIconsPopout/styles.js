@@ -1,11 +1,9 @@
-import { Dimensions, StyleSheet } from 'react-native';
-import { row, center } from '../../config/styles';
+import { StyleSheet } from 'react-native';
+import { row } from '../../config/styles';
 
 const styles = StyleSheet.create({
   socialIcons: {
     ...row,
-    // ...center,
-    // justifyContent: 'center',
     position: 'absolute',
     height: 80,
     zIndex: 10,

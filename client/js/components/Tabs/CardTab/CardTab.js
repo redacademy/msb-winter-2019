@@ -9,12 +9,12 @@ import {
   SET_USER_POINTS,
   ADD_TO_USER_POINT_HISTORY,
   ALL_BEERS_QUERY,
-  USER_QUERY
+  USER_QUERY,
+  HISTORY_QUERY
 } from "../../../apollo/queries";
 import { getLoggedInUser } from "../../../config/models";
 import Loader from "../../Loader";
 import ErrorMessage from "../../ErrorMessage";
-
 import styles from "./styles";
 
 class CardTab extends Component {
@@ -115,7 +115,16 @@ export default compose(
       ]
     })
   }),
-  graphql(ADD_TO_USER_POINT_HISTORY, { name: "addToUserPointHistory" }),
+  graphql(ADD_TO_USER_POINT_HISTORY, {
+    name: "addToUserPointHistory",
+    options: () => ({
+      refetchQueries: [
+        {
+          query: HISTORY_QUERY
+        }
+      ]
+    })
+  }),
   graphql(ALL_BEERS_QUERY, { name: "allBeersQuery" }),
   withNavigation
 )(CardTab);

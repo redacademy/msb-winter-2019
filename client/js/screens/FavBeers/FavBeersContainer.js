@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Text } from "react-native";
-import { USER_QUERY } from "../../apollo/queries";
 import { Query } from "react-apollo";
+
+import { USER_QUERY } from "../../apollo/queries";
 import { getLoggedInUser } from "../../config/models";
-import FavBeers from "./FavBeers";
 import Loader from "../../components/Loader";
+import FavBeers from "./FavBeers";
 import ErrorMessage from "../../components/ErrorMessage";
 
 class FavBeersContainer extends Component {

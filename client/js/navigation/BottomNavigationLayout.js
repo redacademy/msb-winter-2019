@@ -6,7 +6,7 @@ import {
 } from 'react-navigation';
 import { Image } from 'react-native';
 
-import { sharedNavigationOptions } from './config';
+import { sharedNavigationOptions, headerLeftFromDrawer } from './config';
 import BeersScreen from '../screens/AllBeers';
 import BeerModal from '../screens/Beer';
 import EventModal from '../screens/Event';
@@ -97,17 +97,19 @@ const AllEventsTabScreens = createMaterialTopTabNavigator(
   }
 );
 
-const HomeStack = createStackNavigator(
+export const HomeStack = createStackNavigator(
   {
     HomeScreen,
     Profile: ProfileScreen,
     FavBeers: FavBeersScreen,
+    FavEvents: FavEventsTab,
     Contact: ContactScreen,
     Beer: BeerModal
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation)
+      ...sharedNavigationOptions(navigation),
+      headerLeft: headerLeftFromDrawer(navigation)
     })
   }
 );

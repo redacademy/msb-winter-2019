@@ -1,5 +1,13 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { center, colors, fonts, hr, row, subtitle1 } from '../../config/styles';
+import {
+  center,
+  colors,
+  fonts,
+  hr,
+  margin,
+  row,
+  subtitle1
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,7 +15,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width
   },
   headerImg: {
-    maxHeight: 200,
+    maxHeight: 180,
     width: Dimensions.get('window').width
   },
 
@@ -17,17 +25,18 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingHorizontal: 25
   },
+  titlesWrapper: { alignSelf: 'flex-start' },
   title: {
     fontFamily: fonts.primaryBold,
-    fontSize: fonts.lg,
+    fontSize: 24,
     ...center,
     width: Dimensions.get('window').width
   },
   subtitle: {
     color: colors.neutralDark,
     fontFamily: fonts.primary,
-    fontSize: fonts.sm,
-    paddingBottom: 0
+    fontSize: fonts.sm
+    // paddingBottom: 0
   },
 
   dataWrapper: {
@@ -36,12 +45,12 @@ const styles = StyleSheet.create({
   eventData: {
     ...subtitle1,
     fontFamily: fonts.primary,
-    paddingVertical: 3
+    paddingVertical: 1
   },
   boldData: {
     fontFamily: fonts.primaryBold
   },
-  border: { ...hr, width: 295 },
+  border: { ...hr, marginVertical: margin.xs, width: 295 },
   description: {
     width: Dimensions.get('window').width * 0.8,
     lineHeight: 22

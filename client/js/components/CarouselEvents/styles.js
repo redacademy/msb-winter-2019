@@ -12,12 +12,16 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height * 0.6,
     flex: 1,
+    height: Dimensions.get('window').height * 0.6,
     padding: 20,
-    paddingTop: 35,
+    paddingBottom: 10,
     alignItems: 'center'
   },
+
+  /**
+   * Carousel
+   **/
   imgWrapper: {
     shadowOffset: { width: 1, height: 1 },
     shadowColor: colors.neutralDark,
@@ -26,19 +30,29 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   img: {
-    width: 215,
-    height: 215
+    width: 200,
+    maxWidth: 215,
+    maxHeight: 215
   },
-  title: { ...h2, ...center, fontSize: 38, paddingTop: 12, paddingBottom: 2 },
+  title: {
+    ...h2,
+    ...center,
+    fontSize: 38,
+    paddingTop: 7,
+    paddingBottom: 2
+  },
   subtitle: {
     color: colors.neutralDark,
     fontSize: 15,
     fontFamily: fonts.primarySemi
   },
 
+  /**
+   * Info
+   **/
   infoWrapper: {
     ...center,
-    paddingBottom: 15,
+    // paddingBottom: 15,
     width: Dimensions.get('window').width
   },
   dataWrapper: {
@@ -58,9 +72,15 @@ const styles = StyleSheet.create({
   boldData: {
     ...subtitle1
   },
-  border: { ...hr, width: 295, marginVertical: margin.sm },
+  border: {
+    ...hr,
+    width: 295,
+    marginVertical: margin.xs
+  },
 
-  /** -------- Buttons -------- **/
+  /**
+   * Buttons
+   **/
   btnContainer: {
     ...center,
     ...row

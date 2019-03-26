@@ -2,10 +2,9 @@ import { Dimensions, StyleSheet } from 'react-native';
 import { center, container, h1, row, vl } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: { ...container },
+  container: { ...container, marginTop: 20 },
   greet: {
     ...h1,
-    marginTop: 10,
     paddingBottom: 0
   },
 

@@ -5,34 +5,46 @@ import {
   fonts,
   h1,
   hr,
+  margin,
   row,
   subtitle1
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
   carouselContainer: {
-    padding: 15,
-    paddingBottom: 0
+    flex: 1,
+    height: Dimensions.get('window').height * 0.6,
+    padding: 12,
+    paddingBottom: 5
   },
   slide: {
     ...center
   },
 
+  /**
+   * Carousel
+   **/
   imgWrapper: {
-    flex: 1,
     shadowOffset: { width: 1, height: 3.5 },
     shadowColor: colors.neutralDark,
     shadowOpacity: 1,
     shadowRadius: 2,
     backgroundColor: '#fff'
   },
-
-  title: { ...h1, ...center, paddingBottom: 3 },
+  img: {
+    width: 200,
+    maxWidth: 215,
+    maxHeight: 215
+  },
+  title: { ...h1, ...center, paddingTop: 8, paddingBottom: 1 },
   subtitle: {
     color: colors.neutralDark,
     fontSize: fonts.sm
   },
 
+  /**
+   * Info
+   **/
   dataWrapper: {
     width: Dimensions.get('window').width * 0.8,
     ...row,
@@ -54,7 +66,12 @@ const styles = StyleSheet.create({
   boldData: {
     ...subtitle1
   },
-  border: { ...hr, width: '100%', maxWidth: 250 }
+  border: {
+    ...hr,
+    marginVertical: margin.xxs,
+    width: '100%',
+    maxWidth: 250
+  }
 });
 
 export default styles;

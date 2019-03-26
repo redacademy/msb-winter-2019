@@ -43,7 +43,7 @@ class Event extends Component {
         />
 
         <View style={styles.infoWrapper}>
-          <View>
+          <View style={styles.titlesWrapper}>
             <Text style={styles.title}>{event.title}</Text>
             <Text style={styles.subtitle}>{event.subtitle}</Text>
           </View>

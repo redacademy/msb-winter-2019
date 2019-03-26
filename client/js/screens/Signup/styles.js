@@ -10,16 +10,24 @@ import {
   subtitle2,
   iteCenterRow,
   h4,
-  h1
+  h1,
+  h100
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
+  scrollView: {
+    ...h100,
+    backgroundColor: colors.black
+  },
   container: {
     ...container,
     backgroundColor: colors.black
   },
   imgBgWrapper: { position: 'absolute' },
   imgBg: { ...center },
+  signupView: {
+    height: dimensions.fullHeight
+  },
   signupWrapper: {
     ...container,
     backgroundColor: 'transparent',

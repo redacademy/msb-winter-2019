@@ -101,7 +101,6 @@ class Stores extends Component {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const d = R * c; // Distance in km
 
-    console.log(d);
     return d;
   };
 
@@ -143,52 +142,7 @@ class Stores extends Component {
             onPress={this.pickLocationHandler}
             ref={ref => (this.map = ref)}
           >
-            <View
-              style={[
-                styles.zoom,
-                {
-                  // ...row
-
-                  position: 'absolute',
-                  right: 0,
-                  bottom: 0
-                  // justifyContent: 'space-between'
-                  // alignItems: 'flex-end'
-                  // paddingVertical: padding.xxxs,
-                  // paddingHorizontal: padding.xxxs
-                }
-              ]}
-            >
-              <TouchableOpacity
-                style={styles.mapIcon}
-                onPress={() => {
-                  this.zoomIn();
-                }}
-              >
-                <Ionicons
-                  name={Platform.select({
-                    android: 'md-add-circle',
-                    ios: 'ios-add-circle'
-                  })}
-                  size={35}
-                  color={colors.brand}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.mapIcon}
-                onPress={() => {
-                  this.zoomOut();
-                }}
-              >
-                <Ionicons
-                  name={Platform.select({
-                    android: 'md-remove-circle',
-                    ios: 'ios-remove-circle'
-                  })}
-                  size={35}
-                  color={colors.brand}
-                />
-              </TouchableOpacity>
+            <View style={styles.mapIconWrapper}>
               <TouchableOpacity
                 style={styles.mapIcon}
                 onPress={() => {
@@ -205,6 +159,7 @@ class Stores extends Component {
                 />
               </TouchableOpacity>
             </View>
+
             {stores.map(store => {
               return (
                 <Marker
@@ -217,15 +172,7 @@ class Stores extends Component {
                   image={require('../../assets/images/Icons/point_location.png')}
                   onPress={e => console.log(e.nativeEvent)}
                 >
-                  <View
-                    style={{
-                      height: 30,
-                      top: -5,
-                      left: 26,
-                      zIndex: 2,
-                      position: 'absolute'
-                    }}
-                  >
+                  <View style={styles.markerLabel}>
                     <CustomText style={styles.markerTitle}>
                       {store.name}
                     </CustomText>

@@ -12,7 +12,9 @@ import {
   h3,
   center,
   row,
-  jusStrt
+  jusStrt,
+  h100,
+  w100
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
@@ -22,10 +24,26 @@ const styles = StyleSheet.create({
     height: dimensions.fullHeight * 0.3,
     width: dimensions.fullWidth
   },
-  mapIcon: { width: 37, ...center },
+  mapIconWrapper: {
+    justifyContent: 'flex-end',
+    ...h100,
+    ...w100
+  },
+  mapIcon: {
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    paddingHorizontal: padding.xxxs
+  },
+  markerLabel: {
+    height: 30,
+    top: -5,
+    left: 26,
+    zIndex: 2,
+    position: 'absolute'
+  },
   markerTitle: { ...subtitle2, textAlign: 'center' },
   storesWrapper: {
-    width: '100%',
+    ...w100,
     paddingVertical: padding.sm,
     paddingHorizontal: padding.md
   },

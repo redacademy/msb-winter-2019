@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
-import { USER_QUERY } from '../../apollo/queries';
 import { Query } from 'react-apollo';
+
+import { USER_QUERY } from '../../apollo/queries';
 import { getLoggedInUser } from '../../config/models';
+import Loader from '../../components/Loader';
 import FavBeers from './FavBeers';
 import styles from './styles';
-import Loader from '../../components/Loader';
 
 class FavBeersContainer extends Component {
   constructor(props) {

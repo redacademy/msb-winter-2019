@@ -4,7 +4,6 @@ import {
   View,
   Text,
   TouchableHighlight,
-  TouchableOpacity,
   Image
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
@@ -17,15 +16,16 @@ import {
   USER_QUERY
 } from '../../apollo/queries';
 import { graphql, compose } from 'react-apollo';
+import SocialIconsPopout from '../SocialIconsPopout';
+import CustomIcon from '../CustomIcon';
 import styles from './styles';
-import { center } from '../../config/styles';
 
 class CarouselEvents extends Component {
   constructor(props) {
     super(props);
-    this.updateIndex = this.updateIndex.bind(this);
     this.state = {
-      currentIndex: 0
+      currentIndex: 0,
+      hideIcons: true
     };
   }
 
@@ -63,12 +63,19 @@ class CarouselEvents extends Component {
         variables: { usersUserId: user.id, favouriteEventsEventId: event.id }
       });
     }
+    this.setState({ hideIcons: true });
   };
 
   updateIndex = () => {
     if (this._carousel) {
       Store.updateIndex(this._carousel.currentIndex);
     }
+  };
+
+  toggleIcons = () => {
+    this.setState({
+      hideIcons: !this.state.hideIcons
+    });
   };
 
   render() {
@@ -146,27 +153,30 @@ class CarouselEvents extends Component {
         </View>
 
         <View style={styles.btnContainer}>
-          <View />
-          <TouchableOpacity style={styles.socialBtnWrapper} onPress={() => {}}>
-            <Image
-              source={require('../../assets/images/Icons/social_media_button.png')}
-            />
-          </TouchableOpacity>
+          <View style={styles.outerBtnContainer} />
 
-          <TouchableOpacity
+          <View style={styles.socialIconsWrapper}>
+            {!this.state.hideIcons && <SocialIconsPopout />}
+            <CustomIcon
+              onPress={() => {
+                this.toggleIcons();
+              }}
+              source={require('../../assets/images/Icons/social_media_button.png')}
+              style={styles.socialbtn}
+            />
+          </View>
+
+          <CustomIcon
+            style={styles.outerBtnContainer}
             onPress={() => {
               this.toggleFavouriteEvent();
             }}
-          >
-            <Image
-              style={styles.saveBtn}
-              source={
-                this.isEventFavourited()
-                  ? require('../../assets/images/Buttons/save_button_active.png')
-                  : require('../../assets/images/Buttons/save_button_inactive.png')
-              }
-            />
-          </TouchableOpacity>
+            source={
+              this.isEventFavourited()
+                ? require('../../assets/images/Buttons/save_button_active.png')
+                : require('../../assets/images/Buttons/save_button_inactive.png')
+            }
+          />
         </View>
       </View>
     );

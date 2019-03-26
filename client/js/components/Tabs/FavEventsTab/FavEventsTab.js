@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import { View } from "react-native";
-import { withNavigation } from "react-navigation";
-import { ALL_EVENTS_QUERY, USER_QUERY } from "../../../apollo/queries";
-import { Query } from "react-apollo";
-import { getLoggedInUser } from "../../../config/models";
-import CarouselEvents from "../../CarouselEvents";
-import CustomText from "../../CustomText";
-import styles from "./styles";
-import Loader from "../../Loader";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import { withNavigation } from 'react-navigation';
+import { USER_QUERY } from '../../../apollo/queries';
+import { Query } from 'react-apollo';
+import { getLoggedInUser } from '../../../config/models';
+import CarouselEvents from '../../CarouselEvents';
+import CustomText from '../../CustomText';
+import styles from './styles';
+import Loader from '../../Loader';
+import PropTypes from 'prop-types';
 
 class FavEventsTab extends Component {
   static navigationOptions = {
-    title: "Your Events"
+    title: 'Your Events'
   };
 
   constructor(props) {
@@ -37,7 +37,6 @@ class FavEventsTab extends Component {
           if (error) return <Text>Error</Text>;
           const user = data.allUsers && data.allUsers[0];
           if (!user) return <Loader />;
-          console.log(user);
 
           return user.favouriteEvents && user.favouriteEvents.length > 0 ? (
             <CarouselEvents

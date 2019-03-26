@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, ActivityIndicator, ScrollView } from 'react-native';
-import { ALL_REWARDS_QUERY, USER_QUERY } from '../../../apollo/queries';
 import { Query } from 'react-apollo';
+
+import { ALL_REWARDS_QUERY, USER_QUERY } from '../../../apollo/queries';
 import { getLoggedInUser } from '../../../config/models';
 import RedeemRewardButton from '../../RedeemRewardButton';
 import styles from './styles';

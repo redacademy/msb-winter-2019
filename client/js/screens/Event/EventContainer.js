@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-import { Text } from "react-native";
-import { Query } from "react-apollo";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { Text } from 'react-native';
+import { Query } from 'react-apollo';
+import PropTypes from 'prop-types';
 
-import { EVENT_QUERY } from "../../apollo/queries";
-import Loader from "../../components/Loader";
-import Event from "./Event";
+import { EVENT_QUERY } from '../../apollo/queries';
+import Loader from '../../components/Loader';
+import Event from './Event';
 
 class EventContainer extends Component {
   static navigationOptions = {
-    title: "Event",
+    title: 'Event',
     headerRight: null,
     headerStyle: {
-      backgroundColor: "#000",
+      backgroundColor: '#000',
       height: 75
     }
   };
 
   render() {
     const { navigation } = this.props;
-    const id = navigation.getParam("eventId");
+    const id = navigation.getParam('eventId');
 
     return (
       <Query query={EVENT_QUERY} variables={{ id }}>

@@ -19,7 +19,12 @@ import styles from './styles';
 
 class DrawerScreen extends Component {
   static navigationOptions = {
-    title: 'DrawerScreen'
+    title: 'DrawerScreen',
+    headerStyle: {
+      backgroundColor: colors.black,
+      height: 75,
+      borderBottomWidth: 0
+    }
   };
 
   navigateToScreen = route => {

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Text } from "react-native";
 import { Query } from "react-apollo";
 import PropTypes from "prop-types";
 

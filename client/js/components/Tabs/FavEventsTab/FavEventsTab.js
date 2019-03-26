@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View } from "react-native";
 import { withNavigation } from "react-navigation";
-import { ALL_EVENTS_QUERY, USER_QUERY } from "../../../apollo/queries";
+import { USER_QUERY } from "../../../apollo/queries";
 import { Query } from "react-apollo";
 import { getLoggedInUser } from "../../../config/models";
 import CarouselEvents from "../../CarouselEvents";

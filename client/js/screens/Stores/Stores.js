@@ -21,44 +21,18 @@ class Stores extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      region: {
-        // longitude: -123.099305,
-        // latitude: 49.26473,
-        // latitudeDelta: 0.004,
-        // longitudeDelta: 0.004
-      }
+      region: {}
     };
   }
 
   componentDidMount() {
     this.findCoordinates();
-    // this.setState({
-    //   // region: {
-    //   //   longitude: -123.099305,
-    //   //   latitude: 49.26473,
-    //   //   latitudeDelta: 0.004,
-    //   //   longitudeDelta: 0.004
-    //   // },
-    //   // focusedLocation: {
-    //   //   latitude: 49.26473,
-    //   //   longitude: -123.099305,
-    //   //   // latitudeDelta: 0.00522,
-    //   //   latitudeDelta: 0.003,
-    //   //   longitudeDelta:
-    //   //     (Dimensions.get('window').width / Dimensions.get\('window').height) *
-    //   //     0.003
-    //   //   // 0.00522
-    //   // }
-
-    //   focusedLocation: this.findCoordinates() // needs to return an object
-    // });
   }
 
   findCoordinates = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
-          console.log('POSITION', position);
           const location = {
             ...position.coords,
             latitudeDelta: 0.003,
@@ -74,7 +48,7 @@ class Stores extends Component {
         { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
       );
     } else {
-      error => console.log(error);
+      error => console.log('Stores Error >>>', error);
     }
   };
 
@@ -145,26 +119,18 @@ class Stores extends Component {
         const lat2 = store.lat;
         const lon2 = store.long;
 
-        console.log('LAT1', lat1);
-        console.log('LON1', lon1);
-        console.log('LAT2', lat2);
-        console.log('LON2', lon2);
         const distance = Math.round(
           this.getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2)
         );
         return { ...store, distance };
       });
-    console.log('STORES', stores);
 
     return (
       <View style={styles.container}>
         <Subheader>Stores</Subheader>
         <View style={styles.mapWrapper}>
-          {/* {this.state.region.longitude && ( */}
           <MapView
             style={styles.map}
-            // initialRegion={this.state.region}
-            // region={this.state.region}
             followsUserLocation={true}
             showsUserLocation={true}
             showsMyLocationButton={true}
@@ -175,7 +141,6 @@ class Stores extends Component {
             loadingBackgroundColor='#ffffff'
             region={this.state.focusedLocation}
             onPress={this.pickLocationHandler}
-            // customMapStyle={mapStyle}
             ref={ref => (this.map = ref)}
           >
             <View
@@ -269,7 +234,6 @@ class Stores extends Component {
               );
             })}
           </MapView>
-          {/* )} */}
         </View>
         {this.state.focusedLocation && (
           <FlatList
@@ -277,21 +241,6 @@ class Stores extends Component {
               (store1, store2) => store1.distance - store2.distance
             )}
             renderItem={({ item }) => {
-              // const lat1 = this.state.focusedLocation.latitude;
-              // const lon1 = this.state.focusedLocation.longitude;
-              // const lat2 = item.lat;
-              // const lon2 = item.long;
-
-              // console.log('LAT1', lat1);
-              // console.log('LON1', lon1);
-              // console.log('LAT2', lat2);
-              // console.log('LON2', lon2);
-
-              // const distance = Math.round(
-              //   this.getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2)
-              // );
-              const { distance } = item;
-
               return (
                 <View style={styles.storeItem}>
                   <TouchableHighlight

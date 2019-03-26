@@ -6,6 +6,7 @@ import {
   h2,
   hr,
   margin,
+  row,
   subtitle1
 } from '../../config/styles';
 
@@ -57,7 +58,24 @@ const styles = StyleSheet.create({
   boldData: {
     ...subtitle1
   },
-  border: { ...hr, width: 295, marginVertical: margin.sm }
+  border: { ...hr, width: 295, marginVertical: margin.sm },
+
+  /** -------- Buttons -------- **/
+  btnContainer: {
+    ...center,
+    ...row,
+    width: Dimensions.get('window').width,
+    position: 'relative'
+  },
+  socialBtnWrapper: {
+    // width: Dimensions.get('window').width * 0.5,
+    maxWidth: Dimensions.get('window').width
+  },
+  socialBtn: {
+    position: 'absolute',
+    left: Dimensions.get('window').width * 0.5
+  },
+  saveBtn: { alignSelf: 'flex-end' }
 });
 
 export default styles;

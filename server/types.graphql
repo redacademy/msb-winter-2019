@@ -18,7 +18,7 @@ type File @model {
   name: String!
   url: String!
   contentType: String!
-  user: User! @relation(name: "UserPicture")
+  user: User @relation(name: "UserPicture")
 }
 
 type Point @model {

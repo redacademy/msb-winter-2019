@@ -5,6 +5,7 @@ import moment from 'moment';
 
 import styles from './styles';
 import CustomIcon from '../../components/CustomIcon';
+import SaveEventButton from '../../components/Buttons/SaveEventButton';
 import SocialIconsPopout from '../../components/SocialIconsPopout';
 
 class Event extends Component {
@@ -22,7 +23,7 @@ class Event extends Component {
   };
 
   render() {
-    const { event } = this.props;
+    const { event, user } = this.props;
 
     let eventImg;
     if (event.title === 'Live Music & Beers') {
@@ -85,11 +86,12 @@ class Event extends Component {
             />
           </View>
 
-          <CustomIcon
+          {/* <CustomIcon
             style={styles.outerBtnContainer}
             onPress={() => {}}
             source={require('../../assets/images/Buttons/save_button_inactive.png')}
-          />
+          /> */}
+          <SaveEventButton user={user} event={event} />
         </View>
       </View>
     );

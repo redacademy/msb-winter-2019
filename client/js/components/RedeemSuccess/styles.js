@@ -1,34 +1,36 @@
-import { StyleSheet } from "react-native";
-import { colors, fonts } from "../../config/styles";
+import { StyleSheet } from 'react-native';
+import {
+  container,
+  colors,
+  h1,
+  h100,
+  center,
+  button,
+  dimensions,
+  contain
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    ...container,
     backgroundColor: colors.brand,
-    alignItems: "center"
+    ...h100
   },
-  closeContainer: {
-    padding: 20,
-    alignSelf: "flex-end"
-  },
-
-  title: {
-    fontFamily: fonts.secondary,
-    fontSize: fonts.xxl,
-    color: colors.white,
-    marginBottom: 20
-  },
-
   content: {
-    alignItems: "center"
+    ...center,
+    height: '90%'
   },
-
+  title: {
+    ...h1,
+    color: colors.white
+  },
   image: {
-    marginBottom: 20
+    height: dimensions.fullHeight * 0.13,
+    ...contain
   },
   description: {
-    fontFamily: fonts.primaryBold,
-    fontSize: fonts.md
+    ...button,
+    color: colors.black
   }
 });
 

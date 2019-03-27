@@ -1,38 +1,49 @@
-import { StyleSheet, Dimensions } from "react-native";
-import { colors, fonts } from "../../config/styles";
+import { StyleSheet, Dimensions } from 'react-native';
+import {
+  colors,
+  body2,
+  container,
+  center,
+  bg0,
+  h1,
+  margin,
+  padding,
+  row,
+  h100
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
+    ...container,
     backgroundColor: colors.black,
+    ...h100
+  },
+  imgBgWrapper: { position: 'absolute' },
+  imgBg: { ...center },
+  close: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    marginTop: margin.xl,
+    ...row,
+    paddingHorizontal: padding.sm
   },
-  titleContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 20,
-    width: Dimensions.get("window").width * 0.6
+  flex: { flex: 1 },
+  content: {
+    ...bg0,
+    ...center,
+    width: '75%',
+    height: '90%',
+    paddingBottom: padding.xl * 2.5
   },
-
+  flex: { flex: 1 },
   title: {
-    color: colors.white,
-    fontFamily: fonts.secondary,
-    fontSize: fonts.xxl,
-    paddingLeft: 20
+    ...h1,
+    color: colors.white
   },
-  img: {
-    marginTop: 20,
-    marginBottom: 20
-  },
-  textContainer: {
-    margin: 20
-  },
+  img: { marginVertical: margin.xl },
   text: {
+    ...body2,
     color: colors.white,
-    fontFamily: fonts.primarySemi,
-    fontSize: fonts.md,
-    textAlign: "center"
+    textAlign: 'center'
   }
 });
 

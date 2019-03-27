@@ -15,6 +15,7 @@ import PropTypes from 'prop-types';
 import { HISTORY_QUERY, ALL_REWARDS_QUERY } from '../../../apollo/queries';
 import { getLoggedInUser } from '../../../config/models';
 import Loader from '../../Loader';
+import ErrorMessage from '../../ErrorMessage';
 import CustomText from '../../CustomText';
 import HistoryRewards from '../../HistoryRewards';
 import { colors, dimensions } from '../../../config/styles';
@@ -143,7 +144,11 @@ class HistoryTab extends Component {
                     </View>
                     <View style={styles.container}>
                       <FlatList
-                        data={pointsHistory}
+                        data={pointsHistory.sort((point1, point2) => {
+                          const date1 = new Date(point1.date);
+                          const date2 = new Date(point2.date);
+                          return date2.getTime() - date1.getTime();
+                        })}
                         renderItem={({ item }) => {
                           let beerLogo;
 

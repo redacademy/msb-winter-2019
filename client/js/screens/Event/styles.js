@@ -65,8 +65,7 @@ const styles = StyleSheet.create({
   socialIconsWrapper: {
     ...center
   },
-  socialbtn: { marginHorizontal: 2 },
-  outerBtnContainer: { width: 80 }
+  socialbtn: { marginHorizontal: 2 }
 });
 
 export default styles;

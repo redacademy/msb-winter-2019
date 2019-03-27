@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
    **/
 
   beerList: {
-    paddingBottom: 10,
+    marginBottom: 5,
     marginTop: 5,
     height: '50%'
   },
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width
   },
   beerType: {
-    maxWidth: Dimensions.get('window').width * 0.88,
+    maxWidth: 350,
     resizeMode: 'contain'
   }
 });

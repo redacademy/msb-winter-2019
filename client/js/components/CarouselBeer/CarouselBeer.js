@@ -33,7 +33,7 @@ class CarouselBeer extends Component {
     const { beers, navigation } = this.props;
 
     return (
-      <View style={styles.carouselContainer}>
+      <View style={styles.container}>
         <Carousel
           ref={c => {
             this._carousel = c;
@@ -66,7 +66,7 @@ class CarouselBeer extends Component {
             }
 
             return (
-              <View style={styles.slide}>
+              <View style={styles.carouselContainer}>
                 <TouchableHighlight
                   underlayColor={'transparent'}
                   onPress={() => {
@@ -84,9 +84,9 @@ class CarouselBeer extends Component {
               </View>
             );
           }}
-          sliderHeight={Dimensions.get('window').height}
           sliderWidth={Dimensions.get('window').width}
           itemWidth={250}
+          itemHeight={500}
         />
 
         <View style={{ ...center }}>

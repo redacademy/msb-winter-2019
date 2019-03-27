@@ -11,13 +11,13 @@ import {
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  carouselContainer: {
+  container: {
     flex: 1,
-    height: Dimensions.get('window').height * 0.6,
+    height: Dimensions.get('window').height * 0.7,
     padding: 12,
     paddingBottom: 5
   },
-  slide: {
+  carouselContainer: {
     ...center
   },
 
@@ -32,9 +32,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   img: {
-    width: 200,
     maxWidth: 215,
-    maxHeight: 215
+    maxHeight: 215,
+    resizeMode: 'contain'
   },
   title: { ...h1, ...center, paddingTop: 8, paddingBottom: 1 },
   subtitle: {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   border: {
     ...hr,
-    marginVertical: margin.xxs,
+    marginVertical: margin.xs,
     width: '100%',
     maxWidth: 250
   }

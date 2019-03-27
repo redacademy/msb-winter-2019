@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: Dimensions.get('window').height * 0.6,
     padding: 20,
+
     paddingBottom: 10,
     alignItems: 'center'
   },
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
   border: {
     ...hr,
     width: 295,
-    marginVertical: margin.xs
+    marginVertical: margin.xs * 1.5
   },
 
   /**

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from 'react';
 import {
   View,
   Text,
@@ -6,21 +6,21 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput
-} from "react-native";
-import ImagePicker from "react-native-image-picker";
-import { graphql, compose } from "react-apollo";
-import PropTypes from "prop-types";
-import Subheader from "../../components/Subheader";
-import ToggleSwitch from "../../components/ToggleSwitch";
-import BlackButton from "../../components/Buttons/BlackButton";
+} from 'react-native';
+import ImagePicker from 'react-native-image-picker';
+import { graphql, compose } from 'react-apollo';
+import PropTypes from 'prop-types';
+
 import {
   UPDATE_USER_EMAIL,
   UPDATE_USER_NAME,
   USER_QUERY,
   UPDATE_USER_PROFILE_IMAGE
-} from "../../apollo/queries";
-
-import styles from "./styles";
+} from '../../apollo/queries';
+import Subheader from '../../components/Subheader';
+import ToggleSwitch from '../../components/ToggleSwitch';
+import BlackButton from '../../components/Buttons/BlackButton';
+import styles from './styles';
 
 class Profile extends Component {
   constructor(props) {
@@ -32,16 +32,16 @@ class Profile extends Component {
       nameInput: null
     };
     this.selectImageOptions = {
-      title: "Select Image",
+      title: 'Select Image',
       storageOptions: {
         skipBackup: true,
-        path: "images"
+        path: 'images'
       }
     };
   }
 
   getAvatarImageSource = () => {
-    let uri = "https://via.placeholder.com/200x200?text=No+image+available";
+    let uri = 'https://via.placeholder.com/200x200?text=No+image+available';
     const { user } = this.props;
     const { editing, avatarSource } = this.state;
     if (editing && avatarSource) {
@@ -72,6 +72,7 @@ class Profile extends Component {
       updateUserName,
       navigation
     } = this.props;
+
     if (editing) {
       if (emailInput) {
         await updateUserEmail({
@@ -88,25 +89,26 @@ class Profile extends Component {
           variables: {
             userId: user.id,
             url: avatarSource.uri,
-            contentType: "image/png",
-            name: "profile_image"
+            contentType: 'image/png',
+            name: 'profile_image'
           }
         });
       }
     }
     this.setState({ editing: !editing, avatarSource: null, emailInput: null });
     if (editing) {
-      navigation.navigate("UpdateProfile");
+      navigation.navigate('UpdateProfile');
     }
   };
 
   render() {
     const { user } = this.props;
     const { editing } = this.state;
+
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <Subheader>About You</Subheader>
+      <Fragment>
+        <Subheader>About You</Subheader>
+        <ScrollView contentContainerStyle={styles.container}>
           <View style={styles.imageWrapper}>
             <TouchableOpacity
               onPress={() => {
@@ -133,12 +135,12 @@ class Profile extends Component {
             )}
           </View>
 
-          <View style={styles.emailContainer}>
+          <View style={styles.emailWrapper}>
             <Text style={styles.heading}>Email: </Text>
-            <View style={styles.userEmailContainer}>
+            <View style={styles.userEmailWrapper}>
               {editing ? (
                 <TextInput
-                  autoCapitalize="none"
+                  autoCapitalize='none'
                   style={styles.userEmail}
                   onChangeText={emailInput => this.setState({ emailInput })}
                 >
@@ -147,25 +149,36 @@ class Profile extends Component {
               ) : (
                 <Text style={styles.userEmail}>{user.email}</Text>
               )}
+              <View style={styles.underline} />
             </View>
           </View>
 
-          <View style={styles.divider}>
-            <Text style={styles.heading}>Notifications</Text>
-          </View>
-          <View>
+          <View
+            style={[
+              styles.notificationsWrapper,
+              { width: '100%', alignItems: 'center' }
+            ]}
+          >
+            <View style={styles.notifications}>
+              <Text style={[styles.heading, { alignSelf: 'flex-start' }]}>
+                Notifications
+              </Text>
+            </View>
+
+            <View style={styles.hr} />
+
             <ToggleSwitch />
+
+            <View style={styles.hr} />
           </View>
-          <View style={styles.buttonSaveContainer}>
-            <BlackButton
-              style={editing ? styles.buttonSave : styles.button}
-              onPress={() => this.handleButtonPress()}
-            >
-              {editing ? "Save Changes" : "Edit"}
-            </BlackButton>
-          </View>
-        </View>
-      </ScrollView>
+          <BlackButton
+            style={editing ? styles.buttonSave : styles.button}
+            onPress={() => this.handleButtonPress()}
+          >
+            {editing ? 'Save Changes' : 'Edit'}
+          </BlackButton>
+        </ScrollView>
+      </Fragment>
     );
   }
 }
@@ -180,7 +193,7 @@ Profile.propTypes = {
 
 export default compose(
   graphql(UPDATE_USER_EMAIL, {
-    name: "updateUserEmail",
+    name: 'updateUserEmail',
     options: () => ({
       refetchQueries: [
         {
@@ -190,7 +203,7 @@ export default compose(
     })
   }),
   graphql(UPDATE_USER_NAME, {
-    name: "updateUserName",
+    name: 'updateUserName',
     options: () => ({
       refetchQueries: [
         {
@@ -200,7 +213,7 @@ export default compose(
     })
   }),
   graphql(UPDATE_USER_PROFILE_IMAGE, {
-    name: "updateUserProfileImage",
+    name: 'updateUserProfileImage',
     options: () => ({
       refetchQueries: [
         {

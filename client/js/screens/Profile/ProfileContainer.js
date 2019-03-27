@@ -1,13 +1,12 @@
-import React, { Component } from "react";
-import { USER_QUERY } from "../../apollo/queries";
-import { Query } from "react-apollo";
-import { getLoggedInUser } from "../../config/models";
-import Loader from "../../components/Loader";
-import ErrorMessage from "../../components/ErrorMessage";
-import Profile from "./Profile";
+import React, { Component } from 'react';
+import { Query } from 'react-apollo';
+import PropTypes from 'prop-types';
 
-import PropTypes from "prop-types";
-import styles from "./styles";
+import { USER_QUERY } from '../../apollo/queries';
+import { getLoggedInUser } from '../../config/models';
+import Loader from '../../components/Loader';
+import ErrorMessage from '../../components/ErrorMessage';
+import Profile from './Profile';
 
 class ProfileContainer extends Component {
   constructor(props) {
@@ -21,7 +20,7 @@ class ProfileContainer extends Component {
   };
 
   static navigationOptions = {
-    title: "Profile"
+    title: 'Profile'
   };
 
   render() {

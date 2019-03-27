@@ -16,9 +16,9 @@ import {
   USER_QUERY
 } from '../../apollo/queries';
 import { graphql, compose } from 'react-apollo';
-import SocialIconsPopout from '../SocialIconsPopout';
 import CustomIcon from '../CustomIcon';
 import styles from './styles';
+import ShareButton from '../Buttons/ShareButton';
 
 class CarouselEvents extends Component {
   constructor(props) {
@@ -49,7 +49,6 @@ class CarouselEvents extends Component {
 
   toggleFavouriteEvent = async () => {
     const {
-      events,
       user,
       addToFavouriteEvents,
       removeFromFavouriteEvents
@@ -138,9 +137,7 @@ class CarouselEvents extends Component {
           <View style={styles.dataWrapper}>
             <Text style={styles.eventData}>
               <Text style={styles.boldData}>Date: </Text>
-              {moment(events[this.state.currentIndex].date).format(
-                'dddd, MMMM D, YYYY'
-              )}
+              {moment(currentEvent.date).format('dddd, MMMM D, YYYY')}
             </Text>
             <Text style={styles.eventData}>
               <Text style={styles.boldData}>Time: </Text>
@@ -158,16 +155,7 @@ class CarouselEvents extends Component {
         <View style={styles.btnContainer}>
           <View style={styles.outerBtnContainer} />
 
-          <View style={styles.socialIconsWrapper}>
-            {!this.state.hideIcons && <SocialIconsPopout />}
-            <CustomIcon
-              onPress={() => {
-                this.toggleIcons();
-              }}
-              source={require('../../assets/images/Icons/social_media_button.png')}
-              style={styles.socialbtn}
-            />
-          </View>
+          <ShareButton />
 
           <CustomIcon
             style={styles.outerBtnContainer}

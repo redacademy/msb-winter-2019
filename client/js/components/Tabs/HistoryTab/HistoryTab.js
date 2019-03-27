@@ -144,7 +144,11 @@ class HistoryTab extends Component {
                     </View>
                     <View style={styles.container}>
                       <FlatList
-                        data={pointsHistory}
+                        data={pointsHistory.sort((point1, point2) => {
+                          const date1 = new Date(point1.date);
+                          const date2 = new Date(point2.date);
+                          return date2.getTime() - date1.getTime();
+                        })}
                         renderItem={({ item }) => {
                           let beerLogo;
 

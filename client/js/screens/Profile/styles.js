@@ -1,64 +1,67 @@
 import { StyleSheet } from 'react-native';
-import { colors, fonts } from '../../config/styles';
+import {
+  container,
+  colors,
+  fonts,
+  h3,
+  capitalize,
+  subtitle2,
+  row,
+  hr,
+  w100,
+  mv0,
+  pv0,
+  jusBtwn,
+  iteCenterRow,
+  jusCntr,
+  jusArnd,
+  iteStrt
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center'
+    ...container,
+    ...jusArnd
   },
   imageWrapper: {
-    flexGrow: 1.5,
-    marginTop: 20,
-    justifyContent: 'space-evenly'
+    ...jusBtwn
   },
   profilePic: {
-    resizeMode: 'contain',
-    borderRadius: 100,
-    borderWidth: 10,
-    width: 200,
-    height: 200,
+    resizeMode: 'cover',
+    borderRadius: 65,
+    borderWidth: 6,
+    width: 130,
+    height: 130,
     borderColor: colors.brand
   },
   name: {
-    alignSelf: 'center',
-    fontFamily: fonts.primaryBold,
-    fontSize: fonts.lg,
-    marginBottom: 20
+    ...h3,
+    ...capitalize,
+    fontFamily: fonts.primaryBold
   },
-  emailContainer: {
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    justifyContent: 'flex-start',
-    width: '70%',
-    marginLeft: 20
+  hr: { ...hr, ...mv0, width: '90%' },
+  underline: { ...hr, ...mv0 },
+  emailWrapper: {
+    width: '65%',
+    ...iteCenterRow,
+    ...jusCntr
   },
   heading: {
-    fontFamily: fonts.primarySemi,
-    fontSize: fonts.xs
+    ...subtitle2,
+    ...pv0
   },
   userEmail: {
-    fontSize: fonts.xs
+    ...subtitle2,
+    color: colors.neutralDark,
+    ...pv0
   },
-  userEmailContainer: {
-    borderBottomWidth: 2,
-    borderColor: colors.neutralLight,
-    width: '100%'
+  userEmailWrapper: {
+    ...w100
   },
-  divider: {
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    justifyContent: 'flex-start',
-    width: '85%',
-    marginLeft: 20,
-    marginTop: 20,
-    borderBottomColor: colors.neutralLight,
-    borderBottomWidth: 2
-  },
-  toggleContainer: {
-    marginLeft: 20,
-    marginTop: 10,
-    borderBottomColor: colors.neutralLight,
-    borderBottomWidth: 2
+  notifications: {
+    ...row,
+    ...iteStrt,
+    width: '75%'
   },
   button: {
     width: 120
@@ -66,10 +69,6 @@ const styles = StyleSheet.create({
   buttonSave: {
     color: colors.white,
     backgroundColor: colors.brand
-  },
-  buttonSaveContainer: {
-    alignItems: 'center',
-    marginBottom: 20
   }
 });
 

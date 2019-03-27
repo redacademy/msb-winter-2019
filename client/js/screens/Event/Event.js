@@ -4,25 +4,12 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import styles from './styles';
-import CustomIcon from '../../components/CustomIcon';
-import SocialIconsPopout from '../../components/SocialIconsPopout';
+import SaveEventButton from '../../components/Buttons/SaveEventButton';
+import ShareButton from '../../components/Buttons/ShareButton';
 
 class Event extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      hideIcons: true
-    };
-  }
-
-  toggleIcons = () => {
-    this.setState({
-      hideIcons: !this.state.hideIcons
-    });
-  };
-
   render() {
-    const { event } = this.props;
+    const { event, user } = this.props;
 
     let eventImg;
     if (event.title === 'Live Music & Beers') {
@@ -73,23 +60,8 @@ class Event extends Component {
 
         <View style={styles.btnContainer}>
           <View style={styles.outerBtnContainer} />
-
-          <View style={styles.socialIconsWrapper}>
-            {!this.state.hideIcons && <SocialIconsPopout />}
-            <CustomIcon
-              onPress={() => {
-                this.toggleIcons();
-              }}
-              source={require('../../assets/images/Icons/social_media_button.png')}
-              style={styles.socialbtn}
-            />
-          </View>
-
-          <CustomIcon
-            style={styles.outerBtnContainer}
-            onPress={() => {}}
-            source={require('../../assets/images/Buttons/save_button_inactive.png')}
-          />
+          <ShareButton />
+          <SaveEventButton user={user} event={event} />
         </View>
       </View>
     );
@@ -97,6 +69,7 @@ class Event extends Component {
 }
 
 Event.propTypes = {
+  user: PropTypes.object.isRequired,
   event: PropTypes.object.isRequired,
   navigation: PropTypes.object.isRequired
 };

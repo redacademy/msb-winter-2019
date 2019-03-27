@@ -12,11 +12,22 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height * 0.6,
     flex: 1,
-    padding: 20,
-    paddingTop: 35,
-    alignItems: 'center'
+    height: Dimensions.get('window').height,
+    paddingTop: 25,
+    paddingBottom: 5,
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+
+  /**
+   * Carousel
+   **/
+  carousel: {
+    height: Dimensions.get('window').height * 0.43
+  },
+  carouselContainer: {
+    ...center
   },
   imgWrapper: {
     shadowOffset: { width: 1, height: 1 },
@@ -26,49 +37,62 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   img: {
-    width: 215,
-    height: 215
+    maxWidth: 215,
+    maxHeight: 215
   },
-  title: { ...h2, ...center, fontSize: 38, paddingTop: 12, paddingBottom: 2 },
+  title: {
+    ...h2,
+    ...center,
+    fontSize: 36,
+    paddingTop: 12,
+    paddingBottom: 5
+  },
   subtitle: {
     color: colors.neutralDark,
     fontSize: 15,
     fontFamily: fonts.primarySemi
   },
 
+  /**
+   * Info
+   **/
   infoWrapper: {
-    ...center,
-    paddingBottom: 15,
-    width: Dimensions.get('window').width
+    flex: 1,
+    ...center
   },
   dataWrapper: {
-    width: Dimensions.get('window').width * 0.8,
     alignItems: 'flex-start',
-    justifyContent: 'space-evenly',
-    paddingLeft: 22,
-    paddingRight: 16
+    justifyContent: 'space-around',
+    paddingVertical: 3,
+    paddingLeft: 28,
+    paddingRight: 16,
+    width: Dimensions.get('window').width * 0.85
   },
   eventData: {
     ...subtitle1,
     fontSize: 14,
-    fontFamily: fonts.primary,
-    paddingTop: 3,
-    paddingBottom: 3
+    fontFamily: fonts.primary
+    // paddingVertical: 10
   },
   boldData: {
     ...subtitle1
   },
-  border: { ...hr, width: 295, marginVertical: margin.sm },
+  border: {
+    ...hr,
+    width: 290
+    // marginVertical: margin.sm
+  },
 
-  /** -------- Buttons -------- **/
+  /**
+   * Buttons
+   **/
   btnContainer: {
+    flex: 1,
     ...center,
-    ...row
+    ...row,
+    paddingTop: 15
   },
-  socialIconsWrapper: {
-    ...center
-  },
-  socialbtn: { marginHorizontal: 2 },
+
   outerBtnContainer: { width: 80 }
 });
 

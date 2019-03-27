@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
   text: {
     color: colors.white,
     ...body2
+  },
+  dot: {
+    letterSpacing: 1.5
   }
 });
 

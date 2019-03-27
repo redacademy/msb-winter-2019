@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import SaveEventButton from '../Buttons/SaveEventButton';
 import styles from './styles';
 import ShareButton from '../Buttons/ShareButton';
+import { center } from '../../config/styles';
 
 class CarouselEvents extends Component {
   constructor(props) {
@@ -53,52 +54,56 @@ class CarouselEvents extends Component {
 
     return (
       <View style={styles.container}>
-        <Carousel
-          ref={c => {
-            this._carousel = c;
-          }}
-          data={events}
-          loop={true}
-          loopClonesPerSide={2}
-          firstItem={0}
-          onSnapToItem={index => {
-            this.setState({ currentIndex: index });
-          }}
-          renderItem={({ item }) => {
-            let eventImg;
-            if (item.title === 'Live Music & Beers') {
-              eventImg = require('../../assets/images/Events/livemusic.jpg');
-            } else if (item.title === 'Brewery Tour') {
-              eventImg = require('../../assets/images/Events/Oskar_Blues_Festival_1200.jpg');
-            }
+        <View style={styles.carousel}>
+          <Carousel
+            ref={c => {
+              this._carousel = c;
+            }}
+            data={events}
+            loop={true}
+            loopClonesPerSide={2}
+            firstItem={0}
+            onSnapToItem={index => {
+              this.setState({ currentIndex: index });
+            }}
+            renderItem={({ item }) => {
+              let eventImg;
+              if (item.title === 'Live Music & Beers') {
+                eventImg = require('../../assets/images/Events/livemusic.jpg');
+              } else if (item.title === 'Brewery Tour') {
+                eventImg = require('../../assets/images/Events/Oskar_Blues_Festival_1200.jpg');
+              }
 
-            return (
-              <TouchableHighlight
-                underlayColor={'transparent'}
-                onPress={() => {
-                  navigation.navigate('Event', { eventId: item.id });
-                }}
-              >
-                <View style={{ alignItems: 'center' }}>
-                  <View style={styles.imgWrapper}>
-                    <Image
-                      style={styles.img}
-                      source={
-                        eventImg
-                          ? eventImg
-                          : require('../../assets/images/Events/craft-beer-background-5.jpg')
-                      }
-                    />
+              return (
+                <TouchableHighlight
+                  underlayColor={'transparent'}
+                  onPress={() => {
+                    navigation.navigate('Event', { eventId: item.id });
+                  }}
+                >
+                  <View style={styles.carouselContainer}>
+                    <View style={styles.imgWrapper}>
+                      <Image
+                        style={styles.img}
+                        source={
+                          eventImg
+                            ? eventImg
+                            : require('../../assets/images/Events/craft-beer-background-5.jpg')
+                        }
+                      />
+                    </View>
+                    <View style={{ ...center }}>
+                      <Text style={styles.title}>{item.title}</Text>
+                      <Text style={styles.subtitle}>{item.subtitle}</Text>
+                    </View>
                   </View>
-                  <Text style={styles.title}>{item.title}</Text>
-                  <Text style={styles.subtitle}>{item.subtitle}</Text>
-                </View>
-              </TouchableHighlight>
-            );
-          }}
-          sliderWidth={Dimensions.get('window').width}
-          itemWidth={250}
-        />
+                </TouchableHighlight>
+              );
+            }}
+            sliderWidth={Dimensions.get('window').width}
+            itemWidth={250}
+          />
+        </View>
 
         <View style={styles.infoWrapper}>
           <View style={styles.border} />
@@ -124,7 +129,11 @@ class CarouselEvents extends Component {
         <View style={styles.btnContainer}>
           <View style={styles.outerBtnContainer} />
           <ShareButton />
-          <SaveEventButton user={user} event={currentEvent} />
+          <SaveEventButton
+            style={styles.outerBtnContainer}
+            user={user}
+            event={currentEvent}
+          />
         </View>
       </View>
     );

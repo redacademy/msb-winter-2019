@@ -5,41 +5,63 @@ import {
   fonts,
   h1,
   hr,
+  margin,
   row,
   subtitle1
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  carouselContainer: {
-    padding: 15,
-    paddingBottom: 0
-  },
-  slide: {
-    ...center
+  container: {
+    paddingTop: 25,
+    // alignItems: 'center',
+    justifyContent: 'space-around'
   },
 
+  /**
+   * Carousel
+   **/
+  carouselWrapper: {
+    height: Dimensions.get('window').height * 0.38
+  },
+  carouselContainer: {
+    ...center
+  },
   imgWrapper: {
-    flex: 1,
-    shadowOffset: { width: 1, height: 3.5 },
+    shadowOffset: { width: 1, height: 1 },
     shadowColor: colors.neutralDark,
     shadowOpacity: 1,
     shadowRadius: 2,
     backgroundColor: '#fff'
   },
-
-  title: { ...h1, ...center, paddingBottom: 3 },
+  img: {
+    maxWidth: 210,
+    maxHeight: 210
+  },
+  title: {
+    ...h1,
+    ...center,
+    fontSize: 38,
+    paddingTop: 10,
+    paddingBottom: 3
+  },
   subtitle: {
     color: colors.neutralDark,
     fontSize: fonts.sm
   },
 
+  /**
+   * Info
+   **/
+  nonCarousel: {
+    ...center,
+    justifyContent: 'space-between'
+  },
   dataWrapper: {
-    width: Dimensions.get('window').width * 0.8,
     ...row,
     ...center,
-    justifyContent: 'space-evenly',
-    paddingLeft: 15,
-    paddingRight: 15
+    justifyContent: 'space-around',
+    width: Dimensions.get('window').width * 0.8,
+    paddingVertical: 5
   },
   infoSpacing: {
     alignItems: 'flex-start'
@@ -54,7 +76,12 @@ const styles = StyleSheet.create({
   boldData: {
     ...subtitle1
   },
-  border: { ...hr, width: '100%', maxWidth: 250 }
+  border: {
+    ...hr,
+    marginVertical: margin.sm,
+    width: '100%',
+    maxWidth: 270
+  }
 });
 
 export default styles;

@@ -2,10 +2,9 @@ import { Dimensions, StyleSheet } from 'react-native';
 import { center, container, h1, row, vl } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: { ...container },
+  container: { ...container, marginTop: 10 },
   greet: {
     ...h1,
-    marginTop: 10,
     paddingBottom: 0
   },
 
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
    **/
 
   beerList: {
-    paddingBottom: 10,
+    marginBottom: 5,
     marginTop: 5,
     height: '50%'
   },

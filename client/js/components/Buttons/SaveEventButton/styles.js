@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  outerBtnContainer: { width: 80 }
+  save: { width: 75 }
 });
 
 export default styles;

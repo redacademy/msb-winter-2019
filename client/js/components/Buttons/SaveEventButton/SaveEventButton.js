@@ -36,7 +36,7 @@ class SaveEventButton extends Component {
   render() {
     return (
       <CustomIcon
-        style={styles.outerBtnContainer}
+        style={styles.save}
         onPress={() => {
           this.toggleFavouriteEvent();
         }}

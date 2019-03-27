@@ -5,22 +5,9 @@ import moment from 'moment';
 
 import styles from './styles';
 import CustomIcon from '../../components/CustomIcon';
-import SocialIconsPopout from '../../components/SocialIconsPopout';
+import ShareButton from '../../components/Buttons/ShareButton';
 
 class Event extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      hideIcons: true
-    };
-  }
-
-  toggleIcons = () => {
-    this.setState({
-      hideIcons: !this.state.hideIcons
-    });
-  };
-
   render() {
     const { event } = this.props;
 
@@ -73,18 +60,7 @@ class Event extends Component {
 
         <View style={styles.btnContainer}>
           <View style={styles.outerBtnContainer} />
-
-          <View style={styles.socialIconsWrapper}>
-            {!this.state.hideIcons && <SocialIconsPopout />}
-            <CustomIcon
-              onPress={() => {
-                this.toggleIcons();
-              }}
-              source={require('../../assets/images/Icons/social_media_button.png')}
-              style={styles.socialbtn}
-            />
-          </View>
-
+          <ShareButton />
           <CustomIcon
             style={styles.outerBtnContainer}
             onPress={() => {}}

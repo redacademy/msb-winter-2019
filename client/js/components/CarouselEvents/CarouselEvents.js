@@ -16,9 +16,9 @@ import {
   USER_QUERY
 } from '../../apollo/queries';
 import { graphql, compose } from 'react-apollo';
-import SocialIconsPopout from '../SocialIconsPopout';
 import CustomIcon from '../CustomIcon';
 import styles from './styles';
+import ShareButton from '../Buttons/ShareButton';
 
 class CarouselEvents extends Component {
   constructor(props) {
@@ -155,16 +155,7 @@ class CarouselEvents extends Component {
         <View style={styles.btnContainer}>
           <View style={styles.outerBtnContainer} />
 
-          <View style={styles.socialIconsWrapper}>
-            {!this.state.hideIcons && <SocialIconsPopout />}
-            <CustomIcon
-              onPress={() => {
-                this.toggleIcons();
-              }}
-              source={require('../../assets/images/Icons/social_media_button.png')}
-              style={styles.socialbtn}
-            />
-          </View>
+          <ShareButton />
 
           <CustomIcon
             style={styles.outerBtnContainer}

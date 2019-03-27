@@ -6,9 +6,10 @@ import {
   colors,
   contain,
   body2,
-  fonts,
   padding,
-  jusArnd
+  jusBtwn,
+  bg0,
+  button
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
@@ -19,14 +20,13 @@ const styles = StyleSheet.create({
   imgBgWrapper: { position: 'absolute' },
   imgBg: { ...center },
   onboardWrapper: {
-    ...container,
-    backgroundColor: 'transparent',
-    ...jusArnd,
-    marginVertical: margin.xl * 6
+    ...center,
+    ...bg0,
+    ...jusBtwn
   },
   logoWrapper: { ...center },
   imgLogo: { ...contain },
-  welcomeWrapper: { ...center },
+  welcomeWrapper: { ...center, marginTop: margin.md },
   welcome: { ...body2, color: colors.white },
   slide: { ...container },
   dot: { backgroundColor: colors.white },
@@ -37,10 +37,7 @@ const styles = StyleSheet.create({
     marginHorizontal: margin.xl
   },
   btnText: {
-    color: colors.white,
-    textAlign: 'center',
-    fontSize: fonts.md,
-    fontFamily: 'OpenSans-Bold'
+    ...button
   },
   button: {
     paddingVertical: padding.xs * 1.25,

@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import styles from './styles';
-import CustomIcon from '../../components/CustomIcon';
+import SaveEventButton from '../../components/Buttons/SaveEventButton';
 import ShareButton from '../../components/Buttons/ShareButton';
 
 class Event extends Component {
   render() {
-    const { event } = this.props;
+    const { event, user } = this.props;
 
     let eventImg;
     if (event.title === 'Live Music & Beers') {
@@ -61,11 +61,7 @@ class Event extends Component {
         <View style={styles.btnContainer}>
           <View style={styles.outerBtnContainer} />
           <ShareButton />
-          <CustomIcon
-            style={styles.outerBtnContainer}
-            onPress={() => {}}
-            source={require('../../assets/images/Buttons/save_button_inactive.png')}
-          />
+          <SaveEventButton user={user} event={event} />
         </View>
       </View>
     );
@@ -73,6 +69,7 @@ class Event extends Component {
 }
 
 Event.propTypes = {
+  user: PropTypes.object.isRequired,
   event: PropTypes.object.isRequired,
   navigation: PropTypes.object.isRequired
 };

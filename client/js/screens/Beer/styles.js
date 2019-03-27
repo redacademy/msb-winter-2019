@@ -8,8 +8,10 @@ const styles = StyleSheet.create({
   },
   bannerWrapper: {
     ...shadow2,
-    zIndex: 0,
-    marginLeft: -20
+    zIndex: 0
+  },
+  bannerImg: {
+    transform: [{ scale: 1.05 }]
   },
   backIcon: {
     position: 'absolute',

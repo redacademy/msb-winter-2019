@@ -2,7 +2,7 @@ import { Dimensions, StyleSheet } from 'react-native';
 import { center, container, h1, row, vl } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: { ...container, marginTop: 20 },
+  container: { ...container, marginTop: 10 },
   greet: {
     ...h1,
     paddingBottom: 0
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width
   },
   beerType: {
-    maxWidth: 350,
+    maxWidth: Dimensions.get('window').width * 0.88,
     resizeMode: 'contain'
   }
 });

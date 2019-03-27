@@ -81,7 +81,7 @@ class Beer extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.bannerWrapper}>
-          <Image source={beerBanner} />
+          <Image style={styles.bannerImg} source={beerBanner} />
         </View>
         <CustomIcon
           onPress={() => navigation.goBack()}
@@ -121,7 +121,7 @@ class Beer extends Component {
               </View>
             </View>
 
-            <ScrollView style={{ maxHeight: 190 }}>
+            <ScrollView style={{ maxHeight: 178 }}>
               <Text style={styles.description}>{beer.description}</Text>
             </ScrollView>
           </View>

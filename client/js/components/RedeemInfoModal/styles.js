@@ -1,52 +1,38 @@
-import { StyleSheet } from "react-native";
-import { h1, colors, container, h2, fonts } from "../../config/styles";
+import { StyleSheet } from 'react-native';
+import {
+  h1,
+  colors,
+  container,
+  h3,
+  button,
+  subtitle1,
+  jusArnd,
+  iteCntr,
+  contain,
+  dimensions
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    ...container,
-    height: "100%"
+    ...container
   },
+  content: { ...jusArnd, height: '60%', ...iteCntr },
   heading: {
-    ...h2,
-    color: colors.neutralLight
-  },
-  redeem: {
-    ...h1,
-    marginBottom: 20
-  },
-  rewardTitle: {
-    fontFamily: fonts.primaryBold,
-    fontSize: fonts.md,
-    marginBottom: 20,
-    marginTop: 20
-  },
-
-  rewardImg: {
-    marginBottom: 20
-  },
-  redeemButton: {
-    padding: 20,
-    backgroundColor: colors.brand,
-    borderRadius: 10,
-    marginTop: 20,
-    marginBottom: 20
-  },
-
-  redeemText: {
-    color: colors.white,
-    fontFamily: fonts.primaryBold,
-    fontSize: fonts.lg
-  },
-
-  cancel: {
-    fontFamily: fonts.primarySemi,
-    fontSize: fonts.md,
+    ...h3,
     color: colors.neutralDark
   },
-
-  cancelContainer: {
-    borderBottomWidth: 2,
-    borderBottomColor: colors.neutralLight
+  redeem: {
+    ...h1
+  },
+  rewardTitle: {
+    ...button,
+    color: colors.black
+  },
+  rewardImg: { height: dimensions.fullHeight * 0.13, ...contain },
+  cancel: {
+    ...subtitle1,
+    color: colors.neutralDark,
+    textDecorationLine: 'underline'
   }
 });
 

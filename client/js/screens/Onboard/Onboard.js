@@ -1,38 +1,38 @@
-import React, { Component } from "react";
-import { View, Text, Image } from "react-native";
-import AppIntroSlider from "react-native-app-intro-slider";
-import { withNavigation } from "react-navigation";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { View, Text, Image } from 'react-native';
+import AppIntroSlider from 'react-native-app-intro-slider';
+import { withNavigation } from 'react-navigation';
+import PropTypes from 'prop-types';
 
-import Loader from "../../components/Loader";
-import CustomText from "../../components/CustomText";
-import styles from "./styles";
+import Loader from '../../components/Loader';
+import CustomText from '../../components/CustomText';
+import styles from './styles';
 
 const slides = [
   {
-    key: "0",
-    image: require("../../assets/images/Logos/growler_logo_brand.png"),
-    text1: "Welcome to the Growler",
-    text2: "Rewards Program, you are now",
-    text3: "an official member!"
+    key: '0',
+    image: require('../../assets/images/Logos/growler_logo_brand.png'),
+    text1: 'Welcome to the Growler',
+    text2: 'Rewards Program, you are now',
+    text3: 'an official member!'
   },
   {
-    key: "1",
-    image: require("../../assets/images/Logos/growler_logo.png"),
-    text1: "Collect stamps with Growlers and",
-    text2: "redeem them for awesome rewards."
+    key: '1',
+    image: require('../../assets/images/Logos/growler_logo.png'),
+    text1: 'Collect stamps with Growlers and',
+    text2: 'redeem them for awesome rewards.'
   },
   {
-    key: "2",
-    image: require("../../assets/images/Icons/cheers_icon_white.png"),
-    text1: "Look out for our brewtiful events to",
-    text2: "hang out with your new friends!"
+    key: '2',
+    image: require('../../assets/images/Icons/cheers_icon_white.png'),
+    text1: 'Look out for our brewtiful events to',
+    text2: 'hang out with your new friends!'
   },
   {
-    key: "3",
-    image: require("../../assets/images/Icons/where_to_buy_icon.png"),
-    text1: "Locate where to buy our",
-    text2: "amazing beer."
+    key: '3',
+    image: require('../../assets/images/Icons/where_to_buy_icon.png'),
+    text1: 'Locate where to buy our',
+    text2: 'amazing beer.'
   }
 ];
 
@@ -60,7 +60,7 @@ class Onboard extends Component {
       >
         <View style={styles.imgBgWrapper}>
           <Image
-            source={require("../../assets/images/Logos/msb_logo.png")}
+            source={require('../../assets/images/Logos/msb_logo.png')}
             style={styles.imgBg}
           />
         </View>
@@ -81,7 +81,7 @@ class Onboard extends Component {
       <View style={styles.btn}>
         <Text
           onPress={() => {
-            this.props.navigation.navigate("Home");
+            this.props.navigation.navigate('Home');
           }}
           style={[styles.btnText, styles.button]}
         >
@@ -114,7 +114,7 @@ class Onboard extends Component {
   }
 }
 
-Onboard.proptypes = {
+Onboard.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 

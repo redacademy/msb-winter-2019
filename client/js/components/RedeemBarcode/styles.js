@@ -1,14 +1,15 @@
 import { StyleSheet } from 'react-native';
-import { container, subtitle2 } from '../../config/styles';
+import { container, subtitle2, h100, center } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    ...container
+    ...container,
+    ...h100
   },
-  content: { ...container, height: '50%' },
+  content: { ...center, height: '90%', width: '70%' },
   text: {
-    ...subtitle2
-    // textAlign: 'center'
+    ...subtitle2,
+    textAlign: 'center'
   }
 });
 

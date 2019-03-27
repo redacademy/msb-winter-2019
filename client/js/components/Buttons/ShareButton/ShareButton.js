@@ -49,7 +49,7 @@ class ShareButton extends Component {
         {!this.state.hideIcons && <SocialIconsPopout />}
         <CustomIcon
           onPress={() => {
-            //this.toggleIcons();
+            this.toggleIcons();
           }}
           source={require('../../../assets/images/Icons/social_media_button.png')}
           style={styles.socialbtn}

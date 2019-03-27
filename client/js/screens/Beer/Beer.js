@@ -25,11 +25,11 @@ class Beer extends Component {
       hideAvail: true,
       hideIcons: true
     };
-    this.buttonTimeouts = [];
+    this.buttonTimeout = null;
   }
 
   componentWillUnmount() {
-    this.clearButtonTimeouts();
+    this.clearButtonTimeout();
   }
 
   isFavourited = (user, beer) => {
@@ -50,32 +50,33 @@ class Beer extends Component {
     this.setState({ hideIcons: true, hideAvail: true });
   };
 
-  clearButtonTimeouts = () => {
-    this.buttonTimeouts.forEach(timeout => clearTimeout(timeout));
-    this.buttonTimeouts = [];
+  clearButtonTimeout = () => {
+    if (this.buttonTimeout) {
+      clearTimeout(this.buttonTimeout);
+      this.buttonTimeout = null;
+    }
   };
 
   toggleAvail = () => {
-    this.clearButtonTimeouts();
+    this.clearButtonTimeout();
     this.setState(
       {
         hideAvail: !this.state.hideAvail,
         hideIcons: true
       },
       () => {
-        console.log('toggling availability', this.state.hideAvail);
         if (!this.state.hideAvail) {
           const timeout = setTimeout(() => {
             this.toggleAvail();
           }, 2000);
-          this.buttonTimeouts.push(timeout);
+          this.buttonTimeout = timeout;
         }
       }
     );
   };
 
   toggleIcons = () => {
-    this.clearButtonTimeouts();
+    this.clearButtonTimeout();
     this.setState(
       {
         hideIcons: !this.state.hideIcons,
@@ -86,7 +87,7 @@ class Beer extends Component {
           const timeout = setTimeout(() => {
             this.toggleIcons();
           }, 2000);
-          this.buttonTimeouts.push(timeout);
+          this.buttonTimeout = timeout;
         }
       }
     );

@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
-import { body1, iteCenterRow } from '../../config/styles';
+import { body1, iteCenterRow, jusBtwn, padding } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    width: '75%'
+    width: '75%',
+    paddingVertical: padding.xs
   },
   toggleWrapper: {
     ...iteCenterRow,

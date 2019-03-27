@@ -62,11 +62,15 @@ export const row = { flexDirection: 'row' };
 
 export const jusBtwn = { justifyContent: 'space-between' };
 
+export const jusArnd = { justifyContent: 'space-around' };
+
 export const jusStrt = { justifyContent: 'flex-start' };
+
+export const jusCntr = { justifyContent: 'center' };
 
 export const jusCenterRow = {
   ...row,
-  ...jusBtwn
+  ...jusCntr
 };
 
 export const jusBtwnRow = {
@@ -74,9 +78,13 @@ export const jusBtwnRow = {
   ...jusBtwn
 };
 
+export const iteCntr = { alignItems: 'center' };
+
+export const iteStrt = { alignItems: 'flex-start' };
+
 export const iteCenterRow = {
   ...row,
-  alignItems: 'center'
+  ...iteCntr
 };
 
 export const margin = {

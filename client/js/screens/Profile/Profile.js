@@ -20,7 +20,6 @@ import {
 import Subheader from '../../components/Subheader';
 import ToggleSwitch from '../../components/ToggleSwitch';
 import BlackButton from '../../components/Buttons/BlackButton';
-import { center } from '../../config/styles';
 import styles from './styles';
 
 class Profile extends Component {
@@ -154,30 +153,30 @@ class Profile extends Component {
             </View>
           </View>
 
-          <View style={styles.notifications}>
-            <Text style={[styles.heading, { alignSelf: 'flex-start' }]}>
-              Notifications
-            </Text>
+          <View
+            style={[
+              styles.notificationsWrapper,
+              { width: '100%', alignItems: 'center' }
+            ]}
+          >
+            <View style={styles.notifications}>
+              <Text style={[styles.heading, { alignSelf: 'flex-start' }]}>
+                Notifications
+              </Text>
+            </View>
+
+            <View style={styles.hr} />
+
+            <ToggleSwitch />
+
+            <View style={styles.hr} />
           </View>
-
-          <View style={styles.hr} />
-
-          {/* <View style={[styles.toggleWrapper, { 
-            alignContent: 'center'
-             }]}> */}
-          <ToggleSwitch />
-          {/* </View> */}
-
-          <View style={styles.buttonSaveContainer}>
-            <BlackButton
-              style={editing ? styles.buttonSave : styles.button}
-              onPress={() => this.handleButtonPress()}
-            >
-              {editing ? 'Save Changes' : 'Edit'}
-            </BlackButton>
-          </View>
-
-          <View style={styles.hr} />
+          <BlackButton
+            style={editing ? styles.buttonSave : styles.button}
+            onPress={() => this.handleButtonPress()}
+          >
+            {editing ? 'Save Changes' : 'Edit'}
+          </BlackButton>
         </ScrollView>
       </Fragment>
     );

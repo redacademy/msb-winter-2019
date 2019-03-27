@@ -62,11 +62,15 @@ export const row = { flexDirection: 'row' };
 
 export const jusBtwn = { justifyContent: 'space-between' };
 
+export const jusArnd = { justifyContent: 'space-around' };
+
 export const jusStrt = { justifyContent: 'flex-start' };
+
+export const jusCntr = { justifyContent: 'center' };
 
 export const jusCenterRow = {
   ...row,
-  justifyContent: 'center'
+  ...jusCntr
 };
 
 export const jusBtwnRow = {
@@ -74,9 +78,13 @@ export const jusBtwnRow = {
   ...jusBtwn
 };
 
+export const iteCntr = { alignItems: 'center' };
+
+export const iteStrt = { alignItems: 'flex-start' };
+
 export const iteCenterRow = {
   ...row,
-  alignItems: 'center'
+  ...iteCntr
 };
 
 export const margin = {
@@ -85,9 +93,7 @@ export const margin = {
   sm: 10,
   md: 20,
   lg: 30,
-  xl: 40,
-  xxl: 50,
-  xxxl: 60
+  xl: 40
 };
 
 export const mv0 = {
@@ -217,6 +223,7 @@ export const loader = {
 
 export const container = {
   backgroundColor: colors.white,
+  flex: 1,
   ...center
 };
 
@@ -226,8 +233,6 @@ export const hr = {
   marginVertical: margin.sm * 1.5,
   ...w100
 };
-
-export const bg0 = { backgroundColor: 'transparent' };
 
 export const vl = {
   marginHorizontal: margin.sm * 1.7,

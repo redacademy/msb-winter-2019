@@ -37,8 +37,8 @@ class EventContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
           if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
-          if (!data.allEvents || !data.allEvents[0]) return <Loader />;
-          const event = data.allEvents[0];
+          const event = data.allEvents && data.allEvents[0];
+          if (!event) return <Loader />;
           return (
             <Query
               query={USER_QUERY}

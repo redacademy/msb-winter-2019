@@ -85,12 +85,6 @@ class Event extends Component {
               style={styles.socialbtn}
             />
           </View>
-
-          {/* <CustomIcon
-            style={styles.outerBtnContainer}
-            onPress={() => {}}
-            source={require('../../assets/images/Buttons/save_button_inactive.png')}
-          /> */}
           <SaveEventButton user={user} event={event} />
         </View>
       </View>
@@ -99,6 +93,7 @@ class Event extends Component {
 }
 
 Event.propTypes = {
+  user: PropTypes.object.isRequired,
   event: PropTypes.object.isRequired,
   navigation: PropTypes.object.isRequired
 };

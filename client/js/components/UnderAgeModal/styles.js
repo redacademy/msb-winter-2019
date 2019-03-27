@@ -5,9 +5,7 @@ import {
   container,
   center,
   bg0,
-  jusBtwnRow,
   h1,
-  iteCntr,
   margin,
   padding,
   row,
@@ -37,10 +35,6 @@ const styles = StyleSheet.create({
     paddingBottom: padding.xl * 2.5
   },
   flex: { flex: 1 },
-  titleContainer: {
-    ...jusBtwnRow,
-    ...iteCntr
-  },
   title: {
     ...h1,
     color: colors.white

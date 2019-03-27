@@ -10,7 +10,7 @@ import styles from './styles';
 const UpdateProfileModal = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <CloseModalButton navigation={navigation} />
+      <CloseModalButton onPress={() => navigation.goBack()} />
       <View style={styles.content}>
         <CustomText style={styles.title}>UPDATED!</CustomText>
         <Image source={require('../../assets/images/Icons/nachos_icon.png')} />

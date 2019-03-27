@@ -1,24 +1,19 @@
 import React from 'react';
 import { View } from 'react-native';
-import PropTypes from 'prop-types';
 
 import CustomIcon from '../../CustomIcon';
 import styles from './styles';
 
-const CloseModalButton = ({ navigation }) => {
+const CloseModalButton = props => {
   return (
-    <View style={styles.closeContainer}>
-      <View style={styles.flex} />
+    <View {...props} style={[styles.closeContainer, props.style]}>
+      <View {...props} style={[styles.flex, props.style]} />
       <CustomIcon
-        onPress={() => navigation.goBack()}
+        {...props}
         source={require('../../../assets/images/Icons/exit_button.png')}
       />
     </View>
   );
-};
-
-CloseModalButton.propTypes = {
-  navigation: PropTypes.object.isRequired
 };
 
 export default CloseModalButton;

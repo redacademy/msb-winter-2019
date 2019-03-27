@@ -1,14 +1,15 @@
-import React, { Component } from "react";
-import { Query } from "react-apollo";
+import React, { Component } from 'react';
+import { Query } from 'react-apollo';
+
 import {
   USER_QUERY,
   ALL_BEERS_QUERY,
   ALL_REWARDS_QUERY
-} from "../../apollo/queries";
-import { getLoggedInUser } from "../../config/models";
-import Home from "./Home";
-import Loader from "../../components/Loader";
-import ErrorMessage from "../../components/ErrorMessage";
+} from '../../apollo/queries';
+import { getLoggedInUser } from '../../config/models';
+import Loader from '../../components/Loader';
+import ErrorMessage from '../../components/ErrorMessage';
+import Home from './Home';
 
 class HomeContainer extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class HomeContainer extends Component {
   };
 
   static navigationOptions = {
-    title: "Home"
+    title: 'Home'
   };
 
   render() {

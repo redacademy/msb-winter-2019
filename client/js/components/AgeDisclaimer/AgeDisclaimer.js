@@ -26,7 +26,7 @@ const AgeDisclaimer = ({ navigation }) => {
             under the legal drinking age in BC province.
           </Text>
         </View>
-        <WhiteButton onPress={() => navigation.navigate('Signup')}>
+        <WhiteButton onPress={() => navigation.navigate('Signin')}>
           Enter
         </WhiteButton>
       </View>

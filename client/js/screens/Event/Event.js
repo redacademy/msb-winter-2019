@@ -34,6 +34,7 @@ class Event extends Component {
             <Text style={styles.title}>{event.title}</Text>
             <Text style={styles.subtitle}>{event.subtitle}</Text>
           </View>
+
           <View style={styles.dataWrapper}>
             <View style={styles.border} />
 
@@ -61,7 +62,11 @@ class Event extends Component {
         <View style={styles.btnContainer}>
           <View style={styles.outerBtnContainer} />
           <ShareButton />
-          <SaveEventButton user={user} event={event} />
+          <SaveEventButton
+            style={styles.outerBtnContainer}
+            user={user}
+            event={event}
+          />
         </View>
       </View>
     );

@@ -11,8 +11,9 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width
+    height: Dimensions.get('window').height * 0.75,
+    width: Dimensions.get('window').width,
+    justifyContent: 'space-between'
   },
   headerImg: {
     maxHeight: 180,
@@ -22,10 +23,11 @@ const styles = StyleSheet.create({
   /** Events Info **/
 
   infoWrapper: {
-    padding: 20,
-    paddingHorizontal: 25
+    paddingTop: 20,
+    paddingHorizontal: 25,
+    justifyContent: 'space-around'
   },
-  titlesWrapper: { alignSelf: 'flex-start' },
+  titlesWrapper: { alignSelf: 'flex-start', paddingBottom: 10 },
   title: {
     fontFamily: fonts.primaryBold,
     fontSize: 24,
@@ -36,7 +38,6 @@ const styles = StyleSheet.create({
     color: colors.neutralDark,
     fontFamily: fonts.primary,
     fontSize: fonts.sm
-    // paddingBottom: 0
   },
 
   dataWrapper: {
@@ -50,9 +51,9 @@ const styles = StyleSheet.create({
   boldData: {
     fontFamily: fonts.primaryBold
   },
-  border: { ...hr, marginVertical: margin.xs, width: 295 },
+  border: { ...hr, marginVertical: margin.sm, width: 295 },
   description: {
-    width: Dimensions.get('window').width * 0.8,
+    width: Dimensions.get('window').width * 0.88,
     lineHeight: 22
   },
 
@@ -60,7 +61,11 @@ const styles = StyleSheet.create({
 
   btnContainer: {
     ...center,
-    ...row
+    ...row,
+    flex: 1
+  },
+  outerBtnContainer: {
+    width: 80
   },
   socialIconsWrapper: {
     ...center

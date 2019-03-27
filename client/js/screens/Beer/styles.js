@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 
   beerContainer: {
     justifyContent: 'space-between',
-    padding: 25,
+    paddingHorizontal: 25,
     paddingTop: 15,
     paddingBottom: 0,
     height: '55%'
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   beerGrid: {
     ...row,
     justifyContent: 'space-between',
-    paddingBottom: 25,
+    paddingBottom: 20,
     maxHeight: 250,
     maxWidth: 350
   },
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   description: {
     fontFamily: fonts.primary,
     lineHeight: 22,
-    paddingBottom: 10,
+    paddingBottom: 5,
     maxWidth: 350
   },
 

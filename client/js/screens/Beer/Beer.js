@@ -157,7 +157,7 @@ class Beer extends Component {
               </View>
             </View>
 
-            <ScrollView style={{ maxHeight: 178 }}>
+            <ScrollView style={{ maxHeight: 175 }}>
               <Text style={styles.description}>{beer.description}</Text>
             </ScrollView>
           </View>

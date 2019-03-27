@@ -2,14 +2,15 @@ import { Dimensions, StyleSheet } from 'react-native';
 import { center } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  carouselWrapper: {
-    ...center,
-    justifyContent: 'space-between',
-    paddingTop: 10,
-    height: '75%',
+  container: {
+    height: Dimensions.get('window').height * 0.6,
     width: Dimensions.get('window').width
   },
-  subheader: {}
+  carouselWrapper: {
+    ...center,
+    justifyContent: 'space-evenly',
+    marginVertical: 10
+  }
 });
 
 export default styles;

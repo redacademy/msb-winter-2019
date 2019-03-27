@@ -12,31 +12,38 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    height: Dimensions.get('window').height * 0.7,
-    padding: 12,
-    paddingBottom: 5
-  },
-  carouselContainer: {
-    ...center
+    paddingTop: 25,
+    // alignItems: 'center',
+    justifyContent: 'space-around'
   },
 
   /**
    * Carousel
    **/
+  carouselWrapper: {
+    height: Dimensions.get('window').height * 0.38
+  },
+  carouselContainer: {
+    ...center
+  },
   imgWrapper: {
-    shadowOffset: { width: 1, height: 3.5 },
+    shadowOffset: { width: 1, height: 1 },
     shadowColor: colors.neutralDark,
     shadowOpacity: 1,
     shadowRadius: 2,
     backgroundColor: '#fff'
   },
   img: {
-    maxWidth: 215,
-    maxHeight: 215,
-    resizeMode: 'contain'
+    maxWidth: 210,
+    maxHeight: 210
   },
-  title: { ...h1, ...center, paddingTop: 8, paddingBottom: 1 },
+  title: {
+    ...h1,
+    ...center,
+    fontSize: 38,
+    paddingTop: 10,
+    paddingBottom: 3
+  },
   subtitle: {
     color: colors.neutralDark,
     fontSize: fonts.sm
@@ -45,13 +52,16 @@ const styles = StyleSheet.create({
   /**
    * Info
    **/
+  nonCarousel: {
+    ...center,
+    justifyContent: 'space-between'
+  },
   dataWrapper: {
-    width: Dimensions.get('window').width * 0.8,
     ...row,
     ...center,
-    justifyContent: 'space-evenly',
-    paddingLeft: 15,
-    paddingRight: 15
+    justifyContent: 'space-around',
+    width: Dimensions.get('window').width * 0.8,
+    paddingVertical: 5
   },
   infoSpacing: {
     alignItems: 'flex-start'
@@ -68,9 +78,9 @@ const styles = StyleSheet.create({
   },
   border: {
     ...hr,
-    marginVertical: margin.xs,
+    marginVertical: margin.sm,
     width: '100%',
-    maxWidth: 250
+    maxWidth: 270
   }
 });
 

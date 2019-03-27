@@ -1,37 +1,25 @@
-import { StyleSheet } from "react-native";
-import { fonts, colors } from "../../config/styles";
+import { StyleSheet } from 'react-native';
+import {
+  container,
+  colors,
+  body2,
+  center,
+  jusBtwn,
+  bg0
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
-  constainer: {
-    backgroundColor: colors.black,
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 20
+  container: {
+    ...container,
+    backgroundColor: colors.black
   },
-  image: {
-    marginBottom: 20
-  },
+  imgBgWrapper: { position: 'absolute' },
+  imgBg: { ...center },
+  content: { ...bg0, ...center, ...jusBtwn, width: '80%', height: '40%' },
   text: {
+    ...body2,
     color: colors.white,
-    fontFamily: fonts.primarySemi,
-    textAlign: "center",
-    fontSize: fonts.md,
-    marginTop: 20,
-    marginBottom: 20
-  },
-  button: {
-    backgroundColor: colors.white,
-    margin: 20,
-    borderRadius: 10
-  },
-  buttonText: {
-    fontFamily: fonts.primaryBold,
-    fontSize: fonts.lg,
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 50,
-    paddingRight: 50
+    textAlign: 'center'
   }
 });
 

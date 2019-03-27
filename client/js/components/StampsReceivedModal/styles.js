@@ -1,21 +1,25 @@
 import { StyleSheet } from 'react-native';
-import { h1, colors, container } from '../../config/styles';
+import {
+  h1,
+  colors,
+  container,
+  button,
+  center,
+  h100
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
     ...container,
-    height: '100%',
+    ...h100,
     backgroundColor: colors.brand
   },
-  cheersMessage: {
+  content: { ...center, height: '90%' },
+  title: {
     ...h1,
     color: colors.white
   },
-  icon: {
-    position: 'absolute',
-    top: 20,
-    right: 10
-  }
+  text: { ...button, color: colors.black }
 });
 
 export default styles;

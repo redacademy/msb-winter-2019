@@ -10,10 +10,9 @@ import { withNavigation } from 'react-navigation';
 import Carousel from 'react-native-snap-carousel';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import SocialIconsPopout from '../SocialIconsPopout';
 import SaveEventButton from '../Buttons/SaveEventButton';
-import CustomIcon from '../CustomIcon';
 import styles from './styles';
+import ShareButton from '../Buttons/ShareButton';
 
 class CarouselEvents extends Component {
   constructor(props) {
@@ -124,17 +123,7 @@ class CarouselEvents extends Component {
 
         <View style={styles.btnContainer}>
           <View style={styles.outerBtnContainer} />
-
-          <View style={styles.socialIconsWrapper}>
-            {!this.state.hideIcons && <SocialIconsPopout />}
-            <CustomIcon
-              onPress={() => {
-                this.toggleIcons();
-              }}
-              source={require('../../assets/images/Icons/social_media_button.png')}
-              style={styles.socialbtn}
-            />
-          </View>
+          <ShareButton />
           <SaveEventButton user={user} event={currentEvent} />
         </View>
       </View>

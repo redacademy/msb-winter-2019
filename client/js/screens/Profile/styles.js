@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
   name: {
     ...h3,
     ...capitalize,
-    fontFamily: fonts.primaryBold
+    fontFamily: fonts.primaryBold,
+    textAlign: 'center'
   },
   hr: { ...hr, ...mv0, width: '90%' },
   underline: { ...hr, ...mv0 },

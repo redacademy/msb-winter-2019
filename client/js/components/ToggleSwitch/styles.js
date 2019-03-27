@@ -1,35 +1,26 @@
 import { StyleSheet } from 'react-native';
-import { colors } from '../../config/styles';
+import { body1, iteCenterRow } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20
+    width: '75%'
   },
-
-  toggleContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 20,
-    width: 300
-  },
-  buttonEditContainer: {
-    alignItems: 'center',
-    marginBottom: 10,
-    borderBottomWidth: 2,
-    borderBottomColor: colors.neutralLight
+  toggleWrapper: {
+    ...iteCenterRow,
+    ...jusBtwn
   },
   toggle: {
-    width: 58,
-    height: 31,
+    width: 45,
+    height: 25,
     borderRadius: 16,
-    padding: 5
+    padding: 0
   },
-  toggleCircles: {
+  toggleCircle: {
     width: 25,
     height: 25,
     borderRadius: 12.5
-  }
+  },
+  text: { ...body1 }
 });
 
 export default styles;

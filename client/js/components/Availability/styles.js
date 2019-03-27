@@ -1,41 +1,44 @@
 import { StyleSheet } from 'react-native';
-import { center, colors, fonts, row } from '../../config/styles';
+import {
+  center,
+  colors,
+  row,
+  subtitle1,
+  jusArnd,
+  margin,
+  jusCenterRow,
+  subtitle2,
+  contain,
+  h100
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    ...center,
-    paddingTop: 10
+    ...center
   },
   availTitle: {
-    color: colors.neutralDark,
-    fontFamily: fonts.primarySemi,
-    fontSize: fonts.sm,
-    paddingBottom: 8,
-    alignSelf: 'center'
+    ...subtitle1,
+    color: colors.neutralDark
   },
   infoContainer: {
     ...row,
     ...center,
-    justifyContent: 'space-around',
-    width: 275,
+    ...jusArnd,
+    width: '70%',
     maxHeight: 30
   },
   infoWrapper: {
     alignItems: 'flex-end',
-    justifyContent: 'center',
-    ...row,
-    height: '100%'
+    ...jusCenterRow,
+    ...h100
   },
   availImg: {
-    resizeMode: 'contain',
+    ...contain,
     maxHeight: 25,
-    marginRight: 5
+    marginRight: margin.xs
   },
   availSize: {
-    fontSize: 12,
-    fontFamily: fonts.primarySemi,
-    paddingBottom: 3,
-    alignSelf: 'flex-end'
+    ...subtitle2
   }
 });
 

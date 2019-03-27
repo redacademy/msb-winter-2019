@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   content: {
     ...center,
-    height: '50%'
+    height: '90%'
   },
   title: {
     ...h1

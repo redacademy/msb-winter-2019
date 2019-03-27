@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Image,
@@ -6,20 +6,20 @@ import {
   Platform,
   ProgressBarAndroid,
   ProgressViewIOS
-} from "react-native";
-import { withNavigation } from "react-navigation";
-import { Query } from "react-apollo";
-import moment from "moment";
-import PropTypes from "prop-types";
+} from 'react-native';
+import { withNavigation } from 'react-navigation';
+import { Query } from 'react-apollo';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 
-import { HISTORY_QUERY, ALL_REWARDS_QUERY } from "../../../apollo/queries";
-import { getLoggedInUser } from "../../../config/models";
-import Loader from "../../Loader";
-import ErrorMessage from "../../ErrorMessage";
-import CustomText from "../../CustomText";
-import HistoryRewards from "../../HistoryRewards";
-import { colors, dimensions } from "../../../config/styles";
-import styles from "./styles";
+import { HISTORY_QUERY, ALL_REWARDS_QUERY } from '../../../apollo/queries';
+import { getLoggedInUser } from '../../../config/models';
+import Loader from '../../Loader';
+import ErrorMessage from '../../ErrorMessage';
+import CustomText from '../../CustomText';
+import HistoryRewards from '../../HistoryRewards';
+import { colors, dimensions } from '../../../config/styles';
+import styles from './styles';
 
 class HistoryTab extends Component {
   constructor(props) {
@@ -80,7 +80,7 @@ class HistoryTab extends Component {
             <Query
               query={HISTORY_QUERY}
               variables={{ id: this.state.viewerId }}
-              fetchPolicy="network-only"
+              fetchPolicy='network-only'
             >
               {({ loading, error, data }) => {
                 if (loading) return <Loader />;
@@ -102,7 +102,7 @@ class HistoryTab extends Component {
                             ]}
                           >
                             <Image
-                              source={require("../../../assets/images/Card/point_location.png")}
+                              source={require('../../../assets/images/Card/point_location.png')}
                               style={styles.progressIcon}
                             />
                             <View style={styles.progressPt} />
@@ -111,9 +111,9 @@ class HistoryTab extends Component {
                             </CustomText>
                           </View>
                           <View style={styles.endPts} />
-                          {Platform.OS === "android" ? (
+                          {Platform.OS === 'android' ? (
                             <ProgressBarAndroid
-                              styleAttr="Horizontal"
+                              styleAttr='Horizontal'
                               indeterminate={false}
                               progress={this.getProgress(points)}
                               progressTintColor={colors.brand}
@@ -148,22 +148,22 @@ class HistoryTab extends Component {
                         renderItem={({ item }) => {
                           let beerLogo;
 
-                          if (item.beer.title === "FRUIT BOMB") {
-                            beerLogo = require("../../../assets/images/Beers/squre_fruit_bomb.png");
-                          } else if (item.beer.title === "NAKED FOX") {
-                            beerLogo = require("../../../assets/images/Beers/squre_naked_fox.png");
-                          } else if (item.beer.title === "GIMME SOME MO’") {
-                            beerLogo = require("../../../assets/images/Beers/squre_gimme_some_mo.png");
-                          } else if (item.beer.title === "MAIN STREET") {
-                            beerLogo = require("../../../assets/images/Beers/squre_main_street.png");
-                          } else if (item.beer.title === "WESTMINSTER") {
-                            beerLogo = require("../../../assets/images/Beers/squre_westminster.png");
-                          } else if (item.beer.title === "AUSTRALIAN") {
-                            beerLogo = require("../../../assets/images/Beers/squre_australian_saison.png");
-                          } else if (item.beer.title === "SLAUGHTERHOUSE") {
-                            beerLogo = require("../../../assets/images/Beers/squre_slaughterhouse.png");
-                          } else if (item.beer.title === "BARKING MAD") {
-                            beerLogo = require("../../../assets/images/Beers/squre_barking_mad.png");
+                          if (item.beer.title === 'FRUIT BOMB') {
+                            beerLogo = require('../../../assets/images/Beers/squre_fruit_bomb.png');
+                          } else if (item.beer.title === 'NAKED FOX') {
+                            beerLogo = require('../../../assets/images/Beers/squre_naked_fox.png');
+                          } else if (item.beer.title === 'GIMME SOME MO’') {
+                            beerLogo = require('../../../assets/images/Beers/squre_gimme_some_mo.png');
+                          } else if (item.beer.title === 'MAIN STREET') {
+                            beerLogo = require('../../../assets/images/Beers/squre_main_street.png');
+                          } else if (item.beer.title === 'WESTMINSTER') {
+                            beerLogo = require('../../../assets/images/Beers/squre_westminster.png');
+                          } else if (item.beer.title === 'AUSTRALIAN') {
+                            beerLogo = require('../../../assets/images/Beers/squre_australian_saison.png');
+                          } else if (item.beer.title === 'SLAUGHTERHOUSE') {
+                            beerLogo = require('../../../assets/images/Beers/squre_slaughterhouse.png');
+                          } else if (item.beer.title === 'BARKING MAD') {
+                            beerLogo = require('../../../assets/images/Beers/squre_barking_mad.png');
                           }
 
                           return (
@@ -191,7 +191,7 @@ class HistoryTab extends Component {
                               >
                                 <View style={styles.center}>
                                   <Image
-                                    source={require("../../../assets/images/Card/star_2_stamps.png")}
+                                    source={require('../../../assets/images/Card/star_2_stamps.png')}
                                     style={styles.stampsImg}
                                   />
                                   <CustomText style={styles.beerStamps}>
@@ -200,14 +200,14 @@ class HistoryTab extends Component {
                                 </View>
                                 <View style={styles.center}>
                                   <CustomText style={styles.beerText}>
-                                    {moment(item.date).format("D MMM")}
+                                    {moment(item.date).format('D MMM')}
                                   </CustomText>
                                 </View>
                               </View>
                             </View>
                           );
                         }}
-                        keyExtractor={item => item.id + ""}
+                        keyExtractor={item => item.id + ''}
                         ItemSeparatorComponent={this.renderSeparator}
                       />
                     </View>

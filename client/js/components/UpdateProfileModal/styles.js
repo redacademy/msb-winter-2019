@@ -1,42 +1,20 @@
-import { StyleSheet } from "react-native";
-import { colors, fonts } from "../../config/styles";
+import { StyleSheet } from 'react-native';
+import { container, colors, center, h1, button } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.neutralLight,
-    flex: 1,
-    marginTop: 40
+    ...container
   },
-  closeContainer: {
-    backgroundColor: colors.white,
-    paddingTop: 10,
-    padding: 10
-  },
-  close: {
-    alignSelf: "flex-end",
-    backgroundColor: colors.white
-  },
-
   content: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: colors.white,
-    height: "50%"
+    ...center,
+    height: '50%'
   },
   title: {
-    fontFamily: fonts.secondary,
-    fontSize: fonts.xxl,
-    marginBottom: 20
+    ...h1
   },
   text: {
-    fontFamily: fonts.primaryBold,
-    fontSize: fonts.md,
-    marginTop: 20,
-    marginBottom: 20
-  },
-  half: {
-    backgroundColor: colors.neutralLight,
-    height: "100%"
+    ...button,
+    color: colors.black
   }
 });
 

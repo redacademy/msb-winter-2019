@@ -1,26 +1,23 @@
-import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import { withNavigation } from "react-navigation";
-import PropTypes from "prop-types";
-import styles from "./styles";
+import React from 'react';
+import { View, Image } from 'react-native';
+import { withNavigation } from 'react-navigation';
+import PropTypes from 'prop-types';
+
+import CustomText from '../CustomText';
+import CloseModalButton from '../Buttons/CloseModalButton';
+import styles from './styles';
 
 const UpdateProfileModal = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.closeContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image
-            style={styles.close}
-            source={require("../../assets/images/Icons/exit_button.png")}
-          />
-        </TouchableOpacity>
-      </View>
+      <CloseModalButton navigation={navigation} />
       <View style={styles.content}>
-        <Text style={styles.title}> UPDATED! </Text>
-        <Image source={require("../../assets/images/Icons/nachos_icon.png")} />
-        <Text style={styles.text}>Your profile has been updated</Text>
+        <CustomText style={styles.title}>UPDATED!</CustomText>
+        <Image source={require('../../assets/images/Icons/nachos_icon.png')} />
+        <CustomText style={styles.text}>
+          Your profile has been updated.
+        </CustomText>
       </View>
-      <View />
     </View>
   );
 };

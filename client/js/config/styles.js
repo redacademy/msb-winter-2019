@@ -215,7 +215,6 @@ export const loader = {
 
 export const container = {
   backgroundColor: colors.white,
-  flex: 1,
   ...center
 };
 
@@ -225,6 +224,8 @@ export const hr = {
   marginVertical: margin.sm * 1.5,
   ...w100
 };
+
+export const bg0 = { backgroundColor: 'transparent' };
 
 export const vl = {
   marginHorizontal: margin.sm * 1.7,

@@ -7,7 +7,8 @@ import {
   contain,
   body2,
   fonts,
-  padding
+  padding,
+  jusArnd
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
   onboardWrapper: {
     ...container,
     backgroundColor: 'transparent',
-    justifyContent: 'space-around',
+    ...jusArnd,
     marginVertical: margin.xl * 6
   },
   logoWrapper: { ...center },

@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { center, colors, fonts, hr, subtitle1 } from '../../config/styles';
+import { center, colors, fonts, hr, row, subtitle1 } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,6 +10,8 @@ const styles = StyleSheet.create({
     maxHeight: 200,
     width: Dimensions.get('window').width
   },
+
+  /** Events Info **/
 
   infoWrapper: {
     padding: 20,
@@ -42,8 +44,20 @@ const styles = StyleSheet.create({
   border: { ...hr, width: 295 },
   description: {
     width: Dimensions.get('window').width * 0.8,
-    lineHeight: 2
-  }
+    lineHeight: 22
+  },
+
+  /** Buttons */
+
+  btnContainer: {
+    ...center,
+    ...row
+  },
+  socialIconsWrapper: {
+    ...center
+  },
+  socialbtn: { marginHorizontal: 2 },
+  outerBtnContainer: { width: 80 }
 });
 
 export default styles;

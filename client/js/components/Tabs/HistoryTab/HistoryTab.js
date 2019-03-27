@@ -72,7 +72,7 @@ class HistoryTab extends Component {
       <Query query={ALL_REWARDS_QUERY}>
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
-          if (error) return <CustomText>Error</CustomText>;
+          if (error) return <ErrorMessage>Error</ErrorMessage>;
           const allRewards = data.allRewards;
 
           return (
@@ -83,7 +83,7 @@ class HistoryTab extends Component {
             >
               {({ loading, error, data }) => {
                 if (loading) return <Loader />;
-                if (error) return <CustomText>Error</CustomText>;
+                if (error) return <ErrorMessage>Error</ErrorMessage>;
                 const user = data.allUsers && data.allUsers[0];
                 if (!user) return <Loader />;
 

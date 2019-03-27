@@ -1,15 +1,18 @@
 import { StyleSheet } from 'react-native';
 import {
   container,
-  jusBtwnRow,
   dimensions,
   margin,
-  colors
+  colors,
+  jusCenterRow
 } from '../../../config/styles';
 
 const styles = StyleSheet.create({
   container: { ...container },
-  rewards: { ...jusBtwnRow, flexWrap: 'wrap' },
+  rewards: {
+    flexWrap: 'wrap',
+    ...jusCenterRow
+  },
   vl: {
     marginHorizontal: 0,
     marginVertical: margin.sm,
@@ -17,7 +20,7 @@ const styles = StyleSheet.create({
     left: dimensions.fullWidth * 0.5,
     borderColor: colors.neutralLight,
     borderLeftWidth: 4,
-    height: '97%'
+    height: '73%'
   }
 });
 

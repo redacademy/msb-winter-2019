@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { center, colors, fonts, h2, row, vl } from '../../config/styles';
+import { center, colors, fonts, row, shadow2 } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,12 +7,9 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   bannerWrapper: {
-    shadowOffset: { width: 1, height: 1 },
-    shadowColor: colors.neutralDark,
-    shadowOpacity: 1,
-    shadowRadius: 2,
-    backgroundColor: '#000',
-    marginLeft: -10
+    ...shadow2,
+    zIndex: 0,
+    marginLeft: -20
   },
   backIcon: {
     position: 'absolute',
@@ -21,40 +18,51 @@ const styles = StyleSheet.create({
   },
 
   /**
-   *  Beer Data
+   *  Beer
    **/
+
   beerContainer: {
-    marginTop: 25,
-    marginLeft: 25,
-    marginRight: 25,
-    height: '55%',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    padding: 25,
+    paddingTop: 15,
+    paddingBottom: 0,
+    height: '55%'
   },
-  beerInfoContainer: {
+  beerWrapper: {
+    marginTop: 12,
+    marginBottom: 12
+  },
+  beerGrid: {
     ...row,
     justifyContent: 'space-between',
-    marginTop: 15,
-    marginBottom: 15
+    paddingBottom: 25,
+    maxHeight: 250,
+    maxWidth: 350
   },
   title: {
     fontFamily: fonts.primaryBold,
     fontSize: 24,
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
+    maxWidth: 200
   },
   subtitle: {
     color: colors.neutralDark,
     fontFamily: fonts.primary,
     fontSize: fonts.sm
   },
-
-  description: {
-    fontFamily: fonts.primary,
-    paddingTop: 15,
-    paddingBottom: 15
+  rating: {
+    marginTop: 15,
+    marginBottom: 5
   },
+
+  /**
+   *  Beer Data
+   **/
   beerDataContainer: {
-    ...vl,
-    paddingLeft: 10
+    alignSelf: 'center',
+    justifyContent: 'flex-end',
+    paddingLeft: 15,
+    maxWidth: 150
   },
   beerData: {
     fontFamily: fonts.primary
@@ -62,7 +70,27 @@ const styles = StyleSheet.create({
   infoBold: {
     fontFamily: fonts.primaryBold
   },
-  socialbtn: { ...center, marginBottom: 10 }
+  released: {
+    fontFamily: fonts.primary,
+    maxWidth: 90
+  },
+
+  description: {
+    fontFamily: fonts.primary,
+    lineHeight: 22,
+    paddingBottom: 10,
+    maxWidth: 350
+  },
+
+  /**  Buttons  **/
+  btnContainer: {
+    ...center,
+    ...row
+  },
+  socialIconsWrapper: {
+    ...center
+  },
+  socialbtn: { marginHorizontal: 5 }
 });
 
 export default styles;

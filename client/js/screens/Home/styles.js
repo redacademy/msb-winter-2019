@@ -40,12 +40,6 @@ const styles = StyleSheet.create({
   /**
    * Beer Flatlist
    **/
-
-  beerList: {
-    height: '50%',
-    ...center
-  },
-
   beerType: {
     width: dimensions.fullWidth * 0.9,
     height: 78,

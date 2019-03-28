@@ -71,7 +71,6 @@ const Home = props => {
           );
         }}
         keyExtractor={item => item.id}
-        contentContainerStyle={styles.beerList}
       />
     </View>
   );

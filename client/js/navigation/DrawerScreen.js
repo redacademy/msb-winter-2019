@@ -8,11 +8,11 @@ import {
   Image,
   Linking,
   TouchableHighlight,
-  SafeAreaView,
-  AsyncStorage
+  SafeAreaView
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { clearUserToken } from '../config/models';
 import OrangeButton from '../components/Buttons/OrangeButton';
 import { colors } from '../config/styles';
 import styles from './styles';
@@ -33,11 +33,20 @@ class DrawerScreen extends Component {
   };
 
   signOutAsync = async () => {
-    await AsyncStorage.clear();
+    await clearUserToken();
     this.props.navigation.navigate('Auth');
   };
 
   render() {
+    const ArrowIcon = () => (
+      <Ionicons
+        name={Platform.select({
+          ios: 'ios-arrow-forward',
+          android: 'md-arrow-forward'
+        })}
+        size={25}
+      />
+    );
     return (
       <View style={styles.drawerContainer}>
         <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
@@ -47,13 +56,7 @@ class DrawerScreen extends Component {
           >
             <View style={styles.drawerItemWrapper}>
               <Text style={styles.drawerItem}>About You</Text>
-              <Ionicons
-                name={Platform.select({
-                  ios: 'ios-arrow-forward',
-                  android: 'md-arrow-forward'
-                })}
-                size={25}
-              />
+              <ArrowIcon />
             </View>
           </TouchableHighlight>
           <View style={styles.hr} />
@@ -63,13 +66,7 @@ class DrawerScreen extends Component {
           >
             <View style={styles.drawerItemWrapper}>
               <Text style={styles.drawerItem}>Your Favourites</Text>
-              <Ionicons
-                name={Platform.select({
-                  ios: 'ios-arrow-forward',
-                  android: 'md-arrow-forward'
-                })}
-                size={25}
-              />
+              <ArrowIcon />
             </View>
           </TouchableHighlight>
           <View style={styles.hr} />
@@ -79,13 +76,7 @@ class DrawerScreen extends Component {
           >
             <View style={styles.drawerItemWrapper}>
               <Text style={styles.drawerItem}>Your Events</Text>
-              <Ionicons
-                name={Platform.select({
-                  ios: 'ios-arrow-forward',
-                  android: 'md-arrow-forward'
-                })}
-                size={25}
-              />
+              <ArrowIcon />
             </View>
           </TouchableHighlight>
           <View style={styles.hr} />
@@ -95,13 +86,7 @@ class DrawerScreen extends Component {
           >
             <View style={styles.drawerItemWrapper}>
               <Text style={styles.drawerItem}>Contact Us</Text>
-              <Ionicons
-                name={Platform.select({
-                  ios: 'ios-arrow-forward',
-                  android: 'md-arrow-forward'
-                })}
-                size={25}
-              />
+              <ArrowIcon />
             </View>
           </TouchableHighlight>
           <View style={styles.hr} />
@@ -123,7 +108,7 @@ class DrawerScreen extends Component {
         <TouchableHighlight
           underlayColor={colors.neutralLight}
           onPress={() => {
-            Linking.openURL('https://www.instagram.com/mainstreetbeer/'); //@TODO link to instagram app instead of site
+            Linking.openURL('https://www.instagram.com/mainstreetbeer/');
           }}
         >
           <View style={styles.igWrapper}>

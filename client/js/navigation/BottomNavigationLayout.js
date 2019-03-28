@@ -10,7 +10,6 @@ import { sharedNavigationOptions, headerLeftFromDrawer } from './config';
 import BeersScreen from '../screens/AllBeers';
 import BeerModal from '../screens/Beer';
 import EventModal from '../screens/Event';
-import FavEventsScreen from '../screens/FavEvents';
 import HomeScreen from '../screens/Home';
 import StoresScreen from '../screens/Stores';
 import CardTab from '../components/Tabs/CardTab';
@@ -127,7 +126,6 @@ const BeersStack = createStackNavigator(
 const EventsStack = createStackNavigator(
   {
     AllEventsTabScreens,
-    FavEvents: FavEventsScreen,
     Event: EventModal
   },
   {

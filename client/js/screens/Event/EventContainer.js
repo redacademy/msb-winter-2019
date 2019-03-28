@@ -13,7 +13,7 @@ class EventContainer extends Component {
     headerRight: null,
     headerStyle: {
       backgroundColor: '#000',
-      height: 75
+      height: 60
     }
   };
 

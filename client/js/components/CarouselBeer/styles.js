@@ -1,60 +1,85 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   center,
   colors,
-  fonts,
-  h1,
   hr,
+  margin,
   row,
-  subtitle1
+  subtitle1,
+  padding,
+  jusArnd,
+  dimensions,
+  h2,
+  pv0,
+  pb0,
+  jusBtwn,
+  iteStrt
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
-  carouselContainer: {
-    padding: 15,
-    paddingBottom: 0
-  },
-  slide: {
-    ...center
+  container: {
+    paddingTop: padding.md
   },
 
+  /**
+   * Carousel
+   **/
+  carouselWrapper: {
+    height: dimensions.fullHeight * 0.38
+  },
+  carouselContainer: {
+    ...center
+  },
   imgWrapper: {
-    flex: 1,
-    shadowOffset: { width: 1, height: 3.5 },
+    shadowOffset: { width: 1, height: 1 },
     shadowColor: colors.neutralDark,
     shadowOpacity: 1,
     shadowRadius: 2,
-    backgroundColor: '#fff'
+    backgroundColor: colors.white
   },
-
-  title: { ...h1, ...center, paddingBottom: 3 },
+  img: {
+    maxWidth: 210,
+    maxHeight: 210
+  },
+  title: {
+    ...h2,
+    ...pb0
+  },
   subtitle: {
     color: colors.neutralDark,
-    fontSize: fonts.sm
+    ...subtitle1,
+    ...pv0
   },
 
+  /**
+   * Info
+   **/
+  nonCarousel: {
+    ...center,
+    ...jusBtwn
+  },
   dataWrapper: {
-    width: Dimensions.get('window').width * 0.8,
     ...row,
     ...center,
-    justifyContent: 'space-evenly',
-    paddingLeft: 15,
-    paddingRight: 15
+    ...jusArnd,
+    width: dimensions.fullWidth * 0.8,
+    paddingVertical: padding.xxs
   },
   infoSpacing: {
-    alignItems: 'flex-start'
+    ...iteStrt
   },
   beerData: {
-    ...subtitle1,
-    fontSize: 14,
-    fontFamily: fonts.primary,
-    paddingTop: 2,
-    paddingBottom: 2
+    color: colors.neutralDark
   },
   boldData: {
-    ...subtitle1
+    ...subtitle1,
+    color: colors.black
   },
-  border: { ...hr, width: '100%', maxWidth: 250 }
+  border: {
+    ...hr,
+    marginVertical: margin.xs,
+    width: '70%'
+  }
 });
 
 export default styles;

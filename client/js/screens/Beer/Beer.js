@@ -1,21 +1,22 @@
 import React, { Component, Fragment } from 'react';
-import { Image, View, ScrollView, Text, Platform } from 'react-native';
-import PropTypes from 'prop-types';
-import moment from 'moment';
+import { Image, View, Platform } from 'react-native';
 import { graphql, compose } from 'react-apollo';
 import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 
-import CustomIcon from '../../components/CustomIcon';
-import BlackButton from '../../components/Buttons/BlackButton';
-import SocialIconsPopout from '../../components/SocialIconsPopout';
-import AvailabilityBtn from '../../components/AvailabilityBtn';
-import { center, colors, vl } from '../../config/styles';
 import {
   ADD_TO_USER_BEERS,
   USER_QUERY,
   REMOVE_FROM_USER_BEERS
 } from '../../apollo/queries';
+import CustomText from '../../components/CustomText';
+import CustomIcon from '../../components/CustomIcon';
+import BlackButton from '../../components/Buttons/BlackButton';
+import SocialIconsPopout from '../../components/SocialIconsPopout';
+import AvailabilityBtn from '../../components/AvailabilityBtn';
+import { center, colors } from '../../config/styles';
 import styles from './styles';
 
 class Beer extends Component {
@@ -117,7 +118,7 @@ class Beer extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.bannerWrapper}>
-          <Image source={beerBanner} />
+          <Image style={styles.bannerImg} source={beerBanner} />
         </View>
         <CustomIcon
           onPress={() => navigation.goBack()}
@@ -129,37 +130,45 @@ class Beer extends Component {
           <View style={styles.beerWrapper}>
             <View style={styles.beerGrid}>
               <View style={styles.beerType}>
-                <Text style={styles.title}>{beer.title}</Text>
-                <Text style={styles.subtitle}>{beer.subtitle}</Text>
+                <View>
+                  <CustomText style={styles.title}>{beer.title}</CustomText>
+                  <CustomText style={styles.subtitle}>
+                    {beer.subtitle}
+                  </CustomText>
+                </View>
                 <Image
                   style={styles.rating}
                   source={require('../../assets/images/Beers/stars_rating.png')}
                 />
               </View>
 
-              <View style={{ ...vl }}>
-                <View style={styles.beerDataContainer}>
-                  <Text style={styles.beerData}>
-                    <Text style={styles.infoBold}>Style: </Text> {beer.style}
-                  </Text>
-                  <Text style={styles.beerData}>
-                    <Text style={styles.infoBold}>ABV: </Text> {beer.abv}%
-                  </Text>
-                  <Text style={styles.beerData}>
-                    <Text style={styles.infoBold}>IBU: </Text> {beer.ibu}
-                  </Text>
+              <View style={{ flex: 1 }} />
 
-                  <Text style={styles.released}>
-                    <Text style={styles.infoBold}>Released: </Text>
+              <View style={styles.beerDataWrapper}>
+                <View style={styles.beerDataContainer}>
+                  <CustomText style={styles.beerData}>
+                    <CustomText style={styles.infoBold}>Style: </CustomText>{' '}
+                    {beer.style}
+                  </CustomText>
+                  <CustomText style={styles.beerData}>
+                    <CustomText style={styles.infoBold}>ABV: </CustomText>{' '}
+                    {beer.abv}%
+                  </CustomText>
+                  <CustomText style={styles.beerData}>
+                    <CustomText style={styles.infoBold}>IBU: </CustomText>{' '}
+                    {beer.ibu}
+                  </CustomText>
+                  <CustomText style={styles.beerData}>
+                    <CustomText style={styles.infoBold}>Released: </CustomText>
                     {moment(beer.releaseDate).format('MMM YY')}
-                  </Text>
+                  </CustomText>
                 </View>
               </View>
             </View>
 
-            <ScrollView style={{ maxHeight: 190 }}>
-              <Text style={styles.description}>{beer.description}</Text>
-            </ScrollView>
+            <CustomText style={styles.description}>
+              {beer.description}
+            </CustomText>
           </View>
 
           <View style={styles.btnContainer}>
@@ -204,7 +213,7 @@ class Beer extends Component {
                     android: 'md-heart'
                   })}
                   size={15}
-                  color={'white'}
+                  color={colors.white}
                   style={{ marginRight: 15, ...center }}
                 />{' '}
                 Favourite

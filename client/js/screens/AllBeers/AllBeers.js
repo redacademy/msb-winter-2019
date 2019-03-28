@@ -2,18 +2,19 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import styles from './styles';
-import CarouselBeer from '../../components/CarouselBeer';
 import Subheader from '../../components/Subheader';
+import CarouselBeer from '../../components/CarouselBeer';
 import Availability from '../../components/Availability';
+import styles from './styles';
 
 const AllBeers = ({ beers }) => (
   <View style={styles.container}>
     <Subheader style={styles.subheader}>Growler</Subheader>
-    <View style={styles.carouselWrapper}>
+
+    <View style={styles.content}>
       <CarouselBeer beers={beers} />
+      <Availability />
     </View>
-    <Availability />
   </View>
 );
 

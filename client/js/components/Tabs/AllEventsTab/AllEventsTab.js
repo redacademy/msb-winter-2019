@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import { withNavigation } from "react-navigation";
-import { Query } from "react-apollo";
-import { getLoggedInUser } from "../../../config/models";
-import { ALL_EVENTS_QUERY, USER_QUERY } from "../../../apollo/queries";
-import Loader from "../../Loader";
-import ErrorMessage from "../../ErrorMessage";
-import CarouselEvents from "../../CarouselEvents";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withNavigation } from 'react-navigation';
+import { Query } from 'react-apollo';
 
-import PropTypes from "prop-types";
+import { ALL_EVENTS_QUERY, USER_QUERY } from '../../../apollo/queries';
+import { getLoggedInUser } from '../../../config/models';
+import Loader from '../../Loader';
+import ErrorMessage from '../../ErrorMessage';
+import CarouselEvents from '../../CarouselEvents';
 
 class AllEventsTab extends Component {
-  static navigationOptions = { title: "All Events" };
+  static navigationOptions = { title: 'All Events' };
 
   constructor(props) {
     super(props);
@@ -26,7 +26,7 @@ class AllEventsTab extends Component {
     const { navigation } = this.props;
 
     return (
-      <Query query={ALL_EVENTS_QUERY} fetchPolicy="network-only">
+      <Query query={ALL_EVENTS_QUERY} fetchPolicy='network-only'>
         {({ loading, error, data }) => {
           if (loading || !this.state.viewerId) return <Loader />;
           if (error) return <ErrorMessage>Error</ErrorMessage>;
@@ -35,7 +35,7 @@ class AllEventsTab extends Component {
             <Query
               query={USER_QUERY}
               variables={{ id: this.state.viewerId }}
-              fetchPolicy="network-only"
+              fetchPolicy='network-only'
             >
               {({ loading, error, data }) => {
                 if (loading) return <Loader />;

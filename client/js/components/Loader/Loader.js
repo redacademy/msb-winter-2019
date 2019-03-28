@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Text } from 'react-native';
 
 import CustomText from '../CustomText/';
 import styles from './styles';
@@ -10,7 +10,9 @@ const Loader = () => (
       source={require('../../assets/images/loading_growler_v4.1.gif')}
       style={styles.gif}
     />
-    <CustomText style={styles.text}>Pouring ...</CustomText>
+    <CustomText style={styles.text}>
+      Pouring <Text style={styles.dot}>...</Text>
+    </CustomText>
   </View>
 );
 

@@ -1,7 +1,9 @@
 import React from 'react';
-import { Image, Text, TouchableHighlight, View } from 'react-native';
-import PropTypes from 'prop-types';
+import { Image, TouchableHighlight, View } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import PropTypes from 'prop-types';
+
+import CustomText from '../CustomText';
 import styles from './styles';
 
 const HomePoints = ({ rewards, user, navigation }) => {
@@ -28,20 +30,20 @@ const HomePoints = ({ rewards, user, navigation }) => {
         />
       </TouchableHighlight>
 
-      <Text style={styles.points}>
+      <CustomText style={styles.points}>
         {user.points <= 240
-          ? `${user.points}/${rewardsArr[0].points}`
-          : `${user.points}/240`}
-      </Text>
+          ? `${user.points} / ${rewardsArr[0].points}`
+          : `${user.points} / 240`}
+      </CustomText>
 
-      <Text style={styles.toNextReward}>
+      <CustomText style={styles.toNextReward}>
         {user.points <= 240 ? (
           rewardsArr[0].points - user.points
         ) : (
-          <Text style={styles.toNextRewardPoints}>0</Text>
+          <CustomText style={styles.toNextRewardPoints}>0</CustomText>
         )}{' '}
         to Next Reward
-      </Text>
+      </CustomText>
     </View>
   );
 };

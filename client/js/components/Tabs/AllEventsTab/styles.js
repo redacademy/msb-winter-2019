@@ -1,11 +1,11 @@
-import { Dimensions, StyleSheet } from 'react-native';
-import { center } from '../../../config/styles';
+import { StyleSheet } from 'react-native';
+import { center, dimensions } from '../../../config/styles';
 
 const styles = StyleSheet.create({
   carouselWrapper: {
     ...center,
     height: 500,
-    width: Dimensions.get('window').width
+    width: dimensions.fullWidth
   }
 });
 

@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { Query } from "react-apollo";
-import Loader from "../../components/Loader";
-import ErrorMessage from "../../components/ErrorMessage";
+import React, { Component } from 'react';
+import { Query } from 'react-apollo';
 
-import { ALL_BEERS_QUERY } from "../../apollo/queries";
-import AllBeers from "./AllBeers";
+import { ALL_BEERS_QUERY } from '../../apollo/queries';
+import Loader from '../../components/Loader';
+import ErrorMessage from '../../components/ErrorMessage';
+import AllBeers from './AllBeers';
 
 class AllBeersContainer extends Component {
   static navigationOptions = {
-    title: "AllBeers"
+    title: 'AllBeers'
   };
 
   render() {

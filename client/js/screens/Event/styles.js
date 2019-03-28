@@ -1,33 +1,43 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { center, colors, fonts, hr, row, subtitle1 } from '../../config/styles';
+import {
+  center,
+  colors,
+  fonts,
+  hr,
+  margin,
+  row,
+  subtitle1
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width
+    height: Dimensions.get('window').height * 0.75,
+    width: Dimensions.get('window').width,
+    justifyContent: 'space-between'
   },
   headerImg: {
-    maxHeight: 200,
+    maxHeight: 180,
     width: Dimensions.get('window').width
   },
 
   /** Events Info **/
 
   infoWrapper: {
-    padding: 20,
-    paddingHorizontal: 25
+    paddingTop: 20,
+    paddingHorizontal: 25,
+    justifyContent: 'space-around'
   },
+  titlesWrapper: { alignSelf: 'flex-start', paddingBottom: 10 },
   title: {
     fontFamily: fonts.primaryBold,
-    fontSize: fonts.lg,
+    fontSize: 24,
     ...center,
     width: Dimensions.get('window').width
   },
   subtitle: {
     color: colors.neutralDark,
     fontFamily: fonts.primary,
-    fontSize: fonts.sm,
-    paddingBottom: 0
+    fontSize: fonts.sm
   },
 
   dataWrapper: {
@@ -36,14 +46,14 @@ const styles = StyleSheet.create({
   eventData: {
     ...subtitle1,
     fontFamily: fonts.primary,
-    paddingVertical: 3
+    paddingVertical: 1
   },
   boldData: {
     fontFamily: fonts.primaryBold
   },
-  border: { ...hr, width: 295 },
+  border: { ...hr, marginVertical: margin.sm, width: 295 },
   description: {
-    width: Dimensions.get('window').width * 0.8,
+    width: Dimensions.get('window').width * 0.88,
     lineHeight: 22
   },
 
@@ -51,7 +61,11 @@ const styles = StyleSheet.create({
 
   btnContainer: {
     ...center,
-    ...row
+    ...row,
+    flex: 1
+  },
+  outerBtnContainer: {
+    width: 80
   },
   socialIconsWrapper: {
     ...center

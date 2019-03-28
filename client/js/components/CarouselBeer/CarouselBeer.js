@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import {
-  Dimensions,
-  View,
-  Text,
-  TouchableHighlight,
-  Image
-} from 'react-native';
+import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Carousel from 'react-native-snap-carousel';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 
-import { center } from '../../config/styles';
+import CustomText from '../CustomText';
+import { center, dimensions } from '../../config/styles';
 import styles from './styles';
 
 class CarouselBeer extends Component {
@@ -33,88 +28,89 @@ class CarouselBeer extends Component {
     const { beers, navigation } = this.props;
 
     return (
-      <View style={styles.carouselContainer}>
-        <Carousel
-          ref={c => {
-            this._carousel = c;
-          }}
-          data={beers}
-          loop={true}
-          loopClonesPerSide={2}
-          firstItem={0}
-          onSnapToItem={index => {
-            this.setState({ currentIndex: index });
-          }}
-          renderItem={({ item }) => {
-            let beerLogo;
-            if (item.title === 'FRUIT BOMB') {
-              beerLogo = require('../../assets/images/Beers/squre_fruit_bomb.png');
-            } else if (item.title === 'NAKED FOX') {
-              beerLogo = require('../../assets/images/Beers/squre_naked_fox.png');
-            } else if (item.title === 'GIMME SOME MO’') {
-              beerLogo = require('../../assets/images/Beers/squre_gimme_some_mo.png');
-            } else if (item.title === 'MAIN STREET') {
-              beerLogo = require('../../assets/images/Beers/squre_main_street.png');
-            } else if (item.title === 'WESTMINSTER') {
-              beerLogo = require('../../assets/images/Beers/squre_westminster.png');
-            } else if (item.title === 'AUSTRALIAN') {
-              beerLogo = require('../../assets/images/Beers/squre_australian_saison.png');
-            } else if (item.title === 'SLAUGHTERHOUSE') {
-              beerLogo = require('../../assets/images/Beers/squre_slaughterhouse.png');
-            } else if (item.title === 'BARKING MAD') {
-              beerLogo = require('../../assets/images/Beers/squre_barking_mad.png');
-            }
+      <View style={styles.container}>
+        <View style={styles.carouselWrapper}>
+          <Carousel
+            ref={c => {
+              this._carousel = c;
+            }}
+            data={beers}
+            loop={true}
+            loopClonesPerSide={2}
+            firstItem={0}
+            onSnapToItem={index => {
+              this.setState({ currentIndex: index });
+            }}
+            renderItem={({ item }) => {
+              let beerLogo;
+              if (item.title === 'FRUIT BOMB') {
+                beerLogo = require('../../assets/images/Beers/squre_fruit_bomb.png');
+              } else if (item.title === 'NAKED FOX') {
+                beerLogo = require('../../assets/images/Beers/squre_naked_fox.png');
+              } else if (item.title === 'GIMME SOME MO’') {
+                beerLogo = require('../../assets/images/Beers/squre_gimme_some_mo.png');
+              } else if (item.title === 'MAIN STREET') {
+                beerLogo = require('../../assets/images/Beers/squre_main_street.png');
+              } else if (item.title === 'WESTMINSTER') {
+                beerLogo = require('../../assets/images/Beers/squre_westminster.png');
+              } else if (item.title === 'AUSTRALIAN') {
+                beerLogo = require('../../assets/images/Beers/squre_australian_saison.png');
+              } else if (item.title === 'SLAUGHTERHOUSE') {
+                beerLogo = require('../../assets/images/Beers/squre_slaughterhouse.png');
+              } else if (item.title === 'BARKING MAD') {
+                beerLogo = require('../../assets/images/Beers/squre_barking_mad.png');
+              }
 
-            return (
-              <View style={styles.slide}>
-                <TouchableHighlight
-                  underlayColor={'transparent'}
-                  onPress={() => {
-                    navigation.navigate('Beer', { beerId: item.id });
-                  }}
-                >
-                  <View style={{ ...center }}>
-                    <View style={styles.imgWrapper}>
-                      <Image source={beerLogo} style={styles.img} />
+              return (
+                <View style={styles.carouselContainer}>
+                  <TouchableHighlight
+                    underlayColor={'transparent'}
+                    onPress={() => {
+                      navigation.navigate('Beer', { beerId: item.id });
+                    }}
+                  >
+                    <View style={{ ...center }}>
+                      <View style={styles.imgWrapper}>
+                        <Image source={beerLogo} style={styles.img} />
+                      </View>
+                      <Text style={styles.title}>{item.title}</Text>
+                      <Text style={styles.subtitle}>{item.subtitle}</Text>
                     </View>
-                    <Text style={styles.title}>{item.title}</Text>
-                    <Text style={styles.subtitle}>{item.subtitle}</Text>
-                  </View>
-                </TouchableHighlight>
-              </View>
-            );
-          }}
-          sliderHeight={Dimensions.get('window').height}
-          sliderWidth={Dimensions.get('window').width}
-          itemWidth={250}
-        />
+                  </TouchableHighlight>
+                </View>
+              );
+            }}
+            sliderWidth={dimensions.fullWidth}
+            itemWidth={250}
+          />
+        </View>
 
-        <View style={{ ...center }}>
+        <View style={styles.nonCarousel}>
           <View style={styles.border} />
 
           <View style={styles.dataWrapper}>
             <View style={styles.infoSpacing}>
-              <Text style={styles.beerData}>
-                <Text style={styles.boldData}>Style: </Text>
+              <CustomText style={styles.beerData}>
+                <CustomText style={styles.boldData}>Style: </CustomText>
                 {beers[this.state.currentIndex].style}
-              </Text>
-              <Text style={styles.beerData}>
-                <Text style={styles.boldData}>Released: </Text>
+              </CustomText>
+              <CustomText style={styles.beerData}>
+                <CustomText style={styles.boldData}>Released: </CustomText>
                 {moment(beers[this.state.currentIndex].releaseDate).format(
                   'MMM YYYY'
                 )}
-              </Text>
+              </CustomText>
             </View>
 
             <View style={styles.infoSpacing}>
-              <Text style={styles.beerData}>
-                <Text style={styles.boldData}>ABV: </Text>
+              <CustomText style={styles.beerData}>
+                <CustomText style={styles.boldData}>ABV: </CustomText>
                 {beers[this.state.currentIndex].abv}%
-              </Text>
-              <Text style={styles.beerData}>
-                <Text style={styles.boldData}>IBU: </Text>
+              </CustomText>
+              <CustomText style={styles.beerData}>
+                <CustomText style={styles.boldData}>IBU: </CustomText>
                 {beers[this.state.currentIndex].ibu}
-              </Text>
+              </CustomText>
             </View>
           </View>
 

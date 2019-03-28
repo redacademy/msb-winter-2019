@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import {
-  Dimensions,
-  View,
-  Text,
-  TouchableHighlight,
-  Image
-} from 'react-native';
+import { Dimensions, View, TouchableHighlight, Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Carousel from 'react-native-snap-carousel';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+
+import CustomText from '../CustomText';
 import SaveEventButton from '../Buttons/SaveEventButton';
-import styles from './styles';
 import ShareButton from '../Buttons/ShareButton';
-import { center } from '../../config/styles';
+import styles from './styles';
 
 class CarouselEvents extends Component {
   constructor(props) {
@@ -92,9 +87,11 @@ class CarouselEvents extends Component {
                         }
                       />
                     </View>
-                    <View style={{ ...center }}>
-                      <Text style={styles.title}>{item.title}</Text>
-                      <Text style={styles.subtitle}>{item.subtitle}</Text>
+                    <View style={styles.titleWrapper}>
+                      <CustomText style={styles.title}>{item.title}</CustomText>
+                      <CustomText style={styles.subtitle}>
+                        {item.subtitle}
+                      </CustomText>
                     </View>
                   </View>
                 </TouchableHighlight>
@@ -109,18 +106,18 @@ class CarouselEvents extends Component {
           <View style={styles.border} />
 
           <View style={styles.dataWrapper}>
-            <Text style={styles.eventData}>
-              <Text style={styles.boldData}>Date: </Text>
+            <CustomText style={styles.eventData}>
+              <CustomText style={styles.boldData}>Date: </CustomText>
               {moment(currentEvent.date).format('dddd, MMMM D, YYYY')}
-            </Text>
-            <Text style={styles.eventData}>
-              <Text style={styles.boldData}>Time: </Text>
+            </CustomText>
+            <CustomText style={styles.eventData}>
+              <CustomText style={styles.boldData}>Time: </CustomText>
               {currentEvent.time}
-            </Text>
-            <Text style={styles.eventData}>
-              <Text style={styles.boldData}>Location: </Text>
+            </CustomText>
+            <CustomText style={styles.eventData}>
+              <CustomText style={styles.boldData}>Location: </CustomText>
               {currentEvent.location}
-            </Text>
+            </CustomText>
           </View>
 
           <View style={styles.border} />

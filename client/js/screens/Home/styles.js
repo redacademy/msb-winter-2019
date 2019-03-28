@@ -9,7 +9,10 @@ import {
   contain,
   jusArnd,
   margin,
-  pb0
+  pb0,
+  hr,
+  mv0,
+  colors
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
@@ -40,11 +43,13 @@ const styles = StyleSheet.create({
   /**
    * Beer Flatlist
    **/
+  list: { marginVertical: margin.xs },
   beerType: {
     width: dimensions.fullWidth * 0.9,
     height: 78,
     ...contain
-  }
+  },
+  hr: { ...hr, ...mv0, backgroundColor: colors.white }
 });
 
 export default styles;

@@ -10,6 +10,10 @@ import styles from './styles';
 const Home = props => {
   const { rewards, user, navigation } = props;
 
+  renderSeparator = () => {
+    return <View style={styles.hr} />;
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.greet}>hi {user.name ? user.name : 'friend'}!</Text>
@@ -71,6 +75,8 @@ const Home = props => {
           );
         }}
         keyExtractor={item => item.id}
+        ItemSeparatorComponent={this.renderSeparator}
+        contentContainerStyle={styles.list}
       />
     </View>
   );

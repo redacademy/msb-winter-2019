@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Image, View, ScrollView, Platform } from 'react-native';
+import { Image, View, Platform } from 'react-native';
 import { graphql, compose } from 'react-apollo';
 import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -16,7 +16,7 @@ import CustomIcon from '../../components/CustomIcon';
 import BlackButton from '../../components/Buttons/BlackButton';
 import SocialIconsPopout from '../../components/SocialIconsPopout';
 import AvailabilityBtn from '../../components/AvailabilityBtn';
-import { center, colors, vl } from '../../config/styles';
+import { center, colors } from '../../config/styles';
 import styles from './styles';
 
 class Beer extends Component {
@@ -166,16 +166,9 @@ class Beer extends Component {
               </View>
             </View>
 
-            {/* <View
-              style={{
-                // maxHeight: 175,
-                width: '85%'
-              }}
-            > */}
             <CustomText style={styles.description}>
               {beer.description}
             </CustomText>
-            {/* </View> */}
           </View>
 
           <View style={styles.btnContainer}>
@@ -220,7 +213,7 @@ class Beer extends Component {
                     android: 'md-heart'
                   })}
                   size={15}
-                  color={'white'}
+                  color={colors.white}
                   style={{ marginRight: 15, ...center }}
                 />{' '}
                 Favourite

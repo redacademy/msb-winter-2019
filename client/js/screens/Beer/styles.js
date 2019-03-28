@@ -1,11 +1,10 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   center,
   colors,
   fonts,
   row,
   shadow2,
-  contain,
   w100,
   jusBtwn,
   margin,
@@ -14,8 +13,6 @@ import {
   h100,
   capitalize,
   iteCntr,
-  jusBtwnRow,
-  jusArnd,
   subtitle1,
   pv0,
   subtitle2,
@@ -38,8 +35,6 @@ const styles = StyleSheet.create({
   bannerImg: {
     ...w100,
     resizeMode: 'cover'
-    // ...contain,
-    // transform: [{ scaleX: 1.1 }]
   },
   backIcon: {
     position: 'absolute',
@@ -55,19 +50,14 @@ const styles = StyleSheet.create({
     ...iteCntr,
     ...jusBtwn,
     paddingBottom: padding.md,
-    // ...jusArnd,
     height: '55%'
   },
   beerWrapper: {
     ...iteCntr,
     ...jusStrt,
     width: '85%'
-    // paddingVertical: padding.md
   },
   beerGrid: {
-    // ...jusBtwnRow
-    // ...iteCntr
-    // width: '85%'
     ...row,
     ...jusBtwn
   },
@@ -107,7 +97,6 @@ const styles = StyleSheet.create({
     ...pv0
   },
   description: {
-    // width: '90%',
     ...body1,
     lineHeight: 20
   },

@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 
 import Subheader from '../../components/Subheader';
 import CustomText from '../../components/CustomText';
-import { renderSeparator } from '../../lib/helpers/separator';
+import { Separator } from '../../lib/helpers/separator';
 import { colors } from '../../config/styles';
 import styles from './styles';
 
@@ -221,7 +221,7 @@ class Stores extends Component {
               );
             }}
             keyExtractor={(item, index) => item + index}
-            ItemSeparatorComponent={renderSeparator}
+            ItemSeparatorComponent={Separator}
             style={styles.storesWrapper}
           />
         )}

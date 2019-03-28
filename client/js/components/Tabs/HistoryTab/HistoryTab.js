@@ -18,6 +18,7 @@ import Loader from '../../Loader';
 import ErrorMessage from '../../ErrorMessage';
 import CustomText from '../../CustomText';
 import HistoryRewards from '../../HistoryRewards';
+import { GreySeparator } from '../../../lib/helpers/separator';
 import { colors, dimensions } from '../../../config/styles';
 import styles from './styles';
 
@@ -62,10 +63,6 @@ class HistoryTab extends Component {
     return (points / 240) * dimensions.fullWidth * percent;
   };
 
-  renderSeparator = () => {
-    return <View style={styles.hr} />;
-  };
-
   render() {
     const { navigation } = this.props;
 
@@ -80,7 +77,7 @@ class HistoryTab extends Component {
             <Query
               query={HISTORY_QUERY}
               variables={{ id: this.state.viewerId }}
-              fetchPolicy='network-only'
+              fetchPolicy="network-only"
             >
               {({ loading, error, data }) => {
                 if (loading) return <Loader />;
@@ -113,7 +110,7 @@ class HistoryTab extends Component {
                           <View style={styles.endPts} />
                           {Platform.OS === 'android' ? (
                             <ProgressBarAndroid
-                              styleAttr='Horizontal'
+                              styleAttr="Horizontal"
                               indeterminate={false}
                               progress={this.getProgress(points)}
                               progressTintColor={colors.brand}
@@ -212,7 +209,7 @@ class HistoryTab extends Component {
                           );
                         }}
                         keyExtractor={item => item.id + ''}
-                        ItemSeparatorComponent={this.renderSeparator}
+                        ItemSeparatorComponent={GreySeparator}
                       />
                     </View>
                   </View>

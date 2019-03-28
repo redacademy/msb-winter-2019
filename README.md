@@ -1,8 +1,10 @@
-# Main Street Brewing Rewards Program 🍺
+# Main Street Brewing Rewards Program 🍻
 
 Welcome to Main Street Brewery's rewards program app. Here you will be able to track points and spend them on available rewards.
 
 Our team has built a native iOS app in a two and a half week period to help organize Main Street Brewery's rewards program. Users are able to gain points by growlers from their store. Some of the features include a map with a list of locations that carry their beer, favoriting beers and upcoming events, and rewards that can be unlocked with points
+
+![Main Street Brewing](mainstbrewing.gif)
 
 ## Technologies Used
 

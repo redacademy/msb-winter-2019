@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import {
-  Dimensions,
-  View,
-  Text,
-  TouchableHighlight,
-  Image
-} from 'react-native';
+import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Carousel from 'react-native-snap-carousel';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 
-import { center } from '../../config/styles';
+import CustomText from '../CustomText';
+import { center, dimensions } from '../../config/styles';
 import styles from './styles';
 
 class CarouselBeer extends Component {
@@ -85,7 +80,7 @@ class CarouselBeer extends Component {
                 </View>
               );
             }}
-            sliderWidth={Dimensions.get('window').width}
+            sliderWidth={dimensions.fullWidth}
             itemWidth={250}
           />
         </View>
@@ -95,27 +90,27 @@ class CarouselBeer extends Component {
 
           <View style={styles.dataWrapper}>
             <View style={styles.infoSpacing}>
-              <Text style={styles.beerData}>
-                <Text style={styles.boldData}>Style: </Text>
+              <CustomText style={styles.beerData}>
+                <CustomText style={styles.boldData}>Style: </CustomText>
                 {beers[this.state.currentIndex].style}
-              </Text>
-              <Text style={styles.beerData}>
-                <Text style={styles.boldData}>Released: </Text>
+              </CustomText>
+              <CustomText style={styles.beerData}>
+                <CustomText style={styles.boldData}>Released: </CustomText>
                 {moment(beers[this.state.currentIndex].releaseDate).format(
                   'MMM YYYY'
                 )}
-              </Text>
+              </CustomText>
             </View>
 
             <View style={styles.infoSpacing}>
-              <Text style={styles.beerData}>
-                <Text style={styles.boldData}>ABV: </Text>
+              <CustomText style={styles.beerData}>
+                <CustomText style={styles.boldData}>ABV: </CustomText>
                 {beers[this.state.currentIndex].abv}%
-              </Text>
-              <Text style={styles.beerData}>
-                <Text style={styles.boldData}>IBU: </Text>
+              </CustomText>
+              <CustomText style={styles.beerData}>
+                <CustomText style={styles.boldData}>IBU: </CustomText>
                 {beers[this.state.currentIndex].ibu}
-              </Text>
+              </CustomText>
             </View>
           </View>
 

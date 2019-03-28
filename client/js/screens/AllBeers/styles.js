@@ -1,16 +1,12 @@
-import { Dimensions, StyleSheet } from 'react-native';
-import { center } from '../../config/styles';
+import { StyleSheet } from 'react-native';
+import { center, dimensions, jusBtwn, h100 } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height * 0.6,
-    width: Dimensions.get('window').width
+    height: dimensions.fullHeight * 0.6,
+    width: dimensions.fullWidth
   },
-  carouselWrapper: {
-    ...center,
-    justifyContent: 'space-evenly',
-    marginVertical: 10
-  }
+  content: { ...center, ...jusBtwn, ...h100 }
 });
 
 export default styles;

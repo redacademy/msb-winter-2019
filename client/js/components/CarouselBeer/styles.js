@@ -1,27 +1,31 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   center,
   colors,
-  fonts,
-  h1,
   hr,
   margin,
   row,
-  subtitle1
+  subtitle1,
+  padding,
+  jusArnd,
+  dimensions,
+  h2,
+  pv0,
+  pb0,
+  jusBtwn,
+  iteStrt
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 25,
-    // alignItems: 'center',
-    justifyContent: 'space-around'
+    paddingTop: padding.md
   },
 
   /**
    * Carousel
    **/
   carouselWrapper: {
-    height: Dimensions.get('window').height * 0.38
+    height: dimensions.fullHeight * 0.38
   },
   carouselContainer: {
     ...center
@@ -31,22 +35,20 @@ const styles = StyleSheet.create({
     shadowColor: colors.neutralDark,
     shadowOpacity: 1,
     shadowRadius: 2,
-    backgroundColor: '#fff'
+    backgroundColor: colors.white
   },
   img: {
     maxWidth: 210,
     maxHeight: 210
   },
   title: {
-    ...h1,
-    ...center,
-    fontSize: 38,
-    paddingTop: 10,
-    paddingBottom: 3
+    ...h2,
+    ...pb0
   },
   subtitle: {
     color: colors.neutralDark,
-    fontSize: fonts.sm
+    ...subtitle1,
+    ...pv0
   },
 
   /**
@@ -54,33 +56,29 @@ const styles = StyleSheet.create({
    **/
   nonCarousel: {
     ...center,
-    justifyContent: 'space-between'
+    ...jusBtwn
   },
   dataWrapper: {
     ...row,
     ...center,
-    justifyContent: 'space-around',
-    width: Dimensions.get('window').width * 0.8,
-    paddingVertical: 5
+    ...jusArnd,
+    width: dimensions.fullWidth * 0.8,
+    paddingVertical: padding.xxs
   },
   infoSpacing: {
-    alignItems: 'flex-start'
+    ...iteStrt
   },
   beerData: {
-    ...subtitle1,
-    fontSize: 14,
-    fontFamily: fonts.primary,
-    paddingTop: 2,
-    paddingBottom: 2
+    color: colors.neutralDark
   },
   boldData: {
-    ...subtitle1
+    ...subtitle1,
+    color: colors.black
   },
   border: {
     ...hr,
-    marginVertical: margin.sm,
-    width: '100%',
-    maxWidth: 270
+    marginVertical: margin.xs,
+    width: '70%'
   }
 });
 

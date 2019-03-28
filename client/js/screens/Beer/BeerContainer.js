@@ -1,16 +1,17 @@
-import React, { Component } from "react";
-import { View } from "react-native";
-import { BEER_QUERY, USER_QUERY } from "../../apollo/queries";
-import { Query } from "react-apollo";
-import Beer from "./Beer";
-import Loader from "../../components/Loader";
-import ErrorMessage from "../../components/ErrorMessage";
-import { getLoggedInUser } from "../../config/models";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import { Query } from 'react-apollo';
+import PropTypes from 'prop-types';
+import { BEER_QUERY, USER_QUERY } from '../../apollo/queries';
+
+import Loader from '../../components/Loader';
+import ErrorMessage from '../../components/ErrorMessage';
+import { getLoggedInUser } from '../../config/models';
+import Beer from './Beer';
 
 class BeerContainer extends Component {
   static navigationOptions = {
-    title: "Beer",
+    title: 'Beer',
     header: null
   };
 
@@ -27,14 +28,14 @@ class BeerContainer extends Component {
   render() {
     const { navigation } = this.props;
     const id = navigation
-      ? navigation.getParam("beerId")
-      : "cjt7gjosi031i01936wp2rwvm";
+      ? navigation.getParam('beerId')
+      : 'cjt7gjosi031i01936wp2rwvm';
 
     return (
       <Query
         query={USER_QUERY}
         variables={{ id: this.state.viewerId }}
-        fetchPolicy="network-only"
+        fetchPolicy='network-only'
       >
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
@@ -47,7 +48,7 @@ class BeerContainer extends Component {
                 if (loading) return <Loader />;
                 if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
                 return (
-                  <View style={{ height: "100%" }}>
+                  <View style={{ height: '100%' }}>
                     <Beer
                       beer={data.allBeers[0]}
                       user={user}

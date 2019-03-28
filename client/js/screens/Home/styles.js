@@ -1,11 +1,25 @@
-import { Dimensions, StyleSheet } from 'react-native';
-import { center, container, h1, row, vl } from '../../config/styles';
+import { StyleSheet } from 'react-native';
+import {
+  center,
+  container,
+  h2,
+  row,
+  vl,
+  dimensions,
+  contain,
+  jusArnd,
+  margin,
+  pb0,
+  hr,
+  mv0,
+  colors
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
-  container: { ...container, marginTop: 10 },
+  container: { ...container, marginTop: margin.sm },
   greet: {
-    ...h1,
-    paddingBottom: 0
+    ...h2,
+    ...pb0
   },
 
   /**
@@ -14,35 +28,28 @@ const styles = StyleSheet.create({
   rewardsGrid: {
     ...row,
     ...center,
-    justifyContent: 'space-around',
-    width: Dimensions.get('window').width * 0.97,
+    ...jusArnd,
+    width: dimensions.fullWidth * 0.97,
     height: 190
   },
   singleGrid: {
     ...center,
-    width: Dimensions.get('window').width * 0.5
+    width: dimensions.fullWidth * 0.5
   },
 
   vl: { ...vl, height: 157, borderLeftWidth: 4 },
-  cardImg: { resizeMode: 'contain', width: 140 },
+  cardImg: { ...contain, width: 140 },
 
   /**
    * Beer Flatlist
    **/
-
-  beerList: {
-    marginBottom: 5,
-    marginTop: 5,
-    height: '50%'
-  },
-  flatlistContainer: {
-    ...center,
-    width: Dimensions.get('window').width
-  },
+  list: { marginVertical: margin.xs },
   beerType: {
-    maxWidth: 350,
-    resizeMode: 'contain'
-  }
+    width: dimensions.fullWidth * 0.9,
+    height: 78,
+    ...contain
+  },
+  hr: { ...hr, ...mv0, backgroundColor: colors.white }
 });
 
 export default styles;

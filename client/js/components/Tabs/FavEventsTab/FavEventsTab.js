@@ -1,19 +1,20 @@
-import React, { Component } from "react";
-import { View } from "react-native";
-import { withNavigation } from "react-navigation";
-import { USER_QUERY } from "../../../apollo/queries";
-import { Query } from "react-apollo";
-import { getLoggedInUser } from "../../../config/models";
-import CarouselEvents from "../../CarouselEvents";
-import CustomText from "../../CustomText";
-import styles from "./styles";
-import Loader from "../../Loader";
-import ErrorMessage from "../../ErrorMessage";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import { withNavigation } from 'react-navigation';
+import { Query } from 'react-apollo';
+import PropTypes from 'prop-types';
+
+import { USER_QUERY } from '../../../apollo/queries';
+import { getLoggedInUser } from '../../../config/models';
+import Loader from '../../Loader';
+import ErrorMessage from '../../ErrorMessage';
+import CustomText from '../../CustomText';
+import CarouselEvents from '../../CarouselEvents';
+import styles from './styles';
 
 class FavEventsTab extends Component {
   static navigationOptions = {
-    title: "Your Events"
+    title: 'Your Events'
   };
 
   constructor(props) {
@@ -31,7 +32,7 @@ class FavEventsTab extends Component {
       <Query
         query={USER_QUERY}
         variables={{ id: this.state.viewerId }}
-        fetchPolicy="network-only"
+        fetchPolicy='network-only'
       >
         {({ loading, error, data }) => {
           if (loading) return <Loader />;

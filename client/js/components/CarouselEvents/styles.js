@@ -1,56 +1,55 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   center,
   colors,
-  fonts,
   h2,
   hr,
-  margin,
   row,
-  subtitle1
+  subtitle1,
+  jusArnd,
+  h100,
+  dimensions,
+  iteStrt,
+  container,
+  pv0,
+  padding,
+  pb0,
+  shadow1
 } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    height: Dimensions.get('window').height,
-    paddingTop: 25,
-    paddingBottom: 5,
-    alignItems: 'center',
-    justifyContent: 'space-around'
+    ...container,
+    ...h100,
+    ...jusArnd
   },
 
   /**
    * Carousel
    **/
   carousel: {
-    height: Dimensions.get('window').height * 0.43
+    height: dimensions.fullHeight * 0.4,
+    paddingTop: padding.xl
   },
   carouselContainer: {
     ...center
   },
   imgWrapper: {
-    shadowOffset: { width: 1, height: 1 },
-    shadowColor: colors.neutralDark,
-    shadowOpacity: 1,
-    shadowRadius: 2,
-    backgroundColor: '#fff'
+    ...shadow1
   },
   img: {
     maxWidth: 215,
     maxHeight: 215
   },
+  titleWrapper: { ...center },
   title: {
     ...h2,
-    ...center,
-    fontSize: 36,
-    paddingTop: 12,
-    paddingBottom: 5
+    ...pb0
   },
   subtitle: {
+    ...subtitle1,
     color: colors.neutralDark,
-    fontSize: 15,
-    fontFamily: fonts.primarySemi
+    ...pv0
   },
 
   /**
@@ -61,26 +60,22 @@ const styles = StyleSheet.create({
     ...center
   },
   dataWrapper: {
-    alignItems: 'flex-start',
-    justifyContent: 'space-around',
-    paddingVertical: 3,
-    paddingLeft: 28,
-    paddingRight: 16,
-    width: Dimensions.get('window').width * 0.85
+    ...iteStrt,
+    ...jusArnd,
+    width: '70%'
   },
   eventData: {
-    ...subtitle1,
-    fontSize: 14,
-    fontFamily: fonts.primary
-    // paddingVertical: 10
+    color: colors.neutralDark,
+    ...pv0
   },
   boldData: {
-    ...subtitle1
+    ...subtitle1,
+    color: colors.black,
+    ...pv0
   },
   border: {
     ...hr,
-    width: 290
-    // marginVertical: margin.sm
+    width: dimensions.fullWidth * 0.75
   },
 
   /**
@@ -90,7 +85,7 @@ const styles = StyleSheet.create({
     flex: 1,
     ...center,
     ...row,
-    paddingTop: 15
+    paddingTop: padding.sm
   },
 
   outerBtnContainer: { width: 80 }

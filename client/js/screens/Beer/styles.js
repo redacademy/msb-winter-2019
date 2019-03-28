@@ -1,17 +1,40 @@
-import { Dimensions, StyleSheet } from 'react-native';
-import { center, colors, fonts, row, shadow2 } from '../../config/styles';
+import { StyleSheet } from 'react-native';
+import {
+  center,
+  colors,
+  fonts,
+  row,
+  shadow2,
+  w100,
+  jusBtwn,
+  margin,
+  body1,
+  dimensions,
+  h100,
+  capitalize,
+  iteCntr,
+  subtitle1,
+  pv0,
+  subtitle2,
+  vl,
+  jusStrt,
+  padding
+} from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
-    width: Dimensions.get('window').width,
-    height: '100%'
+    width: dimensions.fullWidth,
+    ...h100,
+    ...jusBtwn
   },
   bannerWrapper: {
     ...shadow2,
-    zIndex: 0
+    zIndex: 0,
+    height: '40%'
   },
   bannerImg: {
-    transform: [{ scale: 1.05 }]
+    ...w100,
+    resizeMode: 'cover'
   },
   backIcon: {
     position: 'absolute',
@@ -24,33 +47,30 @@ const styles = StyleSheet.create({
    **/
 
   beerContainer: {
-    justifyContent: 'space-between',
-    paddingHorizontal: 25,
-    paddingTop: 15,
-    paddingBottom: 0,
+    ...iteCntr,
+    ...jusBtwn,
+    paddingBottom: padding.md,
     height: '55%'
   },
   beerWrapper: {
-    marginTop: 12,
-    marginBottom: 12
+    ...iteCntr,
+    ...jusStrt,
+    width: '85%'
   },
   beerGrid: {
     ...row,
-    justifyContent: 'space-between',
-    paddingBottom: 20,
-    maxHeight: 250,
-    maxWidth: 350
+    ...jusBtwn
   },
+  beerType: { ...jusBtwn },
   title: {
     fontFamily: fonts.primaryBold,
-    fontSize: 24,
-    textTransform: 'capitalize',
-    maxWidth: 200
+    fontSize: fonts.lg,
+    ...capitalize
   },
   subtitle: {
+    ...subtitle1,
     color: colors.neutralDark,
-    fontFamily: fonts.primary,
-    fontSize: fonts.sm
+    ...pv0
   },
   rating: {
     marginTop: 15,
@@ -60,6 +80,7 @@ const styles = StyleSheet.create({
   /**
    *  Beer Data
    **/
+  beerDataWrapper: { ...vl, width: '25%' },
   beerDataContainer: {
     alignSelf: 'center',
     justifyContent: 'flex-end',
@@ -67,21 +88,17 @@ const styles = StyleSheet.create({
     maxWidth: 150
   },
   beerData: {
-    fontFamily: fonts.primary
+    ...body1,
+    ...pv0
   },
   infoBold: {
-    fontFamily: fonts.primaryBold
+    ...subtitle2,
+    color: colors.black,
+    ...pv0
   },
-  released: {
-    fontFamily: fonts.primary,
-    maxWidth: 90
-  },
-
   description: {
-    fontFamily: fonts.primary,
-    lineHeight: 22,
-    paddingBottom: 5,
-    maxWidth: 350
+    ...body1,
+    lineHeight: 20
   },
 
   /**  Buttons  **/
@@ -92,7 +109,7 @@ const styles = StyleSheet.create({
   socialIconsWrapper: {
     ...center
   },
-  socialbtn: { marginHorizontal: 5 }
+  socialbtn: { marginHorizontal: margin.xs }
 });
 
 export default styles;

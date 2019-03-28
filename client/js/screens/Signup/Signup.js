@@ -32,6 +32,30 @@ class Signup extends React.Component {
     };
   }
 
+  getCheckMark = isActive => {
+    return isActive ? (
+      <Ionicons
+        name={Platform.select({
+          android: 'md-checkmark-circle',
+          ios: 'ios-checkmark-circle'
+        })}
+        size={35}
+        color={colors.brand}
+        style={{ marginLeft: 20 }}
+      />
+    ) : (
+      <Ionicons
+        name={Platform.select({
+          android: 'md-checkmark-circle-outline',
+          ios: 'ios-checkmark-circle-outline'
+        })}
+        size={35}
+        color={'#fff'}
+        style={{ marginLeft: 20 }}
+      />
+    );
+  };
+
   render() {
     if (this.state.loading) {
       return <Loader />;
@@ -75,27 +99,7 @@ class Signup extends React.Component {
                                 </CustomText>
                               )}
                             </View>
-                            {!input.value ? (
-                              <Ionicons
-                                name={Platform.select({
-                                  android: 'md-checkmark-circle-outline',
-                                  ios: 'ios-checkmark-circle-outline'
-                                })}
-                                size={35}
-                                color={'#fff'}
-                                style={{ marginLeft: 20 }}
-                              />
-                            ) : (
-                              <Ionicons
-                                name={Platform.select({
-                                  android: 'md-checkmark-circle',
-                                  ios: 'ios-checkmark-circle'
-                                })}
-                                size={35}
-                                color={colors.brand}
-                                style={{ marginLeft: 20 }}
-                              />
-                            )}
+                            {this.getCheckMark(input.value)}
                           </View>
                         )}
                       </Field>
@@ -125,27 +129,7 @@ class Signup extends React.Component {
                                 </CustomText>
                               )}
                             </View>
-                            {meta.touched && meta.valid ? (
-                              <Ionicons
-                                name={Platform.select({
-                                  android: 'md-checkmark-circle',
-                                  ios: 'ios-checkmark-circle'
-                                })}
-                                size={35}
-                                color={colors.brand}
-                                style={{ marginLeft: 20 }}
-                              />
-                            ) : (
-                              <Ionicons
-                                name={Platform.select({
-                                  android: 'md-checkmark-circle-outline',
-                                  ios: 'ios-checkmark-circle-outline'
-                                })}
-                                size={35}
-                                color={'white'}
-                                style={{ marginLeft: 20 }}
-                              />
-                            )}
+                            {this.getCheckMark(meta.touched && meta.valid)}
                           </View>
                         )}
                       </Field>
@@ -175,27 +159,7 @@ class Signup extends React.Component {
                                 </CustomText>
                               )}
                             </View>
-                            {!input.value ? (
-                              <Ionicons
-                                name={Platform.select({
-                                  android: 'md-checkmark-circle-outline',
-                                  ios: 'ios-checkmark-circle-outline'
-                                })}
-                                size={35}
-                                color={'#fff'}
-                                style={{ marginLeft: 20 }}
-                              />
-                            ) : (
-                              <Ionicons
-                                name={Platform.select({
-                                  android: 'md-checkmark-circle',
-                                  ios: 'ios-checkmark-circle'
-                                })}
-                                size={35}
-                                color={colors.brand}
-                                style={{ marginLeft: 20 }}
-                              />
-                            )}
+                            {this.getCheckMark(input.value)}
                           </View>
                         )}
                       </Field>
@@ -230,27 +194,7 @@ class Signup extends React.Component {
                                 </CustomText>
                               )}
                             </View>
-                            {meta.error ? (
-                              <Ionicons
-                                name={Platform.select({
-                                  android: 'md-checkmark-circle-outline',
-                                  ios: 'ios-checkmark-circle-outline'
-                                })}
-                                size={35}
-                                color={'#fff'}
-                                style={{ marginLeft: 20 }}
-                              />
-                            ) : (
-                              <Ionicons
-                                name={Platform.select({
-                                  android: 'md-checkmark-circle',
-                                  ios: 'ios-checkmark-circle'
-                                })}
-                                size={35}
-                                color={colors.brand}
-                                style={{ marginLeft: 20 }}
-                              />
-                            )}
+                            {this.getCheckMark(!meta.error)}
                           </View>
                         )}
                       </Field>
@@ -288,27 +232,7 @@ class Signup extends React.Component {
                             this.datePicker = picker;
                           }}
                         />
-                        {this.state.date ? (
-                          <Ionicons
-                            name={Platform.select({
-                              android: 'md-checkmark-circle',
-                              ios: 'ios-checkmark-circle'
-                            })}
-                            size={35}
-                            color={colors.brand}
-                            style={{ marginLeft: 20 }}
-                          />
-                        ) : (
-                          <Ionicons
-                            name={Platform.select({
-                              android: 'md-checkmark-circle-outline',
-                              ios: 'ios-checkmark-circle-outline'
-                            })}
-                            size={35}
-                            color={'#fff'}
-                            style={{ marginLeft: 20 }}
-                          />
-                        )}
+                        {this.getCheckMark(this.state.date)}
                       </View>
                       <CustomText style={styles.signup}>
                         * You must be 19 or older to use this app.

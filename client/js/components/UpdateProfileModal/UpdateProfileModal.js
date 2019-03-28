@@ -7,20 +7,18 @@ import CustomText from '../CustomText';
 import CloseModalButton from '../Buttons/CloseModalButton';
 import styles from './styles';
 
-const UpdateProfileModal = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <CloseModalButton onPress={() => navigation.goBack()} />
-      <View style={styles.content}>
-        <CustomText style={styles.title}>UPDATED!</CustomText>
-        <Image source={require('../../assets/images/Icons/nachos_icon.png')} />
-        <CustomText style={styles.text}>
-          Your profile has been updated.
-        </CustomText>
-      </View>
+const UpdateProfileModal = ({ navigation }) => (
+  <View style={styles.container}>
+    <CloseModalButton onPress={() => navigation.goBack()} />
+    <View style={styles.content}>
+      <CustomText style={styles.title}>UPDATED!</CustomText>
+      <Image source={require('../../assets/images/Icons/nachos_icon.png')} />
+      <CustomText style={styles.text}>
+        Your profile has been updated.
+      </CustomText>
     </View>
-  );
-};
+  </View>
+);
 
 UpdateProfileModal.propTypes = {
   navigation: PropTypes.object.isRequired

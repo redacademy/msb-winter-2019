@@ -7,18 +7,16 @@ import CarouselBeer from '../../components/CarouselBeer';
 import Availability from '../../components/Availability';
 import styles from './styles';
 
-const AllBeers = props => {
-  return (
-    <View style={styles.container}>
-      <Subheader style={styles.subheader}>Growler</Subheader>
+const AllBeers = ({ beers }) => (
+  <View style={styles.container}>
+    <Subheader style={styles.subheader}>Growler</Subheader>
 
-      <View style={styles.content}>
-        <CarouselBeer beers={props.beers} />
-        <Availability />
-      </View>
+    <View style={styles.content}>
+      <CarouselBeer beers={beers} />
+      <Availability />
     </View>
-  );
-};
+  </View>
+);
 
 AllBeers.propTypes = {
   beers: PropTypes.array.isRequired

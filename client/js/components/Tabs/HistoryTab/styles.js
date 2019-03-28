@@ -23,7 +23,6 @@ import {
 
 const styles = StyleSheet.create({
   container: { ...container },
-  hr: { ...hr, ...mv0 },
   flex: { flex: 1 },
   center: { ...center },
   rewardsWrapper: {

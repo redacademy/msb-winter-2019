@@ -5,7 +5,6 @@ import { getLoggedInUser } from '../../config/models';
 import { EVENT_QUERY, USER_QUERY } from '../../apollo/queries';
 import Loader from '../../components/Loader';
 import ErrorMessage from '../../components/ErrorMessage';
-
 import Event from './Event';
 
 class EventContainer extends Component {

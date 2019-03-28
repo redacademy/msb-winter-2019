@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Platform } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { colors } from '../config/styles';
+import { colors, margin } from '../config/styles';
 
 export const headerLeftFromDrawer = navigation => {
   const drawerRoutes = ['FavBeers', 'Contact', 'Profile'];
@@ -26,8 +26,8 @@ export const headerLeftFromDrawer = navigation => {
         }
       }}
       size={40}
-      color={'white'}
-      style={{ marginLeft: 20 }}
+      color={colors.white}
+      style={{ marginLeft: margin.md }}
     />
   );
 };
@@ -43,7 +43,7 @@ export const sharedNavigationOptions = navigation => ({
   headerRight: (
     <Image
       source={require('../assets/images/Icons/notifications_icon_inactive.png')}
-      style={{ resizeMode: 'contain', marginRight: 10 }}
+      style={{ resizeMode: 'contain', marginRight: margin.sm }}
     />
   ),
   headerLeft: () => {
@@ -66,8 +66,8 @@ export const sharedNavigationOptions = navigation => ({
             : navigation.toggleDrawer();
         }}
         size={40}
-        color={'white'}
-        style={{ marginLeft: 20 }}
+        color={colors.white}
+        style={{ marginLeft: margin.md }}
       />
     );
   },

@@ -230,6 +230,15 @@ class Stores extends Component {
   }
 }
 
-Stores.propTypes = {};
+Stores.propTypes = {
+  stores: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      lat: PropTypes.string.isRequired,
+      long: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    })
+  ).isRequired
+};
 
 export default Stores;

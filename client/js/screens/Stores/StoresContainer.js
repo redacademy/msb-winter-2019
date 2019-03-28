@@ -18,7 +18,7 @@ class StoresContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
           if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
-
+          if (!data.allStores) return <Loader />;
           return <Stores stores={data.allStores} />;
         }}
       </Query>
